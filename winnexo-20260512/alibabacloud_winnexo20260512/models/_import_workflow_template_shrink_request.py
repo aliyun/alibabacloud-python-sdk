@@ -7,15 +7,24 @@ from darabonba.model import DaraModel
 class ImportWorkflowTemplateShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         collaboration_group_id: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         template_shrink: str = None,
         tenant_id: str = None,
     ):
+        # The platform application token issued by the console. If specified, the operation is executed as the user identified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # The portable template in JSON format. The stepId and sortOrder fields can be omitted.
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The portable template in JSON format, which includes schemaVersion, steps, and edges. Each step must specify stepId and sortOrder.
         # 
         # This parameter is required.
         self.template_shrink = template_shrink
@@ -30,8 +39,17 @@ class ImportWorkflowTemplateShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.template_shrink is not None:
             result['template'] = self.template_shrink
@@ -43,8 +61,17 @@ class ImportWorkflowTemplateShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('template') is not None:
             self.template_shrink = m.get('template')

@@ -7,11 +7,14 @@ from darabonba.model import DaraModel
 class QueryWorkItemFeedShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         business_statuses_shrink: str = None,
         collaboration_group_id: str = None,
         cursor: str = None,
         item_types_shrink: str = None,
         keyword: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page_size: int = None,
         priorities_shrink: str = None,
         scope: str = None,
@@ -19,6 +22,8 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
         tenant_id: str = None,
         view: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The business status filter (seven states).
         self.business_statuses_shrink = business_statuses_shrink
         # The ID of the collaboration workspace.
@@ -31,6 +36,10 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
         self.item_types_shrink = item_types_shrink
         # The keyword for fuzzy search in the title or description.
         self.keyword = keyword
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
         # The priority filter.
@@ -52,6 +61,9 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.business_statuses_shrink is not None:
             result['businessStatuses'] = self.business_statuses_shrink
 
@@ -66,6 +78,12 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
 
         if self.keyword is not None:
             result['keyword'] = self.keyword
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page_size is not None:
             result['pageSize'] = self.page_size
@@ -89,6 +107,9 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('businessStatuses') is not None:
             self.business_statuses_shrink = m.get('businessStatuses')
 
@@ -103,6 +124,12 @@ class QueryWorkItemFeedShrinkRequest(DaraModel):
 
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')

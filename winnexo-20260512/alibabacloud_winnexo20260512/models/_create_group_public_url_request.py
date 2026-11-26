@@ -7,37 +7,46 @@ from darabonba.model import DaraModel
 class CreateGroupPublicUrlRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         description: str = None,
         directory_id: str = None,
         group_id: str = None,
         name: str = None,
         notes: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         original_url: str = None,
         source_tags: str = None,
         tenant_id: str = None,
     ):
+        # The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The description of the AI assistant.
         self.description = description
-        # The folder ID.
+        # The ID of the folder.
         self.directory_id = directory_id
-        # The project group ID.
+        # The ID of the project group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name.
+        # The name of the resource.
         self.name = name
-        # The meeting notes content. This parameter is optional. The notes participate in auxiliary analysis.
+        # The content of the meeting notes. This parameter is optional and is used for auxiliary analysis.
         self.notes = notes
-        # The name of the digital employee (monitored object name). This parameter is optional.
+        # The name of the digital employee. This parameter is optional.
         self.operating_object_name = operating_object_name
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
         # The URL of the web page.
         # 
         # This parameter is required.
         self.original_url = original_url
-        # The resource labels. This parameter is optional. Specify a JSON string list, such as ["tagA","tagB"].
+        # The resource tags. This parameter is optional. Specify a JSON array of strings, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # The tenant ID that takes effect.
+        # The ID of the tenant where the operation takes effect.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -48,6 +57,9 @@ class CreateGroupPublicUrlRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -66,6 +78,12 @@ class CreateGroupPublicUrlRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.original_url is not None:
             result['originalUrl'] = self.original_url
 
@@ -79,6 +97,9 @@ class CreateGroupPublicUrlRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -96,6 +117,12 @@ class CreateGroupPublicUrlRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('originalUrl') is not None:
             self.original_url = m.get('originalUrl')

@@ -7,32 +7,41 @@ from darabonba.model import DaraModel
 class CreateKnowledgeBasePublicUrlRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         description: str = None,
         directory_id: str = None,
         name: str = None,
         notes: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         original_url: str = None,
         source_tags: str = None,
         tenant_id: str = None,
     ):
-        # The resource description.
+        # The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
+        # The description of the resource.
         self.description = description
-        # The ID of the destination folder in the enterprise knowledge base. This parameter is required. You must have knowledge base management permissions on the knowledge base.
+        # The ID of the target folder in the enterprise knowledge base. This parameter is required, and you must have knowledge base management permissions on the knowledge base.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The resource name. If not specified, the URL is used.
+        # The name of the resource. If not specified, the URL is used.
         self.name = name
-        # The analysis instruction.
+        # The analysis instructions.
         self.notes = notes
         # The name of the operating object.
         self.operating_object_name = operating_object_name
-        # The URL of the public HTTP/HTTPS web page.
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The URL of the public HTTP or HTTPS web page.
         # 
         # This parameter is required.
         self.original_url = original_url
-        # The list of resource tags as JSON strings.
+        # The list of resource tags in JSON string format.
         self.source_tags = source_tags
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
@@ -45,6 +54,9 @@ class CreateKnowledgeBasePublicUrlRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -60,6 +72,12 @@ class CreateKnowledgeBasePublicUrlRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.original_url is not None:
             result['originalUrl'] = self.original_url
 
@@ -73,6 +91,9 @@ class CreateKnowledgeBasePublicUrlRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -87,6 +108,12 @@ class CreateKnowledgeBasePublicUrlRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('originalUrl') is not None:
             self.original_url = m.get('originalUrl')

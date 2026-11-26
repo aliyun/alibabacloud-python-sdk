@@ -11,12 +11,15 @@ class CreateWorkItemRequest(DaraModel):
     def __init__(
         self,
         acceptance_criteria: str = None,
+        app_token: str = None,
         attachments: List[main_models.CreateWorkItemRequestAttachments] = None,
         collaboration_group_id: str = None,
         collaborator_user_ids: List[int] = None,
         conversation_id: str = None,
         description: str = None,
         item_type: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         owner_user_id: int = None,
         priority: str = None,
         tenant_id: str = None,
@@ -25,9 +28,11 @@ class CreateWorkItemRequest(DaraModel):
     ):
         # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
+        # The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The stable references of the input attachments.
         self.attachments = attachments
-        # The ID of the collaboration workspace.
+        # The ID of the collaboration space.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
@@ -37,15 +42,19 @@ class CreateWorkItemRequest(DaraModel):
         self.conversation_id = conversation_id
         # The description of the work item.
         self.description = description
-        # The type of the work item. Only WORKFLOW is supported.
+        # The type of the work item. Only WORKFLOW is accepted.
         # 
         # This parameter is required.
         self.item_type = item_type
-        # The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The user ID of the owner. If not specified, the caller is used as the owner.
         self.owner_user_id = owner_user_id
         # The scheduling priority.
         self.priority = priority
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
         # The title of the work item.
         # 
@@ -68,6 +77,9 @@ class CreateWorkItemRequest(DaraModel):
         if self.acceptance_criteria is not None:
             result['acceptanceCriteria'] = self.acceptance_criteria
 
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         result['attachments'] = []
         if self.attachments is not None:
             for k1 in self.attachments:
@@ -87,6 +99,12 @@ class CreateWorkItemRequest(DaraModel):
 
         if self.item_type is not None:
             result['itemType'] = self.item_type
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.owner_user_id is not None:
             result['ownerUserId'] = self.owner_user_id
@@ -110,6 +128,9 @@ class CreateWorkItemRequest(DaraModel):
         if m.get('acceptanceCriteria') is not None:
             self.acceptance_criteria = m.get('acceptanceCriteria')
 
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         self.attachments = []
         if m.get('attachments') is not None:
             for k1 in m.get('attachments'):
@@ -130,6 +151,12 @@ class CreateWorkItemRequest(DaraModel):
 
         if m.get('itemType') is not None:
             self.item_type = m.get('itemType')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('ownerUserId') is not None:
             self.owner_user_id = m.get('ownerUserId')

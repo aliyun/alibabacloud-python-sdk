@@ -22,7 +22,7 @@ class CreatePersonalDingtalkChatResponseBody(DaraModel):
         self.chat_id = chat_id
         # The error code.
         self.code = code
-        # The directory ID.
+        # The folder ID.
         self.directory_id = directory_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -34,9 +34,9 @@ class CreatePersonalDingtalkChatResponseBody(DaraModel):
         self.request_id = request_id
         # The permission scope.
         self.scope = scope
-        # The source ID.
+        # The source project ID.
         self.source_id = source_id
-        # The task running status.
+        # The running status of the task.
         self.status = status
 
     def validate(self):

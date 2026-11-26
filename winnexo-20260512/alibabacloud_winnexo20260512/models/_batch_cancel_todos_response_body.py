@@ -12,11 +12,11 @@ class BatchCancelTodosResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The actual number of canceled items. The value is 0 for idempotent repeated calls.
+        # The actual number of invalidated items. For idempotent repeated calls, the value is 0.
         self.cancelled_count = cancelled_count
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error message.
+        # The error description.
         self.message = message
         # The request tracking ID.
         self.request_id = request_id

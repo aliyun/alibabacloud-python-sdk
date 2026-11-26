@@ -19,7 +19,7 @@ class ListKnowledgeBaseDirectoriesResponseBody(DaraModel):
         self.code = code
         # The directory titles.
         self.directories = directories
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The request ID.
         self.request_id = request_id

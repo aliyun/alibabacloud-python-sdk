@@ -23,13 +23,13 @@ class CreateConversationResponseBody(DaraModel):
         self.conversation_id = conversation_id
         # The time when the share was created.
         self.created_at = created_at
-        # The description of the status code.
+        # The status code description.
         self.message = message
-        # A reserved field for extension purposes.
+        # The reserved field for extension purposes.
         self.metadata = metadata
         # The request ID.
         self.request_id = request_id
-        # The appointment title.
+        # The title of the scheduled meeting.
         self.title = title
 
     def validate(self):

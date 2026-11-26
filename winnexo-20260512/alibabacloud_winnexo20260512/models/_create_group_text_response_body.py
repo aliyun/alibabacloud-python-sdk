@@ -20,21 +20,21 @@ class CreateGroupTextResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The creation time.
         self.gmt_create = gmt_create
         # The project group ID.
         self.group_id = group_id
-        # The prompt message.
+        # The message.
         self.message = message
-        # The image name.
+        # The mirror name.
         self.name = name
         # The request ID.
         self.request_id = request_id
         # The permission scope.
         self.scope = scope
-        # The unique identifier on the business system side, that is, the business ID.
+        # The unique identifier on the business system side, which is the business ID.
         self.source_id = source_id
         # The status.
         self.status = status

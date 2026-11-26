@@ -26,11 +26,11 @@ class ListSkillsResponseBody(DaraModel):
         self.message = message
         # The page number.
         self.page = page
-        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
+        # The number of entries per page in the returned results. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total = total
 
     def validate(self):
@@ -120,21 +120,21 @@ class ListSkillsResponseBodyItems(DaraModel):
         self.description = description
         # The execution mode, such as CODE_AGENT or SYSTEM.
         self.execute_mode = execute_mode
-        # Indicates whether the skill is globally accessible.
+        # Specifies whether global access is allowed.
         self.global_access = global_access
-        # Indicates whether unpublished draft modifications exist.
+        # Specifies whether unpublished draft modifications exist.
         self.has_draft_changes = has_draft_changes
         # The file name.
         self.name = name
-        # The skill code that is actually executed.
+        # The code of the skill that is actually executed.
         self.skill_code = skill_code
         # The skill definition ID.
         self.skill_hub_definition_id = skill_hub_definition_id
         # The skill source type.
         self.source_type = source_type
-        # The task status. Running is returned upon submission.
+        # The task status. Running is returned immediately after submission.
         self.status = status
-        # The keys.
+        # The key.
         self.tags = tags
         # The update timestamp, in milliseconds.
         self.updated_time = updated_time

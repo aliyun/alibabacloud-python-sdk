@@ -7,16 +7,21 @@ from darabonba.model import DaraModel
 class ListScheduledTasksShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         collaboration_group_id: str = None,
         creator_only: bool = None,
         keyword: str = None,
         max_results: int = None,
         next_token: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         tenant_id: str = None,
         visibilities_shrink: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group space task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
         # Specifies whether to view only tasks created by yourself. This parameter takes effect only at the group level (at the personal level, tasks are always your own). If this parameter is not specified, no filtering is applied.
@@ -27,6 +32,10 @@ class ListScheduledTasksShrinkRequest(DaraModel):
         self.max_results = max_results
         # The pagination token used to retrieve the next page.
         self.next_token = next_token
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The page number for pagination. Default value: 1.
         self.page = page
         # The number of entries to return per page.
@@ -46,6 +55,9 @@ class ListScheduledTasksShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
@@ -60,6 +72,12 @@ class ListScheduledTasksShrinkRequest(DaraModel):
 
         if self.next_token is not None:
             result['nextToken'] = self.next_token
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -77,6 +95,9 @@ class ListScheduledTasksShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
@@ -91,6 +112,12 @@ class ListScheduledTasksShrinkRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

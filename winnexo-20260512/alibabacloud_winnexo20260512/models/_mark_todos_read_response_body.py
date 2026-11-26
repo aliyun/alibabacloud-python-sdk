@@ -19,7 +19,7 @@ class MarkTodosReadResponseBody(DaraModel):
         self.message = message
         # The request tracking ID.
         self.request_id = request_id
-        # The number of unread to-do items remaining after the operation.
+        # The number of remaining unread to-do items after the operation.
         self.unread_count = unread_count
         # The number of to-do items marked as read in this request.
         self.updated_count = updated_count

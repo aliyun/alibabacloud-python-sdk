@@ -22,43 +22,43 @@ class CreateTenantDirectoryResponseBody(DaraModel):
         tenant_id: int = None,
         user_id: int = None,
     ):
-        # The status code.
+        # The business status code. A value of 200 indicates success. If the request fails, a specific business error code is returned.
         self.code = code
-        # The description of the to-do card type.
+        # The description of the created directory. If no description is set, the value is empty.
         self.description = description
-        # The folder ID.
+        # The business ID of the newly created directory. You can use this ID to read or update the knowledge base configuration for standard enterprise root directories.
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The creation time.
+        # The time when the directory was created. The value is a UNIX timestamp in seconds.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The time when the directory was last modified. The value is a UNIX timestamp in seconds.
         self.gmt_modified = gmt_modified
-        # The tenant folder ID.
+        # The internal primary key of the directory. You can use this key as the parentId when you create a subdirectory. This key is different from the business ID directoryId.
         # 
         # This parameter is required.
         self.id = id
-        # The description of the status code.
+        # The response message. The value is success if the request is successful. If the request fails, this parameter describes the cause of the error.
         self.message = message
-        # The name.
+        # The name of the created directory.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the digital employee (the operating object name, optional).
+        # The legacy single digital employee association field. You cannot use this field to replace the mode and association list returned by GetKnowledgeBaseConfiguration.
         self.operating_object_name = operating_object_name
-        # The ID of the parent node.
+        # The internal primary key of the parent directory. This value is empty for enterprise root directories.
         self.parent_id = parent_id
-        # The path of the node.
+        # The path of the created directory.
         # 
         # This parameter is required.
         self.path = path
-        # The request ID.
+        # The request tracking ID. You can use this ID to troubleshoot issues related to this call.
         self.request_id = request_id
-        # The ID of the tenant for which the operation takes effect.
+        # The ID of the tenant to which the directory belongs.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id
-        # The user ID of the creator.
+        # The ID of the platform user who created the directory.
         # 
         # This parameter is required.
         self.user_id = user_id

@@ -33,23 +33,23 @@ class ImportWorkflowTemplateResponseBody(DaraModel):
         self.created_by_user_id = created_by_user_id
         # The template description.
         self.description = description
-        # The node dependency edges. Each item contains from and to fields that reference stable step IDs. An explicit empty array indicates no dependencies.
+        # A node dependency edge, where from is the stepId of the predecessor node and to is the stepId of the successor node.
         self.edges = edges
-        # The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items. This field is empty because an import always creates a v1 draft.
+        # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items. The value is empty for imported templates because a v1 draft is created by default.
         self.effective_version = effective_version
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
         # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
+        # The optional canvas layout, indexed by stepId. This parameter only affects the display and does not determine dependencies.
         self.layout = layout
         # The error message.
         self.message = message
         # The template name.
         self.name = name
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # The schema version of the template. The current value is 2, which is independent of the business version vN.
+        # The template structure version. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
@@ -201,21 +201,21 @@ class ImportWorkflowTemplateResponseBodySteps(DaraModel):
         self.owner_agent_name = owner_agent_name
         # The owner type. Valid values:
         # 
-        # - **USER**: User. This is the default value.
+        # - **USER**: User type. This is the default value.
         # 
-        # - **APP**: App.
+        # - **APP**: Application type.
         self.owner_type = owner_type
         # The user ID of the employee executor.
         self.owner_user_id = owner_user_id
-        # Specifies whether to manually review the output. By default, this feature is disabled. It can be enabled only for digital employees. Review to-do items are automatically sent to the person in charge.
+        # Specifies whether to manually review the deliverables. By default, this feature is disabled. It can be enabled only for digital employees. Review tasks are automatically sent to the person in charge.
         self.review_output = review_output
-        # The list of user IDs for the reviewers. This field is valid only for digital employee executor steps and is always empty for member executor steps.
+        # The list of user IDs of the persons in charge. This parameter is valid only for digital employee executor steps and is always empty for member executor steps.
         self.reviewer_user_ids = reviewer_user_ids
         # The step order.
         self.sort_order = sort_order
-        # The processing instructions for the step.
+        # The step processing instructions.
         self.specification = specification
-        # The ordered array of segments. Supported types include text, mention, skill, app, files, and web_search. The reference identities and order are preserved.
+        # The ordered array of fragments, which supports text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
         self.specification_json = specification_json
         # The step ID.
         self.step_id = step_id

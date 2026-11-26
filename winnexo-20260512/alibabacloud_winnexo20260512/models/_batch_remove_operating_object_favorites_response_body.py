@@ -25,21 +25,21 @@ class BatchRemoveOperatingObjectFavoritesResponseBody(DaraModel):
         self.code = code
         # The graph name.
         self.graph_name = graph_name
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type
-        # The digital employee name (operating object name, optional).
+        # The digital worker name, which is the name of the operating object. This parameter is optional.
         self.operating_object_name = operating_object_name
-        # The number of remaining subscribed objects within the precise scope.
+        # The number of remaining favorited objects within the exact scope.
         self.remaining_count = remaining_count
-        # The number of physical subscription records that are actually deleted.
+        # The number of physical favorite records that are actually deleted.
         self.removed_count = removed_count
         # The request ID.
         self.request_id = request_id
         # **The number of requested members before deduplication.**
         self.requested_count = requested_count
-        # The relationships between internal and external DingTalk users that failed to be created.
+        # The internal and external DingTalk user relationships that failed to be created.
         self.results = results
 
     def validate(self):
@@ -131,11 +131,11 @@ class BatchRemoveOperatingObjectFavoritesResponseBodyResults(DaraModel):
         object_id: str = None,
         processed: bool = None,
     ):
-        # Indicates whether the object is subscribed after the operation.
+        # Indicates whether the object is favorited after the operation.
         self.is_favorited = is_favorited
-        # The aligned object ID: target ID or KR ID.
+        # The ID of the aligned object, which is the target ID or KR ID.
         self.object_id = object_id
-        # Indicates whether the request is processed.
+        # Indicates whether the request has been processed.
         self.processed = processed
 
     def validate(self):

@@ -7,11 +7,20 @@ from darabonba.model import DaraModel
 class StreamChatMessageRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         last_event_id: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         tenant_id: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The last received SSE event ID, used for resuming delivery after a disconnection. If this parameter is not specified, full replay starts from the beginning.
         self.last_event_id = last_event_id
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The ID of the tenant for which the subscription takes effect.
         self.tenant_id = tenant_id
 
@@ -23,8 +32,17 @@ class StreamChatMessageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.last_event_id is not None:
             result['lastEventId'] = self.last_event_id
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
@@ -33,8 +51,17 @@ class StreamChatMessageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('lastEventId') is not None:
             self.last_event_id = m.get('lastEventId')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

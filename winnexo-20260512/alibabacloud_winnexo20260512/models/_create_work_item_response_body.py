@@ -65,25 +65,25 @@ class CreateWorkItemResponseBody(DaraModel):
         self.applied_status_version = applied_status_version
         # The list of input attachments.
         self.attachments = attachments
-        # The business status.
+        # The business status in the seven-state model.
         self.business_status = business_status
         # Indicates whether the caller can delete the item.
         self.can_delete = can_delete
         # Indicates whether the caller can manage the item.
         self.can_manage = can_manage
-        # Indicates whether the visibility scope can be adjusted independently.
+        # Indicates whether the caller can independently adjust the visibility scope.
         self.can_manage_visibility = can_manage_visibility
         # Indicates whether the caller can rename the item.
         self.can_rename = can_rename
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The collaboration workspace ID.
+        # The collaboration space ID.
         self.collaboration_group_id = collaboration_group_id
         # The list of user IDs of the collaborators.
         self.collaborator_user_ids = collaborator_user_ids
         # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # The creation time, in ISO 8601 format.
+        # The time when the item was created (ISO 8601).
         self.created_at = created_at
         # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
@@ -105,19 +105,19 @@ class CreateWorkItemResponseBody(DaraModel):
         self.input_version = input_version
         # The work item type.
         self.item_type = item_type
-        # The time when the item last entered the processing state, in ISO 8601 format.
+        # The time when the item last entered the processing state (ISO 8601).
         self.last_processing_at = last_processing_at
         # Indicates whether the topic is a free exploration topic during the compatibility period.
         self.legacy_topic = legacy_topic
-        # The list of user IDs for visible members.
+        # The list of user IDs of members who can view the item.
         self.member_user_ids = member_user_ids
         # The error message.
         self.message = message
-        # The modification time, in ISO 8601 format.
+        # The time when the item was last modified (ISO 8601).
         self.modified_at = modified_at
         # The user ID of the owner.
         self.owner_user_id = owner_user_id
-        # Indicates whether the item is pinned by the caller.
+        # Indicates whether the item is pinned to the top by the caller.
         self.pinned = pinned
         # The priority.
         self.priority = priority
@@ -125,25 +125,25 @@ class CreateWorkItemResponseBody(DaraModel):
         self.progress_completed = progress_completed
         # The total progress.
         self.progress_total = progress_total
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # The execution ID of the task.
+        # The task execution ID.
         self.source_execution_id = source_execution_id
-        # The source ID of the task.
+        # The task source ID.
         self.source_task_id = source_task_id
-        # The source name of the task.
+        # The task source name.
         self.source_task_name = source_task_name
-        # The trigger key of the task.
+        # The task trigger key.
         self.source_trigger_key = source_trigger_key
-        # The source type of the task.
+        # The task source type.
         self.source_type = source_type
         # The title.
         self.title = title
-        # The time zone when the task is triggered.
+        # The task trigger time zone.
         self.trigger_timezone = trigger_timezone
-        # The trigger time of the task, in ISO 8601 format.
+        # The time when the task was triggered (ISO 8601).
         self.triggered_at = triggered_at
-        # The optimistic version number.
+        # The optimistic locking version number.
         self.version = version
         # The visibility scope.
         self.visibility = visibility
@@ -151,7 +151,7 @@ class CreateWorkItemResponseBody(DaraModel):
         self.visibility_source = visibility_source
         # The work item ID.
         self.work_item_id = work_item_id
-        # The four-state workflow status projection.
+        # The workflow status projection in the four-state model.
         self.workflow_status = workflow_status
         # The list of IDs of the bound workflow templates.
         self.workflow_template_ids = workflow_template_ids
@@ -481,13 +481,13 @@ class CreateWorkItemResponseBodyAttachments(DaraModel):
         self.attachment_id = attachment_id
         # The content type.
         self.content_type = content_type
-        # The access URL of the attachment, prefixed with an OpenAPI 302 redirect.
+        # The access URL of the attachment (OpenAPI 302 front end).
         self.ref_url = ref_url
         # The resource ID of the attachment.
         self.resource_id = resource_id
         # The resource type of the attachment.
         self.resource_kind = resource_kind
-        # The size of the attachment in bytes.
+        # The attachment size in bytes.
         self.size_bytes = size_bytes
         # The title of the attachment.
         self.title = title

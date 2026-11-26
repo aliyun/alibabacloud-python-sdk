@@ -29,9 +29,9 @@ class CreateKnowledgeBaseDirectoryResponseBody(DaraModel):
         self.directory_kind = directory_kind
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The name.
         self.name = name

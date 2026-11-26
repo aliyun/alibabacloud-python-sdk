@@ -18,23 +18,23 @@ class CreateGroupDirectoryResponseBody(DaraModel):
         parent_directory_id: str = None,
         request_id: str = None,
     ):
-        # SUCCESS indicates success. In failure cases, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+        # SUCCESS indicates success. For failures, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
         # The description of the AI assistant.
         self.description = description
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
-        # The folder type.
+        # The directory type.
         self.directory_type = directory_type
         # The project group ID.
         self.group_id = group_id
-        # The root folder ID of the knowledge base.
+        # The knowledge base root directory ID.
         self.kb_root_directory_id = kb_root_directory_id
-        # The response message.
+        # The returned message.
         self.message = message
         # The name of the worksheet.
         self.name = name
-        # The folder ID.
+        # The directory ID.
         self.parent_directory_id = parent_directory_id
         # The request ID.
         self.request_id = request_id

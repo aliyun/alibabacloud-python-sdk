@@ -7,14 +7,19 @@ from darabonba.model import DaraModel
 class ListWorkflowTemplatesRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         collaboration_group_id: str = None,
         keyword: str = None,
         max_results: int = None,
         next_token: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         tenant_id: str = None,
     ):
+        # The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The ID of the collaboration space.
         # 
         # This parameter is required.
@@ -23,8 +28,12 @@ class ListWorkflowTemplatesRequest(DaraModel):
         self.keyword = keyword
         # The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
         self.max_results = max_results
-        # The pagination token. Obtain the token from the nextToken value in the previous response. This parameter takes precedence over page if both are specified.
+        # The pagination token. Use the nextToken value returned in the previous response. This parameter takes precedence over page if both are specified.
         self.next_token = next_token
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
         # The page number. This parameter is ignored if nextToken is specified.
         self.page = page
         # The number of entries per page. Valid values: 1 to 100.
@@ -40,6 +49,9 @@ class ListWorkflowTemplatesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
@@ -51,6 +63,12 @@ class ListWorkflowTemplatesRequest(DaraModel):
 
         if self.next_token is not None:
             result['nextToken'] = self.next_token
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -65,6 +83,9 @@ class ListWorkflowTemplatesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
@@ -76,6 +97,12 @@ class ListWorkflowTemplatesRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

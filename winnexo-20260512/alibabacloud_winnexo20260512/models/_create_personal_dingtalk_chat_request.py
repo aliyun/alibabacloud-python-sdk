@@ -8,6 +8,7 @@ from darabonba.model import DaraModel
 class CreatePersonalDingtalkChatRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         chat_id: str = None,
         chat_name: str = None,
         description: str = None,
@@ -15,31 +16,39 @@ class CreatePersonalDingtalkChatRequest(DaraModel):
         history_start_time: str = None,
         notes: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         source_tags: str = None,
         tenant_id: str = None,
         update_frequency: main_models.CreatePersonalDingtalkChatRequestUpdateFrequency = None,
     ):
+        # The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The DingTalk group chat session ID.
         # 
         # This parameter is required.
         self.chat_id = chat_id
-        # The group chat name.
+        # The name of the group chat.
         self.chat_name = chat_name
         # The pipeline description.
         self.description = description
-        # The directory ID.
+        # The folder ID.
         self.directory_id = directory_id
-        # The start time for collecting chat history.
+        # The start time for chat record collection.
         # 
         # This parameter is required.
         self.history_start_time = history_start_time
-        # The meeting notes content (optional). The notes are used for auxiliary analysis.
+        # The content of the meeting notes (optional), which is used for auxiliary analysis.
         self.notes = notes
-        # The digital employee name (operating object name, optional).
+        # The name of the digital employee (the name of the operating object, optional).
         self.operating_object_name = operating_object_name
-        # The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
         # The feature update frequency.
         self.update_frequency = update_frequency
@@ -53,6 +62,9 @@ class CreatePersonalDingtalkChatRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.chat_id is not None:
             result['chatId'] = self.chat_id
 
@@ -74,6 +86,12 @@ class CreatePersonalDingtalkChatRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.source_tags is not None:
             result['sourceTags'] = self.source_tags
 
@@ -87,6 +105,9 @@ class CreatePersonalDingtalkChatRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('chatId') is not None:
             self.chat_id = m.get('chatId')
 
@@ -108,6 +129,12 @@ class CreatePersonalDingtalkChatRequest(DaraModel):
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
 
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
+
         if m.get('sourceTags') is not None:
             self.source_tags = m.get('sourceTags')
 
@@ -127,11 +154,11 @@ class CreatePersonalDingtalkChatRequestUpdateFrequency(DaraModel):
         enabled: bool = None,
         preset: str = None,
     ):
-        # The cron expression for timed scheduling.
+        # The cron expression for the timed scheduling task.
         self.cron = cron
-        # Specifies whether to enable or disable the feature.
+        # **Specifies whether to enable the feature.**
         self.enabled = enabled
-        # The preset mode (can be ignored).
+        # The preset mode, which can be ignored.
         self.preset = preset
 
     def validate(self):

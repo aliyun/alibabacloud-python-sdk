@@ -14,7 +14,7 @@ class UpdateKnowledgeBaseDirectoryResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The category ID (echoed from the input parameter).
+        # The category ID, which is echoed from the request parameter.
         self.directory_id = directory_id
         # The description of the status code.
         self.message = message

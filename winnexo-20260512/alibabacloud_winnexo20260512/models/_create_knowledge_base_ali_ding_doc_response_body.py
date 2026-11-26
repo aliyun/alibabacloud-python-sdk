@@ -22,13 +22,13 @@ class CreateKnowledgeBaseAliDingDocResponseBody(DaraModel):
         self.code = code
         # The directory ID.
         self.directory_id = directory_id
-        # The public URL of the document (echoes the input parameter).
+        # The public URL of the document. This value is echoed from the request parameter.
         self.file_public_url = file_public_url
         # The creation time.
         self.gmt_create = gmt_create
         # The error details.
         self.message = message
-        # The name.
+        # The image name.
         self.name = name
         # The request ID.
         self.request_id = request_id
@@ -36,13 +36,13 @@ class CreateKnowledgeBaseAliDingDocResponseBody(DaraModel):
         self.scope = scope
         # The unique identifier on the business system side, which is the business ID.
         self.source_id = source_id
-        # The refund status. Query this field to confirm the refund status during processing. Valid values:
-        # - SUCCESS: All refunds are successful.
-        # - FAIL: The refund failed.
+        # The refund status. If the refund is in progress, you must query and confirm the refund status. Valid values:
+        # - SUCCESS: Succeeded.
+        # - FAIL: Failed.
         # - WAIT_PAY: Waiting for refund.
-        # - EXPIRE: The refund has expired.
-        # - PAYING: The refund is being processed.
-        # - TERMINATE: The refund is terminated.
+        # - EXPIRE: Expired.
+        # - PAYING: Refunding.
+        # - TERMINATE: Terminated.
         self.status = status
 
     def validate(self):

@@ -9,17 +9,22 @@ from darabonba.model import DaraModel
 class QuerySourceUsageSummaryRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         collaboration_group_id: str = None,
         end_time: str = None,
         event_type: str = None,
         knowledge_base_ids: List[str] = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         scope_type: str = None,
         source_ids: List[str] = None,
         source_name: str = None,
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the collaboration group to which the resource belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+        # The platform application token issued by the console. If specified, the request is executed as the user identified by opsUserId or opsUserCode.
+        self.app_token = app_token
+        # The ID of the collaboration group to which the resource belongs, such as cg_101. If specified, a group workspace task is created, and the caller must be a valid group member. If left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
         # The actual end timestamp of the live stream, in milliseconds.
         # 
@@ -27,15 +32,19 @@ class QuerySourceUsageSummaryRequest(DaraModel):
         self.end_time = end_time
         # The event type.
         self.event_type = event_type
-        # The ID of the knowledge base folder.
+        # The IDs of the knowledge base folders.
         self.knowledge_base_ids = knowledge_base_ids
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
         # The role scope type. Valid values:
         # - **ALL_VISIBLE**: All members.
         # - **PART_VISIBLE**: Partial members.
         # 
         # This parameter is required.
         self.scope_type = scope_type
-        # The source ID.
+        # The source IDs.
         self.source_ids = source_ids
         # The resume channel source.
         self.source_name = source_name
@@ -43,7 +52,7 @@ class QuerySourceUsageSummaryRequest(DaraModel):
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The tenant ID, which is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
+        # The tenant ID. This is a common parameter. For winnexo-cli, this parameter is explicitly passed by using --tenant-id.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -54,6 +63,9 @@ class QuerySourceUsageSummaryRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
@@ -65,6 +77,12 @@ class QuerySourceUsageSummaryRequest(DaraModel):
 
         if self.knowledge_base_ids is not None:
             result['knowledgeBaseIds'] = self.knowledge_base_ids
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.scope_type is not None:
             result['scopeType'] = self.scope_type
@@ -85,6 +103,9 @@ class QuerySourceUsageSummaryRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
@@ -96,6 +117,12 @@ class QuerySourceUsageSummaryRequest(DaraModel):
 
         if m.get('knowledgeBaseIds') is not None:
             self.knowledge_base_ids = m.get('knowledgeBaseIds')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('scopeType') is not None:
             self.scope_type = m.get('scopeType')

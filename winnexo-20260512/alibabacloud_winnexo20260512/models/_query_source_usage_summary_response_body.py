@@ -24,13 +24,13 @@ class QuerySourceUsageSummaryResponseBody(DaraModel):
         self.request_id = request_id
         # The number of retrieval recalls.
         self.retrieval_count = retrieval_count
-        # The deduplicated count of sources that have retrieval events.
+        # The deduplicated number of sources with retrieval events.
         self.retrieved_source_count = retrieved_source_count
         # The number of rows in the source data.
         self.source_count = source_count
         # The number of times the source has been used in agents.
         self.usage_count = usage_count
-        # The deduplicated count of sources that have usage events.
+        # The deduplicated number of sources with usage events.
         self.used_source_count = used_source_count
 
     def validate(self):

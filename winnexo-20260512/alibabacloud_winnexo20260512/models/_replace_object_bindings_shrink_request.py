@@ -7,19 +7,28 @@ from darabonba.model import DaraModel
 class ReplaceObjectBindingsShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         object_bindings_shrink: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # The new list of object bindings (full replacement. Pass an empty list to clear all bindings).
+        # The platform application token issued by the console. If specified, the operation is executed as the user identified by opsUserId or opsUserCode.
+        self.app_token = app_token
+        # The new list of object bindings for full replacement. Passing an empty list clears all bindings.
         # 
         # This parameter is required.
         self.object_bindings_shrink = object_bindings_shrink
-        # The ID of the personal FILE data source to be replaced (unique within the tenant).
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The ID of the personal FILE data source to be replaced, which is unique within the tenant.
         # 
         # This parameter is required.
         self.source_id = source_id
-        # The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
+        # The tenant ID. This is a common parameter and is explicitly passed by winnexo-cli through the --tenant-id option.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -30,8 +39,17 @@ class ReplaceObjectBindingsShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.object_bindings_shrink is not None:
             result['objectBindings'] = self.object_bindings_shrink
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.source_id is not None:
             result['sourceId'] = self.source_id
@@ -43,8 +61,17 @@ class ReplaceObjectBindingsShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('objectBindings') is not None:
             self.object_bindings_shrink = m.get('objectBindings')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('sourceId') is not None:
             self.source_id = m.get('sourceId')

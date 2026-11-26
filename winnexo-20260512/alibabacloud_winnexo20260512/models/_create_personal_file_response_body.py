@@ -19,19 +19,17 @@ class CreatePersonalFileResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The creation time.
         self.gmt_create = gmt_create
         # The error details.
         self.message = message
-        # The updated filter view name.
+        # The updated name of the filtered view.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The export scope. Valid values:
-        # - ALL: all.
-        # - SELECT: selected rows.
+        # The export scope. Valid values: ALL: all data. SELECT: selected rows.
         self.scope = scope
         # The source ID.
         self.source_id = source_id

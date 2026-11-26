@@ -7,10 +7,13 @@ from darabonba.model import DaraModel
 class ListWorkflowInstancesRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         business_id: str = None,
         collaboration_group_id: str = None,
         initiator: str = None,
         keyword: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         sort_by: str = None,
@@ -18,6 +21,8 @@ class ListWorkflowInstancesRequest(DaraModel):
         status: str = None,
         tenant_id: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The exact requirement ID.
         self.business_id = business_id
         # The collaboration space ID.
@@ -28,6 +33,10 @@ class ListWorkflowInstancesRequest(DaraModel):
         self.initiator = initiator
         # The keyword for the title or requirement ID.
         self.keyword = keyword
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The page number. Pages start from 1.
         self.page = page
         # The number of entries per page. Valid values: 1 to 100.
@@ -49,6 +58,9 @@ class ListWorkflowInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.business_id is not None:
             result['businessId'] = self.business_id
 
@@ -60,6 +72,12 @@ class ListWorkflowInstancesRequest(DaraModel):
 
         if self.keyword is not None:
             result['keyword'] = self.keyword
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -83,6 +101,9 @@ class ListWorkflowInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('businessId') is not None:
             self.business_id = m.get('businessId')
 
@@ -94,6 +115,12 @@ class ListWorkflowInstancesRequest(DaraModel):
 
         if m.get('keyword') is not None:
             self.keyword = m.get('keyword')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

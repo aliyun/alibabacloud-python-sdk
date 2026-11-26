@@ -7,17 +7,26 @@ from darabonba.model import DaraModel
 class CreateUserShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         display_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         password_encrypted: str = None,
         role_codes_shrink: str = None,
         sso_provider: str = None,
         tenant_id: str = None,
         wn_account_id: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The display name.
         # 
         # This parameter is required.
         self.display_name = display_name
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The Base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256. This parameter is required and cannot be empty.
         # 
         # This parameter is required.
@@ -41,8 +50,17 @@ class CreateUserShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.display_name is not None:
             result['displayName'] = self.display_name
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.password_encrypted is not None:
             result['passwordEncrypted'] = self.password_encrypted
@@ -63,8 +81,17 @@ class CreateUserShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('passwordEncrypted') is not None:
             self.password_encrypted = m.get('passwordEncrypted')

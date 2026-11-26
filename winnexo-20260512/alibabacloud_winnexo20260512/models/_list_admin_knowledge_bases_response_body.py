@@ -26,11 +26,11 @@ class ListAdminKnowledgeBasesResponseBody(DaraModel):
         self.message = message
         # The page number. Default value: 1.
         self.page = page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The maximum number of entries returned in this request.
+        # The maximum number of records returned in this request.
         self.total = total
 
     def validate(self):
@@ -124,25 +124,25 @@ class ListAdminKnowledgeBasesResponseBodyItems(DaraModel):
         self.directory_kind = directory_kind
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
-        # The ID of the data item. When tabId and orgId are the same, itemId uniquely identifies a data item. The maximum length is 128 characters.
+        # The ID of the data item. When tabId and orgId are the same, itemId uniquely identifies a data item. The length cannot exceed 128 characters.
         self.item_id = item_id
-        # The data type (group, user, or role).
+        # The data type, such as group, user, or role.
         self.item_type = item_type
         # The name.
         self.name = name
         # The object bindings.
         self.object_bindings = object_bindings
-        # The number of resources with the FAILED status. This field is returned only in the top-level knowledge base directory list.
+        # The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_failed_count = source_failed_count
-        # The knowledge base source type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
+        # The ownership type of the knowledge base. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # The number of resources with the READY status. This field is returned only in the top-level knowledge base directory list.
+        # The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_ready_count = source_ready_count
-        # The resource status. This field has a value when itemType is set to resource.
+        # The resource status. This parameter has a value only when itemType is set to resource.
         self.source_status = source_status
-        # The total number of resources in the directory and its subdirectories. This field is returned only in the top-level knowledge base directory list.
+        # The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_total_count = source_total_count
         # The source type.
         self.source_type = source_type
@@ -274,9 +274,9 @@ class ListAdminKnowledgeBasesResponseBodyItemsObjectBindings(DaraModel):
         self.object_id = object_id
         # The object name.
         self.object_name = object_name
-        # The object type, such as customer. This field has a value when type is set to mention.
+        # The object type, such as customer. This parameter has a value only when type is set to mention.
         self.object_type = object_type
-        # The display name of the object type (such as "Customer"), parsed from the graph schema. The value is null when the cache is missed.
+        # The display name of the object type, such as Customer. This name is parsed from the graph schema. If the cache is missing, the value is null.
         self.object_type_name = object_type_name
 
     def validate(self):

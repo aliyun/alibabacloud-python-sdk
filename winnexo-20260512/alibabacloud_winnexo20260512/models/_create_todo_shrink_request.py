@@ -7,8 +7,11 @@ from darabonba.model import DaraModel
 class CreateTodoShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         assignee_user_ids_shrink: str = None,
         collaboration_group_id: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         priority: str = None,
         questions_shrink: str = None,
         source_context_shrink: str = None,
@@ -16,12 +19,18 @@ class CreateTodoShrinkRequest(DaraModel):
         tenant_id: str = None,
         title: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
         # 
         # This parameter is required.
         self.assignee_user_ids_shrink = assignee_user_ids_shrink
         # The ID of the collaboration workspace. This parameter is optional.
         self.collaboration_group_id = collaboration_group_id
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The priority.
         self.priority = priority
         # The list of questions.
@@ -51,11 +60,20 @@ class CreateTodoShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.assignee_user_ids_shrink is not None:
             result['assigneeUserIds'] = self.assignee_user_ids_shrink
 
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.priority is not None:
             result['priority'] = self.priority
@@ -79,11 +97,20 @@ class CreateTodoShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('assigneeUserIds') is not None:
             self.assignee_user_ids_shrink = m.get('assigneeUserIds')
 
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('priority') is not None:
             self.priority = m.get('priority')

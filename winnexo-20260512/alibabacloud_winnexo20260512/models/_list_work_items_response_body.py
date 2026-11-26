@@ -27,9 +27,9 @@ class ListWorkItemsResponseBody(DaraModel):
         self.has_more = has_more
         # The list of work items on the current page.
         self.items = items
-        # The maximum number of items returned per page in the current request.
+        # The maximum number of items returned per page for this request.
         self.max_results = max_results
-        # The error message.
+        # The error description.
         self.message = message
         # The pagination token for the next page. An empty string indicates that no more data is available.
         self.next_token = next_token
@@ -37,7 +37,7 @@ class ListWorkItemsResponseBody(DaraModel):
         self.page = page
         # The number of items per page.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of visible items under the filter conditions.
         self.total = total
@@ -179,7 +179,7 @@ class ListWorkItemsResponseBodyItems(DaraModel):
         self.applied_status_version = applied_status_version
         # The list of input attachments.
         self.attachments = attachments
-        # The business status.
+        # The business status (seven states).
         self.business_status = business_status
         # Indicates whether the caller can delete the item.
         self.can_delete = can_delete
@@ -189,45 +189,45 @@ class ListWorkItemsResponseBodyItems(DaraModel):
         self.can_manage_visibility = can_manage_visibility
         # Indicates whether the caller can rename the item.
         self.can_rename = can_rename
-        # The ID of the collaboration workspace.
+        # The collaboration space ID.
         self.collaboration_group_id = collaboration_group_id
         # The list of user IDs of the collaborators.
         self.collaborator_user_ids = collaborator_user_ids
         # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # The creation time in ISO 8601 format.
+        # The creation time (ISO 8601).
         self.created_at = created_at
         # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
         # The creation source. Valid values: DEFAULT and TASK.
         self.creation_type = creation_type
-        # The ID of the current physical plan.
+        # The current physical plan ID.
         self.current_plan_id = current_plan_id
         # The current revision number.
         self.current_revision = current_revision
-        # The ID of the current run.
+        # The current run ID.
         self.current_run_id = current_run_id
-        # The sequence number of the current run.
+        # The current run sequence number.
         self.current_run_seq = current_run_seq
-        # The name of the current step.
+        # The current step name.
         self.current_step_name = current_step_name
         # The description.
         self.description = description
-        # The version of the input snapshot.
+        # The input snapshot version.
         self.input_version = input_version
-        # The type of the work item.
+        # The work item type.
         self.item_type = item_type
-        # The time when the item last entered the processing state in ISO 8601 format.
+        # The time when the item last entered the processing state (ISO 8601).
         self.last_processing_at = last_processing_at
         # Indicates whether the topic is a free exploration topic during the compatibility period.
         self.legacy_topic = legacy_topic
         # The list of user IDs of visible members.
         self.member_user_ids = member_user_ids
-        # The modification time in ISO 8601 format.
+        # The modification time (ISO 8601).
         self.modified_at = modified_at
         # The user ID of the owner.
         self.owner_user_id = owner_user_id
-        # Indicates whether the item is pinned by the caller.
+        # The personal pin status for the caller.
         self.pinned = pinned
         # The priority.
         self.priority = priority
@@ -247,9 +247,9 @@ class ListWorkItemsResponseBodyItems(DaraModel):
         self.source_type = source_type
         # The title.
         self.title = title
-        # The time zone when the task is triggered.
+        # The trigger time zone of the task.
         self.trigger_timezone = trigger_timezone
-        # The trigger time of the task in ISO 8601 format.
+        # The trigger time of the task (ISO 8601).
         self.triggered_at = triggered_at
         # The optimistic version number.
         self.version = version
@@ -257,9 +257,9 @@ class ListWorkItemsResponseBodyItems(DaraModel):
         self.visibility = visibility
         # The source of the visibility scope. Valid values: SELF, TASK, and TEMPLATE.
         self.visibility_source = visibility_source
-        # The ID of the work item.
+        # The work item ID.
         self.work_item_id = work_item_id
-        # The workflow status projection.
+        # The workflow status projection (four states).
         self.workflow_status = workflow_status
         # The list of IDs of the bound workflow templates.
         self.workflow_template_ids = workflow_template_ids
@@ -567,11 +567,11 @@ class ListWorkItemsResponseBodyItemsAttachments(DaraModel):
         size_bytes: int = None,
         title: str = None,
     ):
-        # The ID of the attachment.
+        # The attachment ID.
         self.attachment_id = attachment_id
         # The content type.
         self.content_type = content_type
-        # The access URL of the attachment.
+        # The access endpoint of the attachment (prefixed with an OpenAPI 302 redirect).
         self.ref_url = ref_url
         # The resource ID of the attachment.
         self.resource_id = resource_id
@@ -579,7 +579,7 @@ class ListWorkItemsResponseBodyItemsAttachments(DaraModel):
         self.resource_kind = resource_kind
         # The size of the attachment in bytes.
         self.size_bytes = size_bytes
-        # The title of the attachment.
+        # The attachment title.
         self.title = title
 
     def validate(self):

@@ -25,7 +25,7 @@ class ListSourceUsageStatisticsResponseBody(DaraModel):
         self.has_more = has_more
         # The user information.
         self.items = items
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The current page number.
         self.page = page
@@ -116,13 +116,13 @@ class ListSourceUsageStatisticsResponseBodyItems(DaraModel):
         source_type: str = None,
         usage_count: int = None,
     ):
-        # The time of the most recent reporting and ingestion within the filtered range.
+        # The most recent reporting and ingestion time within the filtered range.
         self.last_event_time = last_event_time
         # The number of deduplicated sources.
         self.retrieval_count = retrieval_count
-        # The ID of the data source, which is unique within the tenant.
+        # The data source ID, which is unique within the tenant.
         self.source_id = source_id
-        # The name of the data source.
+        # The data source name.
         self.source_name = source_name
         # The skill source type.
         self.source_type = source_type

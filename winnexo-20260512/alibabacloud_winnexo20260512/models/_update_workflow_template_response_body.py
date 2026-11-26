@@ -50,7 +50,7 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         self.name = name
         # The request tracking ID.
         self.request_id = request_id
-        # The template structure version. The current value is 2, which is independent of the business version vN.
+        # The schema version of the template. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
@@ -60,9 +60,7 @@ class UpdateWorkflowTemplateResponseBody(DaraModel):
         self.version = version
         # The change description for this version. An empty value indicates that no description is provided.
         self.version_description = version_description
-        # The version status. Valid values:
-        # - DRAFT: Draft.
-        # - SUBMITTED: Submitted.
+        # The version status. Valid values: DRAFT and SUBMITTED.
         self.version_status = version_status
 
     def validate(self):
@@ -210,13 +208,11 @@ class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
         self.name = name
         # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
-        # The owner type. Valid values:
-        # - MEMBER: Human.
-        # - AGENT: Agent.
+        # The owner type. Valid values: MEMBER (human) and AGENT (agent).
         self.owner_type = owner_type
         # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # Specifies whether to manually review the output. Default value: false. This feature can only be enabled for digital workers, and review to-do items are automatically sent to the owner.
+        # Specifies whether to manually review the deliverables. Default value: false. This can be enabled only for digital workers. Review tasks are automatically sent to the owner.
         self.review_output = review_output
         # The list of reviewer user IDs.
         self.reviewer_user_ids = reviewer_user_ids
@@ -224,7 +220,7 @@ class UpdateWorkflowTemplateResponseBodySteps(DaraModel):
         self.sort_order = sort_order
         # The step processing instructions.
         self.specification = specification
-        # The ordered fragment array. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
+        # The ordered array of segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
         self.specification_json = specification_json
         # The step ID.
         self.step_id = step_id

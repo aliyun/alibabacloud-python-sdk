@@ -16,7 +16,7 @@ class ResetPasswordResponseBody(DaraModel):
         self.code = code
         # The description of the status code.
         self.message = message
-        # The request trace ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The WINNEXO platform user ID.
         self.wn_user_id = wn_user_id

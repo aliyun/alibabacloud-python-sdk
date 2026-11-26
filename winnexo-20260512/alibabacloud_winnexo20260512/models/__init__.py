@@ -114,6 +114,9 @@ from ._create_knowledge_base_public_url_response import CreateKnowledgeBasePubli
 from ._create_knowledge_base_text_request import CreateKnowledgeBaseTextRequest
 from ._create_knowledge_base_text_response_body import CreateKnowledgeBaseTextResponseBody
 from ._create_knowledge_base_text_response import CreateKnowledgeBaseTextResponse
+from ._create_knowledge_base_voice_meeting_request import CreateKnowledgeBaseVoiceMeetingRequest
+from ._create_knowledge_base_voice_meeting_response_body import CreateKnowledgeBaseVoiceMeetingResponseBody
+from ._create_knowledge_base_voice_meeting_response import CreateKnowledgeBaseVoiceMeetingResponse
 from ._create_personal_ali_ding_chat_request import CreatePersonalAliDingChatRequest
 from ._create_personal_ali_ding_chat_shrink_request import CreatePersonalAliDingChatShrinkRequest
 from ._create_personal_ali_ding_chat_response_body import CreatePersonalAliDingChatResponseBody
@@ -170,6 +173,7 @@ from ._create_scheduled_task_shrink_request import CreateScheduledTaskShrinkRequ
 from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBody
 from ._create_scheduled_task_response import CreateScheduledTaskResponse
 from ._create_tenant_directory_request import CreateTenantDirectoryRequest
+from ._create_tenant_directory_shrink_request import CreateTenantDirectoryShrinkRequest
 from ._create_tenant_directory_response_body import CreateTenantDirectoryResponseBody
 from ._create_tenant_directory_response import CreateTenantDirectoryResponse
 from ._create_todo_request import CreateTodoRequest
@@ -244,6 +248,9 @@ from ._enable_output_item_share_response import EnableOutputItemShareResponse
 from ._enable_token_request import EnableTokenRequest
 from ._enable_token_response_body import EnableTokenResponseBody
 from ._enable_token_response import EnableTokenResponse
+from ._execute_scheduled_task_request import ExecuteScheduledTaskRequest
+from ._execute_scheduled_task_response_body import ExecuteScheduledTaskResponseBody
+from ._execute_scheduled_task_response import ExecuteScheduledTaskResponse
 from ._export_workflow_template_request import ExportWorkflowTemplateRequest
 from ._export_workflow_template_response_body import ExportWorkflowTemplateResponseBody
 from ._export_workflow_template_response import ExportWorkflowTemplateResponse
@@ -278,6 +285,12 @@ from ._get_group_source_response import GetGroupSourceResponse
 from ._get_instance_expire_time_request import GetInstanceExpireTimeRequest
 from ._get_instance_expire_time_response_body import GetInstanceExpireTimeResponseBody
 from ._get_instance_expire_time_response import GetInstanceExpireTimeResponse
+from ._get_knowledge_base_configuration_request import GetKnowledgeBaseConfigurationRequest
+from ._get_knowledge_base_configuration_response_body import GetKnowledgeBaseConfigurationResponseBody
+from ._get_knowledge_base_configuration_response import GetKnowledgeBaseConfigurationResponse
+from ._get_knowledge_base_smart_index_configuration_request import GetKnowledgeBaseSmartIndexConfigurationRequest
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBody
+from ._get_knowledge_base_smart_index_configuration_response import GetKnowledgeBaseSmartIndexConfigurationResponse
 from ._get_knowledge_base_source_request import GetKnowledgeBaseSourceRequest
 from ._get_knowledge_base_source_response_body import GetKnowledgeBaseSourceResponseBody
 from ._get_knowledge_base_source_response import GetKnowledgeBaseSourceResponse
@@ -445,6 +458,9 @@ from ._list_instance_nodes_response import ListInstanceNodesResponse
 from ._list_knowledge_base_directories_request import ListKnowledgeBaseDirectoriesRequest
 from ._list_knowledge_base_directories_response_body import ListKnowledgeBaseDirectoriesResponseBody
 from ._list_knowledge_base_directories_response import ListKnowledgeBaseDirectoriesResponse
+from ._list_knowledge_base_sources_by_object_request import ListKnowledgeBaseSourcesByObjectRequest
+from ._list_knowledge_base_sources_by_object_response_body import ListKnowledgeBaseSourcesByObjectResponseBody
+from ._list_knowledge_base_sources_by_object_response import ListKnowledgeBaseSourcesByObjectResponse
 from ._list_operating_object_favorites_request import ListOperatingObjectFavoritesRequest
 from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBody
 from ._list_operating_object_favorites_response import ListOperatingObjectFavoritesResponse
@@ -456,6 +472,9 @@ from ._list_personal_directory_contents_request import ListPersonalDirectoryCont
 from ._list_personal_directory_contents_shrink_request import ListPersonalDirectoryContentsShrinkRequest
 from ._list_personal_directory_contents_response_body import ListPersonalDirectoryContentsResponseBody
 from ._list_personal_directory_contents_response import ListPersonalDirectoryContentsResponse
+from ._list_personal_sources_by_object_request import ListPersonalSourcesByObjectRequest
+from ._list_personal_sources_by_object_response_body import ListPersonalSourcesByObjectResponseBody
+from ._list_personal_sources_by_object_response import ListPersonalSourcesByObjectResponse
 from ._list_roles_request import ListRolesRequest
 from ._list_roles_response_body import ListRolesResponseBody
 from ._list_roles_response import ListRolesResponse
@@ -597,9 +616,17 @@ from ._reparse_source_response import ReparseSourceResponse
 from ._replace_group_source_file_request import ReplaceGroupSourceFileRequest
 from ._replace_group_source_file_response_body import ReplaceGroupSourceFileResponseBody
 from ._replace_group_source_file_response import ReplaceGroupSourceFileResponse
+from ._replace_knowledge_base_admins_request import ReplaceKnowledgeBaseAdminsRequest
+from ._replace_knowledge_base_admins_shrink_request import ReplaceKnowledgeBaseAdminsShrinkRequest
+from ._replace_knowledge_base_admins_response_body import ReplaceKnowledgeBaseAdminsResponseBody
+from ._replace_knowledge_base_admins_response import ReplaceKnowledgeBaseAdminsResponse
 from ._replace_knowledge_base_source_file_request import ReplaceKnowledgeBaseSourceFileRequest
 from ._replace_knowledge_base_source_file_response_body import ReplaceKnowledgeBaseSourceFileResponseBody
 from ._replace_knowledge_base_source_file_response import ReplaceKnowledgeBaseSourceFileResponse
+from ._replace_knowledge_base_source_object_bindings_request import ReplaceKnowledgeBaseSourceObjectBindingsRequest
+from ._replace_knowledge_base_source_object_bindings_shrink_request import ReplaceKnowledgeBaseSourceObjectBindingsShrinkRequest
+from ._replace_knowledge_base_source_object_bindings_response_body import ReplaceKnowledgeBaseSourceObjectBindingsResponseBody
+from ._replace_knowledge_base_source_object_bindings_response import ReplaceKnowledgeBaseSourceObjectBindingsResponse
 from ._replace_manual_memory_request import ReplaceManualMemoryRequest
 from ._replace_manual_memory_response_body import ReplaceManualMemoryResponseBody
 from ._replace_manual_memory_response import ReplaceManualMemoryResponse
@@ -607,6 +634,10 @@ from ._replace_object_bindings_request import ReplaceObjectBindingsRequest
 from ._replace_object_bindings_shrink_request import ReplaceObjectBindingsShrinkRequest
 from ._replace_object_bindings_response_body import ReplaceObjectBindingsResponseBody
 from ._replace_object_bindings_response import ReplaceObjectBindingsResponse
+from ._replace_personal_source_object_bindings_request import ReplacePersonalSourceObjectBindingsRequest
+from ._replace_personal_source_object_bindings_shrink_request import ReplacePersonalSourceObjectBindingsShrinkRequest
+from ._replace_personal_source_object_bindings_response_body import ReplacePersonalSourceObjectBindingsResponseBody
+from ._replace_personal_source_object_bindings_response import ReplacePersonalSourceObjectBindingsResponse
 from ._replace_source_file_request import ReplaceSourceFileRequest
 from ._replace_source_file_response_body import ReplaceSourceFileResponseBody
 from ._replace_source_file_response import ReplaceSourceFileResponse
@@ -687,6 +718,10 @@ from ._send_chat_message_response import SendChatMessageResponse
 from ._send_work_item_message_request import SendWorkItemMessageRequest
 from ._send_work_item_message_response_body import SendWorkItemMessageResponseBody
 from ._send_work_item_message_response import SendWorkItemMessageResponse
+from ._set_knowledge_base_visibility_request import SetKnowledgeBaseVisibilityRequest
+from ._set_knowledge_base_visibility_shrink_request import SetKnowledgeBaseVisibilityShrinkRequest
+from ._set_knowledge_base_visibility_response_body import SetKnowledgeBaseVisibilityResponseBody
+from ._set_knowledge_base_visibility_response import SetKnowledgeBaseVisibilityResponse
 from ._set_work_item_pinned_request import SetWorkItemPinnedRequest
 from ._set_work_item_pinned_response_body import SetWorkItemPinnedResponseBody
 from ._set_work_item_pinned_response import SetWorkItemPinnedResponse
@@ -743,6 +778,9 @@ from ._update_group_source_content_response import UpdateGroupSourceContentRespo
 from ._update_knowledge_base_directory_request import UpdateKnowledgeBaseDirectoryRequest
 from ._update_knowledge_base_directory_response_body import UpdateKnowledgeBaseDirectoryResponseBody
 from ._update_knowledge_base_directory_response import UpdateKnowledgeBaseDirectoryResponse
+from ._update_knowledge_base_smart_index_configuration_request import UpdateKnowledgeBaseSmartIndexConfigurationRequest
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBody
+from ._update_knowledge_base_smart_index_configuration_response import UpdateKnowledgeBaseSmartIndexConfigurationResponse
 from ._update_knowledge_base_source_content_request import UpdateKnowledgeBaseSourceContentRequest
 from ._update_knowledge_base_source_content_response_body import UpdateKnowledgeBaseSourceContentResponseBody
 from ._update_knowledge_base_source_content_response import UpdateKnowledgeBaseSourceContentResponse
@@ -764,6 +802,7 @@ from ._update_source_content_request import UpdateSourceContentRequest
 from ._update_source_content_response_body import UpdateSourceContentResponseBody
 from ._update_source_content_response import UpdateSourceContentResponse
 from ._update_tenant_directory_request import UpdateTenantDirectoryRequest
+from ._update_tenant_directory_shrink_request import UpdateTenantDirectoryShrinkRequest
 from ._update_tenant_directory_response_body import UpdateTenantDirectoryResponseBody
 from ._update_tenant_directory_response import UpdateTenantDirectoryResponse
 from ._update_user_request import UpdateUserRequest
@@ -833,6 +872,7 @@ from ._create_workflow_template_response_body import CreateWorkflowTemplateRespo
 from ._create_workflow_template_draft_version_response_body import CreateWorkflowTemplateDraftVersionResponseBodySteps
 from ._delete_app_resource_permissions_request import DeleteAppResourcePermissionsRequestItems
 from ._delete_workflow_template_version_response_body import DeleteWorkflowTemplateVersionResponseBodyItems
+from ._execute_scheduled_task_response_body import ExecuteScheduledTaskResponseBodyTaskExecution
 from ._export_workflow_template_response_body import ExportWorkflowTemplateResponseBodyTemplateSteps
 from ._export_workflow_template_response_body import ExportWorkflowTemplateResponseBodyTemplate
 from ._generate_workflow_template_draft_response_body import GenerateWorkflowTemplateDraftResponseBodyDraftSteps
@@ -841,6 +881,13 @@ from ._get_agent_work_log_response_body import GetAgentWorkLogResponseBodyLogs
 from ._get_ali_ding_minutes_content_response_body import GetAliDingMinutesContentResponseBodyTranscription
 from ._get_chat_session_response_body import GetChatSessionResponseBodyMessages
 from ._get_chat_session_response_body import GetChatSessionResponseBodySession
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsKnowledgeInsights
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicCards
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicGraph
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicOverview
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifacts
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodySchedule
+from ._get_knowledge_base_smart_index_configuration_response_body import GetKnowledgeBaseSmartIndexConfigurationResponseBodyTask
 from ._get_memory_detail_response_body import GetMemoryDetailResponseBodyGroupsItems
 from ._get_memory_detail_response_body import GetMemoryDetailResponseBodyGroups
 from ._get_memory_detail_response_body import GetMemoryDetailResponseBodyProfile
@@ -911,6 +958,7 @@ from ._list_group_directories_response_body import ListGroupDirectoriesResponseB
 from ._list_group_directory_response_body import ListGroupDirectoryResponseBodyItemsObjectBindings
 from ._list_group_directory_response_body import ListGroupDirectoryResponseBodyItems
 from ._list_instance_nodes_response_body import ListInstanceNodesResponseBodyNodes
+from ._list_knowledge_base_sources_by_object_response_body import ListKnowledgeBaseSourcesByObjectResponseBodySources
 from ._list_operating_object_favorites_response_body import ListOperatingObjectFavoritesResponseBodyItems
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsEmailInfo
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOutputItemsFileInfo
@@ -919,6 +967,7 @@ from ._list_output_files_response_body import ListOutputFilesResponseBodyItemsOu
 from ._list_output_files_response_body import ListOutputFilesResponseBodyItems
 from ._list_personal_directory_contents_response_body import ListPersonalDirectoryContentsResponseBodyItemsObjectBindings
 from ._list_personal_directory_contents_response_body import ListPersonalDirectoryContentsResponseBodyItems
+from ._list_personal_sources_by_object_response_body import ListPersonalSourcesByObjectResponseBodySources
 from ._list_roles_response_body import ListRolesResponseBodyItems
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBodyItems
 from ._list_skills_response_body import ListSkillsResponseBodyItems
@@ -958,8 +1007,15 @@ from ._recommend_next_actions_response_body import RecommendNextActionsResponseB
 from ._register_app_resource_permissions_request import RegisterAppResourcePermissionsRequestItemsGrantees
 from ._register_app_resource_permissions_request import RegisterAppResourcePermissionsRequestItems
 from ._register_app_resource_permissions_response_body import RegisterAppResourcePermissionsResponseBodyRecords
+from ._replace_knowledge_base_admins_response_body import ReplaceKnowledgeBaseAdminsResponseBodyCreator
+from ._replace_knowledge_base_admins_response_body import ReplaceKnowledgeBaseAdminsResponseBodyEffectiveApprovers
+from ._replace_knowledge_base_admins_response_body import ReplaceKnowledgeBaseAdminsResponseBodyPrincipals
+from ._replace_knowledge_base_source_object_bindings_request import ReplaceKnowledgeBaseSourceObjectBindingsRequestObjectBindings
+from ._replace_knowledge_base_source_object_bindings_response_body import ReplaceKnowledgeBaseSourceObjectBindingsResponseBodyObjectBindings
 from ._replace_object_bindings_request import ReplaceObjectBindingsRequestObjectBindings
 from ._replace_object_bindings_response_body import ReplaceObjectBindingsResponseBodyObjectBindings
+from ._replace_personal_source_object_bindings_request import ReplacePersonalSourceObjectBindingsRequestObjectBindings
+from ._replace_personal_source_object_bindings_response_body import ReplacePersonalSourceObjectBindingsResponseBodyObjectBindings
 from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyDefaultExecutor
 from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyEffectiveExecutor
 from ._reset_workflow_node_configuration_response_body import ResetWorkflowNodeConfigurationResponseBodyOverridesExecutor
@@ -990,6 +1046,13 @@ from ._sync_org_structure_request import SyncOrgStructureRequestMembers
 from ._toggle_primary_object_favorite_response_body import TogglePrimaryObjectFavoriteResponseBodyResults
 from ._transfer_todo_response_body import TransferTodoResponseBodyTargets
 from ._update_chat_session_response_body import UpdateChatSessionResponseBodySession
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsKnowledgeInsights
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicCards
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicGraph
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicOverview
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifacts
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodySchedule
+from ._update_knowledge_base_smart_index_configuration_response_body import UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyTask
 from ._update_scheduled_task_request import UpdateScheduledTaskRequestDescription
 from ._update_scheduled_task_request import UpdateScheduledTaskRequestSegments
 from ._update_scheduled_task_request import UpdateScheduledTaskRequestTaskDetailRelatedObjects
@@ -1122,6 +1185,9 @@ __all__ = [
     CreateKnowledgeBaseTextRequest,
     CreateKnowledgeBaseTextResponseBody,
     CreateKnowledgeBaseTextResponse,
+    CreateKnowledgeBaseVoiceMeetingRequest,
+    CreateKnowledgeBaseVoiceMeetingResponseBody,
+    CreateKnowledgeBaseVoiceMeetingResponse,
     CreatePersonalAliDingChatRequest,
     CreatePersonalAliDingChatShrinkRequest,
     CreatePersonalAliDingChatResponseBody,
@@ -1178,6 +1244,7 @@ __all__ = [
     CreateScheduledTaskResponseBody,
     CreateScheduledTaskResponse,
     CreateTenantDirectoryRequest,
+    CreateTenantDirectoryShrinkRequest,
     CreateTenantDirectoryResponseBody,
     CreateTenantDirectoryResponse,
     CreateTodoRequest,
@@ -1252,6 +1319,9 @@ __all__ = [
     EnableTokenRequest,
     EnableTokenResponseBody,
     EnableTokenResponse,
+    ExecuteScheduledTaskRequest,
+    ExecuteScheduledTaskResponseBody,
+    ExecuteScheduledTaskResponse,
     ExportWorkflowTemplateRequest,
     ExportWorkflowTemplateResponseBody,
     ExportWorkflowTemplateResponse,
@@ -1286,6 +1356,12 @@ __all__ = [
     GetInstanceExpireTimeRequest,
     GetInstanceExpireTimeResponseBody,
     GetInstanceExpireTimeResponse,
+    GetKnowledgeBaseConfigurationRequest,
+    GetKnowledgeBaseConfigurationResponseBody,
+    GetKnowledgeBaseConfigurationResponse,
+    GetKnowledgeBaseSmartIndexConfigurationRequest,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBody,
+    GetKnowledgeBaseSmartIndexConfigurationResponse,
     GetKnowledgeBaseSourceRequest,
     GetKnowledgeBaseSourceResponseBody,
     GetKnowledgeBaseSourceResponse,
@@ -1453,6 +1529,9 @@ __all__ = [
     ListKnowledgeBaseDirectoriesRequest,
     ListKnowledgeBaseDirectoriesResponseBody,
     ListKnowledgeBaseDirectoriesResponse,
+    ListKnowledgeBaseSourcesByObjectRequest,
+    ListKnowledgeBaseSourcesByObjectResponseBody,
+    ListKnowledgeBaseSourcesByObjectResponse,
     ListOperatingObjectFavoritesRequest,
     ListOperatingObjectFavoritesResponseBody,
     ListOperatingObjectFavoritesResponse,
@@ -1464,6 +1543,9 @@ __all__ = [
     ListPersonalDirectoryContentsShrinkRequest,
     ListPersonalDirectoryContentsResponseBody,
     ListPersonalDirectoryContentsResponse,
+    ListPersonalSourcesByObjectRequest,
+    ListPersonalSourcesByObjectResponseBody,
+    ListPersonalSourcesByObjectResponse,
     ListRolesRequest,
     ListRolesResponseBody,
     ListRolesResponse,
@@ -1605,9 +1687,17 @@ __all__ = [
     ReplaceGroupSourceFileRequest,
     ReplaceGroupSourceFileResponseBody,
     ReplaceGroupSourceFileResponse,
+    ReplaceKnowledgeBaseAdminsRequest,
+    ReplaceKnowledgeBaseAdminsShrinkRequest,
+    ReplaceKnowledgeBaseAdminsResponseBody,
+    ReplaceKnowledgeBaseAdminsResponse,
     ReplaceKnowledgeBaseSourceFileRequest,
     ReplaceKnowledgeBaseSourceFileResponseBody,
     ReplaceKnowledgeBaseSourceFileResponse,
+    ReplaceKnowledgeBaseSourceObjectBindingsRequest,
+    ReplaceKnowledgeBaseSourceObjectBindingsShrinkRequest,
+    ReplaceKnowledgeBaseSourceObjectBindingsResponseBody,
+    ReplaceKnowledgeBaseSourceObjectBindingsResponse,
     ReplaceManualMemoryRequest,
     ReplaceManualMemoryResponseBody,
     ReplaceManualMemoryResponse,
@@ -1615,6 +1705,10 @@ __all__ = [
     ReplaceObjectBindingsShrinkRequest,
     ReplaceObjectBindingsResponseBody,
     ReplaceObjectBindingsResponse,
+    ReplacePersonalSourceObjectBindingsRequest,
+    ReplacePersonalSourceObjectBindingsShrinkRequest,
+    ReplacePersonalSourceObjectBindingsResponseBody,
+    ReplacePersonalSourceObjectBindingsResponse,
     ReplaceSourceFileRequest,
     ReplaceSourceFileResponseBody,
     ReplaceSourceFileResponse,
@@ -1695,6 +1789,10 @@ __all__ = [
     SendWorkItemMessageRequest,
     SendWorkItemMessageResponseBody,
     SendWorkItemMessageResponse,
+    SetKnowledgeBaseVisibilityRequest,
+    SetKnowledgeBaseVisibilityShrinkRequest,
+    SetKnowledgeBaseVisibilityResponseBody,
+    SetKnowledgeBaseVisibilityResponse,
     SetWorkItemPinnedRequest,
     SetWorkItemPinnedResponseBody,
     SetWorkItemPinnedResponse,
@@ -1751,6 +1849,9 @@ __all__ = [
     UpdateKnowledgeBaseDirectoryRequest,
     UpdateKnowledgeBaseDirectoryResponseBody,
     UpdateKnowledgeBaseDirectoryResponse,
+    UpdateKnowledgeBaseSmartIndexConfigurationRequest,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBody,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponse,
     UpdateKnowledgeBaseSourceContentRequest,
     UpdateKnowledgeBaseSourceContentResponseBody,
     UpdateKnowledgeBaseSourceContentResponse,
@@ -1772,6 +1873,7 @@ __all__ = [
     UpdateSourceContentResponseBody,
     UpdateSourceContentResponse,
     UpdateTenantDirectoryRequest,
+    UpdateTenantDirectoryShrinkRequest,
     UpdateTenantDirectoryResponseBody,
     UpdateTenantDirectoryResponse,
     UpdateUserRequest,
@@ -1841,6 +1943,7 @@ __all__ = [
     CreateWorkflowTemplateDraftVersionResponseBodySteps,
     DeleteAppResourcePermissionsRequestItems,
     DeleteWorkflowTemplateVersionResponseBodyItems,
+    ExecuteScheduledTaskResponseBodyTaskExecution,
     ExportWorkflowTemplateResponseBodyTemplateSteps,
     ExportWorkflowTemplateResponseBodyTemplate,
     GenerateWorkflowTemplateDraftResponseBodyDraftSteps,
@@ -1849,6 +1952,13 @@ __all__ = [
     GetAliDingMinutesContentResponseBodyTranscription,
     GetChatSessionResponseBodyMessages,
     GetChatSessionResponseBodySession,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsKnowledgeInsights,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicCards,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicGraph,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicOverview,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyArtifacts,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodySchedule,
+    GetKnowledgeBaseSmartIndexConfigurationResponseBodyTask,
     GetMemoryDetailResponseBodyGroupsItems,
     GetMemoryDetailResponseBodyGroups,
     GetMemoryDetailResponseBodyProfile,
@@ -1919,6 +2029,7 @@ __all__ = [
     ListGroupDirectoryResponseBodyItemsObjectBindings,
     ListGroupDirectoryResponseBodyItems,
     ListInstanceNodesResponseBodyNodes,
+    ListKnowledgeBaseSourcesByObjectResponseBodySources,
     ListOperatingObjectFavoritesResponseBodyItems,
     ListOutputFilesResponseBodyItemsOutputItemsEmailInfo,
     ListOutputFilesResponseBodyItemsOutputItemsFileInfo,
@@ -1927,6 +2038,7 @@ __all__ = [
     ListOutputFilesResponseBodyItems,
     ListPersonalDirectoryContentsResponseBodyItemsObjectBindings,
     ListPersonalDirectoryContentsResponseBodyItems,
+    ListPersonalSourcesByObjectResponseBodySources,
     ListRolesResponseBodyItems,
     ListScheduledTasksResponseBodyItems,
     ListSkillsResponseBodyItems,
@@ -1966,8 +2078,15 @@ __all__ = [
     RegisterAppResourcePermissionsRequestItemsGrantees,
     RegisterAppResourcePermissionsRequestItems,
     RegisterAppResourcePermissionsResponseBodyRecords,
+    ReplaceKnowledgeBaseAdminsResponseBodyCreator,
+    ReplaceKnowledgeBaseAdminsResponseBodyEffectiveApprovers,
+    ReplaceKnowledgeBaseAdminsResponseBodyPrincipals,
+    ReplaceKnowledgeBaseSourceObjectBindingsRequestObjectBindings,
+    ReplaceKnowledgeBaseSourceObjectBindingsResponseBodyObjectBindings,
     ReplaceObjectBindingsRequestObjectBindings,
     ReplaceObjectBindingsResponseBodyObjectBindings,
+    ReplacePersonalSourceObjectBindingsRequestObjectBindings,
+    ReplacePersonalSourceObjectBindingsResponseBodyObjectBindings,
     ResetWorkflowNodeConfigurationResponseBodyDefaultExecutor,
     ResetWorkflowNodeConfigurationResponseBodyEffectiveExecutor,
     ResetWorkflowNodeConfigurationResponseBodyOverridesExecutor,
@@ -1998,6 +2117,13 @@ __all__ = [
     TogglePrimaryObjectFavoriteResponseBodyResults,
     TransferTodoResponseBodyTargets,
     UpdateChatSessionResponseBodySession,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsKnowledgeInsights,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicCards,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicGraph,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifactsTopicOverview,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyArtifacts,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodySchedule,
+    UpdateKnowledgeBaseSmartIndexConfigurationResponseBodyTask,
     UpdateScheduledTaskRequestDescription,
     UpdateScheduledTaskRequestSegments,
     UpdateScheduledTaskRequestTaskDetailRelatedObjects,

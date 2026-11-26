@@ -22,13 +22,13 @@ class ListCollaborationGroupsResponseBody(DaraModel):
         self.code = code
         # The list of items on the current page.
         self.items = items
-        # The common error message.
+        # The common error description.
         self.message = message
         # The current page number.
         self.page = page
-        # The page size.
+        # The number of entries on the current page.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of filtered records.
         self.total = total
@@ -105,13 +105,13 @@ class ListCollaborationGroupsResponseBodyItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The ID of the collaboration space.
+        # The collaboration space ID.
         self.collaboration_group_id = collaboration_group_id
         # The role of the current user in the space.
         self.current_user_role = current_user_role
         # The name of the space.
         self.name = name
-        # The status of the space. Currently, only ACTIVE is returned.
+        # The space status. Currently, only ACTIVE is returned.
         self.status = status
 
     def validate(self):

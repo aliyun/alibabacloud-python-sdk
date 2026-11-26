@@ -10,6 +10,8 @@ from darabonba.model import DaraModel
 class SendAsyncChatMessageRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
+        auto_preference: str = None,
         content: str = None,
         content_type: str = None,
         context_items: List[main_models.SendAsyncChatMessageRequestContextItems] = None,
@@ -20,53 +22,65 @@ class SendAsyncChatMessageRequest(DaraModel):
         files: List[main_models.SendAsyncChatMessageRequestFiles] = None,
         locale: str = None,
         model: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         reuse_last_session: bool = None,
         segments: List[main_models.SendAsyncChatMessageRequestSegments] = None,
         session_id: str = None,
         stream: bool = None,
         task_execution: main_models.SendAsyncChatMessageRequestTaskExecution = None,
         tenant_id: str = None,
+        thinking_enabled: bool = None,
+        thinking_level: str = None,
         work_mode: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
+        # AUTO 偏好：none=默认、performance=效果优先、credit=成本优先；缺省或 null 继承会话，空白重置为 none
+        self.auto_preference = auto_preference
         # The body of the user message.
         # 
         # This parameter is required.
         self.content = content
         # The message type. Valid values: Text and Markdown.
         self.content_type = content_type
-        # The message or file entries referenced as context for the current turn.
+        # The references and annotations for the current turn.
         self.context_items = context_items
-        # The list of digital employee names. For backward compatibility, a single string can also be passed.
+        # The list of digital employee names. For compatibility with the old format, a single string can also be passed.
         self.digital_employee_name = digital_employee_name
-        # Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is entered directly.
+        # **[Deprecated]** Use workMode=direct instead. If set to true, winnexo_chat is retained and processed in request-level direct mode.
         self.direct_chat = direct_chat
-        # The number of recent complete direct Q&A rounds carried in the current turn, excluding the current input. This parameter takes effect only when workMode is set to direct or directChat is set to true. Valid values are JSON integers from 0 to 100. If omitted, the backend processes it as 0, carrying no history but still saving the current round. Null, Boolean, string, decimal, and out-of-bounds values are processed through the original direct path, and the gateway retains the original values for backend determination. This field is ignored in work and ask modes. This parameter does not limit the history range when switching to the work mode.
+        # The maximum number of history rounds referenced in the current turn for the direct mode. Valid values: integers from 0 to 100. Default value: 0. Invalid values fall back to the original single-turn path. This parameter is ignored in non-direct modes.
         self.direct_max_history_rounds = direct_max_history_rounds
-        # Specifies whether to enable web search. Default value: false. In task execution scenarios where taskExecution is passed, the task configuration prevails.
+        # Specifies whether to enable web search. Default value: false. In the task execution scenario (when taskExecution is passed), the task configuration prevails.
         self.enable_web_search = enable_web_search
-        # The list of file references. Each item is an object, and fileId is required, which is returned by uploadChatFile.
+        # The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
         self.files = files
         # The language for the current turn. Valid values: zh-CN and en-US. This parameter is used for API error messages and passed through to CodeAgent. If omitted, the current language behavior is retained and user settings are not modified.
         self.locale = locale
-        # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
+        # The model tier. Valid values: quick, standard, flagship, auto, or other currently available model names (case-insensitive). If not specified, the model tier of the session is inherited. For a new session, the default value is standard.
         self.model = model
-        # Specifies whether to reuse the most recent session under the digital employee when sessionId is not provided, which applies to CLI scenarios. Default value: false, which means a new session is created.
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
+        # Specifies whether to reuse the most recent session under the digital employee when sessionId is not provided (CLI scenario). Default value: false, which means a new session is created.
         self.reuse_last_session = reuse_last_session
         # The structured segments in the message, such as session or object mentions.
         self.segments = segments
         # The session ID. If not specified, a new session is created.
         self.session_id = session_id
-        # Specifies whether to use streaming generation. This API always generates background content in streaming mode and writes it to the message stream. The value does not change the response structure.
+        # Specifies whether to use streaming generation. This API always generates background content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
         self.stream = stream
         # The task execution metadata returned by executeScheduledTask. If passed, the request is processed through the task execution pipeline.
         self.task_execution = task_execution
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The session work mode. Valid values:
-        # - ask: Quick Q&A mode. Trims tools, skills, and connectors for single-turn direct answers.
-        # - work: Deep work mode. This is the default value.
-        # - direct: Direct connection mode at the request level. Does not start a sandbox and prevents context pollution. Equivalent to setting directChat to true.
-        # The ask and work modes are session-level. Once selected during session creation, the mode is fixed and inherited by default in subsequent chats. If the explicitly passed value conflicts with the session mode, a parameter error is returned. To switch modes, create a new session or fork the current one. In scenarios with multiple digital employees or task execution, passing ask takes effect as work. This parameter is ignored when directChat is set to true.
+        # 本轮显式覆盖是否思考；AUTO 未传时由决策模型判断，固定档未传时沿用个人设置，最终遵守模型能力与租户开关
+        self.thinking_enabled = thinking_enabled
+        # 本轮显式覆盖思考强度；AUTO 未传时由决策模型判断，固定档未传时沿用个人设置，最终遵守模型能力与租户开关
+        self.thinking_level = thinking_level
+        # The session work mode. Valid values: ask (quick Q&A), work (deep work, default), and direct (direct connection mode, which does not start the sandbox, uses independent direct history controlled by directMaxHistoryRounds, and is equivalent to directChat=true). The ask and work modes are session-level. For continued chats, the session mode is inherited by default. To switch modes, create a new session or fork. In multi-digital employee or task execution scenarios, if ask is passed, it takes effect as work. If directChat is set to true, this parameter is ignored.
         self.work_mode = work_mode
 
     def validate(self):
@@ -90,6 +104,12 @@ class SendAsyncChatMessageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
+        if self.auto_preference is not None:
+            result['autoPreference'] = self.auto_preference
+
         if self.content is not None:
             result['content'] = self.content
 
@@ -124,6 +144,12 @@ class SendAsyncChatMessageRequest(DaraModel):
         if self.model is not None:
             result['model'] = self.model
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.reuse_last_session is not None:
             result['reuseLastSession'] = self.reuse_last_session
 
@@ -144,6 +170,12 @@ class SendAsyncChatMessageRequest(DaraModel):
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
+        if self.thinking_enabled is not None:
+            result['thinkingEnabled'] = self.thinking_enabled
+
+        if self.thinking_level is not None:
+            result['thinkingLevel'] = self.thinking_level
+
         if self.work_mode is not None:
             result['workMode'] = self.work_mode
 
@@ -151,6 +183,12 @@ class SendAsyncChatMessageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
+        if m.get('autoPreference') is not None:
+            self.auto_preference = m.get('autoPreference')
+
         if m.get('content') is not None:
             self.content = m.get('content')
 
@@ -187,6 +225,12 @@ class SendAsyncChatMessageRequest(DaraModel):
         if m.get('model') is not None:
             self.model = m.get('model')
 
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
+
         if m.get('reuseLastSession') is not None:
             self.reuse_last_session = m.get('reuseLastSession')
 
@@ -208,6 +252,12 @@ class SendAsyncChatMessageRequest(DaraModel):
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')
+
+        if m.get('thinkingEnabled') is not None:
+            self.thinking_enabled = m.get('thinkingEnabled')
+
+        if m.get('thinkingLevel') is not None:
+            self.thinking_level = m.get('thinkingLevel')
 
         if m.get('workMode') is not None:
             self.work_mode = m.get('workMode')
@@ -236,7 +286,7 @@ class SendAsyncChatMessageRequestTaskExecution(DaraModel):
         # 
         # This parameter is required.
         self.execution_id = execution_id
-        # The digital employee name.
+        # The name of the digital employee.
         self.operating_object_name = operating_object_name
         # The list of associated skill codes.
         self.skill_codes = skill_codes
@@ -346,7 +396,7 @@ class SendAsyncChatMessageRequestSegments(DaraModel):
         self.name = name
         # The ID of the referenced object.
         self.object_id = object_id
-        # The referenced object type.
+        # The object type of the referenced object.
         self.object_type = object_type
         # The session type.
         self.session_type = session_type
@@ -415,7 +465,7 @@ class SendAsyncChatMessageRequestFiles(DaraModel):
         file_id: str = None,
         type: str = None,
     ):
-        # The file ID, which is returned by uploadChatFile.
+        # The file ID, returned by uploadChatFile.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -461,23 +511,23 @@ class SendAsyncChatMessageRequestContextItems(DaraModel):
         sender_name: str = None,
         type: str = None,
     ):
-        # The user\\"s annotation on the referenced content.
+        # The annotation content entered by the user.
         self.annotation = annotation
-        # The list of files associated with the annotation.
+        # The list of attachments associated with the output annotation. This parameter is only applicable when type is set to output_annotation.
         self.annotation_files = annotation_files
-        # The body of the referenced content.
+        # The content corresponding to the reference or annotation. For output_annotation, this parameter is optional, but annotationFiles must be provided.
         self.content = content
-        # The ID of the referenced file.
+        # The ID of the referenced or annotated output file.
         self.file_id = file_id
-        # The name of the referenced file.
+        # The name of the referenced or annotated output file.
         self.file_name = file_name
-        # The type of the referenced file.
+        # The type of the referenced or annotated output file.
         self.file_type = file_type
-        # The ID of the referenced message.
+        # The ID of the referenced or annotated message.
         self.message_id = message_id
-        # The name of the message sender.
+        # The name of the sender of the referenced or annotated message.
         self.sender_name = sender_name
-        # The context entry type.
+        # The context type. Valid values: message_reference, message_selection, message_annotation, output_selection, and output_annotation.
         self.type = type
 
     def validate(self):
@@ -564,13 +614,13 @@ class SendAsyncChatMessageRequestContextItemsAnnotationFiles(DaraModel):
         file_record_id: str = None,
         file_url: str = None,
     ):
-        # The file name.
+        # The file name of the attachment.
         self.file_name = file_name
-        # The public access URL of the file.
+        # The public access URL of the attachment. This parameter is optional.
         self.file_public_url = file_public_url
-        # The file record ID.
+        # The file record ID of the attachment. This parameter is required. It is used to verify the ownership of the attachment and provide it for session processing.
         self.file_record_id = file_record_id
-        # The internal access URL of the file.
+        # The internal access URL of the attachment. This parameter is optional.
         self.file_url = file_url
 
     def validate(self):

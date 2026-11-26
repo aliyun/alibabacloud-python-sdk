@@ -18,7 +18,7 @@ class CreatePersonalAliDingChatResponseBody(DaraModel):
         source_id: str = None,
         status: str = None,
     ):
-        # The DingTalk group chat session ID.
+        # The ID of the DingTalk group chat session.
         self.chat_id = chat_id
         # The status code.
         self.code = code
@@ -30,17 +30,17 @@ class CreatePersonalAliDingChatResponseBody(DaraModel):
         self.message = message
         # The skill name.
         self.name = name
-        # The request trace ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The permission scope.
         self.scope = scope
-        # The original project ID.
+        # The source project ID.
         self.source_id = source_id
         # The call status. Valid values:
-        # - **PENDING**: Waiting for acknowledgment.
-        # - **SUCCESS**: Succeeded.
+        # - **PENDING**: Awaiting acknowledgment.
+        # - **SUCCESS**: Success.
         # - **FAILED**: Failed.
-        # - **TIMEOUT**: Timed out.
+        # - **TIMEOUT**: Timeout.
         self.status = status
 
     def validate(self):

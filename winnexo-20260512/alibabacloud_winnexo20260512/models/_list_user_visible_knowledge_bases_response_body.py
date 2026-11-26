@@ -18,13 +18,13 @@ class ListUserVisibleKnowledgeBasesResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The result list.
+        # The list of results.
         # Maximum size:
         # 	50
         self.items = items
         # The description of the status code.
         self.message = message
-        # The request trace ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -96,7 +96,7 @@ class ListUserVisibleKnowledgeBasesResponseBodyItems(DaraModel):
     ):
         # The user ID of the task creator.
         self.creator_id = creator_id
-        # The creator name.
+        # The creator.
         self.creator_name = creator_name
         # The description of the to-do card type.
         self.description = description
@@ -108,7 +108,7 @@ class ListUserVisibleKnowledgeBasesResponseBodyItems(DaraModel):
         self.directory_type = directory_type
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # The file name.
         self.name = name

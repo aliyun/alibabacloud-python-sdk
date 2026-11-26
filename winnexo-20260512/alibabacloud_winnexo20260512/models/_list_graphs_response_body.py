@@ -21,7 +21,7 @@ class ListGraphsResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.items = items
-        # The prompt message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -80,7 +80,7 @@ class ListGraphsResponseBodyItems(DaraModel):
         graph_name: str = None,
         is_default: bool = None,
     ):
-        # The business description of the knowledge graph. An empty string is returned if not configured.
+        # The business description of the graph. This is an empty string if not configured.
         # 
         # This parameter is required.
         self.business_profile = business_profile
@@ -88,11 +88,11 @@ class ListGraphsResponseBodyItems(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The knowledge graph name.
+        # The graph name.
         # 
         # This parameter is required.
         self.graph_name = graph_name
-        # Indicates whether this is the default group.
+        # Specifies whether it is the default group.
         # 
         # This parameter is required.
         self.is_default = is_default

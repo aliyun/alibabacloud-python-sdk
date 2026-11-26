@@ -14,6 +14,8 @@ class GetNodeDetailResponseBody(DaraModel):
         artifacts: List[main_models.GetNodeDetailResponseBodyArtifacts] = None,
         attempt_seq: int = None,
         code: str = None,
+        conversation_archive_status: str = None,
+        conversation_archived_time: int = None,
         conversation_id: str = None,
         conversation_writable: bool = None,
         handler: str = None,
@@ -39,6 +41,10 @@ class GetNodeDetailResponseBody(DaraModel):
         self.attempt_seq = attempt_seq
         # The business status code. A value of 200 indicates success.
         self.code = code
+        # 会话归档状态 ACTIVE/ARCHIVING/ARCHIVED
+        self.conversation_archive_status = conversation_archive_status
+        # 会话归档完成时间戳（秒）
+        self.conversation_archived_time = conversation_archived_time
         # The node conversation ID. This parameter is empty if no conversation is created.
         self.conversation_id = conversation_id
         # Indicates whether the current node conversation can continue to receive input.
@@ -102,6 +108,12 @@ class GetNodeDetailResponseBody(DaraModel):
 
         if self.code is not None:
             result['code'] = self.code
+
+        if self.conversation_archive_status is not None:
+            result['conversationArchiveStatus'] = self.conversation_archive_status
+
+        if self.conversation_archived_time is not None:
+            result['conversationArchivedTime'] = self.conversation_archived_time
 
         if self.conversation_id is not None:
             result['conversationId'] = self.conversation_id
@@ -172,6 +184,12 @@ class GetNodeDetailResponseBody(DaraModel):
 
         if m.get('code') is not None:
             self.code = m.get('code')
+
+        if m.get('conversationArchiveStatus') is not None:
+            self.conversation_archive_status = m.get('conversationArchiveStatus')
+
+        if m.get('conversationArchivedTime') is not None:
+            self.conversation_archived_time = m.get('conversationArchivedTime')
 
         if m.get('conversationId') is not None:
             self.conversation_id = m.get('conversationId')

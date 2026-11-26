@@ -17,17 +17,17 @@ class UpdateGroupSourceContentResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The image name.
         self.name = name
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
         # The data source ID.
         self.source_id = source_id
         # The data source type.
         self.source_type = source_type
-        # The task running status.
+        # The task execution status.
         self.status = status
 
     def validate(self):

@@ -9,9 +9,12 @@ from darabonba.model import DaraModel
 class ListAppResourcePermissionRecordsRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         grantee_id: str = None,
         grantee_tenant_id: str = None,
         grantee_type: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         permissions: List[str] = None,
@@ -20,12 +23,18 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
         resource_type: str = None,
         tenant_id: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The tenant filter for cross-tenant users.
         self.grantee_id = grantee_id
         # The permission filter.
         self.grantee_tenant_id = grantee_tenant_id
         # The principal ID filter.
         self.grantee_type = grantee_type
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The number of items per page.
         self.page = page
         # The principal type filter.
@@ -53,6 +62,9 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.grantee_id is not None:
             result['granteeId'] = self.grantee_id
 
@@ -61,6 +73,12 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
 
         if self.grantee_type is not None:
             result['granteeType'] = self.grantee_type
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -87,6 +105,9 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('granteeId') is not None:
             self.grantee_id = m.get('granteeId')
 
@@ -95,6 +116,12 @@ class ListAppResourcePermissionRecordsRequest(DaraModel):
 
         if m.get('granteeType') is not None:
             self.grantee_type = m.get('granteeType')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

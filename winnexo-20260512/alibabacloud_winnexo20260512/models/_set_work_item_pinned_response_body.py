@@ -67,13 +67,13 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         self.attachments = attachments
         # The business status (seven states).
         self.business_status = business_status
-        # Specifies whether the caller can delete the work item.
+        # Indicates whether the caller can delete the work item.
         self.can_delete = can_delete
-        # Specifies whether the caller can manage the work item.
+        # Indicates whether the caller can manage the work item.
         self.can_manage = can_manage
-        # Specifies whether the visibility scope can be adjusted independently.
+        # Indicates whether the visibility scope can be adjusted independently.
         self.can_manage_visibility = can_manage_visibility
-        # Specifies whether the caller can rename the work item.
+        # Indicates whether the caller can rename the work item.
         self.can_rename = can_rename
         # The business status code. A value of 200 indicates success.
         self.code = code
@@ -83,7 +83,7 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         self.collaborator_user_ids = collaborator_user_ids
         # The ID of the associated conversation.
         self.conversation_id = conversation_id
-        # The creation time (ISO 8601 format).
+        # The creation time, in ISO 8601 format.
         self.created_at = created_at
         # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
@@ -105,15 +105,15 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         self.input_version = input_version
         # The type of the work item.
         self.item_type = item_type
-        # The time when the work item last entered the processing state (ISO 8601 format).
+        # The time when the work item last entered the processing state, in ISO 8601 format.
         self.last_processing_at = last_processing_at
-        # Specifies whether the topic is a free exploration topic during the compatibility period.
+        # Indicates whether the topic is a free exploration topic during the compatibility period.
         self.legacy_topic = legacy_topic
         # The list of user IDs of the visible members.
         self.member_user_ids = member_user_ids
         # The error message.
         self.message = message
-        # The modification time (ISO 8601 format).
+        # The modification time, in ISO 8601 format.
         self.modified_at = modified_at
         # The user ID of the owner.
         self.owner_user_id = owner_user_id
@@ -139,9 +139,9 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         self.source_type = source_type
         # The title.
         self.title = title
-        # The time zone when the task is triggered.
+        # The time zone when the task was triggered.
         self.trigger_timezone = trigger_timezone
-        # The trigger time of the task (ISO 8601 format).
+        # The time when the task was triggered, in ISO 8601 format.
         self.triggered_at = triggered_at
         # The optimistic version number.
         self.version = version
@@ -151,7 +151,7 @@ class SetWorkItemPinnedResponseBody(DaraModel):
         self.visibility_source = visibility_source
         # The ID of the work item.
         self.work_item_id = work_item_id
-        # The four-state projection of the workflow status.
+        # The workflow status projection (four states).
         self.workflow_status = workflow_status
         # The list of IDs of the bound workflow templates.
         self.workflow_template_ids = workflow_template_ids

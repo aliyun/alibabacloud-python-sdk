@@ -17,7 +17,7 @@ class CountTodosResponseBody(DaraModel):
         self.code = code
         # The error description.
         self.message = message
-        # The number of pending items with the primary status of PENDING.
+        # The number of pending items with the PENDING primary status.
         self.pending_count = pending_count
         # The request tracking ID.
         self.request_id = request_id

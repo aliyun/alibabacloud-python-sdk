@@ -20,23 +20,23 @@ class UpdateGroupDirectoryResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The folder description.
+        # The directory description.
         self.description = description
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
-        # The folder type. The value is fixed as GROUP.
+        # The directory type. The value is fixed as GROUP.
         self.directory_type = directory_type
-        # The ID of the collaborative share.
+        # The ID of the collaboration workspace.
         self.group_id = group_id
-        # The ID of the internal root folder in the collaborative share. This folder cannot be modified.
+        # The ID of the internal root directory in the collaboration workspace. This directory cannot be modified.
         self.kb_root_directory_id = kb_root_directory_id
         # The error message.
         self.message = message
-        # The folder name.
+        # The directory name.
         self.name = name
-        # The parent folder ID.
+        # The ID of the parent directory.
         self.parent_directory_id = parent_directory_id
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

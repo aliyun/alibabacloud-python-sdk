@@ -41,19 +41,19 @@ class GetTodoDetailResponseBody(DaraModel):
         self.assignee_count = assignee_count
         # All assignees.
         self.assignees = assignees
-        # The attachment policy. Attachments are not stored in the database in the current version.
+        # The attachment policy. In the current version, attachments are not stored in the database.
         self.attachment_policy = attachment_policy
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The completion time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+        # The completion time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
         self.completed_at = completed_at
         # The user ID of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_id = completed_by_user_id
         # The name of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_name = completed_by_user_name
-        # The creation time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+        # The creation time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
         self.gmt_create = gmt_create
-        # The last modification time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+        # The last modification time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
         self.gmt_modified = gmt_modified
         # Indicates whether the caller has read the item.
         self.is_read = is_read
@@ -61,21 +61,21 @@ class GetTodoDetailResponseBody(DaraModel):
         self.message = message
         # The ID of the assistant message that generated the to-do item. This field is empty if there is no conversation source.
         self.message_id = message_id
-        # The action status of the caller as the assignee.
+        # The action status of the caller as an assignee.
         self.my_assignee_status = my_assignee_status
         # The list display status for the caller.
         self.my_display_state = my_display_state
-        # The permissions of the caller, such as canSubmit and canTransfer.
+        # The permissions of the caller. Valid values: canSubmit and canTransfer.
         self.my_permissions = my_permissions
         # The priority.
         self.priority = priority
-        # The list of questions (structured projection).
+        # The structured list of questions.
         self.questions = questions
         # The request tracking ID.
         self.request_id = request_id
-        # The response content in JSONB format as-is. Defaults to an empty object if not submitted.
+        # The response content in JSONB format, passed through as-is. Defaults to an empty object if not submitted.
         self.result_payload = result_payload
-        # The source context. This context is passed through as-is during creation.
+        # The source context, which is passed through as-is during creation.
         self.source_context = source_context
         # The source type of the to-do item.
         self.source_type = source_type
@@ -293,7 +293,7 @@ class GetTodoDetailResponseBodyQuestions(DaraModel):
     ):
         # Indicates whether custom input is allowed.
         self.allow_custom = allow_custom
-        # The text for the custom input field.
+        # The text for the custom input item.
         self.custom_label = custom_label
         # The maximum length for custom input.
         self.custom_max_length = custom_max_length
@@ -303,11 +303,11 @@ class GetTodoDetailResponseBodyQuestions(DaraModel):
         self.max_length = max_length
         # The response mode. Valid values: SINGLE_CHOICE, MULTI_CHOICE, and TEXT.
         self.mode = mode
-        # The options. This field is required for choice questions.
+        # The options, which are required for choice questions.
         self.options = options
         # The placeholder for text questions.
         self.placeholder = placeholder
-        # The question text (reference key).
+        # The question text, which serves as a reference key.
         self.question = question
         # Indicates whether the question is required.
         self.required = required
@@ -401,9 +401,9 @@ class GetTodoDetailResponseBodyQuestionsOptions(DaraModel):
         label: str = None,
         recommended: bool = None,
     ):
-        # The supplementary description of the option.
+        # The additional description for the option.
         self.description = description
-        # The option text (reference key).
+        # The option text, which serves as a reference key.
         self.label = label
         # Indicates whether the option is recommended.
         self.recommended = recommended
@@ -450,13 +450,13 @@ class GetTodoDetailResponseBodyAssignees(DaraModel):
         status: str = None,
         transferred_from_user_id: str = None,
     ):
-        # The action time in UTC+8. This field is empty if the item is not processed.
+        # The time when the item was processed (UTC+8). This field is empty if the item is unprocessed.
         self.acted_at = acted_at
         # The source of the assignee. Valid values: ORIGINAL and TRANSFERRED.
         self.assignee_source = assignee_source
         # The user ID of the assignee.
         self.assignee_user_id = assignee_user_id
-        # The read time in UTC+8. This field is empty if the item is unread.
+        # The time when the item was read (UTC+8). This field is empty if the item is unread.
         self.read_at = read_at
         # The action status of the assignee.
         self.status = status

@@ -19,7 +19,7 @@ class QuerySourceUsageTrendResponseBody(DaraModel):
         self.code = code
         # The error details.
         self.message = message
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The trend details.
         self.trend = trend
@@ -88,7 +88,7 @@ class QuerySourceUsageTrendResponseBodyTrend(DaraModel):
         self.retrieved_source_count = retrieved_source_count
         # The number of rows in the source data.
         self.source_count = source_count
-        # The number of times used in agents.
+        # The number of times used by the agent.
         self.usage_count = usage_count
         # The deduplicated number of sources with usage events.
         self.used_source_count = used_source_count

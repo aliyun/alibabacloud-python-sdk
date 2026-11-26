@@ -20,23 +20,23 @@ class CreateKnowledgeBasePublicUrlResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The ID of the destination folder in the enterprise knowledge base that was specified in the request.
+        # The ID of the requested target directory in the enterprise knowledge base.
         self.directory_id = directory_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # The error description. This value is empty if the request is successful.
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
-        # The resource name.
+        # The name of the resource.
         self.name = name
-        # The submitted public web page URL.
+        # The URL of the submitted public web page.
         self.original_url = original_url
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The resource scope. The value is fixed to TENANT.
+        # The scope of the resource. The value is fixed to TENANT.
         self.scope = scope
         # The ID of the newly created source.
         self.source_id = source_id
-        # The resource status. A value of RUNNING indicates that the request has been accepted but the crawling and parsing are not yet complete.
+        # The status of the resource. A value of RUNNING indicates that the request is accepted but the crawling and parsing are not completed.
         self.status = status
 
     def validate(self):

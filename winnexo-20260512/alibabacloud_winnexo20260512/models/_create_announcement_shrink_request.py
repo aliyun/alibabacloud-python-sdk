@@ -7,11 +7,14 @@ from darabonba.model import DaraModel
 class CreateAnnouncementShrinkRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         content: str = None,
         display_page: str = None,
         display_type: str = None,
         effective_end: str = None,
         effective_start: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         priority: str = None,
         publish_now: bool = None,
         target_role_codes_shrink: str = None,
@@ -21,6 +24,8 @@ class CreateAnnouncementShrinkRequest(DaraModel):
         tenant_id: str = None,
         title: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The content of the notice.
         # 
         # This parameter is required.
@@ -33,6 +38,10 @@ class CreateAnnouncementShrinkRequest(DaraModel):
         self.effective_end = effective_end
         # The effective start time in ISO 8601 format with time zone. If this parameter is not specified, the notice takes effect immediately.
         self.effective_start = effective_start
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The priority. Valid values:
         # 
         # This parameter is required.
@@ -62,6 +71,9 @@ class CreateAnnouncementShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.content is not None:
             result['content'] = self.content
 
@@ -76,6 +88,12 @@ class CreateAnnouncementShrinkRequest(DaraModel):
 
         if self.effective_start is not None:
             result['effectiveStart'] = self.effective_start
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.priority is not None:
             result['priority'] = self.priority
@@ -105,6 +123,9 @@ class CreateAnnouncementShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('content') is not None:
             self.content = m.get('content')
 
@@ -119,6 +140,12 @@ class CreateAnnouncementShrinkRequest(DaraModel):
 
         if m.get('effectiveStart') is not None:
             self.effective_start = m.get('effectiveStart')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('priority') is not None:
             self.priority = m.get('priority')

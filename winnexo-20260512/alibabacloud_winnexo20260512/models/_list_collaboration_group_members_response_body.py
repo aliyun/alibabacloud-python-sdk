@@ -28,7 +28,7 @@ class ListCollaborationGroupMembersResponseBody(DaraModel):
         self.page = page
         # The page size.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The total number of records after filtering.
         self.total = total
@@ -105,9 +105,9 @@ class ListCollaborationGroupMembersResponseBodyItems(DaraModel):
         role: str = None,
         user_id: str = None,
     ):
-        # The display name. This field is empty if the display name is not set.
+        # The display name. This field is empty if not set.
         self.display_name = display_name
-        # The enabling status of the tenant account. Only active members are returned, so this value is always true. This field does not indicate the HR employment status.
+        # The enabling status of the tenant account. Only active members are returned, so this value is always true. It does not represent the employment status.
         self.is_active = is_active
         # The role of the workspace member.
         self.role = role

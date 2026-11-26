@@ -21,30 +21,30 @@ class CreateGroupPublicUrlResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The folder ID.
+        # The ID of the folder.
         self.directory_id = directory_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The project group ID.
+        # The ID of the project group.
         self.group_id = group_id
         # The description of the status code.
         self.message = message
-        # The knowledge base name.
+        # The name of the knowledge base.
         self.name = name
         # The URL of the web page.
         self.original_url = original_url
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The permission scope.
+        # The scope of permissions.
         self.scope = scope
-        # The source ID.
+        # The ID of the source.
         self.source_id = source_id
-        # The refund status. If a refund is in progress, query to confirm the refund status. Valid values:
-        # - SUCCESS: All succeeded.
+        # The refund status. If a refund is in progress, you must query and confirm the refund status. Valid values:
+        # - SUCCESS: All operations succeeded.
         # - FAIL: Failed.
         # - WAIT_PAY: Waiting for refund.
         # - EXPIRE: Expired.
-        # - PAYING: Refund in progress.
+        # - PAYING: Refunding.
         # - TERMINATE: Refund terminated.
         self.status = status
 

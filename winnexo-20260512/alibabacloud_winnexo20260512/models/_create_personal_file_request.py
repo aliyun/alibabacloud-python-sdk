@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreatePersonalFileRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         description: str = None,
         directory_id: str = None,
         file_ext: str = None,
@@ -16,14 +17,18 @@ class CreatePersonalFileRequest(DaraModel):
         file_record_id: str = None,
         name: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         source_tags: str = None,
         tenant_id: str = None,
     ):
+        # The platform application token issued by the console. If this parameter is passed, the operation is executed as the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
         # The pipeline description.
         self.description = description
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
-        # The file name extension (optional, such as pdf or docx).
+        # The file name extension, such as pdf or docx. This parameter is optional.
         self.file_ext = file_ext
         # The file name.
         self.file_name = file_name
@@ -33,14 +38,18 @@ class CreatePersonalFileRequest(DaraModel):
         self.file_path = file_path
         # The publicly accessible URL of the DingTalk online document.
         self.file_public_url = file_public_url
-        # The file record ID (optional, corresponding to settings.file_record_id).
+        # The file record ID, which corresponds to settings.file_record_id. This parameter is optional.
         self.file_record_id = file_record_id
         # The pipeline name.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the digital employee (operating object name, optional).
+        # The name of the digital employee, which is the name of the operating object. This parameter is optional.
         self.operating_object_name = operating_object_name
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
         # The list of resource tag JSON strings.
         self.source_tags = source_tags
         # The tenant ID.
@@ -54,6 +63,9 @@ class CreatePersonalFileRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -81,6 +93,12 @@ class CreatePersonalFileRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.source_tags is not None:
             result['sourceTags'] = self.source_tags
 
@@ -91,6 +109,9 @@ class CreatePersonalFileRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -117,6 +138,12 @@ class CreatePersonalFileRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('sourceTags') is not None:
             self.source_tags = m.get('sourceTags')

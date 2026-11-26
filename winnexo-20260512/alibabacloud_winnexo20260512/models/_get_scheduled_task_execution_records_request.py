@@ -7,27 +7,36 @@ from darabonba.model import DaraModel
 class GetScheduledTaskExecutionRecordsRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         collaboration_group_id: str = None,
         initiator_user_id: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         status: str = None,
         task_id: str = None,
         tenant_id: str = None,
     ):
-        # The ID of the collaboration group to which the task belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+        # The platform application token issued by the console. If this parameter is passed, the operation is executed as the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
+        # The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
-        # The business status code. A value of 200 indicates success. A failure returns a backend error code, such as ERR.* or InvalidParameter.*.
+        # The business status code. A value of 200 indicates success. A failure is indicated by a backend error code such as ERR.* or InvalidParameter.*.
         self.initiator_user_id = initiator_user_id
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
         # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
         # The number of records per page.
         self.page_size = page_size
-        # The initiator filter based on the platform user ID. The caliber is the executor of the record. For manual execution, it is the trigger user. For automatic execution, it is the task creator. To view only the tasks initiated by yourself, pass the current user ID.
+        # Filters records by the initiator platform user ID. The scope is the executor of the record. For manual execution, the executor is the trigger user. For automatic execution, the executor is the task creator. To view only the tasks that you initiated, pass the current user ID.
         self.status = status
-        # The execution status filter in lowercase. Valid values: pending (queued), running (running), success (successful), failed (failed), timeout (timed out), and cancelled (cancelled). If you do not specify this parameter, no filtering is applied. If you specify this parameter, future planned items are no longer generated.
+        # The execution status filter in lowercase. Valid values: pending (queued), running (executing), success (succeeded), failed (failed), timeout (timed out), and cancelled (cancelled). If this parameter is not passed, no filtering is applied. If this parameter is passed, future plan items are not generated.
         self.task_id = task_id
-        # The effective tenant ID.
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -38,11 +47,20 @@ class GetScheduledTaskExecutionRecordsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
         if self.initiator_user_id is not None:
             result['initiatorUserId'] = self.initiator_user_id
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -63,11 +81,20 @@ class GetScheduledTaskExecutionRecordsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
         if m.get('initiatorUserId') is not None:
             self.initiator_user_id = m.get('initiatorUserId')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

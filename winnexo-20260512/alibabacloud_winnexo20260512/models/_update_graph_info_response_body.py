@@ -15,13 +15,13 @@ class UpdateGraphInfoResponseBody(DaraModel):
         request_id: str = None,
         updated: bool = None,
     ):
-        # The business description of the knowledge graph. If not configured, the value is an empty string.
+        # The business description of the graph. If this parameter is not specified, the value is an empty string.
         self.business_profile = business_profile
-        # SUCCESS indicates success. In failure cases, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+        # The status code. A value of SUCCESS indicates success. If the request fails, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
         self.code = code
-        # The display name of the knowledge graph.
+        # The display name.
         self.display_name = display_name
-        # The name of the knowledge graph.
+        # The name of the graph.
         self.graph_name = graph_name
         # The description of the status code.
         self.message = message

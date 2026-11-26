@@ -18,13 +18,13 @@ class ReplaceObjectBindingsResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The object binding.
         self.object_bindings = object_bindings
         # The request ID.
         self.request_id = request_id
-        # The ID of the personal FILE data source to be replaced (unique within the tenant).
+        # The ID of the personal FILE data source to be replaced, which is unique within the tenant.
         self.source_id = source_id
 
     def validate(self):
@@ -86,11 +86,11 @@ class ReplaceObjectBindingsResponseBodyObjectBindings(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
-        # The semantic graph name to which the binding object belongs (object_id is unique within this graph. Required).
+        # The name of the semantic graph to which the bound object belongs. The object_id is unique within this graph. This field is required.
         self.graph_name = graph_name
-        # The binding object ID.
+        # The ID of the bound object.
         self.object_id = object_id
-        # The binding object type (such as customer or project).
+        # The object type to attach, such as customer or project.
         self.object_type = object_type
 
     def validate(self):

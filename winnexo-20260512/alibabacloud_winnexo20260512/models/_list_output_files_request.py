@@ -9,11 +9,14 @@ from darabonba.model import DaraModel
 class ListOutputFilesRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         biz_id: str = None,
         collaboration_group_id: str = None,
         item_type: str = None,
         keyword: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         page: int = None,
         page_size: int = None,
         session_id: str = None,
@@ -22,27 +25,33 @@ class ListOutputFilesRequest(DaraModel):
         task_execution_id: str = None,
         tenant_id: str = None,
     ):
-        # The business ID used for exact filtering. The length is 1 to 128 characters. This ID is derived from file registrations or the businessId of associated workflow instances.
+        # The platform application token issued by the console. If provided, the operation is executed with the identity of the user specified by opsUserId or opsUserCode.
+        self.app_token = app_token
+        # The business ID used for exact filtering. The length is 1 to 128 characters. This value is derived from the businessId of file registrations or associated workflow instances.
         self.biz_id = biz_id
-        # The ID of the collaboration workspace. The length is 1 to 64 characters. This parameter is optional. If not specified, the personal outputs of the current user are queried. If specified, the real-time permissions of the workspace members and source resources are verified.
+        # The ID of the collaboration workspace. The length is 1 to 64 characters. If this parameter is not provided, the personal outputs of the current user are queried. If provided, the real-time permissions of the workspace members and source resources are verified.
         self.collaboration_group_id = collaboration_group_id
-        # The output detail type. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
+        # The type of the output detail. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
         self.item_type = item_type
         # The keyword used to match the output title or detail name.
         self.keyword = keyword
-        # The name of the digital employee (operating object). Filters results by name.
+        # The name of the digital employee used for filtering.
         self.operating_object_name = operating_object_name
-        # The page number. Pages start from 1. Default value: 1.
+        # The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+        self.ops_user_code = ops_user_code
+        # The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+        self.ops_user_id = ops_user_id
+        # The page number, starting from 1. Default value: 1.
         self.page = page
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of items per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
         # The session ID used for exact filtering. The length is 1 to 128 characters. This parameter applies to regular sessions, skill sessions, and the executionId of task executions.
         self.session_id = session_id
-        # Specifies whether to display only the outputs and output details that have sharing enabled.
+        # Specifies whether to display only shared outputs and output details.
         self.shared_only = shared_only
-        # The tags used for exact filtering. All specified tags must match simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registrations or the variables.tags of associated instances.
+        # The tags used for exact filtering. All specified tags must match simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from the variables.tags of file registrations or associated instances.
         self.tags = tags
-        # The ID of the current execution used to exactly filter outputs.
+        # The execution ID used to exactly filter the outputs of the current execution.
         self.task_execution_id = task_execution_id
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used. The identity and tenant permissions are determined by the gateway and backend authentication.
         self.tenant_id = tenant_id
@@ -55,6 +64,9 @@ class ListOutputFilesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.biz_id is not None:
             result['bizId'] = self.biz_id
 
@@ -69,6 +81,12 @@ class ListOutputFilesRequest(DaraModel):
 
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.page is not None:
             result['page'] = self.page
@@ -95,6 +113,9 @@ class ListOutputFilesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('bizId') is not None:
             self.biz_id = m.get('bizId')
 
@@ -109,6 +130,12 @@ class ListOutputFilesRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('page') is not None:
             self.page = m.get('page')

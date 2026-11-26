@@ -19,21 +19,21 @@ class CreatePersonalVoiceMeetingResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The bound directory ID. This value is echoed back if provided in the request body. The value is null if the default root directory is used.
+        # The bound directory ID. If this parameter is passed in the request body, the value is echoed back. If the default root directory is used, the value is null.
         self.directory_id = directory_id
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The knowledge base name.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The resource scope. The value is fixed to PERSONAL.
+        # The resource scope. This value is fixed to PERSONAL.
         self.scope = scope
-        # The unique ID on the business system side, which is the business ID.
+        # The unique identifier on the business system side, which is the business ID.
         self.source_id = source_id
-        # The resource status. The initial status during the creation process is typically PENDING. If the on_create process fails, the status is FAILED.
+        # The resource status. The initial status in the creation pipeline is mostly PENDING. If the on_create operation fails, the status is FAILED.
         self.status = status
 
     def validate(self):

@@ -23,23 +23,23 @@ class ListWorkflowTemplatesResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # Indicates whether more data exists.
+        # Indicates whether more data is available.
         self.has_more = has_more
         # The list of template summaries on the current page.
         self.items = items
-        # The effective maximum number of entries to return per page in the current request.
+        # The effective maximum number of entries to return per page for the current request.
         self.max_results = max_results
         # The error message.
         self.message = message
-        # The pagination token for the next page. An empty string is returned if no more data exists.
+        # The pagination token for the next page. An empty string is returned if no more data is available.
         self.next_token = next_token
         # The current page number.
         self.page = page
         # The effective number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # The total number of entries that match the filter conditions.
+        # The total number of visible items under the filter conditions.
         self.total = total
 
     def validate(self):
@@ -142,11 +142,13 @@ class ListWorkflowTemplatesResponseBodyItems(DaraModel):
         self.description = description
         # The current effective version number. An empty value indicates that only a draft exists and the template cannot be used for work items.
         self.effective_version = effective_version
-        # The last modification time in ISO 8601 format.
+        # The time of the last modification in ISO 8601 format.
         self.gmt_modified = gmt_modified
         # The latest version number.
         self.latest_version = latest_version
-        # The status of the latest version. Valid values: DRAFT (draft, indicating unsubmitted edits exist) and SUBMITTED (submitted).
+        # The status of the latest version. Valid values:
+        # - DRAFT: The draft has uncommitted edits.
+        # - SUBMITTED: The version is submitted.
         self.latest_version_status = latest_version_status
         # The name of the template.
         self.name = name

@@ -10,12 +10,16 @@ from darabonba.model import DaraModel
 class CreateScheduledTaskRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
+        auto_preference: str = None,
         collaboration_group_id: str = None,
         description: List[main_models.CreateScheduledTaskRequestDescription] = None,
         digital_employee_name: List[str] = None,
         is_open: bool = None,
         model: str = None,
         name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         output_mode: str = None,
         segments: List[main_models.CreateScheduledTaskRequestSegments] = None,
         task_detail: main_models.CreateScheduledTaskRequestTaskDetail = None,
@@ -24,6 +28,10 @@ class CreateScheduledTaskRequest(DaraModel):
         visibility: str = None,
         visible_member_user_ids: List[str] = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
+        # AUTO 偏好：none=默认、performance=效果优先、credit=成本优先；创建缺省为 none，固定模型可保存但不生效
+        self.auto_preference = auto_preference
         # The ID of the associated collaboration group (such as cg_101). If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
         # The description of the to-do card type.
@@ -38,6 +46,10 @@ class CreateScheduledTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The output conversation mode. Default value: NEW_CONVERSATION.
         self.output_mode = output_mode
         # The site ID.
@@ -72,6 +84,12 @@ class CreateScheduledTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
+        if self.auto_preference is not None:
+            result['autoPreference'] = self.auto_preference
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
@@ -91,6 +109,12 @@ class CreateScheduledTaskRequest(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.output_mode is not None:
             result['outputMode'] = self.output_mode
@@ -119,6 +143,12 @@ class CreateScheduledTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
+        if m.get('autoPreference') is not None:
+            self.auto_preference = m.get('autoPreference')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
@@ -139,6 +169,12 @@ class CreateScheduledTaskRequest(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('outputMode') is not None:
             self.output_mode = m.get('outputMode')

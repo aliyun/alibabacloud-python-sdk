@@ -12,7 +12,7 @@ class GetTokenInfoRequest(DaraModel):
     ):
         # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
-        # The ID of the target user (WINNEXO platform user ID). If left empty, the operation is performed on the caller. Administrators can specify another user\\"s ID to perform the operation on their behalf.
+        # The ID of the target user (WINNEXO platform user ID). If left empty, the operation is performed on the caller. Administrators can specify another user\"s ID to perform the operation on their behalf.
         self.wn_user_id = wn_user_id
 
     def validate(self):

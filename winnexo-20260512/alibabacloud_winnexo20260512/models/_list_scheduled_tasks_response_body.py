@@ -128,6 +128,7 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
     def __init__(
         self,
         abnormal_reason: str = None,
+        auto_preference: str = None,
         can_delete: bool = None,
         can_edit: bool = None,
         can_execute: bool = None,
@@ -153,6 +154,8 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
     ):
         # The cause of the exception. This field has a value only when status is abnormal.
         self.abnormal_reason = abnormal_reason
+        # 任务 AUTO 偏好：none=默认、performance=效果优先、credit=成本优先
+        self.auto_preference = auto_preference
         # Indicates whether the current caller can delete the task. This is valid only for the task creator and group owner. For personal tasks, the value is always true.
         self.can_delete = can_delete
         # Indicates whether the course can be edited or deleted.
@@ -208,6 +211,9 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
             result = _map
         if self.abnormal_reason is not None:
             result['abnormalReason'] = self.abnormal_reason
+
+        if self.auto_preference is not None:
+            result['autoPreference'] = self.auto_preference
 
         if self.can_delete is not None:
             result['canDelete'] = self.can_delete
@@ -281,6 +287,9 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         m = m or dict()
         if m.get('abnormalReason') is not None:
             self.abnormal_reason = m.get('abnormalReason')
+
+        if m.get('autoPreference') is not None:
+            self.auto_preference = m.get('autoPreference')
 
         if m.get('canDelete') is not None:
             self.can_delete = m.get('canDelete')

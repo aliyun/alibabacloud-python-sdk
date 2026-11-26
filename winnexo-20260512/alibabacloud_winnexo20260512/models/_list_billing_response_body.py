@@ -20,9 +20,9 @@ class ListBillingResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The details of the bills.
+        # The details of the link enhancement rule.
         self.list = list
-        # The prompt message.
+        # The message.
         self.message = message
         # The page number.
         self.page = page
@@ -30,7 +30,7 @@ class ListBillingResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of Logtail pipeline configurations in the current project.
         self.total = total
 
     def validate(self):
@@ -124,29 +124,29 @@ class ListBillingResponseBodyList(DaraModel):
         self.biz_id = biz_id
         # The business type.
         self.biz_type = biz_type
-        # The cost source type.
+        # The type of the cost source.
         self.cost_source = cost_source
         # The display name of the cost source.
         self.cost_source_display_name = cost_source_display_name
-        # The end timestamp, in milliseconds.
+        # The end timestamp in milliseconds.
         self.end_time = end_time
-        # The entry object ID.
+        # The ID of the entry object.
         self.entry_object_id = entry_object_id
         # The entry object type.
         self.entry_object_type = entry_object_type
-        # Indicates whether the bill is a shadow bill.
+        # Specifies whether the bill is a shadow bill.
         self.is_shadow = is_shadow
-        # The operation type.
+        # The search term rewrite configuration.
         self.operation = operation
-        # The display name of the operation.
+        # The display name of the action.
         self.operation_display_name = operation_display_name
-        # The start timestamp, in milliseconds.
+        # The start timestamp in milliseconds.
         self.start_time = start_time
-        # The node status. Running is returned upon submission.
+        # The task status. A status of Running is returned immediately after the task is submitted.
         self.status = status
         # The display name of the status.
         self.status_display_name = status_display_name
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
         # The total credit consumption.
         self.total_credit_cost = total_credit_cost

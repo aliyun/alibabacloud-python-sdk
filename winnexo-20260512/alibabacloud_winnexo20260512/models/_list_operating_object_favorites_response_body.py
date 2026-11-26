@@ -24,25 +24,25 @@ class ListOperatingObjectFavoritesResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The graph name. Call listGraphs to retrieve available graphs.
+        # The name of the graph. You can call the listGraphs operation to obtain the graph name.
         self.graph_name = graph_name
-        # Indicates whether more pages are available.
+        # Indicates whether more pages exist.
         self.has_more = has_more
-        # The MCP card list.
+        # The list of MCP cards.
         self.items = items
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The pagination cursor.
         self.next_token = next_token
         # The object type, such as customer. This parameter has a value when type is set to mention.
         self.object_type = object_type
-        # The digital employee name (operating object name).
+        # The name of the digital worker, which is the name of the operating object.
         self.operating_object_name = operating_object_name
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The request trace ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # The total number of results.
+        # The total number of Logtail pipeline configurations in the current project.
         self.total = total
 
     def validate(self):
@@ -143,17 +143,17 @@ class ListOperatingObjectFavoritesResponseBodyItems(DaraModel):
         object_name: str = None,
         object_type: str = None,
     ):
-        # The to-do card type description.
+        # The description of the to-do card type.
         self.description = description
-        # The follow time. The value is a Unix timestamp in seconds.
+        # The subscription time, which is a UNIX timestamp in seconds.
         self.followed_at = followed_at
-        # The graph name.
+        # The name of the graph.
         self.graph_name = graph_name
-        # The ID of the recommended item. The value can be a **feedId** or a micro-application ID.
+        # The ID of the recommended item, which can be a **feedId** or a mini-app ID.
         self.object_id = object_id
-        # The object name.
+        # The name of the object.
         self.object_name = object_name
-        # The bound object type, such as customer or project.
+        # The object type of the attached object, such as customer or project.
         self.object_type = object_type
 
     def validate(self):

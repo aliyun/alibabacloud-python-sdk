@@ -22,7 +22,7 @@ class ListUsersResponseBody(DaraModel):
         self.code = code
         # The user information.
         self.items = items
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The current page number.
         self.page = page
@@ -115,12 +115,13 @@ class ListUsersResponseBodyItems(DaraModel):
         # The creation time.
         self.gmt_create = gmt_create
         # Specifies whether the account is activated. Valid values:
+        # 
         # - 1: Activated.
         # - 0: Not activated.
         self.is_active = is_active
         # The last logon time.
         self.last_login_time = last_login_time
-        # The list of new system role codes. This is a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+        # The list of new system role codes. This list fully replaces the existing roles and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
         self.role_codes = role_codes
         # The user ID.
         self.user_id = user_id

@@ -10,8 +10,11 @@ class CreateWorkflowTemplateRequest(DaraModel):
     def __init__(
         self,
         action: str = None,
+        app_token: str = None,
         collaboration_group_id: str = None,
         definition: Dict[str, Any] = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         tenant_id: str = None,
     ):
         # The write action. Valid values:
@@ -19,6 +22,8 @@ class CreateWorkflowTemplateRequest(DaraModel):
         # - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
         # Default value: SUBMIT.
         self.action = action
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The ID of the collaboration workspace.
         # 
         # This parameter is required.
@@ -27,6 +32,10 @@ class CreateWorkflowTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.definition = definition
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
@@ -41,11 +50,20 @@ class CreateWorkflowTemplateRequest(DaraModel):
         if self.action is not None:
             result['action'] = self.action
 
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.collaboration_group_id is not None:
             result['collaborationGroupId'] = self.collaboration_group_id
 
         if self.definition is not None:
             result['definition'] = self.definition
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
@@ -57,11 +75,20 @@ class CreateWorkflowTemplateRequest(DaraModel):
         if m.get('action') is not None:
             self.action = m.get('action')
 
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('collaborationGroupId') is not None:
             self.collaboration_group_id = m.get('collaborationGroupId')
 
         if m.get('definition') is not None:
             self.definition = m.get('definition')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

@@ -7,14 +7,19 @@ from darabonba.model import DaraModel
 class GetSourceUploadSignatureRequest(DaraModel):
     def __init__(
         self,
+        app_token: str = None,
         content_type: str = None,
         expires: int = None,
         filename: str = None,
         group_id: str = None,
         operating_object_name: str = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         scope: str = None,
         tenant_id: str = None,
     ):
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The content type. Valid values:
         # 
         # - Text
@@ -30,6 +35,10 @@ class GetSourceUploadSignatureRequest(DaraModel):
         self.group_id = group_id
         # The name of the digital employee (operating object name, optional).
         self.operating_object_name = operating_object_name
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The permission scope.
         self.scope = scope
         # The tenant ID to which the task belongs.
@@ -43,6 +52,9 @@ class GetSourceUploadSignatureRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         if self.content_type is not None:
             result['contentType'] = self.content_type
 
@@ -58,6 +70,12 @@ class GetSourceUploadSignatureRequest(DaraModel):
         if self.operating_object_name is not None:
             result['operatingObjectName'] = self.operating_object_name
 
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
+
         if self.scope is not None:
             result['scope'] = self.scope
 
@@ -68,6 +86,9 @@ class GetSourceUploadSignatureRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         if m.get('contentType') is not None:
             self.content_type = m.get('contentType')
 
@@ -82,6 +103,12 @@ class GetSourceUploadSignatureRequest(DaraModel):
 
         if m.get('operatingObjectName') is not None:
             self.operating_object_name = m.get('operatingObjectName')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('scope') is not None:
             self.scope = m.get('scope')

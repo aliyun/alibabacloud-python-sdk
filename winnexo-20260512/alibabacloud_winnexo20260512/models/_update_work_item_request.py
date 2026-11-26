@@ -11,12 +11,15 @@ class UpdateWorkItemRequest(DaraModel):
     def __init__(
         self,
         acceptance_criteria: str = None,
+        app_token: str = None,
         attachments: List[main_models.UpdateWorkItemRequestAttachments] = None,
         collaboration_group_id: str = None,
         collaborator_user_ids: List[int] = None,
         conversation_id: str = None,
         description: str = None,
         expected_version: int = None,
+        ops_user_code: str = None,
+        ops_user_id: str = None,
         owner_user_id: int = None,
         priority: str = None,
         tenant_id: str = None,
@@ -26,6 +29,8 @@ class UpdateWorkItemRequest(DaraModel):
     ):
         # The acceptance criteria.
         self.acceptance_criteria = acceptance_criteria
+        # 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+        self.app_token = app_token
         # The stable references for the attachments.
         self.attachments = attachments
         # The ID of the collaboration space.
@@ -42,6 +47,10 @@ class UpdateWorkItemRequest(DaraModel):
         # 
         # This parameter is required.
         self.expected_version = expected_version
+        # 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+        self.ops_user_code = ops_user_code
+        # 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+        self.ops_user_id = ops_user_id
         # The user ID of the owner. If not specified, the user ID of the caller is used.
         self.owner_user_id = owner_user_id
         # The scheduling priority.
@@ -73,6 +82,9 @@ class UpdateWorkItemRequest(DaraModel):
         if self.acceptance_criteria is not None:
             result['acceptanceCriteria'] = self.acceptance_criteria
 
+        if self.app_token is not None:
+            result['appToken'] = self.app_token
+
         result['attachments'] = []
         if self.attachments is not None:
             for k1 in self.attachments:
@@ -92,6 +104,12 @@ class UpdateWorkItemRequest(DaraModel):
 
         if self.expected_version is not None:
             result['expectedVersion'] = self.expected_version
+
+        if self.ops_user_code is not None:
+            result['opsUserCode'] = self.ops_user_code
+
+        if self.ops_user_id is not None:
+            result['opsUserId'] = self.ops_user_id
 
         if self.owner_user_id is not None:
             result['ownerUserId'] = self.owner_user_id
@@ -118,6 +136,9 @@ class UpdateWorkItemRequest(DaraModel):
         if m.get('acceptanceCriteria') is not None:
             self.acceptance_criteria = m.get('acceptanceCriteria')
 
+        if m.get('appToken') is not None:
+            self.app_token = m.get('appToken')
+
         self.attachments = []
         if m.get('attachments') is not None:
             for k1 in m.get('attachments'):
@@ -138,6 +159,12 @@ class UpdateWorkItemRequest(DaraModel):
 
         if m.get('expectedVersion') is not None:
             self.expected_version = m.get('expectedVersion')
+
+        if m.get('opsUserCode') is not None:
+            self.ops_user_code = m.get('opsUserCode')
+
+        if m.get('opsUserId') is not None:
+            self.ops_user_id = m.get('opsUserId')
 
         if m.get('ownerUserId') is not None:
             self.owner_user_id = m.get('ownerUserId')

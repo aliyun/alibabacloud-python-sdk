@@ -12,7 +12,7 @@ class EnableTokenRequest(DaraModel):
     ):
         # The ID of the effective tenant.
         self.tenant_id = tenant_id
-        # The ID of the target user (WINNEXO platform user ID). If this parameter is left empty, the operation is performed on the caller. Administrators can specify another user\\"s ID to perform the operation on behalf of that user.
+        # The ID of the target user (WINNEXO platform user ID). If this parameter is left empty, the operation is performed on the caller. Administrators can specify another user\"s ID to perform the operation on behalf of that user.
         self.wn_user_id = wn_user_id
 
     def validate(self):

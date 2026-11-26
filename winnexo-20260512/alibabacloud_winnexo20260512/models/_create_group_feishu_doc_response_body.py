@@ -29,9 +29,9 @@ class CreateGroupFeishuDocResponseBody(DaraModel):
         self.gmt_create = gmt_create
         # The project group ID.
         self.group_id = group_id
-        # The description of the status code.
+        # The status code description.
         self.message = message
-        # The image name.
+        # The mirror name.
         self.name = name
         # The request ID.
         self.request_id = request_id
@@ -40,9 +40,9 @@ class CreateGroupFeishuDocResponseBody(DaraModel):
         # The original project ID.
         self.source_id = source_id
         # The signing status. Valid values:
-        # - CREATED: Created but not signed.
-        # - SUCCESS: Signed successfully.
-        # - STOP: Terminated.
+        # - CREATED: created but not signed
+        # - SUCCESS: signed successfully
+        # - STOP: terminated
         self.status = status
 
     def validate(self):

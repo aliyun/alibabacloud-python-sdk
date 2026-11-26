@@ -23,15 +23,15 @@ class ListTodosResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # Indicates whether more data is available.
+        # Specifies whether more data is available.
         self.has_more = has_more
         # The list of to-do items on the current page.
         self.items = items
-        # The effective maximum number of entries to return per page for the current request.
+        # The effective maximum number of entries returned per page for this request.
         self.max_results = max_results
         # The error description.
         self.message = message
-        # The pagination token for the next page. This field is an empty string if no more data is available.
+        # The pagination token for the next page. This is an empty string if no more data is available.
         self.next_token = next_token
         # The current page number.
         self.page = page
@@ -148,19 +148,19 @@ class ListTodosResponseBodyItems(DaraModel):
     ):
         # The number of assignees.
         self.assignee_count = assignee_count
-        # The completion time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+        # The completion time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
         self.completed_at = completed_at
         # The user ID of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_id = completed_by_user_id
         # The name of the user who completed the item. This field is empty if the item is not completed.
         self.completed_by_user_name = completed_by_user_name
-        # The creation time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+        # The creation time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
         self.gmt_create = gmt_create
-        # The last modification time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+        # The last modification time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
         self.gmt_modified = gmt_modified
-        # Indicates whether the caller has read the item.
+        # Specifies whether the caller has read the item.
         self.is_read = is_read
-        # The message ID of the assistant that sent the to-do item. This field is empty if there is no conversation source.
+        # The ID of the assistant message that generated the to-do item. This field is empty if there is no conversation source.
         self.message_id = message_id
         # The action status of the caller as an assignee.
         self.my_assignee_status = my_assignee_status
@@ -172,7 +172,7 @@ class ListTodosResponseBodyItems(DaraModel):
         self.question_count = question_count
         # The list of question summaries.
         self.question_summaries = question_summaries
-        # The source context. This context is passed through as-is during creation.
+        # The source context. This is passed through as-is during creation.
         self.source_context = source_context
         # The source type of the to-do item.
         self.source_type = source_type

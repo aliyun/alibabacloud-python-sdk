@@ -85,6 +85,8 @@ class GetChatSessionResponseBody(DaraModel):
 class GetChatSessionResponseBodySession(DaraModel):
     def __init__(
         self,
+        conversation_archive_status: str = None,
+        conversation_archived_time: int = None,
         created_at: int = None,
         id: str = None,
         is_expired: bool = None,
@@ -96,6 +98,10 @@ class GetChatSessionResponseBodySession(DaraModel):
         title: str = None,
         updated_at: int = None,
     ):
+        # 会话归档状态 ACTIVE/ARCHIVING/ARCHIVED
+        self.conversation_archive_status = conversation_archive_status
+        # 会话归档完成时间戳（秒）
+        self.conversation_archived_time = conversation_archived_time
         # The creation time.
         self.created_at = created_at
         # The message ID.
@@ -125,6 +131,12 @@ class GetChatSessionResponseBodySession(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.conversation_archive_status is not None:
+            result['conversationArchiveStatus'] = self.conversation_archive_status
+
+        if self.conversation_archived_time is not None:
+            result['conversationArchivedTime'] = self.conversation_archived_time
+
         if self.created_at is not None:
             result['createdAt'] = self.created_at
 
@@ -159,6 +171,12 @@ class GetChatSessionResponseBodySession(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('conversationArchiveStatus') is not None:
+            self.conversation_archive_status = m.get('conversationArchiveStatus')
+
+        if m.get('conversationArchivedTime') is not None:
+            self.conversation_archived_time = m.get('conversationArchivedTime')
+
         if m.get('createdAt') is not None:
             self.created_at = m.get('createdAt')
 
