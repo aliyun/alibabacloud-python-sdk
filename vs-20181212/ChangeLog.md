@@ -7,6 +7,9 @@
 2026-11-26 Version: 3.11.0
 - Generated python 2018-12-12 for vs.
 
+2026-11-26 Version: 3.11.0
+- Generated python 2018-12-12 for vs.
+
 2026-10-30 Version: 3.10.2
 - Update API CreateRenderingInstance: add response parameters Body.RenderingInstanceIds.
 
