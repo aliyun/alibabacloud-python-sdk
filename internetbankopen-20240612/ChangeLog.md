@@ -1,3 +1,6 @@
+2026-11-26 Version: 1.1.4
+- Generated python 2024-06-12 for InternetBankOpen.
+
 2026-11-18 Version: 1.1.3
 - Generated python 2024-06-12 for InternetBankOpen.
 

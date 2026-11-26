@@ -25,9 +25,6 @@ class Client(OpenApiClient):
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-beijing': 'internetbankopen.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('internetbankopen', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
