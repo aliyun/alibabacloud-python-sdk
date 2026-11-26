@@ -88,7 +88,7 @@ class ListVirusFileStatusesResponseBodyFileStatuses(DaraModel):
         self.console_operation_time = console_operation_time
         # The name of the department to which the user belongs. Multiple departments are separated by commas (,). The nearest department name in the organizational structure is returned, not the full path.
         self.department = department
-        # The unique identifier of the user\\"s endpoint device that detected this virus file.
+        # The unique identifier of the user\"s endpoint device that detected this virus file.
         self.dev_tag = dev_tag
         # The operating system type of the user terminal device. Valid values:
         # - **windows**: Windows.
@@ -98,7 +98,7 @@ class ListVirusFileStatusesResponseBodyFileStatuses(DaraModel):
         self.discovery_time = discovery_time
         # The MD5 hash of the virus file.
         self.file_md_5 = file_md_5
-        # The absolute path of the virus file on the user\\"s endpoint device.
+        # The absolute path of the virus file on the user\"s endpoint device.
         self.file_path = file_path
         # The disposition status. Valid values:
         # - **Pending**: Pending disposition.
@@ -106,7 +106,7 @@ class ListVirusFileStatusesResponseBodyFileStatuses(DaraModel):
         self.file_process_status = file_process_status
         # The size of the virus file, in bytes.
         self.file_size = file_size
-        # The hostname of the user\\"s endpoint device.
+        # The hostname of the user\"s endpoint device.
         self.hostname = hostname
         # The disposition action that has been performed. An empty string is returned when no disposition has been performed. Valid values:
         # - **AdminQuarantine**: Quarantined by administrator.
@@ -116,7 +116,7 @@ class ListVirusFileStatusesResponseBodyFileStatuses(DaraModel):
         # - **AutoQuarantine**: Automatically quarantined based on policy.
         # - **Fail**: Disposition failed.
         self.operation = operation
-        # The effective period of the disposition, in the format yyyy-MM-dd HH:mm:ss (UTC+8). The later of the actual disposition time on the user\\"s endpoint device and the time when the administrator initiated the disposition is used. A hyphen (-) is returned when no disposition has been performed.
+        # The effective period of the disposition, in the format yyyy-MM-dd HH:mm:ss (UTC+8). The later of the actual disposition time on the user\"s endpoint device and the time when the administrator initiated the disposition is used. A hyphen (-) is returned when no disposition has been performed.
         self.operation_time = operation_time
         # The risk level. Valid values:
         # - **High**: High risk.
@@ -127,7 +127,7 @@ class ListVirusFileStatusesResponseBodyFileStatuses(DaraModel):
         self.sase_user_id = sase_user_id
         # The ID of the virus scan task that detected this virus file. An empty string is returned when the file is detected by real-time protection.
         self.scan_task_id = scan_task_id
-        # The execution result description of the disposition or scan, reported by the user\\"s endpoint device. If a disposition record exists, the execution result of the disposition task is returned. Otherwise, the execution result of the scan task is returned.
+        # The execution result description of the disposition or scan, reported by the user\"s endpoint device. If a disposition record exists, the execution result of the disposition task is returned. Otherwise, the execution result of the scan task is returned.
         self.task_execution_info = task_execution_info
         # The username.
         self.username = username

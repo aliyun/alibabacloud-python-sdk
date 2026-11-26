@@ -13,7 +13,7 @@ class UpdatePrivateAccessApplicationL7SwitchResponseBody(DaraModel):
         l_7switch: main_models.UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch = None,
         request_id: str = None,
     ):
-        # The Layer 7 access switch configurations of the internal access application after the update.
+        # The Layer 7 access switch configuration of the internal access application after this update.
         self.l_7switch = l_7switch
         # The ID of the request.
         self.request_id = request_id
@@ -70,7 +70,7 @@ class UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch(DaraModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.download_audit_status = download_audit_status
-        # The effective port ranges for Layer 7 access, which are the intersection of the ports specified in this request and the configured port ranges of the internal access application. If Status is set to **Disabled**, an empty set is returned.
+        # The effective port ranges for Layer 7 access, which are the intersection of the ports specified in this request and the port ranges already configured for the internal access application. An empty set is returned when Status is set to **Disabled**.
         self.port_ranges = port_ranges
         # The source IP marking switch. Valid values:
         # - **Enabled**: Enabled.
@@ -80,14 +80,15 @@ class UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch(DaraModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status
-        # The request timeout period, in seconds.
+        # The request timeout period in seconds.
         self.timeout_sec = timeout_sec
+        # The URL access whitelist rules for the application. This parameter takes effect only when Status is set to Enabled. An empty value indicates that URLs and request methods are not restricted. A request passes the URL check only when the request path and the method meet any group of rules at the same time. Otherwise, the request is blocked. Passing the URL check does not allow requests that are already blocked by an access policy.
         self.url_access_paths = url_access_paths
         # The user marking switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.user_mark_status = user_mark_status
-        # The Host bypass prevention switch. Valid values:
+        # The host bypass prevention switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.zero_trust_status = zero_trust_status
@@ -189,7 +190,9 @@ class UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths(D
         allow_methods: List[str] = None,
         urls: List[str] = None,
     ):
+        # The list of HTTP request methods allowed for the paths in this group. An empty value indicates that request methods are not restricted.
         self.allow_methods = allow_methods
+        # The list of URL paths allowed for access in this group. You must specify at least 1 path and up to 20 paths. The paths match the path part in the request, excluding the protocol, domain name, and query parameters.
         self.urls = urls
 
     def validate(self):

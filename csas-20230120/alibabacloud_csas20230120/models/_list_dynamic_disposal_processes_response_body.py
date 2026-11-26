@@ -80,7 +80,7 @@ class ListDynamicDisposalProcessesResponseBodyDisposalProcesses(DaraModel):
         status: str = None,
         user_name: str = None,
     ):
-        # User\\"s department.
+        # User\"s department.
         self.department = department
         # Device ID.
         self.dev_tag = dev_tag

@@ -94,7 +94,7 @@ class UpdateUserDevicesSharingStatusResponseBodyDevices(DaraModel):
         self.cpu = cpu
         # Device registration time.
         self.create_time = create_time
-        # User\\"s department.
+        # User\"s department.
         self.department = department
         # Device ownership. Values:
         # 

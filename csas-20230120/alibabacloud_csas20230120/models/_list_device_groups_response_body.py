@@ -14,11 +14,11 @@ class ListDeviceGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The list of device tags.
+        # The list of device groups.
         self.device_groups = device_groups
         # Id of the request
         self.request_id = request_id
-        # The total number of device tags.
+        # The total number of device groups.
         self.total_num = total_num
 
     def validate(self):
@@ -73,25 +73,25 @@ class ListDeviceGroupsResponseBodyDeviceGroups(DaraModel):
         match_dev_tags: List[str] = None,
         name: str = None,
     ):
-        # The description of the device tag.
+        # The description of the device group.
         self.description = description
-        # The ID of the device tag.
+        # The ID of the device group.
         self.device_group_id = device_group_id
         # The operator for the dynamic device group rule.
         self.dynamic_operator = dynamic_operator
-        # The matching rule for the dynamic device tag.
+        # The matching rule for the dynamic device group.
         self.dynamic_rule = dynamic_rule
-        # The type of the device tag. Valid values:
-        # - **static**: Static device tag. Members consist of manually added terminal devices.
-        # - **dynamic**: Dynamic device tag. Members are automatically calculated based on matching rules when terminal devices report heartbeats.
+        # The type of the device group. Valid values:
+        # - **static**: A static device group. Its members are manually added terminal devices.
+        # - **dynamic**: A dynamic device group. Its members are automatically calculated based on matching rules when terminal devices report heartbeats.
         self.group_type = group_type
-        # Specifies whether the device tag is a built-in system device tag. Valid values:
-        # - **true**: Built-in system device tag.
-        # - **false**: Custom device tag.
+        # Specifies whether the device group is a built-in system device group. Valid values:
+        # - **true**: The device group is a built-in system device group.
+        # - **false**: The device group is a custom device group.
         self.is_default = is_default
-        # The IDs of the terminal devices that are associated with the device tag.
+        # The IDs of the terminal devices associated with the device group.
         self.match_dev_tags = match_dev_tags
-        # The name of the device tag.
+        # The name of the device group.
         self.name = name
 
     def validate(self):

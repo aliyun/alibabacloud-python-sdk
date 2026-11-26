@@ -13,7 +13,7 @@ class ExecutePeriod(DaraModel):
         schedule_effect: main_models.ExecutePeriodScheduleEffect = None,
         valid_type: str = None,
     ):
-        # The effective days of the week configuration. Used when ValidType is set to Weekly.
+        # The effective days of the week configuration. This parameter is used when ValidType is set to Weekly.
         self.effect_day = effect_day
         # The daily effective time range. Both Start and End use the 24-hour HH:mm format and are interpreted based on the current system time zone of the server. The time range cannot span across days.
         self.effect_time = effect_time
@@ -22,7 +22,7 @@ class ExecutePeriod(DaraModel):
         # The execution cycle mode. Valid values:
         # - **Once**: Single execution mode. Used in combination with ExecuteMode=Once.
         # - **Interval**: Periodic execution at a specified frequency. Used in combination with ExecuteMode=Schedule.
-        # - **Weekly**: Weekly execution on selected days. Used in combination with ExecuteMode=Schedule and EffectDay.
+        # - **Weekly**: Execution on selected days of the week. Used in combination with ExecuteMode=Schedule and EffectDay.
         self.valid_type = valid_type
 
     def validate(self):
@@ -77,7 +77,7 @@ class ExecutePeriodScheduleEffect(DaraModel):
         frequency: str = None,
         interval: int = None,
     ):
-        # The frequency unit for periodic execution. It is used together with Interval to specify the execution cycle. For example, a value of day indicates daily execution.
+        # The frequency unit for periodic execution. This parameter is used together with Interval to specify the execution cycle. For example, a value of day indicates daily execution.
         self.frequency = frequency
         # The periodic execution interval. When Frequency is set, valid values are 1 to 10000. The unit is determined by Frequency. For example, if Frequency is set to day and Interval is set to 1, the execution interval is one day.
         self.interval = interval
@@ -114,7 +114,7 @@ class ExecutePeriodEffectTime(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server. It must not be earlier than Start.
+        # The end time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server. The value cannot be earlier than Start.
         self.end = end
         # The start time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server.
         self.start = start
@@ -156,19 +156,19 @@ class ExecutePeriodEffectDay(DaraModel):
         tuesday: bool = None,
         wednesday: bool = None,
     ):
-        # Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.friday = friday
-        # Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.monday = monday
-        # Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.saturday = saturday
-        # Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.sunday = sunday
-        # Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.thursday = thursday
-        # Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.tuesday = tuesday
-        # Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
         self.wednesday = wednesday
 
     def validate(self):

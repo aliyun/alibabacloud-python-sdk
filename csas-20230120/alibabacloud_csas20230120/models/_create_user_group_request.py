@@ -97,11 +97,11 @@ class CreateUserGroupRequestAttributes(DaraModel):
         self.user_group_type = user_group_type
         # The value of the user group attribute.
         # 
-        # - If UserGroupType is set to **username**, this parameter specifies the username value. The value must be 1 to 128 characters long. It can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+        # - If UserGroupType is set to **username**, this parameter specifies the username value. The value must be 1 to 128 characters long. It can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\*), at signs (@), and spaces.
         # 
         # - If UserGroupType is set to **department**, this parameter specifies the department value. For example: OU=Department 1,OU=SASE DingTalk.
         # 
-        # - If UserGroupType is set to **email**, this parameter specifies the email address. For example: username\\@example.com.
+        # - If UserGroupType is set to **email**, this parameter specifies the email address. For example: username\@example.com.
         # 
         # - If UserGroupType is set to **telephone**, this parameter specifies the mobile phone number. For example: 13900001234.
         # 

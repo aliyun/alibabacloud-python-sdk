@@ -12,7 +12,9 @@ class AddDeviceBelongIdentifiersResponseBody(DaraModel):
         identifier_ids: List[str] = None,
         request_id: str = None,
     ):
+        # The IDs of the records actually added in the batch, returned in the input order of the added items. Skipped duplicates are not included in the array. An empty list is returned if no records are added in the batch.
         self.identifier_ids = identifier_ids
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
 
     def validate(self):

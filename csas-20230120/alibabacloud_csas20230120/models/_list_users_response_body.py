@@ -73,15 +73,15 @@ class ListUsersResponseBodyUsers(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # The user\\"s department.
+        # The user\"s department.
         self.department = department
-        # The user\\"s email address.
+        # The user\"s email address.
         self.email = email
         # A list of full department paths.
         self.full_department = full_department
         # The name of the Identity Provider (IdP).
         self.idp_name = idp_name
-        # The user\\"s phone number.
+        # The user\"s phone number.
         self.phone = phone
         # The user ID.
         self.sase_user_id = sase_user_id

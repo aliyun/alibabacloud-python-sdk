@@ -12,9 +12,9 @@ class ProcessItem(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application to which the process belongs. The example value com.apple.Terminal is the bundle ID of the macOS Terminal application.
+        # The bundle identifier of the application to which the process belongs. For example, com.apple.Terminal is the bundle identifier of the macOS Terminal application.
         self.bundle_id = bundle_id
-        # The operating system type of the user endpoint device to which the process belongs. Valid values:
+        # The operating system type of the user terminal device to which the process belongs. Valid values:
         # - windows: Windows.
         # - macOS: macOS.
         # - linux: Linux.

@@ -258,13 +258,13 @@ class ListPolicesForPrivateAccessTagResponseBodyTagsPolicesCustomUserAttributes(
         self.user_group_type = user_group_type
         # The value of the user group attribute.
         # 
-        # - If the user group type is **username**, this indicates the username\\"s value. The length is 1 to 128 characters. It supports Chinese characters, uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
+        # - If the user group type is **username**, this indicates the username\"s value. The length is 1 to 128 characters. It supports Chinese characters, uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
         # 
-        # - If the user group type is **department**, this indicates the department\\"s value. For example: OU=Department 1,OU=SASE DingTalk.
+        # - If the user group type is **department**, this indicates the department\"s value. For example: OU=Department 1,OU=SASE DingTalk.
         # 
-        # - If the user group type is **email**, this indicates the mailbox\\"s value. For example: username\\@example.com.
+        # - If the user group type is **email**, this indicates the mailbox\"s value. For example: username\@example.com.
         # 
-        # - If the user group type is **telephone**, this indicates the mobile phone\\"s value. For example: 13900001234.
+        # - If the user group type is **telephone**, this indicates the mobile phone\"s value. For example: 13900001234.
         self.value = value
 
     def validate(self):

@@ -66,7 +66,7 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
         user_mark_status: str = None,
         zero_trust_status: str = None,
     ):
-        # The ID of the internal-facing application.
+        # The ID of the internal access application.
         self.application_id = application_id
         # The device tag marking switch. Valid values:
         # - **Enabled**: Enabled.
@@ -80,20 +80,21 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
         self.port_ranges = port_ranges
         # The source IP marking switch. Valid values:
         # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Disabled**: Disabled.**
         self.src_ip_mark_status = src_ip_mark_status
-        # The status of the internal-facing access policy. Valid values:
+        # The status of the internal access policy. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status
         # The request timeout period.
         self.timeout_sec = timeout_sec
+        # The URL access whitelist rules for the application. These rules take effect only when Status is set to Enabled. An empty value indicates that URLs and request methods are not restricted. A request passes the URL check only when the request path and method meet any group of rules at the same time. Otherwise, the request is blocked. Passing the URL check does not allow requests that are already blocked by an access policy.
         self.url_access_paths = url_access_paths
         # The user marking switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.user_mark_status = user_mark_status
-        # The host bypass prevention switch. Valid values:
+        # The host anti-bypass switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.zero_trust_status = zero_trust_status
@@ -195,7 +196,9 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths
         allow_methods: List[str] = None,
         urls: List[str] = None,
     ):
+        # The list of HTTP request methods allowed for the paths in this group. An empty value indicates that request methods are not restricted.
         self.allow_methods = allow_methods
+        # The list of URL paths allowed for access in this group. The list must contain at least 1 path and up to 20 paths. This parameter matches the path part in the request, excluding the protocol, domain name, and query parameters.
         self.urls = urls
 
     def validate(self):
@@ -232,7 +235,7 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges(Dar
     ):
         # The start port.
         self.begin = begin
-        # The end port. The value must be greater than or equal to the start port.
+        # The end port. Must be greater than or equal to the start port.
         self.end = end
 
     def validate(self):

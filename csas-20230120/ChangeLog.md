@@ -1,3 +1,7 @@
+2026-11-26 Version: 1.26.1
+- Update API ListDeviceBelongIdentifiers: add request parameters IdentifierValues.
+
+
 2026-11-25 Version: 1.26.0
 - Support API AddDeviceBelongIdentifiers.
 - Support API ListDeviceBelongIdentifiers.

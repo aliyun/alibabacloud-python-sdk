@@ -165,7 +165,7 @@ class ListUserGroupsResponseBodyUserGroupsAttributes(DaraModel):
         # 
         # - If the user group type is **department**, this is the department name. Example: OU=Department 1,OU=SASE DingTalk.
         # 
-        # - If the user group type is **email**, this is the email address. Example: username\\@example.com.
+        # - If the user group type is **email**, this is the email address. Example: username\@example.com.
         # 
         # - If the user group type is **telephone**, this is the phone number. Example: 13900001234.
         self.value = value

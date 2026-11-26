@@ -31,7 +31,7 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.download_audit_status = download_audit_status
-        # The port ranges for the internal access application. Multiple port ranges cannot overlap or be duplicated. You can specify up to 50 port ranges. This parameter takes effect and is verified only when Status is set to **Enabled**. If this parameter is not specified or an empty set is specified, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the configured port ranges of the internal access application.
+        # The port ranges for the internal access application. Multiple port ranges cannot be duplicate or overlap. You can specify up to 50 port ranges. This parameter takes effect and is verified only when Status is set to **Enabled**. If this parameter is not specified or an empty set is specified, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the port ranges already configured for the internal access application.
         self.port_ranges = port_ranges
         # The source IP marking switch. Required. Valid values:
         # - **Enabled**: Enabled.
@@ -41,16 +41,17 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         # 
-        # When the value is set to **Disabled**, PortRanges is neither verified nor saved.
+        # When the value is **Disabled**, PortRanges is neither verified nor saved.
         self.status = status
-        # The request timeout period, in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the default value 60 is used.
+        # The request timeout period in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the default value 60 is used.
         self.timeout_sec = timeout_sec
+        # The URL access whitelist rules for the application. You can specify up to 20 rule groups. The size cannot exceed 2,048 bytes after JSON serialization. This parameter takes effect only when Status is set to Enabled. A request passes the URL check only when its path and method meet any group of rules at the same time; otherwise, the request is blocked. Requests that are already blocked by access policies are not allowed even if they pass the URL check. If this parameter is not specified or an empty array is specified, the original rules are cleared. The rules are also cleared when Status is set to Disabled.
         self.url_access_paths = url_access_paths
         # The user marking switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.user_mark_status = user_mark_status
-        # The Host bypass prevention switch. Required. Valid values:
+        # The host bypass prevention switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.zero_trust_status = zero_trust_status
@@ -152,7 +153,9 @@ class UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths(DaraModel):
         allow_methods: List[str] = None,
         urls: List[str] = None,
     ):
+        # The list of HTTP request methods allowed for the paths in this group. You can specify up to 7 methods. If this parameter is not specified or an empty array is specified, the request methods are not restricted.
         self.allow_methods = allow_methods
+        # The list of URL paths allowed for access in this group. You must specify at least 1 path and up to 20 paths. The paths match the path part in the request, excluding the protocol, domain name, and query parameters.
         self.urls = urls
 
     def validate(self):

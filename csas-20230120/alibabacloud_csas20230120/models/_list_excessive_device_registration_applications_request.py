@@ -26,11 +26,11 @@ class ListExcessiveDeviceRegistrationApplicationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The user\\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+        # The user\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
         # The device ID. You can get the device ID from the `DeviceTag` parameter returned by the following operations:
         # 
-        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\"s device.
         # 
         # - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
         self.device_tag = device_tag
@@ -44,13 +44,13 @@ class ListExcessiveDeviceRegistrationApplicationsRequest(DaraModel):
         self.page_size = page_size
         # The user ID. You can get the user ID from the `SaseUserId` parameter returned by the following operations:
         # 
-        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\"s device.
         # 
         # - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
         self.sase_user_id = sase_user_id
         # The statuses of excessive device registration applications.
         self.statuses = statuses
-        # The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+        # The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\*), at signs (@), and spaces.
         self.username = username
 
     def validate(self):

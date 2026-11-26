@@ -9601,6 +9601,8 @@ class Client(OpenApiClient):
             body_flat['IdentifierIds'] = request.identifier_ids
         if not DaraCore.is_null(request.identifier_type):
             body['IdentifierType'] = request.identifier_type
+        if not DaraCore.is_null(request.identifier_values):
+            body_flat['IdentifierValues'] = request.identifier_values
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
@@ -9641,6 +9643,8 @@ class Client(OpenApiClient):
             body_flat['IdentifierIds'] = request.identifier_ids
         if not DaraCore.is_null(request.identifier_type):
             body['IdentifierType'] = request.identifier_type
+        if not DaraCore.is_null(request.identifier_values):
+            body_flat['IdentifierValues'] = request.identifier_values
         if not DaraCore.is_null(request.max_results):
             body['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):

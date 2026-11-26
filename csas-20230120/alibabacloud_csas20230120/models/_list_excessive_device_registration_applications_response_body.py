@@ -82,7 +82,7 @@ class ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications(DaraMo
         self.application_id = application_id
         # The creation time of the excessive device registration application.
         self.create_time = create_time
-        # The user\\"s department.
+        # The user\"s department.
         self.department = department
         # The reason for the excessive device registration application.
         self.description = description

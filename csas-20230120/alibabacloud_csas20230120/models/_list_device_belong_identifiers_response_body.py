@@ -16,10 +16,15 @@ class ListDeviceBelongIdentifiersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The device ownership identifier records on the current page. An empty list is returned if no matching records are found.
         self.identifiers = identifiers
+        # A reserved pagination field. No valid value is returned in the current version.
         self.max_results = max_results
+        # A reserved pagination cursor. No valid value is returned in the current version.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of records that match the filter conditions for the current tenant.
         self.total_count = total_count
 
     def validate(self):
@@ -82,9 +87,13 @@ class ListDeviceBelongIdentifiersResponseBodyIdentifiers(DaraModel):
         identifier_type: str = None,
         identifier_value: str = None,
     ):
+        # The time when the record was created. The time is in RFC 3339 format and includes time zone information.
         self.create_time = create_time
+        # The ID of the identifier record, returned as a decimal string. You can use the ID to query or remove the record.
         self.identifier_id = identifier_id
+        # The identifier type. MAC indicates the MAC address of the network interface controller (NIC), SystemSN indicates the system serial number, and BIOSSN indicates the BIOS serial number.
         self.identifier_type = identifier_type
+        # The identifier value in the record. MAC addresses are in the lowercase colon-separated format. System serial numbers and BIOS serial numbers are returned as recorded.
         self.identifier_value = identifier_value
 
     def validate(self):

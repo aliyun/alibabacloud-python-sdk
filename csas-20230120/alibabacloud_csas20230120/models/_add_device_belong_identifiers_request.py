@@ -12,6 +12,8 @@ class AddDeviceBelongIdentifiersRequest(DaraModel):
         self,
         identifiers: List[main_models.AddDeviceBelongIdentifiersRequestIdentifiers] = None,
     ):
+        # The list of device ownership identifiers to add. Each batch supports 1 to 1,000 items. Each item must include IdentifierType and IdentifierValue.
+        # 
         # This parameter is required.
         self.identifiers = identifiers
 
@@ -49,7 +51,9 @@ class AddDeviceBelongIdentifiersRequestIdentifiers(DaraModel):
         identifier_type: str = None,
         identifier_value: str = None,
     ):
+        # The identifier type. MAC indicates a network interface controller (NIC) MAC address, SystemSN indicates a system serial number, and BIOSSN indicates a BIOS serial number.
         self.identifier_type = identifier_type
+        # The identifier value. A MAC address must be a 6-byte address. A system serial number accepts 1 to 64 characters, and a BIOS serial number accepts 1 to 128 characters. MAC addresses are converted to the lowercase colon-separated format when stored, while system serial numbers and BIOS serial numbers retain their original values.
         self.identifier_value = identifier_value
 
     def validate(self):

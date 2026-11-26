@@ -262,7 +262,7 @@ class ListPolicesForPrivateAccessApplicationResponseBodyApplicationsPoliciesCust
         # 
         # - If the user group type is **department**, this parameter specifies the value of the department. Example: OU=Department 1,OU=SASE DingTalk.
         # 
-        # - If the user group type is **email**, this parameter specifies the value of the email address. Example: username\\@example.com.
+        # - If the user group type is **email**, this parameter specifies the value of the email address. Example: username\@example.com.
         # 
         # - If the user group type is **telephone**, this parameter specifies the value of the mobile number. Example: 13900001234.
         self.value = value
