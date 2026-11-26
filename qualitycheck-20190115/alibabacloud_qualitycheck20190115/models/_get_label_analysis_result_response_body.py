@@ -16,17 +16,15 @@ class GetLabelAnalysisResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **200** indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+        # The result code. A value of **200** indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The returned result.
+        # The returned results.
         self.data = data
-        # The error message returned when the call fails.
+        # The error message returned when an error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -85,17 +83,17 @@ class GetLabelAnalysisResultResponseBodyData(DaraModel):
         tyxm_plus_count: int = None,
         tyxm_turbo_count: int = None,
     ):
-        # The total number of input tokens accumulated during this task.
+        # The total number of input tokens for this task.
         self.input_tokens = input_tokens
-        # The total number of output tokens accumulated during this task.
+        # The total number of output tokens for this task.
         self.output_tokens = output_tokens
         # The tree-structured tag results.
         self.tag_list = tag_list
-        # The total number of tokens accumulated during this task.
+        # The total number of tokens for this task.
         self.total_tokens = total_tokens
-        # The total number of Qwen-Plus model calls accumulated during this task.
+        # The total number of times the Qwen-Plus model was called for this task.
         self.tyxm_plus_count = tyxm_plus_count
-        # The total number of Qwen-Turbo model calls accumulated during this task.
+        # The total number of times the Qwen-Turbo model was called for this task.
         self.tyxm_turbo_count = tyxm_turbo_count
 
     def validate(self):
@@ -165,7 +163,7 @@ class GetLabelAnalysisResultResponseBodyDataTagList(DaraModel):
     ):
         # The list of child nodes.
         self.children = children
-        # The description of the tag analysis.
+        # The tag analysis description.
         self.remarks = remarks
         # The tag name.
         self.tag_name = tag_name
@@ -219,7 +217,7 @@ class GetLabelAnalysisResultResponseBodyDataTagListChildren(DaraModel):
     ):
         # The list of child nodes.
         self.children = children
-        # The description of the tag analysis.
+        # The tag analysis description.
         self.remarks = remarks
         # The tag name.
         self.tag_name = tag_name
@@ -273,7 +271,7 @@ class GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren(DaraModel):
     ):
         # The list of child nodes.
         self.children = children
-        # The description of the tag analysis.
+        # The tag analysis description.
         self.remarks = remarks
         # The tag name.
         self.tag_name = tag_name
@@ -327,7 +325,7 @@ class GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren(Dara
     ):
         # The list of child nodes.
         self.children = children
-        # The description of the tag analysis.
+        # The tag analysis description.
         self.remarks = remarks
         # The tag name.
         self.tag_name = tag_name
@@ -378,7 +376,7 @@ class GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChild
         remarks: str = None,
         tag_name: str = None,
     ):
-        # The description of the tag analysis.
+        # The tag analysis description.
         self.remarks = remarks
         # The tag name.
         self.tag_name = tag_name

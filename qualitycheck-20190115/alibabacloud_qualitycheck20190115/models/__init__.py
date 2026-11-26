@@ -51,6 +51,9 @@ from ._create_asr_vocab_response import CreateAsrVocabResponse
 from ._create_check_type_to_scheme_request import CreateCheckTypeToSchemeRequest
 from ._create_check_type_to_scheme_response_body import CreateCheckTypeToSchemeResponseBody
 from ._create_check_type_to_scheme_response import CreateCheckTypeToSchemeResponse
+from ._create_http_event_config_request import CreateHttpEventConfigRequest
+from ._create_http_event_config_response_body import CreateHttpEventConfigResponseBody
+from ._create_http_event_config_response import CreateHttpEventConfigResponse
 from ._create_mining_task_request import CreateMiningTaskRequest
 from ._create_mining_task_response_body import CreateMiningTaskResponseBody
 from ._create_mining_task_response import CreateMiningTaskResponse
@@ -99,6 +102,9 @@ from ._delete_customization_config_response import DeleteCustomizationConfigResp
 from ._delete_data_set_request import DeleteDataSetRequest
 from ._delete_data_set_response_body import DeleteDataSetResponseBody
 from ._delete_data_set_response import DeleteDataSetResponse
+from ._delete_http_event_config_request import DeleteHttpEventConfigRequest
+from ._delete_http_event_config_response_body import DeleteHttpEventConfigResponseBody
+from ._delete_http_event_config_response import DeleteHttpEventConfigResponse
 from ._delete_quality_check_scheme_request import DeleteQualityCheckSchemeRequest
 from ._delete_quality_check_scheme_response_body import DeleteQualityCheckSchemeResponseBody
 from ._delete_quality_check_scheme_response import DeleteQualityCheckSchemeResponse
@@ -150,6 +156,9 @@ from ._get_business_category_list_response import GetBusinessCategoryListRespons
 from ._get_customization_config_list_request import GetCustomizationConfigListRequest
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBody
 from ._get_customization_config_list_response import GetCustomizationConfigListResponse
+from ._get_http_event_config_request import GetHttpEventConfigRequest
+from ._get_http_event_config_response_body import GetHttpEventConfigResponseBody
+from ._get_http_event_config_response import GetHttpEventConfigResponse
 from ._get_label_analysis_result_request import GetLabelAnalysisResultRequest
 from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBody
 from ._get_label_analysis_result_response import GetLabelAnalysisResultResponse
@@ -280,6 +289,9 @@ from ._submit_review_info_v4response import SubmitReviewInfoV4Response
 from ._sync_quality_check_request import SyncQualityCheckRequest
 from ._sync_quality_check_response_body import SyncQualityCheckResponseBody
 from ._sync_quality_check_response import SyncQualityCheckResponse
+from ._test_http_event_config_request import TestHttpEventConfigRequest
+from ._test_http_event_config_response_body import TestHttpEventConfigResponseBody
+from ._test_http_event_config_response import TestHttpEventConfigResponse
 from ._test_rule_v4request import TestRuleV4Request
 from ._test_rule_v4response_body import TestRuleV4ResponseBody
 from ._test_rule_v4response import TestRuleV4Response
@@ -292,6 +304,9 @@ from ._update_asr_vocab_response import UpdateAsrVocabResponse
 from ._update_check_type_to_scheme_request import UpdateCheckTypeToSchemeRequest
 from ._update_check_type_to_scheme_response_body import UpdateCheckTypeToSchemeResponseBody
 from ._update_check_type_to_scheme_response import UpdateCheckTypeToSchemeResponse
+from ._update_http_event_config_request import UpdateHttpEventConfigRequest
+from ._update_http_event_config_response_body import UpdateHttpEventConfigResponseBody
+from ._update_http_event_config_response import UpdateHttpEventConfigResponse
 from ._update_quality_check_data_request import UpdateQualityCheckDataRequest
 from ._update_quality_check_data_response_body import UpdateQualityCheckDataResponseBody
 from ._update_quality_check_data_response import UpdateQualityCheckDataResponse
@@ -425,6 +440,8 @@ from ._get_business_category_list_response_body import GetBusinessCategoryListRe
 from ._get_business_category_list_response_body import GetBusinessCategoryListResponseBodyData
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo
 from ._get_customization_config_list_response_body import GetCustomizationConfigListResponseBodyData
+from ._get_http_event_config_response_body import GetHttpEventConfigResponseBodyDataEventConfig
+from ._get_http_event_config_response_body import GetHttpEventConfigResponseBodyData
 from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren
 from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren
 from ._get_label_analysis_result_response_body import GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren
@@ -504,6 +521,8 @@ from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDa
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistories
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataManualScoreInfoList
+from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule
+from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule
 from ._get_result_to_review_response_body import GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory
@@ -732,6 +751,9 @@ __all__ = [
     CreateCheckTypeToSchemeRequest,
     CreateCheckTypeToSchemeResponseBody,
     CreateCheckTypeToSchemeResponse,
+    CreateHttpEventConfigRequest,
+    CreateHttpEventConfigResponseBody,
+    CreateHttpEventConfigResponse,
     CreateMiningTaskRequest,
     CreateMiningTaskResponseBody,
     CreateMiningTaskResponse,
@@ -780,6 +802,9 @@ __all__ = [
     DeleteDataSetRequest,
     DeleteDataSetResponseBody,
     DeleteDataSetResponse,
+    DeleteHttpEventConfigRequest,
+    DeleteHttpEventConfigResponseBody,
+    DeleteHttpEventConfigResponse,
     DeleteQualityCheckSchemeRequest,
     DeleteQualityCheckSchemeResponseBody,
     DeleteQualityCheckSchemeResponse,
@@ -831,6 +856,9 @@ __all__ = [
     GetCustomizationConfigListRequest,
     GetCustomizationConfigListResponseBody,
     GetCustomizationConfigListResponse,
+    GetHttpEventConfigRequest,
+    GetHttpEventConfigResponseBody,
+    GetHttpEventConfigResponse,
     GetLabelAnalysisResultRequest,
     GetLabelAnalysisResultResponseBody,
     GetLabelAnalysisResultResponse,
@@ -961,6 +989,9 @@ __all__ = [
     SyncQualityCheckRequest,
     SyncQualityCheckResponseBody,
     SyncQualityCheckResponse,
+    TestHttpEventConfigRequest,
+    TestHttpEventConfigResponseBody,
+    TestHttpEventConfigResponse,
     TestRuleV4Request,
     TestRuleV4ResponseBody,
     TestRuleV4Response,
@@ -973,6 +1004,9 @@ __all__ = [
     UpdateCheckTypeToSchemeRequest,
     UpdateCheckTypeToSchemeResponseBody,
     UpdateCheckTypeToSchemeResponse,
+    UpdateHttpEventConfigRequest,
+    UpdateHttpEventConfigResponseBody,
+    UpdateHttpEventConfigResponse,
     UpdateQualityCheckDataRequest,
     UpdateQualityCheckDataResponseBody,
     UpdateQualityCheckDataResponse,
@@ -1106,6 +1140,8 @@ __all__ = [
     GetBusinessCategoryListResponseBodyData,
     GetCustomizationConfigListResponseBodyDataModelCustomizationDataSetPo,
     GetCustomizationConfigListResponseBodyData,
+    GetHttpEventConfigResponseBodyDataEventConfig,
+    GetHttpEventConfigResponseBodyData,
     GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren,
     GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren,
     GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren,
@@ -1185,6 +1221,8 @@ __all__ = [
     GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfoComplainHistories,
     GetResultToReviewResponseBodyDataManualScoreInfoListManualScoreInfo,
     GetResultToReviewResponseBodyDataManualScoreInfoList,
+    GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule,
+    GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule,
     GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule,
     GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule,
     GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory,

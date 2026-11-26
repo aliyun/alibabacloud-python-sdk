@@ -24,31 +24,31 @@ class ListRulesV4ResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Business type. This field has no practical use. Ignore it.
+        # The business type. This parameter has no practical meaning and can be ignored.
         self.business_type = business_type
-        # Result code. **200** means success. Any other value means failure. Callers can use this field to identify the cause of failure.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can determine the cause of the failure based on this parameter.
         self.code = code
-        # Total number of items.
+        # The total number of entries.
         self.count = count
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Response data.
+        # The returned results.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details if the request failed. Returns **successful** if the request succeeded.
+        # The error details when an error occurs, or **successful** when the request is successful.
         self.message = message
-        # Error details if the request failed. Use this field when multiple messages are returned.
+        # The error details when an error occurs. This parameter is used when multiple messages are returned.
         self.messages = messages
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Number of rows per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. Callers can use this field to determine success: true means success. **false** or **null** means failure.
+        # Indicates whether the request is successful. You can determine whether the request is successful based on this parameter. A value of **true** indicates success. A value of **false** or **null** indicates failure.
         self.success = success
-        # Total number of items.
+        # The total number of data entries.
         self.total_count = total_count
 
     def validate(self):

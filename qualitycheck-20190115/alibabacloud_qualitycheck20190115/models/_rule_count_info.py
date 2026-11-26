@@ -82,7 +82,7 @@ class RuleCountInfo(DaraModel):
         self.create_time = create_time
         # You can set this parameter to 1 to reject rule edits, or to 0 or null to allow rule edits.
         self.deny = deny
-        # Indicates if the rule is active. \\`0\\`: No. \\`1\\`: Yes.
+        # Indicates if the rule is active. \`0\`: No. \`1\`: Yes.
         self.effective = effective
         # The effective end time.
         self.effective_end_time = effective_end_time
@@ -90,7 +90,7 @@ class RuleCountInfo(DaraModel):
         self.effective_start_time = effective_start_time
         # The end time.
         self.end_time = end_time
-        # Indicates if the rule is active for the entire lifecycle. \\`0\\`: No. \\`1\\`: Yes.
+        # Indicates if the rule is active for the entire lifecycle. \`0\`: No. \`1\`: Yes.
         self.full_cycle = full_cycle
         # The flow canvas, in JSON format.
         self.graph_flow = graph_flow
@@ -138,7 +138,7 @@ class RuleCountInfo(DaraModel):
         self.review_status_name = review_status_name
         # The rule ID.
         self.rid = rid
-        # The scoring type. \\`8\\`: No score is set.
+        # The scoring type. \`8\`: No score is set.
         self.rule_score_single_type = rule_score_single_type
         # Specifies if a score is calculated.
         # 

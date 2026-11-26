@@ -13,7 +13,7 @@ class AddRuleV4Request(DaraModel):
     ):
         # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
-        # Specifies whether to copy the rule. Set this to \\`true\\` to copy the rule.
+        # Specifies whether to copy the rule. Set this to \`true\` to copy the rule.
         self.is_copy = is_copy
         # For more information about JsonStrForRule, see [`Rule object description`](https://help.aliyun.com/document_detail/453053.html).
         # 

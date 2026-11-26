@@ -292,7 +292,7 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoList(DaraModel):
         self.condition_info_list = condition_info_list
         # Judgement node name.
         self.judge_node_name = judge_node_name
-        # Lambda expression. Example: a&\\&b.
+        # Lambda expression. Example: a&\&b.
         self.lambda_ = lambda_
         # Whether the rule was hit.
         self.matched = matched
@@ -691,7 +691,7 @@ class TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWord
         self.similar_phrase = similar_phrase
         # Internal use only. Ignore this field.
         self.tid = tid
-        # The position of the character that follows the highlighted keyword. The character at the \\`to\\` position is not included in the highlight. For example, if \\`from\\` is 0 and \\`to\\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
+        # The position of the character that follows the highlighted keyword. The character at the \`to\` position is not included in the highlight. For example, if \`from\` is 0 and \`to\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
         self.to = to
         # Internal use only. Ignore this field.
         self.uuid = uuid

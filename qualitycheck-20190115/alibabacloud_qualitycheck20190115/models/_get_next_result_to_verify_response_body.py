@@ -20,11 +20,11 @@ class GetNextResultToVerifyResponseBody(DaraModel):
         self.code = code
         # File details.
         self.data = data
-        # Error details if an error occurs. If successful, the value is \\"successful\\".
+        # Error details if an error occurs. If successful, the value is \"successful\".
         self.message = message
         # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. The caller can determine if the request was successful using this field: \\`true\\` indicates success; \\`false\\`/\\`null\\` indicates failure.
+        # Indicates whether the request was successful. The caller can determine if the request was successful using this field: \`true\` indicates success; \`false\`/\`null\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -114,7 +114,7 @@ class GetNextResultToVerifyResponseBodyData(DaraModel):
         self.total_count = total_count
         # Last update time.
         self.update_time = update_time
-        # Indicates whether manual verification has been performed. Possible values: \\`false\\`: Not yet verified; \\`true\\`: Already verified.
+        # Indicates whether manual verification has been performed. Possible values: \`false\`: Not yet verified; \`true\`: Already verified.
         self.verified = verified
         # The total number of verified files.
         self.verified_count = verified_count

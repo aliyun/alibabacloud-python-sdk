@@ -10,9 +10,9 @@ class ListSchemeTaskConfigRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The ID of the business workspace.
         self.base_me_agent_id = base_me_agent_id
-        # The request parameter JSON. For details, see the supplementary description of request parameters.
+        # The input JSON string. For more information, see the supplementary description of request parameters.
         self.json_str = json_str
 
     def validate(self):

@@ -14,7 +14,7 @@ class UpdateTagResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of **200** indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+        # The result code. A value of **200** indicates success, whereas any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
         # The returned result.
         self.data = data
@@ -81,17 +81,17 @@ class UpdateTagResponseBodyData(DaraModel):
         parent_tag_id: int = None,
         tag_id: int = None,
     ):
-        # The time when the label node was created.
+        # The time when the tag node was created.
         self.create_time = create_time
-        # The label description.
+        # The tag description.
         self.description = description
-        # The time when the label node was last modified.
+        # The time when the tag node was last modified.
         self.modify_time = modify_time
-        # The label name.
+        # The tag name.
         self.name = name
-        # The ID of the parent label node.
+        # The ID of the parent tag node.
         self.parent_tag_id = parent_tag_id
-        # The label ID.
+        # The tag ID.
         self.tag_id = tag_id
 
     def validate(self):

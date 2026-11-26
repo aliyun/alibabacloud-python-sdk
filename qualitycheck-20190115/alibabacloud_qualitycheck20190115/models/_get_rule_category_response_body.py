@@ -19,11 +19,11 @@ class GetRuleCategoryResponseBody(DaraModel):
         # The result code. A value of **200** indicates success. Other values indicate failure. Use this field to determine the cause of a failure.
         self.code = code
         self.data = data
-        # If an error occurs, this field provides error details. If the call is successful, the value is \\`successful\\`.
+        # If an error occurs, this field provides error details. If the call is successful, the value is \`successful\`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+        # Indicates whether the call was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
         self.success = success
 
     def validate(self):

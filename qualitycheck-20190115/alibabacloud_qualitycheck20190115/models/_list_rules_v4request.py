@@ -37,58 +37,59 @@ class ListRulesV4Request(DaraModel):
         update_start_time: str = None,
         update_user_id: int = None,
     ):
-        # Workspace ID.
+        # The ID of the business workspace.
         self.base_me_agent_id = base_me_agent_id
-        # Name of the business that owns the rule.
+        # The name of the business to which the rule belongs.
         self.business_name = business_name
-        # Top-level business category.
+        # The major business category.
         self.business_range = business_range
-        # Category name.
+        # The category name.
         self.category_name = category_name
-        # Whether to count the total number of items.
+        # Specifies whether to count the total number of entries.
         self.count_total = count_total
-        # ID of the rule creator. Same as CreateUserId. Specify one only.
+        # The ID of the rule creator. This parameter is equivalent to CreateUserId. Specify only one of them.
         self.create_empid = create_empid
-        # ID of the rule creator. Same as CreateEmpId. Specify one only.
+        # The ID of the rule creator. This parameter is equivalent to CreateEmpid. Specify only one of them.
         self.create_user_id = create_user_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Filter by creation time (right boundary).
+        # The end time for filtering by creation time.
         self.end_time = end_time
-        # ID of the rule updater. Same as UpdateUserId. Specify one only.
+        # The ID of the rule updater. This parameter is equivalent to UpdateUserId. Specify only one of them.
         self.last_update_empid = last_update_empid
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # Required fields.
+        # The required fields.
         self.require_infos = require_infos
-        # Search by rule ID.
+        # The rule ID to search for.
         self.rid = rid
-        # Search by rule ID or rule name.
+        # The rule ID or rule name to search for.
         self.rule_id_or_rule_name = rule_id_or_rule_name
-        # Scoring type.
+        # The scoring type.
         self.rule_score_single_type = rule_score_single_type
-        # Rule category.
+        # The rule category.
         self.rule_type = rule_type
-        # Quality inspection scheme ID.
+        # The ID of the quality inspection plan.
         self.scheme_id = scheme_id
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Filter by creation time (left boundary).
+        # The start time for filtering by creation time.
         self.start_time = start_time
-        # Rule status.
+        # The rule status.
         self.status = status
+        # The rule type.
         self.target_type = target_type
-        # Type value of the rule category that the rule belongs to.
+        # The type value of the rule type to which the rule belongs.
         self.type = type
-        # Name of the rule category that the rule belongs to.
+        # The name of the rule type to which the rule belongs.
         self.type_name = type_name
-        # Filter by update time (right boundary).
+        # The end time for filtering by update time.
         self.update_end_time = update_end_time
-        # Filter by update time (left boundary).
+        # The start time for filtering by update time.
         self.update_start_time = update_start_time
-        # ID of the rule updater. Same as LastUpdateEmpId. Specify one only.
+        # The ID of the rule updater. This parameter is equivalent to LastUpdateEmpid. Specify only one of them.
         self.update_user_id = update_user_id
 
     def validate(self):

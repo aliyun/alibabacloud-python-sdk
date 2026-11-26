@@ -14,11 +14,11 @@ class DeleteWarningConfigResponseBody(DaraModel):
     ):
         # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed. You can use this field to determine the cause of the failure.
         self.code = code
-        # If the request fails, this field provides the error details. If the request is successful, the value is \\`successful\\`.
+        # If the request fails, this field provides the error details. If the request is successful, the value is \`successful\`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+        # Indicates whether the request was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
         self.success = success
 
     def validate(self):

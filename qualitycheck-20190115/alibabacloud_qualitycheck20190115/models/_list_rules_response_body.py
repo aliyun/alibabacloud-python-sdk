@@ -134,9 +134,9 @@ class ListRulesResponseBodyData(DaraModel):
         # 
         # - 0: System-provided rule
         self.rule_type = rule_type
-        # The type value of the rule\\"s rule type.
+        # The type value of the rule\"s rule type.
         self.type = type
-        # The name of the rule\\"s rule type.
+        # The name of the rule\"s rule type.
         self.type_name = type_name
 
     def validate(self):

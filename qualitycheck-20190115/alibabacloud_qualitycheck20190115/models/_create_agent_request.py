@@ -10,9 +10,9 @@ class CreateAgentRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The business workspace ID.
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
-        # The complete **JSON string** information. For more information, see the following details.
+        # The complete **JSON string**. For more information, see the following details.
         self.json_str = json_str
 
     def validate(self):

@@ -14,15 +14,15 @@ class ExecuteAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 indicates success.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
         # The error message returned when an error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. The caller can use this field to determine whether the request was successful. Valid values: **true**: The request was successful. **false/null**: The request failed.
+        # Indicates whether the request is successful. You can use this field to determine the request result. **true** indicates success. **false** or **null** indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,7 +83,7 @@ class ExecuteAgentResponseBodyData(DaraModel):
         tyxm_plus_count: str = None,
         tyxm_turbo_count: str = None,
     ):
-        # If streaming output is used, this value is null during generation. When generation is complete, the value is stop if the generation ended due to a stop token.
+        # The reason why the generation finished. For streaming output, this field is null during generation. If the generation stops due to a stop token, the value is stop.
         self.finish_reason = finish_reason
         # The number of input tokens.
         self.input_tokens = input_tokens
@@ -95,9 +95,9 @@ class ExecuteAgentResponseBodyData(DaraModel):
         self.text = text
         # The total number of tokens.
         self.total_tokens = total_tokens
-        # The number of times the plus model was used.
+        # The number of times the plus model is used.
         self.tyxm_plus_count = tyxm_plus_count
-        # The number of times the turbo model was used.
+        # The number of times the turbo model is used.
         self.tyxm_turbo_count = tyxm_turbo_count
 
     def validate(self):

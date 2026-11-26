@@ -12,7 +12,7 @@ class DeleteAgentRequest(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
-        # A JSON-formatted string. For more information about the complete JSON string, see the following details.
+        # The JSON-formatted string. For the complete JSON string information, see the following details.
         self.json_str = json_str
 
     def validate(self):

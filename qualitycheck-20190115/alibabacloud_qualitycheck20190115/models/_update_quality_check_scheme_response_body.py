@@ -21,12 +21,12 @@ class UpdateQualityCheckSchemeResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+        # The error details if the request fails. If the request is successful, the value is \`successful\`.
         self.message = message
         self.messages = messages
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+        # Indicates whether the request was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
         self.success = success
 
     def validate(self):

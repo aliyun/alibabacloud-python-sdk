@@ -16,23 +16,22 @@ class GetSkillGroupConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of **200** indicates a successful response.
+        # The result code. A value of **200** indicates success.
         # 
-        # > Other values indicate a failed response. You can use this field to identify the cause of the failure.
+        # > Any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The details of the skill group rule configuration.
+        # The list of skill group rule configuration details.
         self.data = data
-        # The response message. If the request is successful, a value of **successful** is returned. If the request fails, an error message is returned.
+        # The error details when an error occurs, or **successful** when the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         # 
-        # The caller can use this field to determine whether the request was successful:
+        # You can use this field to determine whether the request is successful:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - false or **null**: The request failed.
+        # - **true**: The request is successful.
+        # - **false/null**: The request failed.
         self.success = success
 
     def validate(self):
@@ -105,20 +104,18 @@ class GetSkillGroupConfigResponseBodyData(DaraModel):
         vocab_id: int = None,
         vocab_name: str = None,
     ):
-        # Indicates whether to perform a full-text quality check after the real-time quality check is complete. Valid values:
-        # 
-        # - 1: yes
-        # 
-        # - 0: no
+        # Specifies whether to perform full-text quality check after the real-time quality check ends. Valid values:
+        # - 1: Perform full-text quality check.
+        # - 0: Do not perform full-text quality check.
         self.all_content_quality_check = all_content_quality_check
-        # The ID of the rule used for the full-text quality check.
+        # The quality check rule IDs for full-text quality check.
         self.all_rids = all_rids
         self.all_rule_list = all_rule_list
-        # The time when the configuration was created.
+        # The creation time.
         self.create_time = create_time
         # The configuration ID.
         self.id = id
-        # This is an internal parameter. You can ignore it.
+        # An internal field. Ignore this field.
         self.instance_id = instance_id
         # The language model ID.
         self.model_id = model_id
@@ -127,29 +124,31 @@ class GetSkillGroupConfigResponseBodyData(DaraModel):
         # The configuration name.
         self.name = name
         # The quality check type. Valid values:
-        # 
-        # - 0: offline
-        # 
-        # - 1: real-time
+        # - 0: Offline quality check.
+        # - 1: Real-time quality check.
         self.quality_check_type = quality_check_type
         # The quality check rule ID.
         self.rid = rid
         self.rule_list = rule_list
-        # The source of the skill group. The value is fixed at 0.
+        # The source of the skill group. The value is fixed to 0.
         self.skill_group_from = skill_group_from
         # The skill group ID.
         self.skill_group_id = skill_group_id
         # The skill group name.
         self.skill_group_name = skill_group_name
-        # The status of the configuration. Valid values: 0 (disabled) and 1 (enabled).
+        # The enabling status. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.status = status
-        # The configuration type. Valid values: 1 (custom configuration) and 0 (built-in configuration).
+        # The configuration type. Valid values:
+        # - 1: Custom configuration.
+        # - 0: Built-in system configuration.
         self.type = type
-        # The time when the configuration was last updated.
+        # The update time.
         self.update_time = update_time
-        # The hotword ID.
+        # The hot word ID.
         self.vocab_id = vocab_id
-        # The hotword name.
+        # The hot word name.
         self.vocab_name = vocab_name
 
     def validate(self):

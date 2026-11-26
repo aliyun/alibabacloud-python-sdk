@@ -16,14 +16,14 @@ class UploadDataSyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of **200** indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. The caller can determine the cause of failure based on this field.
         self.code = code
         self.data = data
-        # The error details when an error occurs. The value is **successful** when the request succeeds.
+        # The error details when an error occurs, or **successful** when the request succeeds.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false/null.
+        # Indicates whether the request is successful. The caller can determine whether the request is successful based on this field. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):

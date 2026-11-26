@@ -17,11 +17,11 @@ class DeleteAgentResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The error message, if any.
+        # The error message returned if an error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true: The request was successful. false/null: The request failed.
+        # Indicates whether the request is successful. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):

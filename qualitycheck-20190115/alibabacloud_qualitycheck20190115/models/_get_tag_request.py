@@ -10,9 +10,9 @@ class GetTagRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The ID of the business space.
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
-        # The complete JSON string. For more information, see the following detailed information.
+        # The complete JSON string. For more information, see the following details.
         self.json_str = json_str
 
     def validate(self):

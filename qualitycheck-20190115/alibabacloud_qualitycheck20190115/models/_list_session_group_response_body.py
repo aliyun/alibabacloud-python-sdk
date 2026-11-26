@@ -24,7 +24,7 @@ class ListSessionGroupResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of \\`200\\` indicates that the request was successful. Other values indicate that the request failed.
+        # The result code. A value of \`200\` indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
         # The total number of entries.
         self.count = count
@@ -35,7 +35,7 @@ class ListSessionGroupResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The data marker. To retrieve more than 10,000 records, include the LastDataId from the previous response in the next request.
         self.last_data_id = last_data_id
-        # The error details if the request fails. \\`successful\\` is returned if the request is successful.
+        # The error details if the request fails. \`successful\` is returned if the request is successful.
         self.message = message
         self.messages = messages
         # The number of the current page.
@@ -46,7 +46,7 @@ class ListSessionGroupResponseBody(DaraModel):
         self.request_id = request_id
         # A reserved parameter. You can ignore this parameter.
         self.result_count_id = result_count_id
-        # Indicates whether the request was successful. A value of \\`true\\` indicates that the request was successful. A value of \\`false\\` or \\`null\\` indicates that the request failed.
+        # Indicates whether the request was successful. A value of \`true\` indicates that the request was successful. A value of \`false\` or \`null\` indicates that the request failed.
         self.success = success
 
     def validate(self):

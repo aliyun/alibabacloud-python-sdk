@@ -67,116 +67,117 @@ class RuleInfo(DaraModel):
         type: int = None,
         weight: str = None,
     ):
-        # The review option. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Manual review) and `3` (Automatic review).
+        # The review option. Valid values: 1: no automatic review. 3: automatic review. This field is used for 4.0 protocol compatibility.
         self.auto_review = auto_review
-        # A list of business category names.
+        # The list of business category names.
         self.business_category_name_list = business_category_name_list
-        # The check type. Valid values: `0` (Service compliance check), `1` (Service attitude check), `2` (Service professionalism check), `3` (Customer attitude check), and `4` (Service process correctness check).
+        # The check type. Valid values: 0: Service standard check. 1: Service attitude check. 2: Service professionalism check. 3: Customer attitude check. 4: Service process correctness check.
         self.check_type = check_type
-        # Remarks on the rule.
+        # The comments.
         self.comments = comments
-        # The configuration type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Simple condition configuration) and `2` (Advanced configuration). Default: `1`.
+        # The configuration type. This parameter is dedicated to the version 4.0 protocol. Valid values: 1: Simple condition configuration. 2: Advanced configuration. Default value: 1.
         self.config_type = config_type
         # The name of the creator.
         self.create_emp_name = create_emp_name
         # The employee ID of the creator.
         self.create_empid = create_empid
-        # The creation time. This value is a Unix timestamp in milliseconds.
+        # The creation time.
         self.create_time = create_time
-        # Indicates whether editing the rule is denied. Valid values: `1` (denied), `0` or `null` (allowed).
+        # The edit permission. Valid values: 1: Editing is denied. 0 or null: Editing is allowed.
         self.deny = deny
-        # A list of test dialogues.
+        # The test script.
         self.dialogues = dialogues
-        # Indicates whether the rule is in effect. Valid values: `0` (No) and `1` (Yes).
+        # The effective status. Valid values: 0: Not effective. 1: Effective.
         self.effective = effective
-        # The effective end time of the rule.
+        # The effective end time.
         self.effective_end_time = effective_end_time
-        # The effective start time of the rule.
+        # The effective start time.
         self.effective_start_time = effective_start_time
-        # The end time. This value is a Unix timestamp in milliseconds.
+        # The end time.
         self.end_time = end_time
         # The external property.
         self.external_property = external_property
-        # Indicates whether the rule is effective throughout its lifecycle. Valid values: `0` (No) and `1` (Yes).
+        # The full lifecycle effective status. Valid values: 0: No. 1: Yes.
         self.full_cycle = full_cycle
-        # The graph flow.
+        # The graph flow canvas.
         self.graph_flow = graph_flow
-        # Indicates whether the rule is deleted.
+        # The deletion status.
         self.is_delete = is_delete
-        # Indicates whether the rule is online.
+        # The online status.
         self.is_online = is_online
-        # The conditional expression, such as `a&&b`.
+        # The conditional expression, such as a&&b.
         self.lambda_ = lambda_
-        # The name of the employee who last updated the rule.
+        # The name of the last updater.
         self.last_update_emp_name = last_update_emp_name
-        # The ID of the employee who last updated the rule.
+        # The employee ID of the last updater.
         self.last_update_empid = last_update_empid
-        # The last update time. This value is a Unix timestamp in milliseconds.
+        # The last update time.
         self.last_update_time = last_update_time
-        # The severity level of the rule. Valid values: `0` (Severe violation), `1` (Moderate violation), and `2` (Minor violation).
+        # The rule level. Valid values: 0: Severe violation. 1: Moderate violation. 2: Minor violation.
         self.level = level
-        # Indicates whether the conditions are met.
+        # The fulfillment status.
         self.meet = meet
-        # Indicates whether the rule has been modified within the quality check scheme.
+        # Specifies whether the rule is modified in the quality inspection scheme.
         self.modify_type = modify_type
         # The rule name.
         self.name = name
         # The operation mode.
         self.operation_mode = operation_mode
+        # The prerequisite rule.
         self.preq_rule = preq_rule
-        # The quality check type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (offline quality check) and `1` (real-time quality check).
+        # The quality check type. This parameter is used for compatibility with version 4.0 logic. Valid values: 0: Offline quality check. 1: Real-time quality check.
         self.quality_check_type = quality_check_type
         # The rule ID.
         self.rid = rid
-        # The name of the rule category.
+        # The rule category name.
         self.rule_category_name = rule_category_name
-        # Specifies whether to score the rule. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Do not score) and `3` (Score).
+        # Specifies whether to calculate the score. Valid values: 1: no scoring. 3: scoring. This field is used for 4.0 protocol compatibility.
         self.rule_score_type = rule_score_type
-        # The rule type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (Default) and `1` (User-created).
+        # The rule type. Valid values: 0: default. 1: user-created. This field is used for 4.0 logic compatibility.
         self.rule_type = rule_type
         # The quality check dimension object.
         self.scheme_check_type = scheme_check_type
-        # The ID of the quality check scheme to which the rule belongs.
+        # The ID of the associated quality check scheme.
         self.scheme_id = scheme_id
         # The name of the quality check scheme.
         self.scheme_name = scheme_name
         # The mapping ID between the quality check scheme and the rule.
         self.scheme_rule_mapping_id = scheme_rule_mapping_id
-        # Indicates whether the scoring item is deleted. A deleted item may be displayed as grayed out.
+        # The deletion status of the scoring item, which is used to gray out the item when it is deleted.
         self.score_deleted = score_deleted
-        # The ID of the main scoring item.
+        # The score category ID.
         self.score_id = score_id
         # The name of the main scoring item.
         self.score_name = score_name
         # The score value.
         self.score_num = score_num
-        # The scoring method. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (Add/deduct points when the rule is triggered) and `1` (Assign a one-time score when the rule is triggered).
+        # The score calculation type. This parameter is dedicated to the version 4.0 protocol. Valid values: 0: Add or deduct points after the rule is triggered. 1: Award a one-time score after the rule is triggered.
         self.score_num_type = score_num_type
-        # The scoring trigger. Valid values: `0` (Score when a node is hit).
+        # The score rule hit type. Valid values: 0: Score is calculated when a node is hit.
         self.score_rule_hit_type = score_rule_hit_type
-        # The ID of the scoring subitem.
+        # The sub-item ID.
         self.score_sub_id = score_sub_id
-        # The name of the scoring subitem.
+        # The sub-scoring item.
         self.score_sub_name = score_sub_name
-        # Indicates whether to add or deduct points.
+        # The score adjustment type.
         self.score_type = score_type
-        # The sort order of the rule in the quality check dimension.
+        # The sort order within the quality inspection dimension.
         self.sort_index = sort_index
-        # The start time. This value is a Unix timestamp in milliseconds.
+        # The start time.
         self.start_time = start_time
-        # The status of the rule.
+        # The rule status.
         self.status = status
-        # The rule category. This parameter is used for compatibility with the v4.0 protocol. Valid values: `10` (General rule for quality check schemes) and `11` (Flow rule for quality check schemes).
+        # The rule category. This parameter is dedicated to the version 4.0 protocol. Valid values: 10: General rule for quality check scheme. 11: Process rule for quality check scheme.
         self.target_type = target_type
-        # The ID of the flowchart.
+        # The flow canvas ID.
         self.task_flow_id = task_flow_id
-        # The type of the flowchart. This parameter is deprecated. The default value is `1`.
+        # **[Deprecated]** The task flow type. Default value: -1.
         self.task_flow_type = task_flow_type
-        # A list of triggers.
+        # The list of trigger conditions.
         self.triggers = triggers
-        # The rule category. This parameter is used for compatibility with the v4.0 protocol. Valid values: `2` (Public opinion monitoring) and `3` (Business).
+        # The rule category. Valid values: 2: public opinion monitoring. 3: business. This field is used for 4.0 logic compatibility.
         self.type = type
-        # The weight of the rule.
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -548,6 +549,7 @@ class RuleInfoPreqRule(DaraModel):
         self,
         rid: str = None,
     ):
+        # The prerequisite rule ID.
         self.rid = rid
 
     def validate(self):

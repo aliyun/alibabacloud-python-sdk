@@ -10,9 +10,9 @@ class SubmitQualityCheckTaskRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # Workspace ID.
+        # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
-        # The complete JSON string. For details, see the following sections.
+        # The complete JSON string. For details, see the following information.
         # 
         # This parameter is required.
         self.json_str = json_str

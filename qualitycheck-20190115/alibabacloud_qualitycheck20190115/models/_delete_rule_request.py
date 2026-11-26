@@ -12,13 +12,13 @@ class DeleteRuleRequest(DaraModel):
         is_scheme_data: int = None,
         rule_id: int = None,
     ):
-        # Workspace ID.
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
-        # Whether to delete the rule even if it is associated with a quality check task.
+        # Specifies whether to delete the rule even if it is associated with a quality check task.
         self.force_delete = force_delete
-        # Indicates whether this is the new version of quality check. 0: old version. 1: new version. Default is 1.
+        # Specifies whether to use the new version of quality check. Valid values: 0: Legacy quality check. 1: New version quality check. Default value: 1.
         self.is_scheme_data = is_scheme_data
-        # Rule ID.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id

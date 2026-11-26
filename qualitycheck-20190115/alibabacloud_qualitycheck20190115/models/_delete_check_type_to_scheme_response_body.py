@@ -20,7 +20,7 @@ class DeleteCheckTypeToSchemeResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+        # The message returned. If the request is successful, \`successful\` is returned. If the request fails, an error message is returned.
         self.message = message
         # A list of returned messages.
         self.messages = messages

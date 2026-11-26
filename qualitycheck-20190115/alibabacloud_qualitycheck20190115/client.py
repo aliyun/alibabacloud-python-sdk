@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_qualitycheck20190115 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Qualitycheck'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('qualitycheck', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -937,6 +941,80 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCheckTypeToSchemeResponse:
         runtime = RuntimeOptions()
         return await self.create_check_type_to_scheme_with_options_async(request, runtime)
+
+    def create_http_event_config_with_options(
+        self,
+        request: main_models.CreateHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHttpEventConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_http_event_config_with_options_async(
+        self,
+        request: main_models.CreateHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateHttpEventConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_http_event_config(
+        self,
+        request: main_models.CreateHttpEventConfigRequest,
+    ) -> main_models.CreateHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return self.create_http_event_config_with_options(request, runtime)
+
+    async def create_http_event_config_async(
+        self,
+        request: main_models.CreateHttpEventConfigRequest,
+    ) -> main_models.CreateHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.create_http_event_config_with_options_async(request, runtime)
 
     def create_mining_task_with_options(
         self,
@@ -2137,6 +2215,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDataSetResponse:
         runtime = RuntimeOptions()
         return await self.delete_data_set_with_options_async(request, runtime)
+
+    def delete_http_event_config_with_options(
+        self,
+        request: main_models.DeleteHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteHttpEventConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_http_event_config_with_options_async(
+        self,
+        request: main_models.DeleteHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteHttpEventConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_http_event_config(
+        self,
+        request: main_models.DeleteHttpEventConfigRequest,
+    ) -> main_models.DeleteHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return self.delete_http_event_config_with_options(request, runtime)
+
+    async def delete_http_event_config_async(
+        self,
+        request: main_models.DeleteHttpEventConfigRequest,
+    ) -> main_models.DeleteHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_http_event_config_with_options_async(request, runtime)
 
     def delete_quality_check_scheme_with_options(
         self,
@@ -3501,6 +3653,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetCustomizationConfigListResponse:
         runtime = RuntimeOptions()
         return await self.get_customization_config_list_with_options_async(request, runtime)
+
+    def get_http_event_config_with_options(
+        self,
+        request: main_models.GetHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetHttpEventConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_http_event_config_with_options_async(
+        self,
+        request: main_models.GetHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetHttpEventConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_http_event_config(
+        self,
+        request: main_models.GetHttpEventConfigRequest,
+    ) -> main_models.GetHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_http_event_config_with_options(request, runtime)
+
+    async def get_http_event_config_async(
+        self,
+        request: main_models.GetHttpEventConfigRequest,
+    ) -> main_models.GetHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_http_event_config_with_options_async(request, runtime)
 
     def get_label_analysis_result_with_options(
         self,
@@ -6990,6 +7216,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.sync_quality_check_with_options_async(request, runtime)
 
+    def test_http_event_config_with_options(
+        self,
+        request: main_models.TestHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestHttpEventConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_http_event_config_with_options_async(
+        self,
+        request: main_models.TestHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestHttpEventConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_http_event_config(
+        self,
+        request: main_models.TestHttpEventConfigRequest,
+    ) -> main_models.TestHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return self.test_http_event_config_with_options(request, runtime)
+
+    async def test_http_event_config_async(
+        self,
+        request: main_models.TestHttpEventConfigRequest,
+    ) -> main_models.TestHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.test_http_event_config_with_options_async(request, runtime)
+
     def test_rule_v4with_options(
         self,
         request: main_models.TestRuleV4Request,
@@ -7285,6 +7585,80 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCheckTypeToSchemeResponse:
         runtime = RuntimeOptions()
         return await self.update_check_type_to_scheme_with_options_async(request, runtime)
+
+    def update_http_event_config_with_options(
+        self,
+        request: main_models.UpdateHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateHttpEventConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_http_event_config_with_options_async(
+        self,
+        request: main_models.UpdateHttpEventConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateHttpEventConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.base_me_agent_id):
+            body['BaseMeAgentId'] = request.base_me_agent_id
+        if not DaraCore.is_null(request.json_str):
+            body['JsonStr'] = request.json_str
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateHttpEventConfig',
+            version = '2019-01-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateHttpEventConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_http_event_config(
+        self,
+        request: main_models.UpdateHttpEventConfigRequest,
+    ) -> main_models.UpdateHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return self.update_http_event_config_with_options(request, runtime)
+
+    async def update_http_event_config_async(
+        self,
+        request: main_models.UpdateHttpEventConfigRequest,
+    ) -> main_models.UpdateHttpEventConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.update_http_event_config_with_options_async(request, runtime)
 
     def update_quality_check_data_with_options(
         self,

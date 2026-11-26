@@ -18,7 +18,7 @@ class UpdateUserResponseBody(DaraModel):
         self.message = message
         # Request ID.
         self.request_id = request_id
-        # Indicates if the request succeeded. Use this field to determine if the request succeeded: \\`true\\` for success; \\`false\\`/\\`null\\` for failure.
+        # Indicates if the request succeeded. Use this field to determine if the request succeeded: \`true\` for success; \`false\`/\`null\` for failure.
         self.success = success
 
     def validate(self):

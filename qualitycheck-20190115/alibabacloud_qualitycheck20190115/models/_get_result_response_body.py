@@ -20,22 +20,24 @@ class GetResultResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
-        # Result code. `200` indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+        # The result code. A value of **200** indicates success, and any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # Total number of records.
+        # The total number of entries.
         self.count = count
         self.data = data
-        # Error details if the request failed. Returns successful if the request succeeded.
+        # The error message. If an error occurs, this field displays the error details. If the request is successful, the value is successful.
         self.message = message
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Unique request ID.
+        # The request ID.
         self.request_id = request_id
-        # Reserved field. Ignore this field.
+        # The reserved field. This field is currently unused and can be ignored.
         self.result_count_id = result_count_id
-        # Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false or null: The request failed.
         self.success = success
 
     def validate(self):

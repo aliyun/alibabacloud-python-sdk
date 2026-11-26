@@ -1,3 +1,14 @@
+2026-11-26 Version: 10.2.0
+- Support API CreateHttpEventConfig.
+- Support API DeleteHttpEventConfig.
+- Support API GetHttpEventConfig.
+- Support API TestHttpEventConfig.
+- Support API UpdateHttpEventConfig.
+- Update API GetResultToReview: add response parameters Body.Data.ArtificialScore.
+- Update API GetResultToReview: add response parameters Body.Data.SmartCheckScore.
+- Update API GetResultToReview: add response parameters Body.Data.ReviewHistoryList.$.ReviewErrorRule.
+
+
 2026-09-07 Version: 10.1.0
 - Support API GetAgentMJobInfo.
 - Support API ListAgentMJobInfo.

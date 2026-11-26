@@ -11,11 +11,11 @@ class ExecuteAgentRequest(DaraModel):
         json_str: str = None,
         stream: bool = None,
     ):
-        # The ID of the business workspace.
+        # The ID of the workspace.
         self.base_me_agent_id = base_me_agent_id
-        # The complete JSON string. For more information, see the following detailed description.
+        # The complete JSON string. For more information, see the following details.
         self.json_str = json_str
-        # Specifies whether to enable Server-Sent Events (SSE) responses. Set to true to enable SSE responses. Default value: false.
+        # Specifies whether to enable Server-Sent Events (SSE) responses. Default value: false.
         self.stream = stream
 
     def validate(self):

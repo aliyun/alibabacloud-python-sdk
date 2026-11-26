@@ -16,15 +16,15 @@ class GetResultToReviewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Result code. **200** means success. Any other value means failure. Use this field to identify the cause.
+        # The result code. A value of **200** indicates success, and any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # Detailed response data.
+        # The detailed response data.
         self.data = data
-        # Error details if the call fails. Returns **successful** on success.
+        # The error details when an error occurs, or **successful** when the request is successful.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded. true means success. **false** or **null** means failure.
+        # Indicates whether the request is successful. **true** indicates success, and **false** or **null** indicates failure.
         self.success = success
 
     def validate(self):
@@ -76,6 +76,7 @@ class GetResultToReviewResponseBody(DaraModel):
 class GetResultToReviewResponseBodyData(DaraModel):
     def __init__(
         self,
+        artificial_score: float = None,
         audio_scheme: str = None,
         audio_url: str = None,
         comments: str = None,
@@ -86,30 +87,38 @@ class GetResultToReviewResponseBodyData(DaraModel):
         manual_score_info_list: main_models.GetResultToReviewResponseBodyDataManualScoreInfoList = None,
         review_history_list: main_models.GetResultToReviewResponseBodyDataReviewHistoryList = None,
         review_type_id_list: main_models.GetResultToReviewResponseBodyDataReviewTypeIdList = None,
+        smart_check_score: float = None,
         status: int = None,
         total_score: int = None,
         vid: str = None,
     ):
-        # Protocol used in the audio URL. Possible values: http, https.
+        # The manual review score.
+        self.artificial_score = artificial_score
+        # The protocol of the audio URL. Valid values: http and https.
         self.audio_scheme = audio_scheme
-        # Audio URL without the protocol prefix (http\\:// or https\\://). Combine with AudioScheme to form the full URL.
+        # The audio URL, excluding http:// and https://. This value and AudioScheme form the complete URL.
         self.audio_url = audio_url
-        # Review comments.
+        # The review comments.
         self.comments = comments
         self.dialogues = dialogues
-        # File ID.
+        # The file ID.
         self.file_id = file_id
-        # File name.
+        # The file name.
         self.file_merge_name = file_merge_name
         self.hit_rule_review_info_list = hit_rule_review_info_list
         self.manual_score_info_list = manual_score_info_list
         self.review_history_list = review_history_list
         self.review_type_id_list = review_type_id_list
-        # Current task status. 0: incomplete. 1: complete. Use this field to check completion. Any other value indicates an error.
+        # The automated check score.
+        self.smart_check_score = smart_check_score
+        # The current status of the task. Valid values:
+        # - 0: The task is not completed.
+        # - 1: The task is completed.
+        # You can use this field to determine whether the task is completed. Any other value indicates an error.
         self.status = status
-        # Quality inspection score.
+        # The quality inspection score.
         self.total_score = total_score
-        # File ID.
+        # The file ID.
         self.vid = vid
 
     def validate(self):
@@ -129,6 +138,9 @@ class GetResultToReviewResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.artificial_score is not None:
+            result['ArtificialScore'] = self.artificial_score
+
         if self.audio_scheme is not None:
             result['AudioScheme'] = self.audio_scheme
 
@@ -159,6 +171,9 @@ class GetResultToReviewResponseBodyData(DaraModel):
         if self.review_type_id_list is not None:
             result['ReviewTypeIdList'] = self.review_type_id_list.to_map()
 
+        if self.smart_check_score is not None:
+            result['SmartCheckScore'] = self.smart_check_score
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -172,6 +187,9 @@ class GetResultToReviewResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArtificialScore') is not None:
+            self.artificial_score = m.get('ArtificialScore')
+
         if m.get('AudioScheme') is not None:
             self.audio_scheme = m.get('AudioScheme')
 
@@ -206,6 +224,9 @@ class GetResultToReviewResponseBodyData(DaraModel):
         if m.get('ReviewTypeIdList') is not None:
             temp_model = main_models.GetResultToReviewResponseBodyDataReviewTypeIdList()
             self.review_type_id_list = temp_model.from_map(m.get('ReviewTypeIdList'))
+
+        if m.get('SmartCheckScore') is not None:
+            self.smart_check_score = m.get('SmartCheckScore')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -360,6 +381,7 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(DaraModel)
         old_score: int = None,
         operator: int = None,
         operator_name: str = None,
+        review_error_rule: main_models.GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule = None,
         review_manager_type: str = None,
         review_result: int = None,
         review_right_rule: main_models.GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule = None,
@@ -373,6 +395,7 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(DaraModel)
         self.old_score = old_score
         self.operator = operator
         self.operator_name = operator_name
+        self.review_error_rule = review_error_rule
         self.review_manager_type = review_manager_type
         self.review_result = review_result
         self.review_right_rule = review_right_rule
@@ -382,6 +405,8 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(DaraModel)
         self.type = type
 
     def validate(self):
+        if self.review_error_rule:
+            self.review_error_rule.validate()
         if self.review_right_rule:
             self.review_right_rule.validate()
 
@@ -404,6 +429,9 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(DaraModel)
 
         if self.operator_name is not None:
             result['OperatorName'] = self.operator_name
+
+        if self.review_error_rule is not None:
+            result['ReviewErrorRule'] = self.review_error_rule.to_map()
 
         if self.review_manager_type is not None:
             result['ReviewManagerType'] = self.review_manager_type
@@ -444,6 +472,10 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory(DaraModel)
 
         if m.get('OperatorName') is not None:
             self.operator_name = m.get('OperatorName')
+
+        if m.get('ReviewErrorRule') is not None:
+            temp_model = main_models.GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule()
+            self.review_error_rule = temp_model.from_map(m.get('ReviewErrorRule'))
 
         if m.get('ReviewManagerType') is not None:
             self.review_manager_type = m.get('ReviewManagerType')
@@ -536,6 +568,68 @@ class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRight
 
         if m.get('ruleName') is not None:
             self.rule_name = m.get('ruleName')
+
+        return self
+
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule(DaraModel):
+    def __init__(
+        self,
+        review_error_rule: List[main_models.GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule] = None,
+    ):
+        self.review_error_rule = review_error_rule
+
+    def validate(self):
+        if self.review_error_rule:
+            for v1 in self.review_error_rule:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['reviewErrorRule'] = []
+        if self.review_error_rule is not None:
+            for k1 in self.review_error_rule:
+                result['reviewErrorRule'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.review_error_rule = []
+        if m.get('reviewErrorRule') is not None:
+            for k1 in m.get('reviewErrorRule'):
+                temp_model = main_models.GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule()
+                self.review_error_rule.append(temp_model.from_map(k1))
+
+        return self
+
+class GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule(DaraModel):
+    def __init__(
+        self,
+        rid: int = None,
+    ):
+        self.rid = rid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.rid is not None:
+            result['Rid'] = self.rid
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
 
         return self
 

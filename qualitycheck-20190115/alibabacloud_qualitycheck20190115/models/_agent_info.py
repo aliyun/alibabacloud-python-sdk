@@ -18,12 +18,19 @@ class AgentInfo(DaraModel):
         instruction_type_param: main_models.AgentInfoInstructionTypeParam = None,
         model_type: str = None,
     ):
+        # The description of the agent.
         self.agent_description = agent_description
+        # The name of the agent.
         self.agent_name = agent_name
+        # The unique identifier of the agent configuration.
         self.id = id
+        # The object type for analysis. Valid values: audio and text.
         self.input_type = input_type
+        # The instruction type. Valid values: serviceInspection (service quality inspection), field (key property extraction), tagCategory (label classification), multiLevelTag (multi-level label recognition), and customPrompt (custom instruction).
         self.instruction_type = instruction_type
+        # The parameters corresponding to the instruction type. Different InstructionType values require different sub-parameters. Specify only the sub-parameters that correspond to the current InstructionType and leave the others empty.
         self.instruction_type_param = instruction_type_param
+        # The type of the large language model.
         self.model_type = model_type
 
     def validate(self):
@@ -93,10 +100,15 @@ class AgentInfoInstructionTypeParam(DaraModel):
         tag_category_param: main_models.AgentInfoInstructionTypeParamTagCategoryParam = None,
         tag_tree_level_param: main_models.AgentInfoInstructionTypeParamTagTreeLevelParam = None,
     ):
+        # The custom instruction parameters. Used when InstructionType is set to customPrompt.
         self.custom_prompt_param = custom_prompt_param
+        # The key attribute extraction parameters. Used when InstructionType is set to field.
         self.fields_param = fields_param
+        # The service quality inspection parameters. Used when InstructionType is set to serviceInspection.
         self.service_inspection_param = service_inspection_param
+        # The label classification parameters. Used when InstructionType is set to tagCategory.
         self.tag_category_param = tag_category_param
+        # The multi-level tag recognition parameters. Used when InstructionType is set to multiLevelTag.
         self.tag_tree_level_param = tag_tree_level_param
 
     def validate(self):
@@ -163,7 +175,9 @@ class AgentInfoInstructionTypeParamTagTreeLevelParam(DaraModel):
         tag_ids: List[int] = None,
         tag_tree_levels: List[main_models.AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels] = None,
     ):
+        # The list of starting parent tag IDs at runtime. The first ID is treated as the matched parent tag, and recognition proceeds level by level from its child nodes, skipping the preceding levels. This field also takes effect when AgentId is specified.
         self.tag_ids = tag_ids
+        # The recognition configuration for each level, arranged in hierarchical order. This parameter is required.
         self.tag_tree_levels = tag_tree_levels
 
     def validate(self):
@@ -206,7 +220,9 @@ class AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels(DaraModel):
         prompt: str = None,
         tag_tree_ids: List[int] = None,
     ):
+        # The analysis prompt for this level. It is concatenated with the tag data and sent to the large language model. This parameter is required.
         self.prompt = prompt
+        # The list of candidate tag IDs for this level. A value of -1 indicates that all tags at this level are selected. This parameter is required.
         self.tag_tree_ids = tag_tree_ids
 
     def validate(self):
@@ -240,6 +256,7 @@ class AgentInfoInstructionTypeParamTagCategoryParam(DaraModel):
         self,
         name_desc_pair_list: List[main_models.AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList] = None,
     ):
+        # The list of label classification dimensions. This parameter is required.
         self.name_desc_pair_list = name_desc_pair_list
 
     def validate(self):
@@ -277,8 +294,11 @@ class AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList(DaraModel):
         name: str = None,
         value_list: List[str] = None,
     ):
+        # The dimension description.
         self.desc = desc
+        # The dimension name.
         self.name = name
+        # The list of candidate tag values.
         self.value_list = value_list
 
     def validate(self):
@@ -320,8 +340,11 @@ class AgentInfoInstructionTypeParamServiceInspectionParam(DaraModel):
         scene_description: str = None,
         scene_name: str = None,
     ):
+        # The list of quality inspection dimensions. This parameter is required.
         self.dimensions = dimensions
+        # The description of the quality inspection scenario. This parameter is optional.
         self.scene_description = scene_description
+        # The name of the quality inspection scenario. This parameter is required.
         self.scene_name = scene_name
 
     def validate(self):
@@ -370,7 +393,9 @@ class AgentInfoInstructionTypeParamServiceInspectionParamDimensions(DaraModel):
         desc: str = None,
         dimension: str = None,
     ):
+        # The dimension description. This parameter is optional.
         self.desc = desc
+        # The dimension name. This parameter is required.
         self.dimension = dimension
 
     def validate(self):
@@ -404,6 +429,7 @@ class AgentInfoInstructionTypeParamFieldsParam(DaraModel):
         self,
         name_desc_pair_list: List[main_models.AgentInfoInstructionTypeParamFieldsParamNameDescPairList] = None,
     ):
+        # The list of attribute dimensions to be extracted.
         self.name_desc_pair_list = name_desc_pair_list
 
     def validate(self):
@@ -441,8 +467,11 @@ class AgentInfoInstructionTypeParamFieldsParamNameDescPairList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The attribute description. This parameter is optional.
         self.desc = desc
+        # The attribute name. This parameter is required.
         self.name = name
+        # The attribute value. In the key attribute extraction scenario, this is the extracted result value corresponding to the dimension.
         self.value = value
 
     def validate(self):
@@ -483,7 +512,9 @@ class AgentInfoInstructionTypeParamCustomPromptParam(DaraModel):
         custom_prompt: str = None,
         name_desc_pair_list: List[main_models.AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList] = None,
     ):
+        # The content of the user-defined prompt template. This parameter is required.
         self.custom_prompt = custom_prompt
+        # The list of name-value pairs attached to the custom instruction.
         self.name_desc_pair_list = name_desc_pair_list
 
     def validate(self):
@@ -528,7 +559,9 @@ class AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name.
         self.name = name
+        # The value.
         self.value = value
 
     def validate(self):

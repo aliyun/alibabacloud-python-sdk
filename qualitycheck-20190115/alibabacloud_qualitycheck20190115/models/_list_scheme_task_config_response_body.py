@@ -24,29 +24,29 @@ class ListSchemeTaskConfigResponseBody(DaraModel):
         result_count_id: str = None,
         success: bool = None,
     ):
-        # Result code. **200** indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can determine the cause of the failure based on this field.
         self.code = code
-        # Total entries.
+        # The total number of entries.
         self.count = count
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
         self.data = data
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # This field marks the data. When querying more than 10,000 entries using GetResult, include the \\`lastDataId\\` of the last entry from the previous query in each request parameter.
+        # The identifier of the current data record. When you use the GetResult operation to query more than 10,000 data records, you must include the lastDataId value of the last data record from the previous query result in the request parameters of each subsequent request.
         self.last_data_id = last_data_id
-        # Provides error details on failure. For success, it is **successful**.
+        # The error details when an error occurs, or **successful** when the request is successful.
         self.message = message
         self.messages = messages
-        # Current page.
+        # The current page.
         self.page_number = page_number
-        # Entries displayed per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Internal field. Ignore it.
+        # An internal field. Ignore this field.
         self.result_count_id = result_count_id
-        # Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: \\`true\\` for success, \\`false\\`/\\`null\\` for failure.
+        # Indicates whether the request is successful. You can determine whether the request is successful based on this field. A value of true indicates success, and a value of false or null indicates failure.
         self.success = success
 
     def validate(self):

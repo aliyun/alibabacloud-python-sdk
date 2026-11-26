@@ -10,9 +10,9 @@ class RevertAssignedSessionGroupRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The ID of the baseMeAgent.
+        # The business workspace ID.
         self.base_me_agent_id = base_me_agent_id
-        # For more information, see the description of the request parameters.
+        # For more information, see the supplementary description of request parameters.
         self.json_str = json_str
 
     def validate(self):

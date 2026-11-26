@@ -21,25 +21,25 @@ class GraphFlowNode(DaraModel):
         rid: int = None,
         use_conditions: bool = None,
     ):
-        # Operator information.
+        # The operator information.
         self.conditions = conditions
-        # Used for frontend display.
+        # The content for frontend display.
         self.content = content
-        # Node ID.
+        # The node ID.
         self.id = id
-        # Index
+        # The index.
         self.index = index
-        # Node name
+        # The node name.
         self.name = name
-        # Child nodes
+        # The child nodes.
         self.next_nodes = next_nodes
-        # Node Type
+        # The node type.
         self.node_type = node_type
-        # Node properties
+        # The node properties.
         self.properties = properties
-        # Rule ID. \\`rid\\` is empty if the rule is not persisted. If the rule is persisted, \\`rid\\` equals \\`ID\\`.
+        # The rule ID. If the rule is not saved to the database, the value is empty. If the rule is saved, the value equals the ID.
         self.rid = rid
-        # Whether to use operator matching or legacy matching.
+        # Specifies whether to use operator matching or legacy matching.
         self.use_conditions = use_conditions
 
     def validate(self):
@@ -154,33 +154,40 @@ class GraphFlowNodeProperties(DaraModel):
         triggers: List[str] = None,
         type: str = None,
     ):
-        # 1: Do not auto-review.
+        # The auto review setting. Valid values:
+        # - 1: Disables automatic review.
         self.auto_review = auto_review
-        # Enable branch judgment.
+        # Specifies whether branch judgment is enabled.
         self.branch_judge = branch_judge
-        # Maximum N sentences to check.
+        # The maximum number of sentences to check.
         self.check_more_size = check_more_size
-        # Quality check dimension
+        # The quality check dimension.
         self.check_type = check_type
-        # General operator logic.
+        # The common operator logic.
         self.lambda_ = lambda_
-        # Role when the type is \\`single\\`.
+        # The role when the type is single.
         self.role = role
-        # Is scored.
+        # Specifies whether scoring is enabled.
         self.rule_score_type = rule_score_type
-        # Indicates expression when the type is \\`single\\`.
+        # Indicates whether expression is enabled when the type is single.
         self.say_type = say_type
-        # Score value
+        # The score value.
         self.score_num = score_num
-        # 0: Add or deduct points after the rule is triggered; 1: Score once after the rule is triggered.
+        # The score number type. Valid values:
+        # - 0: Adds or deducts points after the rule is triggered.
+        # - 1: Assigns a one-time score after the rule is triggered.
         self.score_num_type = score_num_type
-        # 0: Score when the node is hit.
+        # The score rule hit type. Valid values:
+        # - 0: Scores when the node is hit.
         self.score_rule_hit_type = score_rule_hit_type
-        # 1: Add points; 3: Deduct points; default is 1.
+        # The score type. Valid values:
+        # - 1: Adds points.
+        # - 3: Deducts points.
+        # Default value: 1.
         self.score_type = score_type
-        # Operators to follow.
+        # The monitored operators.
         self.triggers = triggers
-        # Property type
+        # The property type.
         self.type = type
 
     def validate(self):
@@ -291,17 +298,17 @@ class GraphFlowNodeNextNodes(DaraModel):
         next_node_id: int = None,
         triggers: List[str] = None,
     ):
-        # Quality check dimension
+        # The quality check dimension.
         self.check_type = check_type
-        # Flow branch priority. A smaller value indicates higher priority.
+        # The flow branch priority. A smaller value indicates a higher priority.
         self.index = index
-        # Lambda expression for the next hop.
+        # The Lambda expression for the next hop.
         self.lambda_ = lambda_
-        # Conditional branch name.
+        # The conditional branch name.
         self.name = name
-        # Next node ID.
+        # The subsequent node ID.
         self.next_node_id = next_node_id
-        # Operators to follow.
+        # The monitored operators.
         self.triggers = triggers
 
     def validate(self):

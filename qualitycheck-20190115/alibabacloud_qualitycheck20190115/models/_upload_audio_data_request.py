@@ -10,9 +10,9 @@ class UploadAudioDataRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # The business space ID. In multi-business space scenarios, this parameter specifies the business space to use. Default value: the default business space.
+        # The workspace ID. This parameter is used to select a specific workspace in multi-workspace scenarios. Default value: the default workspace.
         self.base_me_agent_id = base_me_agent_id
-        # The complete JSON string. For details about the content, see the following detailed information.
+        # The complete JSON string. For details, see the following information.
         # 
         # This parameter is required.
         self.json_str = json_str

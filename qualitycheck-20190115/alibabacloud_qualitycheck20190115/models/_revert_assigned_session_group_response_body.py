@@ -17,22 +17,19 @@ class RevertAssignedSessionGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of **200** indicates success. Other values indicate failure. Use this code to identify the cause of a failed request.
+        # The result code. A value of **200** indicates success, whereas any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # If the request fails, this parameter provides error details. If the request succeeds, the value is \\`successful\\`.
+        # The error message. If an error occurs, this field returns the error details. If the request is successful, this field returns "successful".
         self.message = message
         self.messages = messages
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. You can use this field to determine whether the request is successful:
         # 
-        # The caller can use this field to determine whether the request succeeded.
-        # 
-        # - **true**: The request was successful.
-        # 
-        # - false or **null**: The request failed.
+        # - **true**: The request is successful.
+        # - **false/null**: The request fails.
         self.success = success
 
     def validate(self):

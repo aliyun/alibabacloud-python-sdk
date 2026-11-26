@@ -20,14 +20,11 @@ class ListAgentMJobInfoResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The error message, if an error occurs.
+        # The error message returned if an error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # - false/null: The request failed.
+        # Indicates whether the request was successful. A value of true indicates success, and a value of false or null indicates failure.
         self.success = success
 
     def validate(self):
@@ -100,22 +97,21 @@ class ListAgentMJobInfoResponseBodyData(DaraModel):
         self.data_start_time = data_start_time
         # The task ID.
         self.id = id
-        # The error message, if an error occurs.
+        # The error message returned if an error occurs.
         self.message = message
         # The task status. Valid values:
-        # 
         # - queing: The task is queued.
         # - readyAnalysis: The task is pending analysis.
         # - running: The task is running.
         # - error: The task failed.
-        # - finish: The task is complete.
+        # - finish: The task is completed.
         # - fileUploadUser: The user-specified file is uploaded.
         # - fileUploadSystem: The system-generated file is uploaded.
         # - expired: The task has expired.
         self.status = status
         # The actual end time of the task.
         self.task_end_time = task_end_time
-        # The scheduled task ID.
+        # The ID of the scheduled task.
         self.task_id = task_id
         # The actual start time of the task.
         self.task_start_time = task_start_time

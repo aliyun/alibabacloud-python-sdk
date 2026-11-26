@@ -17,7 +17,7 @@ class CreateWarningConfigResponseBody(DaraModel):
         self.code = code
         # The ID of the warning configuration successfully created.
         self.data = data
-        # Error details when an error occurs. Returns \\"successful\\" on success.
+        # Error details when an error occurs. Returns \"successful\" on success.
         self.message = message
         # Request ID.
         self.request_id = request_id

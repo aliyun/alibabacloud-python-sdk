@@ -14,17 +14,15 @@ class GetTagResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of a failure.
+        # The result code. A value of 200 indicates success, and other values indicate failure. You can determine the cause of the failure based on this field.
         self.code = code
         # The returned result.
         self.data = data
-        # The error message, if any.
+        # The error message returned if an error occurs.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # - true: The call was successful.
-        # - false: The call failed.
+        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -87,19 +85,19 @@ class GetTagResponseBodyData(DaraModel):
     ):
         # The number of direct child nodes.
         self.child_count = child_count
-        # The time when the label was created.
+        # The time when the tag was created.
         self.create_time = create_time
-        # The label description.
+        # The tag description.
         self.description = description
         # The level of the current node.
         self.level = level
-        # The time when the label was last modified.
+        # The time when the tag was last modified.
         self.modify_time = modify_time
-        # The label name.
+        # The tag name.
         self.name = name
-        # The ID of the parent label node.
+        # The parent tag node ID.
         self.parent_tag_id = parent_tag_id
-        # The label ID.
+        # The tag ID.
         self.tag_id = tag_id
 
     def validate(self):

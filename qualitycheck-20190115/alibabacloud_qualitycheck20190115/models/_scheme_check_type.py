@@ -129,7 +129,7 @@ class SchemeCheckTypeTaskFlowScoreInfoList(DaraModel):
         self.task_flow_id = task_flow_id
         # flow name
         self.task_flow_name = task_flow_name
-        # \\"Flow version: 0: tree, 1: graph\\"
+        # \"Flow version: 0: tree, 1: graph\"
         self.task_flow_type = task_flow_type
 
     def validate(self):
