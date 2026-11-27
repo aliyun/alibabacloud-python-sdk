@@ -22,19 +22,19 @@ class RenewInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The subscription period. Valid values:
-        # - Month: month.
-        # - Year: year.
-        # - Hour: hour.
-        # - Day: day.
+        # The subscription period.
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region ID.
         # 
         # This parameter is required.
         self.region = region
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Use a coupon.
+        # - false: Do not use a coupon.
         self.use_promotion_code = use_promotion_code
 
     def validate(self):

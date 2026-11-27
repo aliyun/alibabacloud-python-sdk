@@ -18,7 +18,7 @@ class QueryConvertInstancePriceResponseBody(DaraModel):
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -80,9 +80,9 @@ class QueryConvertInstancePriceResponseBodyPriceInfo(DaraModel):
         self.depreciate_info = depreciate_info
         # The discount amount.
         self.discount_amount = discount_amount
-        # Indicates whether an enterprise discount is applied.
+        # Indicates whether the enterprise discount is applied.
         self.is_contract_activity = is_contract_activity
-        # The Lingxiao request ID of the call.
+        # The request ID of the Lingxiao system.
         self.lx_request_id = lx_request_id
         # The error message.
         self.message = message
@@ -92,11 +92,11 @@ class QueryConvertInstancePriceResponseBodyPriceInfo(DaraModel):
         self.original_amount = original_amount
         # The promotion rules.
         self.rules = rules
-        # The promotional price based on the standard discount from the official website.
+        # The discounted price based on the list price discount.
         self.stand_discount_price = stand_discount_price
-        # The standard discounted price on the official website or the direct sales contract discounted price.
+        # The discounted list price or the discounted direct sales contract price.
         self.stand_price = stand_price
-        # The final price, which is the original price minus the discount amount.
+        # The final price, which is the original price minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):
@@ -219,7 +219,7 @@ class QueryConvertInstancePriceResponseBodyPriceInfoRules(DaraModel):
     ):
         # The description of the promotion rule.
         self.description = description
-        # The promotion ID.
+        # The ID of the promotion.
         self.rule_id = rule_id
 
     def validate(self):
@@ -256,13 +256,13 @@ class QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel
         promotion_option_no: str = None,
         selected: bool = None,
     ):
-        # The coupon description.
+        # The description of the coupon.
         self.promotion_desc = promotion_desc
-        # The coupon name.
+        # The name of the coupon.
         self.promotion_name = promotion_name
-        # The coupon number.
+        # The ID of the coupon.
         self.promotion_option_no = promotion_option_no
-        # Indicates whether the coupon is selected. Valid values:
+        # Specifies whether the coupon is selected. Valid values:
         # 
         # - true: Selected.
         # 
@@ -319,15 +319,15 @@ class QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
     ):
         # The price reduction ratio.
         self.cheap_rate = cheap_rate
-        # The total list price after the price reduction.
+        # The reduced total list price.
         self.cheap_stand_amount = cheap_stand_amount
-        # Indicates whether to display the price reduction percentage.
+        # Indicates whether to display the price reduction margin.
         self.is_show = is_show
         # The equivalent monthly price.
         self.month_price = month_price
         # The original total list price.
         self.original_stand_amount = original_stand_amount
-        # The start time of the price reduction, in ISO 8601 format.
+        # The start time of the price reduction. The time is in the ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

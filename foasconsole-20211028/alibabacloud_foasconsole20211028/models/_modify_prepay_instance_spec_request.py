@@ -18,15 +18,15 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         region: str = None,
         resource_spec: main_models.ModifyPrepayInstanceSpecRequestResourceSpec = None,
     ):
-        # Specifies whether to enable zone-disaster recovery resources for the workspace.
+        # Specifies whether cross-zone high-availability resources are enabled for the workspace.
         self.ha = ha
-        # The resource specifications for zone-disaster recovery.
+        # The resource specifications for cross-zone high availability.
         self.ha_resource_spec = ha_resource_spec
-        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+        # The list of vSwitch IDs in the secondary zone for cross-zone high availability.
         self.ha_vswitch_ids = ha_vswitch_ids
-        # The ID of the secondary zone for zone-disaster recovery.
+        # The ID of the secondary zone for cross-zone high availability.
         self.ha_zone_id = ha_zone_id
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -34,7 +34,7 @@ class ModifyPrepayInstanceSpecRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
-        # The resource specification information.
+        # The resource specifications.
         # 
         # This parameter is required.
         self.resource_spec = resource_spec
@@ -111,7 +111,7 @@ class ModifyPrepayInstanceSpecRequestResourceSpec(DaraModel):
         # This parameter is required.
         self.cpu = cpu
         # The memory size.
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         # 
         # This parameter is required.
         self.memory_gb = memory_gb
@@ -148,9 +148,9 @@ class ModifyPrepayInstanceSpecRequestHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
-        # The number of CPUs for zone-disaster recovery resources.
+        # The number of CPUs for cross-zone high-availability resources.
         self.cpu = cpu
-        # The memory size of zone-disaster recovery resources, in GB. The value must be 4 times the number of CPUs.
+        # The memory size of cross-zone high-availability resources, in GB. The value must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

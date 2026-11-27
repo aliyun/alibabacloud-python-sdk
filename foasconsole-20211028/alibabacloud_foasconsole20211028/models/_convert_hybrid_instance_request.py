@@ -59,8 +59,6 @@ class ConvertHybridInstanceRequest(DaraModel):
 
         return self
 
-
-
 class ConvertHybridInstanceRequestResourceSpec(DaraModel):
     def __init__(
         self,
@@ -73,7 +71,7 @@ class ConvertHybridInstanceRequestResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         # 
         # This parameter is required.
         self.memory_gb = memory_gb

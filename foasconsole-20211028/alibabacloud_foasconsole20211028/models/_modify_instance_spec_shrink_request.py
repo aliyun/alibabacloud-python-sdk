@@ -16,13 +16,13 @@ class ModifyInstanceSpecShrinkRequest(DaraModel):
         resource_spec_shrink: str = None,
         use_promotion_code: bool = None,
     ):
-        # Specifies whether the workspace has zone-disaster recovery resources.
+        # Specifies whether the workspace has cross-zone high-availability resources.
         self.ha = ha
-        # The zone-disaster recovery resource specifications.
+        # The description of the cross-zone high-availability resources.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
-        # The vSwitch group in the secondary zone for zone-disaster recovery.
+        # The vSwitch group in the secondary zone for cross-zone high availability.
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id

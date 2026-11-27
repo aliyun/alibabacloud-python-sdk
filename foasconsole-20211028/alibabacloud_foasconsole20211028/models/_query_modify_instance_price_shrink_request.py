@@ -16,16 +16,17 @@ class QueryModifyInstancePriceShrinkRequest(DaraModel):
         resource_spec_shrink: str = None,
         use_promotion_code: bool = None,
     ):
-        # Specifies whether to select zone-disaster recovery resources.
+        # Specifies whether to select high-availability resources for zone-disaster recovery.
         self.ha = ha
-        # The zone-disaster recovery resource description.
+        # The description of high-availability resources for zone-disaster recovery.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
-        # The vSwitch group for the zone-disaster recovery secondary zone.
+        # The vSwitch group in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region ID.
         # 
@@ -35,6 +36,9 @@ class QueryModifyInstancePriceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_spec_shrink = resource_spec_shrink
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.use_promotion_code = use_promotion_code
 
     def validate(self):

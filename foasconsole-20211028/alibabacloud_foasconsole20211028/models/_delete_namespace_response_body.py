@@ -12,7 +12,7 @@ class DeleteNamespaceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

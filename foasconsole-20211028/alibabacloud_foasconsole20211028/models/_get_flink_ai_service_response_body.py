@@ -12,11 +12,11 @@ class GetFlinkAiServiceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The Flink AI service data transfer object.
+        # The data transfer object for the Flink AI service.
         self.flink_ai_service_dto = flink_ai_service_dto
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -62,21 +62,21 @@ class GetFlinkAiServiceResponseBodyFlinkAiServiceDTO(DaraModel):
         region: str = None,
         resource_create_time: int = None,
     ):
-        # Indicates whether deletion protection is enabled.
+        # Indicates whether release protection is enabled.
         self.deletion_protection = deletion_protection
         # The status of the Flink AI instance. Valid values:
-        # - CLOSED: closed or not activated.
-        # - WAITING: waiting to be activated after payment.
-        # - OPENING: being activated.
-        # - RUNNING: activated.
-        # - CLOSING: being closed.
-        # - DISABLE: overdue payment.
+        # - CLOSED: Closed or not activated.
+        # - WAITING: Waiting for activation after successful payment.
+        # - OPENING: Activating.
+        # - RUNNING: Activated.
+        # - CLOSING: Closing.
+        # - DISABLE: Overdue payment.
         self.flink_ai_instance_status = flink_ai_instance_status
-        # The AI service order instance ID.
+        # The instance ID of the AI service order.
         self.main_instance_id = main_instance_id
         # The region ID.
         self.region = region
-        # The time when the AI service was activated, in timestamp format (milliseconds).
+        # The time when the AI service was activated, in the millisecond timestamp format.
         self.resource_create_time = resource_create_time
 
     def validate(self):

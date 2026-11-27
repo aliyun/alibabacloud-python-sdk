@@ -13,12 +13,13 @@ class CreateNamespaceShrinkRequest(DaraModel):
         region: str = None,
         resource_spec_shrink: str = None,
     ):
+        # Specifies whether to enable cross-zone high availability.
         self.ha = ha
         # The order instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The namespace name.
+        # The name of the namespace.
         # 
         # This parameter is required.
         self.namespace = namespace

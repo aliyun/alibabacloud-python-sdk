@@ -20,7 +20,7 @@ class ConvertInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.duration = duration
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -28,7 +28,7 @@ class ConvertInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.is_auto_renew = is_auto_renew
-        # The resource specifications of the namespace.
+        # The resource specifications of the workspace.
         # 
         # This parameter is required.
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
@@ -36,11 +36,15 @@ class ConvertInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region.
         # 
         # This parameter is required.
         self.region = region
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Use a coupon.
+        # - false: Do not use a coupon.
         self.use_promotion_code = use_promotion_code
 
     def validate(self):

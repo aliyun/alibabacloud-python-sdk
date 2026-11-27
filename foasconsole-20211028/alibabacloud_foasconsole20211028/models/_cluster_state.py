@@ -12,8 +12,11 @@ class ClusterState(DaraModel):
         status: str = None,
         sub_status: str = None,
     ):
+        # The stage progress information for cluster operations.
         self.cluster_stage = cluster_stage
+        # The cluster running status.
         self.status = status
+        # The cluster running sub-status.
         self.sub_status = sub_status
 
     def validate(self):

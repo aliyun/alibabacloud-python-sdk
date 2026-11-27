@@ -12,7 +12,9 @@ class FlussVswitch(DaraModel):
         v_switch_ids: List[str] = None,
         zone_id: str = None,
     ):
+        # The list of vSwitch IDs in the zone.
         self.v_switch_ids = v_switch_ids
+        # The ID of the zone to which the vSwitch belongs.
         self.zone_id = zone_id
 
     def validate(self):

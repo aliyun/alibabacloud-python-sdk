@@ -19,13 +19,13 @@ class ModifyInstanceSpecRequest(DaraModel):
         resource_spec: main_models.ModifyInstanceSpecRequestResourceSpec = None,
         use_promotion_code: bool = None,
     ):
-        # Specifies whether the workspace has zone-disaster recovery resources.
+        # Specifies whether the workspace has cross-zone high-availability resources.
         self.ha = ha
-        # The zone-disaster recovery resource specifications.
+        # The description of the cross-zone high-availability resources.
         self.ha_resource_spec = ha_resource_spec
-        # The vSwitch group in the secondary zone for zone-disaster recovery.
+        # The vSwitch group in the secondary zone for cross-zone high availability.
         self.ha_vswitch_ids = ha_vswitch_ids
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -118,7 +118,7 @@ class ModifyInstanceSpecRequestResourceSpec(DaraModel):
         # This parameter is required.
         self.cpu = cpu
         # The memory size.
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         # 
         # This parameter is required.
         self.memory_gb = memory_gb
@@ -159,7 +159,7 @@ class ModifyInstanceSpecRequestHaResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size.
         # 
-        # >The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

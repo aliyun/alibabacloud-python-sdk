@@ -11,11 +11,11 @@ class ConvertInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The order ID.
+        # The ID of the order.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

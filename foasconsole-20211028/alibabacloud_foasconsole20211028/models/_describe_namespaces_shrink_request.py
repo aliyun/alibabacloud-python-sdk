@@ -15,12 +15,13 @@ class DescribeNamespacesShrinkRequest(DaraModel):
         region: str = None,
         tags_shrink: str = None,
     ):
+        # Specifies whether to enable high availability across zones.
         self.ha = ha
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The namespace name.
+        # The name of the namespace.
         self.namespace = namespace
         # The current page number.
         self.page_index = page_index

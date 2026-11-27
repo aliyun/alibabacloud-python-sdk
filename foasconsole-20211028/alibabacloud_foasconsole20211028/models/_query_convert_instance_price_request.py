@@ -19,11 +19,11 @@ class QueryConvertInstancePriceRequest(DaraModel):
         region: str = None,
         use_promotion_code: bool = None,
     ):
-        # The number of pricing cycles.
+        # The duration of the billing cycle.
         # 
         # This parameter is required.
         self.duration = duration
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -31,19 +31,23 @@ class QueryConvertInstancePriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.is_auto_renew = is_auto_renew
-        # The resource specifications of the namespace.
+        # The resource specifications of the workspace.
         # 
         # This parameter is required.
         self.namespace_resource_specs = namespace_resource_specs
-        # The pricing cycle. Only Year and Month are supported.
+        # The billing cycle. Only Year and Month are supported.
         # 
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region.
         # 
         # This parameter is required.
         self.region = region
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Uses a coupon.
+        # - false: Does not use a coupon.
         self.use_promotion_code = use_promotion_code
 
     def validate(self):
@@ -122,11 +126,11 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecs(DaraModel):
         namespace: str = None,
         resource_spec: main_models.QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec = None,
     ):
-        # The namespace name.
+        # The name of the workspace.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The resource specifications of the namespace.
+        # The resource specifications of the workspace.
         # 
         # This parameter is required.
         self.resource_spec = resource_spec
@@ -171,7 +175,7 @@ class QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec(DaraMod
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         # 
         # This parameter is required.
         self.memory_gb = memory_gb

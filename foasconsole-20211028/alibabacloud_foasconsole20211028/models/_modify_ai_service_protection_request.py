@@ -10,11 +10,11 @@ class ModifyAiServiceProtectionRequest(DaraModel):
         deletion_protection: bool = None,
         region: str = None,
     ):
-        # Specifies whether to enable manual shutdown protection.
+        # Specifies whether to enable protection against manual shutdown operations.
         # 
         # This parameter is required.
         self.deletion_protection = deletion_protection
-        # The region ID.
+        # The region ID. It must match the region where the API endpoint is deployed.
         # 
         # This parameter is required.
         self.region = region

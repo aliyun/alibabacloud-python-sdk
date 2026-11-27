@@ -28,8 +28,8 @@ class QueryCreateInstancePriceShrinkRequest(DaraModel):
         self.architecture_type = architecture_type
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled (default).
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal (default).
         # 
         # > This parameter does not take effect for pay-as-you-go instances.
         self.auto_renew = auto_renew
@@ -41,17 +41,17 @@ class QueryCreateInstancePriceShrinkRequest(DaraModel):
         # This parameter is required.
         self.charge_type = charge_type
         # The number of billing cycles.
-        # > When ChargeType is set to PRE, the Duration parameter is required.
+        # > This parameter is required when ChargeType is set to PRE.
         self.duration = duration
         # The extended reserved field.
         self.extra = extra
         # Specifies whether to select zone-disaster recovery resources.
         self.ha = ha
-        # The zone-disaster recovery resource specifications.
+        # The description of zone-disaster recovery resources.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
-        # The workspace name.
+        # The name of the workspace.
         self.instance_name = instance_name
-        # The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
+        # The billing cycle. Subscription instances support only yearly (Year) and monthly (Month) billing cycles. Pay-as-you-go instances support only hourly (Hour) billing cycles.
         self.pricing_cycle = pricing_cycle
         # The coupon code.
         self.promotion_code = promotion_code
@@ -65,12 +65,12 @@ class QueryCreateInstancePriceShrinkRequest(DaraModel):
         self.storage_shrink = storage_shrink
         # Specifies whether to use a coupon. Valid values:
         # 
-        # - true: Use a coupon.
-        # - false: Do not use a coupon.
+        # - true: uses a coupon.
+        # - false: does not use a coupon.
         self.use_promotion_code = use_promotion_code
         # The vSwitch IDs.
         self.v_switch_ids_shrink = v_switch_ids_shrink
-        # The VPC ID of the user.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

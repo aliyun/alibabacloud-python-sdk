@@ -19,16 +19,17 @@ class QueryModifyInstancePriceRequest(DaraModel):
         resource_spec: main_models.QueryModifyInstancePriceRequestResourceSpec = None,
         use_promotion_code: bool = None,
     ):
-        # Specifies whether to select zone-disaster recovery resources.
+        # Specifies whether to select high-availability resources for zone-disaster recovery.
         self.ha = ha
-        # The zone-disaster recovery resource description.
+        # The description of high-availability resources for zone-disaster recovery.
         self.ha_resource_spec = ha_resource_spec
-        # The vSwitch group for the zone-disaster recovery secondary zone.
+        # The vSwitch group in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids = ha_vswitch_ids
-        # The order instance ID.
+        # The instance ID of the order.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The coupon code.
         self.promotion_code = promotion_code
         # The region ID.
         # 
@@ -38,6 +39,9 @@ class QueryModifyInstancePriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_spec = resource_spec
+        # Specifies whether to use a coupon. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.use_promotion_code = use_promotion_code
 
     def validate(self):
@@ -119,7 +123,7 @@ class QueryModifyInstancePriceRequestResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size after the specification change.
         # 
-        # >The memory size must be 4 times the number of CPUs.
+        # >The memory size must be four times the number of CPUs.
         # 
         # This parameter is required.
         self.memory_gb = memory_gb
@@ -156,9 +160,9 @@ class QueryModifyInstancePriceRequestHaResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
-        # The number of CPUs for zone-disaster recovery.
+        # The number of CPUs for zone-disaster recovery high availability.
         self.cpu = cpu
-        # The active memory size for zone-disaster recovery.
+        # The memory size for high availability in zone-disaster recovery.
         self.memory_gb = memory_gb
 
     def validate(self):

@@ -22,7 +22,7 @@ class DescribeSupportedRegionsResponseBody(DaraModel):
         self.page_index = page_index
         # The number of regions per page.
         self.page_size = page_size
-        # The list of region information.
+        # The list of regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -31,7 +31,7 @@ class DescribeSupportedRegionsResponseBody(DaraModel):
         # - true: Successful.
         # - false: Failed.
         self.success = success
-        # The total number of regions returned.
+        # The number of regions returned.
         self.total_count = total_count
         # The total number of pages.
         self.total_page = total_page

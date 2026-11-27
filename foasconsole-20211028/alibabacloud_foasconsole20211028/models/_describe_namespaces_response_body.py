@@ -24,12 +24,12 @@ class DescribeNamespacesResponseBody(DaraModel):
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: Successful.
-        # - false: Failed.
+        # - true: The request is successful.
+        # - false: The request failed.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -114,14 +114,15 @@ class DescribeNamespacesResponseBodyNamespaces(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeNamespacesResponseBodyNamespacesTags] = None,
     ):
+        # The elastic resource specifications of the namespace.
         self.elastic_resource_spec = elastic_resource_spec
         # The creation time.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The subscription resources allocated to the namespace.
         self.guaranteed_resource_spec = guaranteed_resource_spec
-        # Indicates whether zone-disaster recovery is enabled for the namespace.
+        # Indicates whether high availability across zones is enabled for the namespace.
         self.ha = ha
         # The name of the namespace.
         self.namespace = namespace
@@ -130,11 +131,11 @@ class DescribeNamespacesResponseBodyNamespaces(DaraModel):
         # The used resources.
         self.resource_used = resource_used
         # The status of the namespace. Valid values:
-        # - CREATING: Being created.
-        # - DELETING: Being deleted.
-        # - MODIFYING: Resource specifications are being modified.
-        # - SUCCESS: The last operation was successful.
-        # - FAILED: The last operation failed.
+        # - CREATING: The namespace is being created.
+        # - DELETING: The namespace is being deleted.
+        # - MODIFYING: The resource specifications are being modified.
+        # - SUCCESS: The previous operation was successful.
+        # - FAILED: The previous operation failed.
         self.status = status
         # The list of tags.
         self.tags = tags
@@ -277,11 +278,11 @@ class DescribeNamespacesResponseBodyNamespacesResourceUsed(DaraModel):
         cu: float = None,
         memory_gb: float = None,
     ):
-        # The number of CPUs used.
+        # The number of used CPU cores.
         self.cpu = cpu
-        # The number of compute units (CUs) used.
+        # The number of used compute units (CUs).
         self.cu = cu
-        # The amount of memory used.
+        # The amount of used memory.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -322,7 +323,7 @@ class DescribeNamespacesResponseBodyNamespacesResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
-        # The number of CPUs.
+        # The number of CPU cores.
         self.cpu = cpu
         # The memory size.
         self.memory_gb = memory_gb
@@ -359,7 +360,7 @@ class DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
-        # The number of CPUs for subscription resources.
+        # The number of CPU cores for subscription resources.
         self.cpu = cpu
         # The memory size for subscription resources. Unit: GB.
         self.memory_gb = memory_gb
@@ -396,9 +397,9 @@ class DescribeNamespacesResponseBodyNamespacesElasticResourceSpec(DaraModel):
         cpu: int = None,
         memory_gb: int = None,
     ):
-        # The maximum CPU limit for pay-as-you-go resources.
+        # The CPU limit for pay-as-you-go resources.
         self.cpu = cpu
-        # The maximum memory limit for pay-as-you-go resources. Unit: GB.
+        # The memory limit for pay-as-you-go resources. Unit: GB.
         self.memory_gb = memory_gb
 
     def validate(self):

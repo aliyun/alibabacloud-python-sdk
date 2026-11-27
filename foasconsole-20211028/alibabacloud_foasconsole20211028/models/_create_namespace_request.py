@@ -14,12 +14,13 @@ class CreateNamespaceRequest(DaraModel):
         region: str = None,
         resource_spec: main_models.CreateNamespaceRequestResourceSpec = None,
     ):
+        # Specifies whether to enable cross-zone high availability.
         self.ha = ha
         # The order instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The namespace name.
+        # The name of the namespace.
         # 
         # This parameter is required.
         self.namespace = namespace
@@ -86,7 +87,7 @@ class CreateNamespaceRequestResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

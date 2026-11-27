@@ -14,11 +14,11 @@ class QueryCreateInstancePriceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The price information, including the price and promotion rules.
+        # The price information, including the price and discount rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -65,6 +65,7 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
         is_contract_activity: bool = None,
         lx_request_id: str = None,
         message: str = None,
+        module_prices: List[main_models.QueryCreateInstancePriceResponseBodyPriceInfoModulePrices] = None,
         optional_promotions: List[main_models.QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions] = None,
         original_amount: float = None,
         rules: List[main_models.QueryCreateInstancePriceResponseBodyPriceInfoRules] = None,
@@ -80,28 +81,34 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
         self.depreciate_info = depreciate_info
         # The discount amount.
         self.discount_amount = discount_amount
-        # Indicates whether an enterprise discount is applied.
+        # Indicates whether the key account promotion is applied.
         self.is_contract_activity = is_contract_activity
-        # The Lingxiao request ID of the call.
+        # The Lingxiao request ID.
         self.lx_request_id = lx_request_id
         # The error message.
         self.message = message
+        # The module prices.
+        self.module_prices = module_prices
         # The coupon group information.
         self.optional_promotions = optional_promotions
-        # The original price.
+        # The original amount.
         self.original_amount = original_amount
         # The promotion rules.
         self.rules = rules
-        # The promotional price based on the standard discount from the official website.
+        # The discounted price based on the official website discount.
         self.stand_discount_price = stand_discount_price
-        # The standard discounted price on the official website or the direct sales contract discounted price.
+        # The discounted price on the official website or the discounted price in the direct sales contract.
         self.stand_price = stand_price
-        # The final price, which is the original price minus the discount.
+        # The final amount, which is the original amount minus the discount.
         self.trade_amount = trade_amount
 
     def validate(self):
         if self.depreciate_info:
             self.depreciate_info.validate()
+        if self.module_prices:
+            for v1 in self.module_prices:
+                 if v1:
+                    v1.validate()
         if self.optional_promotions:
             for v1 in self.optional_promotions:
                  if v1:
@@ -136,6 +143,11 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
 
         if self.message is not None:
             result['Message'] = self.message
+
+        result['ModulePrices'] = []
+        if self.module_prices is not None:
+            for k1 in self.module_prices:
+                result['ModulePrices'].append(k1.to_map() if k1 else None)
 
         result['OptionalPromotions'] = []
         if self.optional_promotions is not None:
@@ -185,6 +197,12 @@ class QueryCreateInstancePriceResponseBodyPriceInfo(DaraModel):
         if m.get('Message') is not None:
             self.message = m.get('Message')
 
+        self.module_prices = []
+        if m.get('ModulePrices') is not None:
+            for k1 in m.get('ModulePrices'):
+                temp_model = main_models.QueryCreateInstancePriceResponseBodyPriceInfoModulePrices()
+                self.module_prices.append(temp_model.from_map(k1))
+
         self.optional_promotions = []
         if m.get('OptionalPromotions') is not None:
             for k1 in m.get('OptionalPromotions'):
@@ -219,7 +237,7 @@ class QueryCreateInstancePriceResponseBodyPriceInfoRules(DaraModel):
     ):
         # The description of the promotion rule.
         self.description = description
-        # The promotion ID.
+        # The ID of the promotion rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -256,13 +274,13 @@ class QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel)
         promotion_option_no: str = None,
         selected: bool = None,
     ):
-        # The coupon description.
+        # The description of the coupon.
         self.promotion_desc = promotion_desc
-        # The coupon name.
+        # The name of the coupon.
         self.promotion_name = promotion_name
-        # The coupon ID.
+        # The ID of the coupon.
         self.promotion_option_no = promotion_option_no
-        # Indicates whether the coupon is selected. Valid values:
+        # Specifies whether the coupon is selected. Valid values:
         # - true: Selected.
         # - false: Not selected.
         self.selected = selected
@@ -305,6 +323,106 @@ class QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions(DaraModel)
 
         return self
 
+class QueryCreateInstancePriceResponseBodyPriceInfoModulePrices(DaraModel):
+    def __init__(
+        self,
+        discount_amount: float = None,
+        final_unit_fee: str = None,
+        module_code: str = None,
+        module_name: str = None,
+        original_amount: float = None,
+        pay_amount: float = None,
+        price_type: str = None,
+        price_unit: str = None,
+        quantity: str = None,
+    ):
+        # The discount amount.
+        self.discount_amount = discount_amount
+        # The unit price of the module.
+        self.final_unit_fee = final_unit_fee
+        # The module code.
+        self.module_code = module_code
+        # The module name.
+        self.module_name = module_name
+        # The original amount.
+        self.original_amount = original_amount
+        # The payment amount.
+        self.pay_amount = pay_amount
+        # The billing method.
+        self.price_type = price_type
+        # The pricing unit.
+        self.price_unit = price_unit
+        # The order quantity.
+        self.quantity = quantity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.discount_amount is not None:
+            result['DiscountAmount'] = self.discount_amount
+
+        if self.final_unit_fee is not None:
+            result['FinalUnitFee'] = self.final_unit_fee
+
+        if self.module_code is not None:
+            result['ModuleCode'] = self.module_code
+
+        if self.module_name is not None:
+            result['ModuleName'] = self.module_name
+
+        if self.original_amount is not None:
+            result['OriginalAmount'] = self.original_amount
+
+        if self.pay_amount is not None:
+            result['PayAmount'] = self.pay_amount
+
+        if self.price_type is not None:
+            result['PriceType'] = self.price_type
+
+        if self.price_unit is not None:
+            result['PriceUnit'] = self.price_unit
+
+        if self.quantity is not None:
+            result['Quantity'] = self.quantity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiscountAmount') is not None:
+            self.discount_amount = m.get('DiscountAmount')
+
+        if m.get('FinalUnitFee') is not None:
+            self.final_unit_fee = m.get('FinalUnitFee')
+
+        if m.get('ModuleCode') is not None:
+            self.module_code = m.get('ModuleCode')
+
+        if m.get('ModuleName') is not None:
+            self.module_name = m.get('ModuleName')
+
+        if m.get('OriginalAmount') is not None:
+            self.original_amount = m.get('OriginalAmount')
+
+        if m.get('PayAmount') is not None:
+            self.pay_amount = m.get('PayAmount')
+
+        if m.get('PriceType') is not None:
+            self.price_type = m.get('PriceType')
+
+        if m.get('PriceUnit') is not None:
+            self.price_unit = m.get('PriceUnit')
+
+        if m.get('Quantity') is not None:
+            self.quantity = m.get('Quantity')
+
+        return self
+
 class QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
     def __init__(
         self,
@@ -315,17 +433,17 @@ class QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo(DaraModel):
         original_stand_amount: str = None,
         start_time: str = None,
     ):
-        # The price reduction ratio.
+        # The price reduction rate.
         self.cheap_rate = cheap_rate
-        # The total list price after the price reduction.
+        # The total price on the official website after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
-        # Indicates whether to display the price reduction percentage.
+        # Indicates whether to display the price reduction rate.
         self.is_show = is_show
-        # The monthly equivalent price.
+        # The equivalent monthly price.
         self.month_price = month_price
-        # The original total list price.
+        # The original total price on the official website.
         self.original_stand_amount = original_stand_amount
-        # The start time of the price reduction.
+        # The start time of the price reduction, in ISO 8601 format.
         self.start_time = start_time
 
     def validate(self):

@@ -13,15 +13,15 @@ class FlussResourceSpec(DaraModel):
         tiering_post_cu: int = None,
         tiering_pre_cu: int = None,
     ):
-        # Disk size per node, in GB.
+        # The disk capacity of a single TabletServer node, in GiB.
         self.disk_size_in_gb = disk_size_in_gb
-        # Instance type of the slave nodes.
+        # The node specifications of the TabletServer.
         self.slave_model = slave_model
-        # Number of slave nodes.
+        # The number of TabletServer nodes.
         self.slave_num = slave_num
-        # Number of CUs for the post-tiering stage.
+        # The maximum number of elastic compute resources for the lake-stream synchronization service, in CUs.
         self.tiering_post_cu = tiering_post_cu
-        # Number of compute units (CUs) for the pre-tiering stage.
+        # The baseline resource count of the lake-stream synchronization service, in CUs.
         self.tiering_pre_cu = tiering_pre_cu
 
     def validate(self):

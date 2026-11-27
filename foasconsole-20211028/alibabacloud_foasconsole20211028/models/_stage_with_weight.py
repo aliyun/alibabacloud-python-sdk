@@ -11,8 +11,11 @@ class StageWithWeight(DaraModel):
         step_name: str = None,
         weight: int = None,
     ):
+        # The ordinal number of the execution stage.
         self.step_index = step_index
+        # The name of the execution stage.
         self.step_name = step_name
+        # The weight of the stage in the overall progress.
         self.weight = weight
 
     def validate(self):

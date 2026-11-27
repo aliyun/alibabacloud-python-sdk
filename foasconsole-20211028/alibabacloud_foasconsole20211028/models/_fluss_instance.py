@@ -30,42 +30,43 @@ class FlussInstance(DaraModel):
         v_switches: List[main_models.FlussVswitch] = None,
         vpc_id: str = None,
     ):
+        # The running state information of the cluster.
         self.cluster_state = cluster_state
-        # The cluster status.
+        # The status of the Fluss cluster.
         self.cluster_status = cluster_status
-        # The URL of the instance management console.
+        # The console access URL of the Fluss instance.
         self.console_url = console_url
-        # The disk size, in GB.
+        # The disk size of a single TabletServer node, in GiB.
         self.disk_size = disk_size
-        # Specifies whether high availability (HA) is enabled.
+        # Specifies whether multi-zone high availability is enabled.
         self.ha = ha
-        # The instance ID.
+        # The ID of the Fluss instance.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the Fluss instance.
         self.instance_name = instance_name
-        # The order state.
+        # The order status of the instance.
         self.order_state = order_state
-        # The ID of the region.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # The creation time of the resource, as a UNIX timestamp in milliseconds.
+        # The creation time of the instance, represented as a UNIX timestamp in milliseconds.
         self.resource_create_time = resource_create_time
-        # The expiration time of the resource, as a UNIX timestamp in milliseconds.
+        # The time when the instance expires, represented as a UNIX timestamp in milliseconds.
         self.resource_expired_time = resource_expired_time
-        # The tablet server model.
+        # The TabletServer node specifications.
         self.tablet_server_model = tablet_server_model
-        # The number of tablet servers.
+        # The number of TabletServer nodes.
         self.tablet_server_num = tablet_server_num
-        # The tablet server type.
+        # The type of TabletServer node specifications.
         self.tablet_server_type = tablet_server_type
-        # The number of compute units (CUs) for post-tiering.
+        # The upper limit of elastic compute resources for the lake-stream synchronization service, in CUs.
         self.tiering_post_cu = tiering_post_cu
-        # The number of compute units (CUs) for pre-tiering.
+        # The base compute resource count for the lake-stream synchronization service, in CUs.
         self.tiering_pre_cu = tiering_pre_cu
-        # The Alibaba Cloud account ID (UID).
+        # The UID of the Alibaba Cloud account to which the instance belongs.
         self.uid = uid
-        # The VSwitch details.
+        # The list of zone and vSwitch configurations used by the instance.
         self.v_switches = v_switches
-        # The VPC ID.
+        # The ID of the VPC to which the instance belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

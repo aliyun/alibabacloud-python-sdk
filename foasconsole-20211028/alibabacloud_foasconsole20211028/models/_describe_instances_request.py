@@ -22,7 +22,7 @@ class DescribeInstancesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeInstancesRequestTags] = None,
     ):
-        # The processor architecture. Valid values: X86 and ARM.
+        # The processor architecture. Valid values: x86 and ARM.
         self.architecture_type = architecture_type
         # The billing method.
         self.charge_type = charge_type
@@ -36,7 +36,7 @@ class DescribeInstancesRequest(DaraModel):
         self.namespace_name = namespace_name
         # The current page number.
         self.page_index = page_index
-        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        # The number of entries to return on each page in the paging Settings for a paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
         # The region ID.
         # 
@@ -143,7 +143,8 @@ class DescribeInstancesRequestTags(DaraModel):
     ):
         # The tag key.
         self.key = key
-        # The tag value. The value can be up to 64 Unicode characters in length.
+        # The tag value.
+        # The value can be up to 64 Unicode characters in length.
         self.value = value
 
     def validate(self):

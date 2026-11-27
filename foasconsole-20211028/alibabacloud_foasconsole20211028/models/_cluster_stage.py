@@ -15,9 +15,13 @@ class ClusterStage(DaraModel):
         status: str = None,
         total_stage_with_weight: List[main_models.StageWithWeight] = None,
     ):
+        # The ordinal number of the current execution stage.
         self.current_stage = current_stage
+        # The execution information of the current stage.
         self.message = message
+        # The execution status of the current stage.
         self.status = status
+        # The list of execution stages and their weights.
         self.total_stage_with_weight = total_stage_with_weight
 
     def validate(self):

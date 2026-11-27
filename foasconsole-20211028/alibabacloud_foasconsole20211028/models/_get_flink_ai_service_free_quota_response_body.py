@@ -14,11 +14,11 @@ class GetFlinkAiServiceFreeQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The Flink AI free quota data transfer object.
+        # The Flink AI free quota DTO.
         self.flink_ai_free_quota_dto = flink_ai_free_quota_dto
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -106,7 +106,7 @@ class GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTOUsedQuotaDetails(
         amount: float = None,
         usage_type: str = None,
     ):
-        # The used quota for this usage type.
+        # The used quota for the usage type.
         self.amount = amount
         # The usage type.
         self.usage_type = usage_type

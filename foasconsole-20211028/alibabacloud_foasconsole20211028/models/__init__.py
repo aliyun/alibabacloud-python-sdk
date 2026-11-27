@@ -8,6 +8,10 @@ from ._fluss_instance import FlussInstance
 from ._fluss_resource_spec import FlussResourceSpec
 from ._fluss_vswitch import FlussVswitch
 from ._stage_with_weight import StageWithWeight
+from ._token_usage_detail_dto import TokenUsageDetailDTO
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
 from ._close_flink_ai_service_request import CloseFlinkAiServiceRequest
 from ._close_flink_ai_service_response_body import CloseFlinkAiServiceResponseBody
 from ._close_flink_ai_service_response import CloseFlinkAiServiceResponse
@@ -115,6 +119,8 @@ from ._tag_resources_response import TagResourcesResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._token_usage_detail_dto import TokenUsageDetailDTOBizObjects
+from ._token_usage_detail_dto import TokenUsageDetailDTOScopeConfig
 from ._convert_hybrid_instance_request import ConvertHybridInstanceRequestResourceSpec
 from ._convert_hybrid_instance_response_body import ConvertHybridInstanceResponseBodyOrderInfo
 from ._convert_instance_request import ConvertInstanceRequestNamespaceResourceSpecsResourceSpec
@@ -185,6 +191,7 @@ from ._query_create_instance_price_request import QueryCreateInstancePriceReques
 from ._query_create_instance_price_request import QueryCreateInstancePriceRequestStorageOss
 from ._query_create_instance_price_request import QueryCreateInstancePriceRequestStorage
 from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo
+from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoModulePrices
 from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions
 from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfoRules
 from ._query_create_instance_price_response_body import QueryCreateInstancePriceResponseBodyPriceInfo
@@ -207,6 +214,10 @@ __all__ = [
     FlussResourceSpec,
     FlussVswitch,
     StageWithWeight,
+    TokenUsageDetailDTO,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
     CloseFlinkAiServiceRequest,
     CloseFlinkAiServiceResponseBody,
     CloseFlinkAiServiceResponse,
@@ -314,6 +325,8 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    TokenUsageDetailDTOBizObjects,
+    TokenUsageDetailDTOScopeConfig,
     ConvertHybridInstanceRequestResourceSpec,
     ConvertHybridInstanceResponseBodyOrderInfo,
     ConvertInstanceRequestNamespaceResourceSpecsResourceSpec,
@@ -384,6 +397,7 @@ __all__ = [
     QueryCreateInstancePriceRequestStorageOss,
     QueryCreateInstancePriceRequestStorage,
     QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo,
+    QueryCreateInstancePriceResponseBodyPriceInfoModulePrices,
     QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions,
     QueryCreateInstancePriceResponseBodyPriceInfoRules,
     QueryCreateInstancePriceResponseBodyPriceInfo,

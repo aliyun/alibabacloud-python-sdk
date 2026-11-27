@@ -37,22 +37,22 @@ class CreateInstanceRequest(DaraModel):
         self.architecture_type = architecture_type
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled. This is the default value.
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal. This is the default value.
         # 
         # > This parameter does not take effect for pay-as-you-go instances.
         self.auto_renew = auto_renew
         # The billing method. Valid values:
-        # - POST: pay-as-you-go.
-        # - PRE: subscription.
+        # - POST: pay-as-you-go
+        # - PRE: subscription
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The default high-availability namespace resource configuration.
+        # The resource configurations for the default high-availability namespace.
         self.default_ha_namespace_resource_spec = default_ha_namespace_resource_spec
-        # The default namespace resource configuration.
+        # The resource configurations for the default namespace.
         self.default_namespace_resource_spec = default_namespace_resource_spec
-        # The subscription duration.
+        # The number of subscription periods.
         # 
         # > This parameter is required when ChargeType is set to PRE.
         self.duration = duration
@@ -60,22 +60,22 @@ class CreateInstanceRequest(DaraModel):
         self.extra = extra
         # Specifies whether to use zone-disaster recovery resources.
         self.ha = ha
-        # The zone-disaster recovery resource specifications.
+        # The resource specifications for zone-disaster recovery.
         self.ha_resource_spec = ha_resource_spec
-        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+        # The vSwitches in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids = ha_vswitch_ids
-        # The workspace name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name cannot end with a hyphen.
+        # The name of the workspace. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens. It cannot end with a hyphen.
         # 
         # This parameter is required.
         self.instance_name = instance_name
         # The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
-        # The billing cycle of the subscription instance. Valid values:
+        # The subscription period unit for the subscription instance. Valid values:
         # 
-        # - **year**: yearly.
-        # - **month**: monthly.
+        # - **year**: year
+        # - **month**: month
         # 
-        # > This parameter is required when ChargeType is set to PRE.
+        # > This parameter is required when the billing method is subscription.
         self.pricing_cycle = pricing_cycle
         # The coupon code.
         self.promotion_code = promotion_code
@@ -83,7 +83,7 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource specifications.
         # 
@@ -93,17 +93,17 @@ class CreateInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.storage = storage
-        # The list of tags. A maximum of 20 tags can be specified.
+        # The list of tags. You can add up to 20 tags.
         self.tag = tag
         # Specifies whether to use a coupon. Valid values:
-        # - true: Use a coupon.
-        # - false: Do not use a coupon.
+        # - true: uses a coupon.
+        # - false: does not use a coupon.
         self.use_promotion_code = use_promotion_code
-        # The list of vSwitch IDs.
+        # The vSwitch IDs.
         # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -320,11 +320,11 @@ class CreateInstanceRequestStorage(DaraModel):
         fully_managed: bool = None,
         oss: main_models.CreateInstanceRequestStorageOss = None,
     ):
-        # Specifies whether to use fully managed storage. You can select only one of fully managed storage or binding an OSS bucket. Valid values:
-        # - true: Use fully managed storage.
-        # - false: Do not use fully managed storage.
+        # Specifies whether to use fully managed storage. You can choose either fully managed storage or binding an OSS bucket. Valid values:
+        # - true: uses fully managed storage.
+        # - false: does not use fully managed storage.
         self.fully_managed = fully_managed
-        # The OSS storage configurations.
+        # The OSS storage.
         self.oss = oss
 
     def validate(self):
@@ -390,11 +390,11 @@ class CreateInstanceRequestResourceSpec(DaraModel):
         memory_gb: int = None,
     ):
         # The number of CPUs.
-        # > - This parameter is required for subscription workspaces. For pay-as-you-go workspaces, you do not need to specify this parameter.- The number of CPUs for the target project must be less than the remaining CPUs in the workspace (total purchased CPUs minus CPUs already allocated to other projects). Otherwise, an error is returned.
+        # > - This parameter is required for subscription workspaces. For pay-as-you-go workspaces, this parameter is optional. - The number of CPUs for the target project to be created must be less than the number of remaining CPUs in the workspace (the total number of CPUs purchased for the workspace minus the number of CPUs allocated to other projects). Otherwise, an error is reported.
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -431,7 +431,7 @@ class CreateInstanceRequestHaResourceSpec(DaraModel):
     ):
         # The number of CPUs for zone-disaster recovery.
         self.cpu = cpu
-        # The memory size for zone-disaster recovery high availability (HA).
+        # The memory size for high-availability zone-disaster recovery.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -470,7 +470,7 @@ class CreateInstanceRequestDefaultNamespaceResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):
@@ -509,7 +509,7 @@ class CreateInstanceRequestDefaultHaNamespaceResourceSpec(DaraModel):
         self.cpu = cpu
         # The memory size. Unit: GB.
         # 
-        # > The memory size must be 4 times the number of CPUs.
+        # > The memory size must be four times the number of CPUs.
         self.memory_gb = memory_gb
 
     def validate(self):

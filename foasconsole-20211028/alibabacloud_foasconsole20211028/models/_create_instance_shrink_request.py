@@ -34,22 +34,22 @@ class CreateInstanceShrinkRequest(DaraModel):
         self.architecture_type = architecture_type
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled. This is the default value.
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal. This is the default value.
         # 
         # > This parameter does not take effect for pay-as-you-go instances.
         self.auto_renew = auto_renew
         # The billing method. Valid values:
-        # - POST: pay-as-you-go.
-        # - PRE: subscription.
+        # - POST: pay-as-you-go
+        # - PRE: subscription
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The default high-availability namespace resource configuration.
+        # The resource configurations for the default high-availability namespace.
         self.default_ha_namespace_resource_spec_shrink = default_ha_namespace_resource_spec_shrink
-        # The default namespace resource configuration.
+        # The resource configurations for the default namespace.
         self.default_namespace_resource_spec_shrink = default_namespace_resource_spec_shrink
-        # The subscription duration.
+        # The number of subscription periods.
         # 
         # > This parameter is required when ChargeType is set to PRE.
         self.duration = duration
@@ -57,22 +57,22 @@ class CreateInstanceShrinkRequest(DaraModel):
         self.extra = extra
         # Specifies whether to use zone-disaster recovery resources.
         self.ha = ha
-        # The zone-disaster recovery resource specifications.
+        # The resource specifications for zone-disaster recovery.
         self.ha_resource_spec_shrink = ha_resource_spec_shrink
-        # The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+        # The vSwitches in the secondary zone for zone-disaster recovery.
         self.ha_vswitch_ids_shrink = ha_vswitch_ids_shrink
-        # The workspace name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name cannot end with a hyphen.
+        # The name of the workspace. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens. It cannot end with a hyphen.
         # 
         # This parameter is required.
         self.instance_name = instance_name
         # The type of the monitoring and alerting service. You can select ARMS or CloudMonitor.
         self.monitor_type = monitor_type
-        # The billing cycle of the subscription instance. Valid values:
+        # The subscription period unit for the subscription instance. Valid values:
         # 
-        # - **year**: yearly.
-        # - **month**: monthly.
+        # - **year**: year
+        # - **month**: month
         # 
-        # > This parameter is required when ChargeType is set to PRE.
+        # > This parameter is required when the billing method is subscription.
         self.pricing_cycle = pricing_cycle
         # The coupon code.
         self.promotion_code = promotion_code
@@ -80,7 +80,7 @@ class CreateInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource specifications.
         # 
@@ -90,17 +90,17 @@ class CreateInstanceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.storage_shrink = storage_shrink
-        # The list of tags. A maximum of 20 tags can be specified.
+        # The list of tags. You can add up to 20 tags.
         self.tag_shrink = tag_shrink
         # Specifies whether to use a coupon. Valid values:
-        # - true: Use a coupon.
-        # - false: Do not use a coupon.
+        # - true: uses a coupon.
+        # - false: does not use a coupon.
         self.use_promotion_code = use_promotion_code
-        # The list of vSwitch IDs.
+        # The vSwitch IDs.
         # 
         # This parameter is required.
         self.v_switch_ids_shrink = v_switch_ids_shrink
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

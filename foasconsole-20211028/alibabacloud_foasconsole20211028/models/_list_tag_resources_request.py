@@ -16,19 +16,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The order instance IDs.
+        # The IDs of the order instances. You can call DescribeInstances to query the instance IDs of the workspace.
         self.resource_id = resource_id
         # The resource type. Set the value to vvpinstance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag list. A maximum of 20 items are supported.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

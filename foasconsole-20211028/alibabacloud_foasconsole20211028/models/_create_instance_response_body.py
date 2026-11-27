@@ -16,7 +16,7 @@ class CreateInstanceResponseBody(DaraModel):
         self.order_info = order_info
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -61,13 +61,13 @@ class CreateInstanceResponseBodyOrderInfo(DaraModel):
         storage_instance_id: str = None,
         storage_order_id: int = None,
     ):
-        # The order instance ID.
+        # The ID of the instance in the order.
         self.instance_id = instance_id
         # The order ID.
         self.order_id = order_id
-        # The storage instance ID.
+        # The ID of the storage instance.
         self.storage_instance_id = storage_instance_id
-        # The storage order ID.
+        # The ID of the storage order.
         self.storage_order_id = storage_order_id
 
     def validate(self):
