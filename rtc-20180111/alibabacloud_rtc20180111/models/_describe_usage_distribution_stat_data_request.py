@@ -12,14 +12,23 @@ class DescribeUsageDistributionStatDataRequest(DaraModel):
         start_date: int = None,
         stat_dim: str = None,
     ):
-        # APP ID
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The end time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The start time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # The statistical dimension. Valid values:
+        # - **CHANNEL_ONLINE**: aggregates data by the number of online users in a channel.
+        # - **NETWORK**: aggregates data by network type.
+        # - **OS**: aggregates data by operating system type.
+        # 
         # This parameter is required.
         self.stat_dim = stat_dim
 

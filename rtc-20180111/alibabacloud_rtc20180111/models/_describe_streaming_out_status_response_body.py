@@ -12,6 +12,10 @@ class DescribeStreamingOutStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # For abnormal tasks, RTC proactively ends the tasks and notifies the user server through callbacks. For more information, see [Callbacks](https://help.aliyun.com/document_detail/2709168.html?spm=a2c4g.11186623.help-menu-61399.d_2_0_0_0.49be1761tge4EX#6211464494udk).
+        # - 0: The task is started and waiting for users to join.
+        # - 1: Streaming in progress.
+        # - 2: Streaming exception, live streaming stopped.
         self.status = status
 
     def validate(self):

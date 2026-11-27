@@ -10,7 +10,9 @@ class CreateAutoLiveStreamRuleResponseBody(DaraModel):
         request_id: str = None,
         rule_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the relay rule.
         self.rule_id = rule_id
 
     def validate(self):

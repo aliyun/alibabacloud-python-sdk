@@ -9,6 +9,8 @@ class ModifyAppViewStatusRequest(DaraModel):
         self,
         app_id: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
 

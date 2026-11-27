@@ -10,8 +10,12 @@ class CreateCloudNotePhrasesShrinkRequest(DaraModel):
         app_id: str = None,
         phrase_shrink: str = None,
     ):
+        # The application ID. You can create and query application IDs in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The hotword parameter.
+        # 
         # This parameter is required.
         self.phrase_shrink = phrase_shrink
 

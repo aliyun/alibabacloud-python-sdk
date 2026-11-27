@@ -15,8 +15,12 @@ class DescribeFaultDiagnosisFactorDistributionStatRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # End Time of the query, expressed as a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # Start Time of the query, expressed as a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
 

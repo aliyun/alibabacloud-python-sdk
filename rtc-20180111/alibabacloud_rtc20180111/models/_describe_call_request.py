@@ -14,16 +14,26 @@ class DescribeCallRequest(DaraModel):
         ext_data_type: str = None,
         query_exp_info: bool = None,
     ):
-        # APP ID。
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The time when the channel was created. You can query data of the last 30 days. The time is a UNIX timestamp in seconds.
+        # > The channel creation time must be exactly the same as the actual creation time (accurate to the second). You can call the [DescribeCallList](https://help.aliyun.com/document_detail/2655884.html) operation to view the channel creation time (the CreatedTS parameter in the response).
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # The time when the channel was released. The time is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
+        # > If the specified channel release time is later than the actual release time, the data from the creation time to the actual release time is returned.
         self.destroyed_ts = destroyed_ts
+        # The extended data type to query. Valid values:
+        # - USER_DURATION_STAT: user duration statistics.
         self.ext_data_type = ext_data_type
+        # Specifies whether to query the communication experience information. Default value: true.
         self.query_exp_info = query_exp_info
 
     def validate(self):

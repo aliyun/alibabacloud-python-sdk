@@ -9,6 +9,8 @@ class DescribeAppAgentFunctionStatusRequest(DaraModel):
         self,
         app_id: str = None,
     ):
+        # The application ID. Create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
 

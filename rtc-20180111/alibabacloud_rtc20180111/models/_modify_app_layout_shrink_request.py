@@ -11,9 +11,14 @@ class ModifyAppLayoutShrinkRequest(DaraModel):
         client_token: str = None,
         layout_shrink: str = None,
     ):
+        # Application ID. Create and query through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Idempotent parameter.
         self.client_token = client_token
+        # Layout.
+        # 
         # This parameter is required.
         self.layout_shrink = layout_shrink
 

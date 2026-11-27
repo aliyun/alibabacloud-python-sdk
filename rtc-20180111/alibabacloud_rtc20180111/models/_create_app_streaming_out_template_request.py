@@ -13,8 +13,12 @@ class CreateAppStreamingOutTemplateRequest(DaraModel):
         app_id: str = None,
         streaming_out_template: main_models.CreateAppStreamingOutTemplateRequestStreamingOutTemplate = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template.
+        # 
         # This parameter is required.
         self.streaming_out_template = streaming_out_template
 
@@ -53,10 +57,18 @@ class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(DaraModel):
         media_encode: int = None,
         name: str = None,
     ):
+        # The list of layout IDs. A maximum of 16 layout IDs are supported.
+        # 
+        # Note: The layouts in the list must not have the same number of data sources.
+        # 
         # This parameter is required.
         self.layout_ids = layout_ids
+        # The encoding options.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # The name of the template.
+        # 
         # This parameter is required.
         self.name = name
 

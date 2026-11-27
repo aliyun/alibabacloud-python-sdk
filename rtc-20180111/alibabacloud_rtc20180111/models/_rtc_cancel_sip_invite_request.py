@@ -12,12 +12,28 @@ class RtcCancelSipInviteRequest(DaraModel):
         device_type: str = None,
         user_id: str = None,
     ):
+        # The application ID. Create and find this ID in the console. Specify only one ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of an existing channel. Specify only one ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The type of the third-party SIP device:
+        # 
+        # - sip_device
+        # 
+        # - mcu
+        # 
+        # - phone
+        # 
+        # Note: Only the phone type is supported at this stage.
+        # 
         # This parameter is required.
         self.device_type = device_type
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

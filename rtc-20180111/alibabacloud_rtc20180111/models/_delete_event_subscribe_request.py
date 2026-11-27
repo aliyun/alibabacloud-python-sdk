@@ -11,9 +11,13 @@ class DeleteEventSubscribeRequest(DaraModel):
         owner_id: int = None,
         subscribe_id: str = None,
     ):
+        # The application ID. You can create and query applications in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The subscription ID. For more information, see [CreateEventSubscribe](https://help.aliyun.com/document_detail/274447.html).
+        # 
         # This parameter is required.
         self.subscribe_id = subscribe_id
 

@@ -16,11 +16,15 @@ class DescribeCloudNotesResponseBody(DaraModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
+        # List of meeting summary results.
         self.items = items
+        # Page number.
         self.page_no = page_no
+        # Quantity per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # Total quantity.
         self.total_cnt = total_cnt
 
     def validate(self):
@@ -92,18 +96,31 @@ class DescribeCloudNotesResponseBodyItems(DaraModel):
         transcription_file_path: str = None,
         vendor: int = None,
     ):
+        # Path where the chapter overview result file is stored.
         self.auto_chapters_file_path = auto_chapters_file_path
+        # The user-defined bucket.
         self.bucket = bucket
+        # Channel ID.
         self.channel_id = channel_id
+        # The path where the custom prompt result file is stored.
         self.custom_prompt_file_path = custom_prompt_file_path
+        # The path where the key points extraction result file is stored.
         self.meeting_assistance_file_path = meeting_assistance_file_path
+        # Reference job region.
         self.region = region
+        # The path where the service quality inspection result file is stored.
         self.service_inspection_file_path = service_inspection_file_path
+        # Start Time of the meeting summary job.
         self.start_ts = start_ts
+        # Path where the summary result file is stored.
         self.summarization_file_path = summarization_file_path
+        # Job ID.
         self.task_id = task_id
+        # The path where the spoken-to-written text result file is stored.
         self.text_polish_file_path = text_polish_file_path
+        # Path where the transcription result file is stored.
         self.transcription_file_path = transcription_file_path
+        # The vendor referenced when enabling the job.
         self.vendor = vendor
 
     def validate(self):

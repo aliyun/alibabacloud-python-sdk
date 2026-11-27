@@ -13,7 +13,9 @@ class RemoveUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.RemoveUsersResponseBodyUsers] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # User List.
         self.users = users
 
     def validate(self):
@@ -57,8 +59,13 @@ class RemoveUsersResponseBodyUsers(DaraModel):
         message: str = None,
         user_id: str = None,
     ):
+        # Status code. A value of 0 indicates success. An error code is returned upon failure.
         self.code = code
+        # Result of the delete operation. Valid values:  
+        # - **Success**: Succeeded.  
+        # - **Failed**: failed.
         self.message = message
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

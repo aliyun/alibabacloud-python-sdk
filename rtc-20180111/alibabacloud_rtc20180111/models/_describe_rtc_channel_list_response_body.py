@@ -17,9 +17,13 @@ class DescribeRtcChannelListResponseBody(DaraModel):
         total_cnt: int = None,
     ):
         self.channel_list = channel_list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_cnt = total_cnt
 
     def validate(self):

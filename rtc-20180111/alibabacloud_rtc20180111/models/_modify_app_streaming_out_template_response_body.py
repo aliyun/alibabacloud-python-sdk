@@ -12,6 +12,7 @@ class ModifyAppStreamingOutTemplateResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Template ID.
         self.template_id = template_id
 
     def validate(self):

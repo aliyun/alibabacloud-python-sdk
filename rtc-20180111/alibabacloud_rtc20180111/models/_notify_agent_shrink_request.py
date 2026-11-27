@@ -16,13 +16,24 @@ class NotifyAgentShrinkRequest(DaraModel):
         priority: int = None,
         task_id: str = None,
     ):
+        # The application ID. Create and query it in the console. Only a single ID is supported.
         self.app_id = app_id
+        # Background audio.
         self.background_music_shrink = background_music_shrink
+        # The channel to join. Only a single ID is supported.
         self.channel_id = channel_id
+        # Custom parameters passed through to the client.
         self.custom_attribute = custom_attribute
+        # Indicates whether the announcement can be interrupted. If false, the message cannot be interrupted by voice input, key presses, or other methods.
         self.interruptable = interruptable
+        # The text content to announce.
         self.message = message
+        # The priority level for inserting the announcement:
+        # 1 — Interrupt the current interaction and announce immediately.
+        # 2 — Announce after the current interaction ends.
+        # 3 — Announce only if no interaction is active.
         self.priority = priority
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

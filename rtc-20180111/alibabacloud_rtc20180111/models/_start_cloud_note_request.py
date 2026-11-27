@@ -25,23 +25,70 @@ class StartCloudNoteRequest(DaraModel):
         text_polish: main_models.StartCloudNoteRequestTextPolish = None,
         transcription: main_models.StartCloudNoteRequestTranscription = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The auto chapters feature. When enabled, chapter titles and summaries are generated.
         self.auto_chapters = auto_chapters
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The custom prompt control parameter object.
         self.custom_prompt = custom_prompt
+        # **[Deprecated]** This parameter is deprecated. You do not need to specify it.
         self.language_hints = language_hints
+        # The intelligent meeting minutes feature. When enabled, keywords, key content, and to-do items are generated.
         self.meeting_assistance = meeting_assistance
+        # The real-time subtitles.
         self.realtime_subtitle = realtime_subtitle
+        # The service inspection feature.
         self.service_inspection = service_inspection
+        # The source language model used by the channel. Valid values:
+        # - cn: Chinese
+        # - yue: Cantonese
+        # - en: English
+        # - multilingual: Multilingual
+        # - ja: Japanese
+        # - ko: Korean
+        # - de: German
+        # - fr: French
+        # - ru: Russian
+        # - es: Spanish
+        # - vi: Vietnamese
+        # - it: Italian
+        # - sv: Swedish
+        # - cs: Czech
+        # - pl: Polish
+        # - th: Thai
+        # - fi: Finnish
+        # - hi: Hindi
+        # - id: Indonesian
+        # - pt: Portuguese
+        # - ar: Arabic
+        # - fil: Filipino
+        # - ms: Malay
+        # - tr: Turkish
+        # - hu: Hungarian
+        # - lo: Lao
+        # - pt-br: Portuguese (Brazil)
+        # - es-ar: Spanish (Argentina)
+        # - es-mx: Spanish (Mexico)
         self.source_language = source_language
+        # The storage configuration.
+        # 
         # This parameter is required.
         self.storage_config = storage_config
+        # The summarization feature. When enabled, full-text summaries and speaker summaries are generated.
         self.summarization = summarization
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The text polishing feature.
         self.text_polish = text_polish
+        # The transcription feature. Enabled by default.
         self.transcription = transcription
 
     def validate(self):
@@ -176,9 +223,17 @@ class StartCloudNoteRequestTranscription(DaraModel):
         speaker_count: int = None,
         transcription_level: int = None,
     ):
+        # Specifies whether to enable speaker diarization.
         self.diarization_enabled = diarization_enabled
+        # The hotword table ID.
         self.phrase_id = phrase_id
+        # The number of speakers for speaker diarization. Default value: 0. Valid values:
+        # - 0: The number of speakers is unknown.
+        # - 2: The number of speakers is 2.
         self.speaker_count = speaker_count
+        # The return level of speech recognition results. Default value: 2. Valid values:
+        # - 1: Returns recognition results when a complete sentence is recognized.
+        # - 2: Returns recognition results when intermediate results and complete sentences are recognized.
         self.transcription_level = transcription_level
 
     def validate(self):
@@ -224,6 +279,7 @@ class StartCloudNoteRequestTextPolish(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to enable the feature.
         self.enabled = enabled
 
     def validate(self):
@@ -252,7 +308,10 @@ class StartCloudNoteRequestSummarization(DaraModel):
         enabled: bool = None,
         type: List[str] = None,
     ):
+        # Specifies whether to enable the feature.
         self.enabled = enabled
+        # The specific type.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -291,18 +350,59 @@ class StartCloudNoteRequestStorageConfig(DaraModel):
         secret_key: str = None,
         vendor: int = None,
     ):
-        # accessKey。
+        # The AccessKey.
         # 
         # This parameter is required.
         self.access_key = access_key
+        # The bucket name.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The storage region.
+        # 
+        # | Region | AliYun OSS |
+        # |--------|------------|
+        # | 0 | CN_Hangzhou |
+        # | 1 | CN_Shanghai |
+        # | 2 | CN_Qingdao |
+        # | 3 | CN_Beijing |
+        # | 4 | CN_Zhangjiakou |
+        # | 5 | CN_Huhehaote |
+        # | 6 | CN_Shenzhen |
+        # | 7 | CN_Hongkong |
+        # | 8 | US_West_1 |
+        # | 9 | US_East_1 |
+        # | 10 | AP_Southeast_1 |
+        # | 11 | AP_Southeast_2 |
+        # | 12 | AP_Southeast_3 |
+        # | 13 | AP_Southeast_5 |
+        # | 14 | AP_Northeast_1 |
+        # | 15 | AP_South_1 (Offline. Do not use.) |
+        # | 16 | EU_Central_1 |
+        # | 17 | EU_West_1 |
+        # | 18 | EU_East_1(ME_East_1) |
+        # | 19 | AP_Southeast_6 |
+        # | 20 | CN_Heyuan |
+        # | 21 | CN_Guangzhou |
+        # | 22 | CN_Chengdu |
+        # | 23 | CN_Nanjing |
+        # | 24 | CN_Fuzhou |
+        # | 25 | CN_Wulanchabu |
+        # | 26 | AP_Northeast_2 |
+        # | 27 | AP_Southeast_7 |
+        # 
         # This parameter is required.
         self.region = region
-        # secretKey。
+        # The AccessKey secret.
         # 
         # This parameter is required.
         self.secret_key = secret_key
+        # The storage platform. Valid values:
+        # 
+        # | vendor | Object storage service | Remarks |
+        # |--------|---------|---------|
+        # | 1 | AliYun OSS | Alibaba Cloud |
+        # 
         # This parameter is required.
         self.vendor = vendor
 
@@ -358,11 +458,18 @@ class StartCloudNoteRequestServiceInspection(DaraModel):
         inspection_introduction: str = None,
         scene_introduction: str = None,
     ):
+        # Specifies whether to enable the feature.
         self.enabled = enabled
+        # The list of inspection dimensions for service inspection, including the names and definitions of the dimensions. This specifies the criteria for the large language model to determine whether a dimension is hit.
+        # 
         # This parameter is required.
         self.inspection_contents = inspection_contents
+        # The description of the inspection objectives and focus areas for service inspection.
+        # 
         # This parameter is required.
         self.inspection_introduction = inspection_introduction
+        # The description of the dialogue scene for service inspection.
+        # 
         # This parameter is required.
         self.scene_introduction = scene_introduction
 
@@ -418,8 +525,12 @@ class StartCloudNoteRequestServiceInspectionInspectionContents(DaraModel):
         content: str = None,
         title: str = None,
     ):
+        # The definition of the inspection dimension for service inspection.
+        # 
         # This parameter is required.
         self.content = content
+        # The name of the inspection dimension for service inspection.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -456,8 +567,11 @@ class StartCloudNoteRequestRealtimeSubtitle(DaraModel):
         enabled: bool = None,
         translation: main_models.StartCloudNoteRequestRealtimeSubtitleTranslation = None,
     ):
+        # Specifies whether to enable server-side callbacks.
         self.asr_callback = asr_callback
+        # Specifies whether to enable the feature.
         self.enabled = enabled
+        # The translation parameters. You can specify the target translation language by using the SDK.
         self.translation = translation
 
     def validate(self):
@@ -499,6 +613,10 @@ class StartCloudNoteRequestRealtimeSubtitleTranslation(DaraModel):
         self,
         translate_level: int = None,
     ):
+        # The output level of the translated text. Default value: 2.
+        # 
+        # - 1: Returns results when a complete sentence is recognized.
+        # - 2: Returns results when intermediate results and complete sentences are recognized.
         self.translate_level = translate_level
 
     def validate(self):
@@ -527,7 +645,10 @@ class StartCloudNoteRequestMeetingAssistance(DaraModel):
         enabled: bool = None,
         meeting_assistance_type: List[str] = None,
     ):
+        # Specifies whether to enable the feature.
         self.enabled = enabled
+        # The algorithm type for the intelligent meeting minutes feature.
+        # 
         # This parameter is required.
         self.meeting_assistance_type = meeting_assistance_type
 
@@ -563,8 +684,11 @@ class StartCloudNoteRequestCustomPrompt(DaraModel):
         custom_prompt_contents: List[main_models.StartCloudNoteRequestCustomPromptCustomPromptContents] = None,
         enabled: bool = None,
     ):
+        # The list of parameters for the custom prompt.
+        # 
         # This parameter is required.
         self.custom_prompt_contents = custom_prompt_contents
+        # Specifies whether to enable the feature.
         self.enabled = enabled
 
     def validate(self):
@@ -609,11 +733,20 @@ class StartCloudNoteRequestCustomPromptCustomPromptContents(DaraModel):
         prompt: str = None,
         trans_type: str = None,
     ):
+        # The model used for the prompt. Valid values: tingwu-turbo, tingwu-plus, and qwen-max. Default value: tingwu-turbo.
         self.model = model
+        # The custom name of the prompt, which is used to match the output results.
+        # 
         # This parameter is required.
         self.name = name
+        # The custom content of the prompt. The content must include the {Transcription} tag. The {Transcription} tag is automatically replaced with the speech transcription result as the model input.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The format of the {Transcription} tag. Valid values:
+        # 
+        # - chat: The transcription result includes speaker information.
+        # - default: The transcription result is in plain text format.
         self.trans_type = trans_type
 
     def validate(self):
@@ -659,6 +792,7 @@ class StartCloudNoteRequestAutoChapters(DaraModel):
         self,
         enabled: bool = None,
     ):
+        # Specifies whether to enable the feature.
         self.enabled = enabled
 
     def validate(self):

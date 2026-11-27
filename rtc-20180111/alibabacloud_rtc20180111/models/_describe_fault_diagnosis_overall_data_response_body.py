@@ -14,8 +14,11 @@ class DescribeFaultDiagnosisOverallDataResponseBody(DaraModel):
         overall_data: main_models.DescribeFaultDiagnosisOverallDataResponseBodyOverallData = None,
         request_id: str = None,
     ):
+        # The exception metric data.
         self.metric_data = metric_data
+        # The list of overview data for exception diagnostics.
         self.overall_data = overall_data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,8 +65,11 @@ class DescribeFaultDiagnosisOverallDataResponseBodyOverallData(DaraModel):
         fault_user_ratio: float = None,
         total_user_count: int = None,
     ):
+        # The number of abnormal user visits or abnormal users.
         self.fault_user_count = fault_user_count
+        # The total proportion of abnormal users.
         self.fault_user_ratio = fault_user_ratio
+        # The total number of user visits or total users.
         self.total_user_count = total_user_count
 
     def validate(self):
@@ -103,6 +109,7 @@ class DescribeFaultDiagnosisOverallDataResponseBodyMetricData(DaraModel):
         self,
         nodes: List[main_models.DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes] = None,
     ):
+        # The list of coordinate points for the metric trends chart.
         self.nodes = nodes
 
     def validate(self):
@@ -140,8 +147,11 @@ class DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The extended properties, where ratio indicates the proportion of abnormal users per unit time and totalCount indicates the total number of users per unit time.
         self.ext = ext
+        # The x-axis coordinate in the metric trends chart. The unit of time is 1 minute.
         self.x = x
+        # The y-axis coordinate in the metric trends chart.
         self.y = y
 
     def validate(self):

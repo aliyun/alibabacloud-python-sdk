@@ -14,8 +14,12 @@ class ModifyCallbackMetaRequest(DaraModel):
         callback: main_models.ModifyCallbackMetaRequestCallback = None,
         owner_id: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback configuration.
+        # 
         # This parameter is required.
         self.callback = callback
         self.owner_id = owner_id
@@ -61,10 +65,19 @@ class ModifyCallbackMetaRequestCallback(DaraModel):
         conf: str = None,
         sub_event: List[int] = None,
     ):
+        # The callback code.
+        # 
         # This parameter is required.
         self.category = category
+        # The callback URL.
+        # 
         # This parameter is required.
         self.conf = conf
+        # The sub-events.
+        # Recording events:
+        # - **2010**: Recording service status change.
+        # - **2011**: Recording audio stream status change.
+        # - **2012**: Recording video stream status change.
         self.sub_event = sub_event
 
     def validate(self):

@@ -16,12 +16,19 @@ class CreateMPULayoutRequest(DaraModel):
         owner_id: int = None,
         panes: List[main_models.CreateMPULayoutRequestPanes] = None,
     ):
+        # The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The maximum number of audio mixes. Valid values: **0** to **6**.
+        # 
         # This parameter is required.
         self.audio_mix_count = audio_mix_count
+        # The name of the layout.
         self.name = name
         self.owner_id = owner_id
+        # The list of panes in the layout.
+        # 
         # This parameter is required.
         self.panes = panes
 
@@ -88,12 +95,23 @@ class CreateMPULayoutRequestPanes(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The height of the pane, represented as a normalized percentage. Valid values: **0.0 < Height ≤ 1.0**.
         self.height = height
+        # Specifies the main pane. Each layout can have only one main pane.
+        # 
+        # - **0**: secondary pane.
+        #  
+        # - **1**: main pane.
         self.major_pane = major_pane
+        # The pane ID. Panes are sorted from top left to bottom right, starting from 0.
         self.pane_id = pane_id
+        # The width of the pane, represented as a normalized percentage. Valid values: **0.0 < Width ≤ 1.0**.
         self.width = width
+        # The X-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ X ≤ 1.0**.
         self.x = x
+        # The Y-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ Y ≤ 1.0**.
         self.y = y
+        # The stacking order. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

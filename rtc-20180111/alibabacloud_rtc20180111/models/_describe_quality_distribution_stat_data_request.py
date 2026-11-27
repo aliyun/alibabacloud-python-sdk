@@ -16,10 +16,19 @@ class DescribeQualityDistributionStatDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # End Time of the query, expressed as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # Start Time of the query, expressed as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
+        # Statistical dimension. Valid values:  
+        # - **CHANNEL_ONLINE**: Statistics by channel online participant count.  
+        # - **NETWORK**: Statistics by network type.  
+        # - **OS**: Statistics by operating system type.
+        # 
         # This parameter is required.
         self.stat_dim = stat_dim
 

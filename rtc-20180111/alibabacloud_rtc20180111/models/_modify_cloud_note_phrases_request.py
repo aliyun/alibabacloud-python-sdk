@@ -13,8 +13,12 @@ class ModifyCloudNotePhrasesRequest(DaraModel):
         app_id: str = None,
         phrase: main_models.ModifyCloudNotePhrasesRequestPhrase = None,
     ):
+        # The application ID. You can create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The hotword parameter.
+        # 
         # This parameter is required.
         self.phrase = phrase
 
@@ -54,11 +58,24 @@ class ModifyCloudNotePhrasesRequestPhrase(DaraModel):
         name: str = None,
         word_weights: List[main_models.ModifyCloudNotePhrasesRequestPhraseWordWeights] = None,
     ):
+        # The description. The description must be encoded in UTF-8 and be 1 to 200 characters in length.
         self.description = description
+        # The ID of the hotword table.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the hotword table. The name must be encoded in UTF-8 and be 1 to 30 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # Each vocabulary can contain up to 300 hotwords. Each hotword can be up to 10 Chinese characters or 5 English words in length.
+        # 
+        # Hotwords must be encoded in UTF-8 and cannot contain punctuation marks or special characters. Otherwise, the hotwords do not take effect.
+        # 
+        # The weight of a hotword must be an integer in the range of [-6, 5].
+        # 
+        # Numbers in the text must be replaced with the corresponding Chinese characters based on their pronunciation. For example, \"59.9元\" must be replaced with \"五十九点九元\".
+        # 
         # This parameter is required.
         self.word_weights = word_weights
 
@@ -114,8 +131,16 @@ class ModifyCloudNotePhrasesRequestPhraseWordWeights(DaraModel):
         weight: int = None,
         word: str = None,
     ):
+        # The weight. The value must be an integer in the range of [-6, 5].
+        # - A value greater than 0 increases the probability of recognizing the word, and a value less than 0 decreases the probability.
+        # - A value of -6 indicates that the word should not be recognized if possible.
+        # - A value of 2 is a common value.
+        # If the effect is not obvious, you can increase the weight. However, a large weight may cause negative effects and lead to inaccurate recognition of other words.
+        # 
         # This parameter is required.
         self.weight = weight
+        # The hotword.
+        # 
         # This parameter is required.
         self.word = word
 

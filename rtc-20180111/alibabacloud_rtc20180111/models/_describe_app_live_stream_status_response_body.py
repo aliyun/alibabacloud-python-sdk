@@ -12,6 +12,7 @@ class DescribeAppLiveStreamStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The status of the switch. enable indicates that the feature is enabled. disable indicates that the feature is disabled.
         self.result = result
 
     def validate(self):

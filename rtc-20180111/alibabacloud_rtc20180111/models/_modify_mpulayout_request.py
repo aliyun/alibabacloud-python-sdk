@@ -17,13 +17,20 @@ class ModifyMPULayoutRequest(DaraModel):
         owner_id: int = None,
         panes: List[main_models.ModifyMPULayoutRequestPanes] = None,
     ):
+        # The ID of the application. Only a single ID is supported. You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The maximum number of audio mixing tracks. Valid values: **0** to **6**.
         self.audio_mix_count = audio_mix_count
+        # The ID of the layout. For more information about how to obtain the layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
+        # 
         # This parameter is required.
         self.layout_id = layout_id
+        # The name of the layout.
         self.name = name
         self.owner_id = owner_id
+        # The list of panes in the layout.
         self.panes = panes
 
     def validate(self):
@@ -95,12 +102,21 @@ class ModifyMPULayoutRequestPanes(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The height of the pane, represented as a normalized percentage. Valid values: **0.0 < Height ≤ 1.0**.
         self.height = height
+        # Specifies the major pane. Each layout can have only one major pane. Valid values:
+        # - **0**: Secondary pane.
+        # - **1**: Major pane.
         self.major_pane = major_pane
+        # The ID of the pane. Panes are sorted from top left to bottom right, starting from 0.
         self.pane_id = pane_id
+        # The width of the pane, represented as a normalized percentage. Valid values: **0.0 < Width ≤ 1.0**.
         self.width = width
+        # The X-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ X ≤ 1.0**.
         self.x = x
+        # The Y-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ Y ≤ 1.0**.
         self.y = y
+        # The Z-order. A value of 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

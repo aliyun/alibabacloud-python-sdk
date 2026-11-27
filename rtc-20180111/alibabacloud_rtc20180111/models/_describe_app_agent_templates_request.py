@@ -13,11 +13,17 @@ class DescribeAppAgentTemplatesRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template ID.
         self.id = id
+        # The template name.
         self.name = name
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

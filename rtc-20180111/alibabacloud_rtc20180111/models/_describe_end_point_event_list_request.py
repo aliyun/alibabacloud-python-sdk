@@ -13,15 +13,22 @@ class DescribeEndPointEventListRequest(DaraModel):
         destroyed_ts: int = None,
         user_id_list: str = None,
     ):
-        # APP ID。
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The start time of the event query time range. This time cannot be earlier than the actual creation time of the channel or 30 days ago. The time is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # The end time of the event query time range. This time cannot be later than the release time of the channel. The time is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
         self.destroyed_ts = destroyed_ts
+        # The list of user IDs. Separate multiple user IDs with commas (,).
+        # 
         # This parameter is required.
         self.user_id_list = user_id_list
 

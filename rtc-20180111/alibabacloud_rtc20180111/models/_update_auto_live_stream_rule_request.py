@@ -19,17 +19,32 @@ class UpdateAutoLiveStreamRuleRequest(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # The application ID. You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback URL for starting and stopping the bypass. You can query the bypass callback URL in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
         self.call_back = call_back
+        # The prefix list of channel IDs for fuzzy matching.
         self.channel_id_prefixes = channel_id_prefixes
+        # The list of channel IDs for exact matching.
         self.channel_ids = channel_ids
+        # The encoding options. For more information, see the valid values of MediaEncode in [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html).
         self.media_encode = media_encode
         self.owner_id = owner_id
+        # The streaming domain name for automatic bypass. The streaming URL for an automatic bypass task is rtmp://${domain}/${app}/${stream}.
+        # 
+        # - domain: Your live streaming domain name.
+        # - app: live.
+        # - stream: urlencode(${AppId}_${ChannelId}_${UserId}_${SourceType}), where SourceType is the input source type.
+        # 
         # This parameter is required.
         self.play_domain = play_domain
+        # The ID of the bypass rule. You can query the bypass rule ID in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # The name of the bypass rule.
         self.rule_name = rule_name
 
     def validate(self):

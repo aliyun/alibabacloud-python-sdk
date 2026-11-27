@@ -10,6 +10,8 @@ class DescribeAppKeyRequest(DaraModel):
         app_id: str = None,
         owner_id: int = None,
     ):
+        # Application ID. You can create and query this ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id

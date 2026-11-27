@@ -13,7 +13,9 @@ class DescribeFaultDiagnosisFactorDistributionStatResponseBody(DaraModel):
         request_id: str = None,
         stat_list: List[main_models.DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Statistics on the distribution of impact factors.
         self.stat_list = stat_list
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList(DaraModel
         user_count: int = None,
         user_ratio: float = None,
     ):
+        # Impact factor ID. For details, see the list of impact factor ID values below.
         self.factor_id = factor_id
+        # Number of impacted users.
         self.user_count = user_count
+        # Proportion of impacted users.
         self.user_ratio = user_ratio
 
     def validate(self):

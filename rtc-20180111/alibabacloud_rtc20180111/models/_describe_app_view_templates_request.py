@@ -13,10 +13,15 @@ class DescribeAppViewTemplatesRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Application ID. Create and view it in the console. You can specify only one ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Search condition.
         self.condition = condition
+        # Page number. Default value: 1.
         self.page_num = page_num
+        # Number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -65,7 +70,9 @@ class DescribeAppViewTemplatesRequestCondition(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # Template name.
         self.name = name
+        # Template ID.
         self.template_id = template_id
 
     def validate(self):

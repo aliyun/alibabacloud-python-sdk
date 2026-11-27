@@ -12,14 +12,26 @@ class DescribeFaultDiagnosisOverallDataRequest(DaraModel):
         start_ts: int = None,
         stat_dim: str = None,
     ):
-        # APP ID
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The end time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # The start time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
+        # The statistical dimension. Valid values:
+        # - **JOIN_SLOW_USER**: the number of users who joined the channel slowly
+        # - **AUDIO_STUCK_USER**: the number of users who experienced audio stuttering
+        # - **VIDEO_STUCK_USER**: the number of users who experienced video stuttering
+        # - **VIDEO_VAGUE_USER**: the number of users who experienced blurry video
+        # - **HIGH_DELAY_USER**: the number of users who experienced high call latency
+        # - **FIRST_FRAME_SLOW_USER**: the number of users who experienced slow first screen rendering
+        # 
         # This parameter is required.
         self.stat_dim = stat_dim
 

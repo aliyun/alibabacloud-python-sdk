@@ -13,7 +13,9 @@ class DescribeQualityOverallDataResponseBody(DaraModel):
         quality_overall_data: List[main_models.DescribeQualityOverallDataResponseBodyQualityOverallData] = None,
         request_id: str = None,
     ):
+        # List of overview data.
         self.quality_overall_data = quality_overall_data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeQualityOverallDataResponseBodyQualityOverallData(DaraModel):
         nodes: List[main_models.DescribeQualityOverallDataResponseBodyQualityOverallDataNodes] = None,
         type: str = None,
     ):
+        # The average value of the Metric.
         self.average = average
+        # List of coordinate points for the Trend Indicator.
         self.nodes = nodes
+        # The Metric Type queried.
         self.type = type
 
     def validate(self):
@@ -107,7 +112,9 @@ class DescribeQualityOverallDataResponseBodyQualityOverallDataNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The x-axis coordinate in the Trend Indicator.
         self.x = x
+        # The y-axis coordinate in the Trend Indicator.
         self.y = y
 
     def validate(self):

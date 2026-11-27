@@ -10,8 +10,12 @@ class CreateAppStreamingOutTemplateShrinkRequest(DaraModel):
         app_id: str = None,
         streaming_out_template_shrink: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template.
+        # 
         # This parameter is required.
         self.streaming_out_template_shrink = streaming_out_template_shrink
 

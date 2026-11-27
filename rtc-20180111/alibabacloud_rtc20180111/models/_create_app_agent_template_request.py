@@ -26,22 +26,47 @@ class CreateAppAgentTemplateRequest(DaraModel):
         tts_config: main_models.CreateAppAgentTemplateRequestTtsConfig = None,
         type: int = None,
     ):
+        # The agent silence configuration.
         self.agent_silence_config = agent_silence_config
+        # The ambient environment configuration for the agent. If this parameter is not specified, the ambient environment configuration is not used.
         self.ambient_sound_config = ambient_sound_config
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The speech-to-text settings.
         self.asr_config = asr_config
+        # The agent backchannel configuration.
         self.back_channel_config = back_channel_config
+        # The conversation mode. Valid values:
+        # - 1: Natural conversation mode (default).
+        # - 2: Walkie-talkie mode.
         self.chat_mode = chat_mode
+        # Specifies whether to enable video understanding. If enabled, the LLM must support multimodal data.
         self.enable_video_understanding = enable_video_understanding
+        # The greeting message. The maximum length is 500 characters.
         self.greeting = greeting
+        # The agent interruption configuration.
         self.interrupt_config = interrupt_config
+        # The interruption mode. Valid values:
+        # - 1: Interruption allowed (default).
+        # - 2: Interruption disabled.
         self.interrupt_mode = interrupt_mode
+        # The large language model settings.
         self.llm_config = llm_config
+        # The template name.
+        # 
         # This parameter is required.
         self.name = name
+        # The preferred video stream for the agent to process when visual understanding is enabled. The agent can process only one video stream at a time. When both the camera stream and the screen sharing stream are pushed simultaneously, this parameter specifies the preferred stream. Valid values:
+        # - 1: The agent preferentially processes the camera stream.
+        # - 2: The agent preferentially processes the screen sharing stream.
+        # Default value: 1.
         self.prefer_video = prefer_video
+        # The text-to-speech settings.
         self.tts_config = tts_config
+        # The agent type. Valid values:
+        # - 1: Voice call (default).
         self.type = type
 
     def validate(self):
@@ -180,15 +205,50 @@ class CreateAppAgentTemplateRequestTtsConfig(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
+        # The API key required by the large language model service provider.
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The filter settings. Valid values:
+        # - 1: Chinese parentheses （）
+        # - 2: English parentheses ()
+        # - 3: Chinese square brackets 【】
+        # - 4: English square brackets []
+        # - 5: English curly braces {}
         self.filter_brackets = filter_brackets
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The pitch. Default value: 1.0. Valid values: 0.5 to 2.0.
         self.pitch = pitch
+        # The speech rate. Default value: 1.0. Valid values: 0.5 to 2.0.
         self.rate = rate
+        # The provider. Alibaba Cloud Model Studio is supported.
         self.vendor = vendor
+        # The voice. Default value: longxiaoxia. Valid values:
+        # - longwan
+        # - longcheng
+        # - longhua
+        # - longxiaochun
+        # - longxiaoxia
+        # - longxiaocheng
+        # - longxiaobai
+        # - longlaotie
+        # - longshu
+        # - longshuo
+        # - longjing
+        # - longmiao
+        # - longyue
+        # - longyuan
+        # - longfei
+        # - longjielidou
+        # - longtong
+        # - longxiang
+        # - loongstella
+        # - loongbella
         self.voice = voice
+        # The volume. Default value: 50. Valid values: 0 to 100.
         self.volume = volume
 
     def validate(self):
@@ -267,17 +327,30 @@ class CreateAppAgentTemplateRequestLlmConfig(DaraModel):
         url: str = None,
         vendor: str = None,
     ):
+        # The ID of the Model Studio agent.
         self.agent_app_id = agent_app_id
+        # The API key required by the large language model service provider.
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The number of historical conversation turns provided to the large language model. Maximum value: 100. Default value: 50.
         self.history_depth = history_depth
+        # The maximum number of tokens for the output text. Default value: 8192.
         self.max_token = max_token
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The prompt for the large language model. The maximum length is 5,000 characters.
         self.prompt = prompt
+        # The sampling temperature. Default value: 0.7. Valid values: [0, 2).
         self.temperature = temperature
+        # The top-P sampling range. Default value: 0.8. Valid values: (0, 1].
         self.top_p = top_p
+        # The endpoint URL for connecting to a third-party large language model.
         self.url = url
+        # The provider. Alibaba Cloud Model Studio and third-party configurations that comply with OpenAI API specifications are supported.
+        # 
         # This parameter is required.
         self.vendor = vendor
 
@@ -360,6 +433,7 @@ class CreateAppAgentTemplateRequestInterruptConfig(DaraModel):
         self,
         semantics_interrupt: bool = None,
     ):
+        # The semantic interruption configuration.
         self.semantics_interrupt = semantics_interrupt
 
     def validate(self):
@@ -387,6 +461,7 @@ class CreateAppAgentTemplateRequestBackChannelConfig(DaraModel):
         self,
         user_turn_end: bool = None,
     ):
+        # Specifies whether to enable backchanneling.
         self.user_turn_end = user_turn_end
 
     def validate(self):
@@ -417,10 +492,15 @@ class CreateAppAgentTemplateRequestAsrConfig(DaraModel):
         vad_config: main_models.CreateAppAgentTemplateRequestAsrConfigVadConfig = None,
         word_weights: List[main_models.CreateAppAgentTemplateRequestAsrConfigWordWeights] = None,
     ):
+        # The sentence silence detection threshold. Default value: 500 ms. Valid values: 200 to 6000.
         self.max_sentence_silence = max_sentence_silence
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The voice activity detection (VAD) configuration.
         self.vad_config = vad_config
+        # The hot words. Each vocabulary can contain up to 500 hot words, and each hot word can be up to 10 Chinese characters in length. Hot words must be UTF-8 encoded and cannot contain punctuation marks or special characters. Otherwise, the hot words do not take effect.
         self.word_weights = word_weights
 
     def validate(self):
@@ -479,9 +559,16 @@ class CreateAppAgentTemplateRequestAsrConfigWordWeights(DaraModel):
         weight: int = None,
         word: str = None,
     ):
+        # The language code. This parameter is optional. The large language model automatically identifies the language. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
+        # The hot word weight. Valid values: integers from 1 to 5. Common value: 4. If the effect is not obvious, you can increase the weight. However, a large weight may cause negative effects and lead to inaccurate recognition of other words.
+        # 
         # This parameter is required.
         self.weight = weight
+        # The hot word text. Each word can be up to 10 Chinese characters or English words in length.
+        # 
         # This parameter is required.
         self.word = word
 
@@ -522,6 +609,7 @@ class CreateAppAgentTemplateRequestAsrConfigVadConfig(DaraModel):
         self,
         interrupt_speech_duration: int = None,
     ):
+        # The minimum duration of continuous voice signals in milliseconds to avoid false interruptions. Default value: 300. Valid values: 0 to 3000.
         self.interrupt_speech_duration = interrupt_speech_duration
 
     def validate(self):
@@ -550,7 +638,11 @@ class CreateAppAgentTemplateRequestAmbientSoundConfig(DaraModel):
         sound_id: str = None,
         volume: int = None,
     ):
+        # The default ambient sounds provided by the agent. Valid values:
+        # - white_noise 
+        # - office
         self.sound_id = sound_id
+        # The volume level.
         self.volume = volume
 
     def validate(self):
@@ -587,9 +679,16 @@ class CreateAppAgentTemplateRequestAgentSilenceConfig(DaraModel):
         strategy: int = None,
         webhook_trigger_timeout: int = None,
     ):
+        # The timeout period for silence alerts, in seconds. This alert can be triggered multiple times. If the agent remains silent after the timeout period elapses, the alert is triggered again upon the next timeout. Valid values: 5 to 600. Default value: 0. A value of 0 indicates that no alert is triggered.
         self.alert_timeout = alert_timeout
+        # The content of the silence prompt message.
         self.content = content
+        # The handling strategy for silence timeout. Valid values:
+        # - 1: Broadcasts the prompt message specified by Content to the user via voice.
+        # - 2: Sends the prompt message specified by Content and the conversation history to the LLM, and broadcasts the reply generated by the model.
+        # Default value: 1.
         self.strategy = strategy
+        # The timeout period for triggering the webhook upon agent silence, in seconds. This webhook can be triggered multiple times. If the agent remains silent after the webhook timeout period elapses, the webhook is triggered again upon the next timeout. Valid values: 10 to 600. Default value: 0. A value of 0 indicates that the webhook is not triggered.
         self.webhook_trigger_timeout = webhook_trigger_timeout
 
     def validate(self):

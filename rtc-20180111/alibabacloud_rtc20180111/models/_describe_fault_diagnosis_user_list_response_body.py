@@ -16,10 +16,15 @@ class DescribeFaultDiagnosisUserListResponseBody(DaraModel):
         total_cnt: int = None,
         user_list: List[main_models.DescribeFaultDiagnosisUserListResponseBodyUserList] = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_cnt = total_cnt
+        # The detailed list of users with faults.
         self.user_list = user_list
 
     def validate(self):
@@ -84,11 +89,17 @@ class DescribeFaultDiagnosisUserListResponseBodyUserList(DaraModel):
         fault_list: List[main_models.DescribeFaultDiagnosisUserListResponseBodyUserListFaultList] = None,
         user_id: str = None,
     ):
+        # The creation timestamp of the channel. The time is a UNIX timestamp in seconds.
         self.channel_created_ts = channel_created_ts
+        # The ID of the channel.
         self.channel_id = channel_id
+        # The time when the user first joined the channel. The time is a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the user last left the channel. The time is a UNIX timestamp in seconds.
         self.destroyed_ts = destroyed_ts
+        # The list of faults.
         self.fault_list = fault_list
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -154,6 +165,7 @@ class DescribeFaultDiagnosisUserListResponseBodyUserListFaultList(DaraModel):
         self,
         fault_type: str = None,
     ):
+        # The fault type.
         self.fault_type = fault_type
 
     def validate(self):

@@ -13,6 +13,7 @@ class DescribeAllCallbackResponseBody(DaraModel):
         callbacks: List[main_models.DescribeAllCallbackResponseBodyCallbacks] = None,
         request_id: str = None,
     ):
+        # List of callback events.
         self.callbacks = callbacks
         # Id of the request
         self.request_id = request_id
@@ -58,8 +59,11 @@ class DescribeAllCallbackResponseBodyCallbacks(DaraModel):
         name: str = None,
         sub_event: List[main_models.DescribeAllCallbackResponseBodyCallbacksSubEvent] = None,
     ):
+        # Event code.
         self.category = category
+        # Event name.
         self.name = name
+        # List of subscribed sub-events.
         self.sub_event = sub_event
 
     def validate(self):
@@ -109,8 +113,11 @@ class DescribeAllCallbackResponseBodyCallbacksSubEvent(DaraModel):
         event_name: str = None,
         type: int = None,
     ):
+        # Subscribed sub-event code.
         self.event = event
+        # Subscribed sub-event name.
         self.event_name = event_name
+        # Subscription event type: 0 for system, 1 for custom.
         self.type = type
 
     def validate(self):

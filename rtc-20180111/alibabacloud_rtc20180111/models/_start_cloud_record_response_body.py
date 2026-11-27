@@ -10,9 +10,9 @@ class StartCloudRecordResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # requestId
+        # The request ID.
         self.request_id = request_id
-        # taskId
+        # The task ID of the current cloud recording.
         self.task_id = task_id
 
     def validate(self):

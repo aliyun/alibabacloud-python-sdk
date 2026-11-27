@@ -10,7 +10,23 @@ class GetMPUTaskStatusResponseBody(DaraModel):
         request_id: str = None,
         status: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The status ID of the bypass transcoding task. Valid values:
+        #  - **0**: Waiting for the channel to start.
+        # > If the task is not started within 30 days, the task is automatically stopped.
+        # 
+        #  - **1**: The task is running.
+        # 
+        #  - **2**: The task is stopped.
+        # 
+        #  - **3**: The task is stopped by the user.
+        # 
+        #  - **4**: The channel is stopped.
+        # 
+        #  - **5**: Live streaming is stopped due to CDN network issues.
+        # 
+        #  - **6**: Live streaming is stopped due to live streaming URL issues.
         self.status = status
 
     def validate(self):

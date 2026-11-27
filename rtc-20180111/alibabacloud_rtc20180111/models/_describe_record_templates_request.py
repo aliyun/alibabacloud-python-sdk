@@ -15,11 +15,24 @@ class DescribeRecordTemplatesRequest(DaraModel):
         page_size: int = None,
         template_ids: List[str] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The page number to return. Default value: **1**.
         self.page_num = page_num
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        # The list of template IDs to query. The format is as follows:
+        # 
+        # ```
+        # TemplateIds.1=****
+        # TemplateIds.2=****
+        # ......
+        # ```
+        # 
+        # To obtain the template ID, see [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
         self.template_ids = template_ids
 
     def validate(self):

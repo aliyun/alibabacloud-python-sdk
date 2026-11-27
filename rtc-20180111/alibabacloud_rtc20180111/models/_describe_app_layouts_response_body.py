@@ -15,9 +15,13 @@ class DescribeAppLayoutsResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
+        # The list of layouts.
         self.layouts = layouts
+        # The ID of this request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_num = total_num
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -73,8 +77,11 @@ class DescribeAppLayoutsResponseBodyLayouts(DaraModel):
         name: str = None,
         panes: List[main_models.DescribeAppLayoutsResponseBodyLayoutsPanes] = None,
     ):
+        # The layout ID.
         self.layout_id = layout_id
+        # The layout name.
         self.name = name
+        # The list of panes.
         self.panes = panes
 
     def validate(self):
@@ -127,11 +134,17 @@ class DescribeAppLayoutsResponseBodyLayoutsPanes(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The pane height, as a normalized percentage. The value range for Height is 0.0 < Height ≤ 1.0.
         self.height = height
+        # The pane ID.
         self.pane_id = pane_id
+        # The pane width, as a normalized percentage. The value range for Width is 0.0 < Width ≤ 1.0.
         self.width = width
+        # The X coordinate, as a normalized percentage. The value range for X is 0.0 ≤ X ≤ 1.0.
         self.x = x
+        # The Y coordinate, as a normalized percentage. The value range for Y is 0.0 ≤ Y ≤ 1.0.
         self.y = y
+        # The Z-order. 0 is the bottom layer, 1 is above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

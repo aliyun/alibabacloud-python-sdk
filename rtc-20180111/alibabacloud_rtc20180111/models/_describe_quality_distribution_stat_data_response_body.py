@@ -13,7 +13,9 @@ class DescribeQualityDistributionStatDataResponseBody(DaraModel):
         quality_stat_data_list: List[main_models.DescribeQualityDistributionStatDataResponseBodyQualityStatDataList] = None,
         request_id: str = None,
     ):
+        # The list of quality statistics data.
         self.quality_stat_data_list = quality_stat_data_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,16 +67,30 @@ class DescribeQualityDistributionStatDataResponseBodyQualityStatDataList(DaraMod
         video_high_quality_transmission_rate: str = None,
         video_stuck_rate: str = None,
     ):
+        # Audio delay, in milliseconds.
         self.audio_delay = audio_delay
+        # Audio high-quality transmission rate, represented as a four-digit decimal.
         self.audio_high_quality_transmission_rate = audio_high_quality_transmission_rate
+        # The Audio Lag Rate, represented as a four-digit decimal.
         self.audio_stuck_rate = audio_stuck_rate
+        # The call duration ratio, represented as a four-digit decimal. For example, 1.0000 indicates that the call duration accounts for 100% of the total usage.
         self.call_duration_ratio = call_duration_ratio
+        # Five-second channel join success rate, represented as a four-digit decimal.
         self.join_channel_suc_five_sec_rate = join_channel_suc_five_sec_rate
+        # The channel join success rate, represented as a four-digit decimal.
         self.join_channel_suc_rate = join_channel_suc_rate
+        # Statistical dimension. Valid values:  
+        # - When StatDim is CHANNELONLINE: **ONE_TO_FIVE** (1–5 participants), **SIX_TO_TEN** (6–10 participants), **ELEVEN_TO_TWENTY** (11–20 participants), **TWENTYONE_TO_FIFTY** (21–50 participants), **ABOVE_FIFTY** (more than 50 participants).  
+        # - When StatDim is NETWORK: **WiFi**, **4G**, etc.  
+        # - When StatDim is OS: **iOS**, **Android**, etc.
         self.name = name
+        # Video delay, in milliseconds.
         self.video_delay = video_delay
+        # Time to first video frame, in milliseconds.
         self.video_first_pic_duration = video_first_pic_duration
+        # Video high-quality transmission rate, represented as a four-digit decimal.
         self.video_high_quality_transmission_rate = video_high_quality_transmission_rate
+        # The Video Lag Rate, represented as a four-digit decimal.
         self.video_stuck_rate = video_stuck_rate
 
     def validate(self):

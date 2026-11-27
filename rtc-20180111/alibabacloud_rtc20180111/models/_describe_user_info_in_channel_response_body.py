@@ -16,10 +16,19 @@ class DescribeUserInfoInChannelResponseBody(DaraModel):
         request_id: str = None,
         timestamp: int = None,
     ):
+        # Indicates whether the channel exists. Valid values:
+        # - **true**: The channel exists.
+        # - **false**: The channel does not exist.
         self.is_channel_exist = is_channel_exist
+        # Indicates whether the user is currently in the channel. Valid values:
+        # - **true**: The user is in the channel.
+        # - **false**: The user is not in the channel.
         self.is_in_channel = is_in_channel
+        # The information of the user in the channel.
         self.property = property
+        # The request ID.
         self.request_id = request_id
+        # The timestamp of the current moment (UTC time).
         self.timestamp = timestamp
 
     def validate(self):
@@ -81,8 +90,17 @@ class DescribeUserInfoInChannelResponseBodyProperty(DaraModel):
         role: int = None,
         session: str = None,
     ):
+        # The time when the user joined the meeting (UTC time).
         self.join = join
+        # The role type in the meeting. Valid values:
+        # 
+        # - **0**: The user role in communication mode.
+        #  
+        # - **1**: The interactive role.
+        #  
+        # - **2**: The live (view only) role.
         self.role = role
+        # The session ID.
         self.session = session
 
     def validate(self):

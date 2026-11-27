@@ -15,9 +15,15 @@ class DescribePubUserListBySubUserResponseBody(DaraModel):
         request_id: str = None,
         sub_user_detail: main_models.DescribePubUserListBySubUserResponseBodySubUserDetail = None,
     ):
+        # Communication status. Valid values:  
+        # - **IN**: In progress.  
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # Details of publishing users.
         self.pub_user_detail_list = pub_user_detail_list
+        # Request ID.
         self.request_id = request_id
+        # Subscriber user details.
         self.sub_user_detail = sub_user_detail
 
     def validate(self):
@@ -89,21 +95,37 @@ class DescribePubUserListBySubUserResponseBodySubUserDetail(DaraModel):
         user_id: str = None,
         user_id_alias: str = None,
     ):
+        # Client type. Valid values: WEB: Web client. NATIVE: Native client.
         self.client_type = client_type
+        # The time when the user first joined the channel, represented as a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the user last left the channel, represented as a UNIX timestamp, in seconds.
         self.destroyed_ts = destroyed_ts
+        # Communication duration, from the first entry to the final exit, in seconds.
         self.duration = duration
+        # Geographic location information, such as Zhejiang Province-Hangzhou City.
         self.location = location
+        # Network type, such as WiFi, 4G, etc.
         self.network = network
+        # Network type, such as WiFi, 4G, etc.
         self.network_list = network_list
+        # Online duration, in seconds.
         self.online_duration = online_duration
+        # Online period information.
         self.online_periods = online_periods
+        # Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system type.
         self.os = os
+        # Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system type.
         self.os_list = os_list
+        # User role.
         self.roles = roles
+        # SDK Version.
         self.sdk_version = sdk_version
+        # List of SDK versions, such as 1.0.0, 1.1.1, etc.
         self.sdk_version_list = sdk_version_list
+        # User ID.
         self.user_id = user_id
+        # User ID alias.
         self.user_id_alias = user_id_alias
 
     def validate(self):
@@ -230,7 +252,9 @@ class DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods(DaraMod
         join_ts: int = None,
         leave_ts: int = None,
     ):
+        # The time when the user joined the channel, represented as a UNIX timestamp in seconds.
         self.join_ts = join_ts
+        # The time when the user left the channel, represented as a UNIX timestamp in seconds.
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -280,22 +304,39 @@ class DescribePubUserListBySubUserResponseBodyPubUserDetailList(DaraModel):
         user_id: str = None,
         user_id_alias: str = None,
     ):
+        # Call IDs of the user\"s communication streams.
         self.call_id_list = call_id_list
+        # Client type. Valid values: WEB: Web client. NATIVE: Native client.
         self.client_type = client_type
+        # The time when the user first joined the channel, represented as a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the user last left the channel, represented as a UNIX timestamp in seconds.
         self.destroyed_ts = destroyed_ts
+        # Communication duration, measured from the first entry to the final exit, in seconds.
         self.duration = duration
+        # Geographical location information, such as Zhejiang Province-Hangzhou City.
         self.location = location
+        # Network type, such as WiFi, 4G, etc.
         self.network = network
+        # Network types, such as WiFi, 4G, etc.
         self.network_list = network_list
+        # Online duration, in seconds.
         self.online_duration = online_duration
+        # Online period information.
         self.online_periods = online_periods
+        # Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system.
         self.os = os
+        # Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system.
         self.os_list = os_list
+        # User roles. Valid values: SENDER: sender. RECEIVER: receiver.
         self.roles = roles
+        # SDK Version.
         self.sdk_version = sdk_version
+        # List of software development kit (SDK) versions, such as 1.0.0, 1.1.1, etc.
         self.sdk_version_list = sdk_version_list
+        # User ID.
         self.user_id = user_id
+        # User ID alias.
         self.user_id_alias = user_id_alias
 
     def validate(self):
@@ -428,7 +469,9 @@ class DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods(Dar
         join_ts: int = None,
         leave_ts: int = None,
     ):
+        # The time when the user joined the channel, represented as a UNIX timestamp in seconds.
         self.join_ts = join_ts
+        # The time when the user left the channel, represented as a UNIX timestamp in seconds.
         self.leave_ts = leave_ts
 
     def validate(self):

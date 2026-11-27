@@ -16,8 +16,11 @@ class DescribeSystemLayoutListResponseBody(DaraModel):
         total_page: int = None,
     ):
         self.layouts = layouts
+        # Request ID.
         self.request_id = request_id
+        # Total number of pages.
         self.total_num = total_num
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):

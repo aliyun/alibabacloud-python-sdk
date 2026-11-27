@@ -14,9 +14,14 @@ class CreateAppLayoutRequest(DaraModel):
         client_token: str = None,
         layout: main_models.CreateAppLayoutRequestLayout = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The client token.
         self.client_token = client_token
+        # The layout.
+        # 
         # This parameter is required.
         self.layout = layout
 
@@ -60,8 +65,12 @@ class CreateAppLayoutRequestLayout(DaraModel):
         name: str = None,
         panes: List[main_models.CreateAppLayoutRequestLayoutPanes] = None,
     ):
+        # The name of the layout.
+        # 
         # This parameter is required.
         self.name = name
+        # The list of panes.
+        # 
         # This parameter is required.
         self.panes = panes
 
@@ -109,11 +118,17 @@ class CreateAppLayoutRequestLayoutPanes(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The height of the pane, represented as a normalized percentage. Valid values: 0.0 < Height ≤ 1.0.
         self.height = height
+        # The ID of the pane. The value starts from 0.
         self.pane_id = pane_id
+        # The width of the pane, represented as a normalized percentage. Valid values: 0.0 < Width ≤ 1.0.
         self.width = width
+        # The X coordinate, represented as a normalized percentage. Valid values: 0.0 ≤ X ≤ 1.0.
         self.x = x
+        # The Y coordinate, represented as a normalized percentage. Valid values: 0.0 ≤ Y ≤ 1.0.
         self.y = y
+        # The Z-order of the pane. A value of 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

@@ -17,16 +17,27 @@ class StartAgentRequest(DaraModel):
         template_id: str = None,
         voice_chat_config: main_models.StartAgentRequestVoiceChatConfig = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel to join. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The configuration for the agent to join a Real-Time Communication (RTC) channel.
+        # 
         # This parameter is required.
         self.rtc_config = rtc_config
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The configuration for AI voice chat.
         self.voice_chat_config = voice_chat_config
 
     def validate(self):
@@ -100,17 +111,38 @@ class StartAgentRequestVoiceChatConfig(DaraModel):
         ttsconfig: main_models.StartAgentRequestVoiceChatConfigTTSConfig = None,
         prefer_video: int = None,
     ):
+        # The Automatic Speech Recognition (ASR) configuration.
         self.asrconfig = asrconfig
+        # The configuration for agent behavior during silence timeout. When a user joins the channel but does not interact effectively with the agent (the user does not speak), the agent is in a silent state. You can configure the agent to broadcast a voice messaging reminder or send a webhook notification during this silent state.
         self.agent_silence_config = agent_silence_config
+        # The ambient sound settings.
         self.ambient_sound_config = ambient_sound_config
+        # The backchannel settings.
         self.back_channel_config = back_channel_config
+        # The chat mode. Valid values:
+        # - 1: natural conversation mode. This is the default value.
+        # - 2: walkie-talkie mode.
         self.chat_mode = chat_mode
+        # Specifies whether to enable visual understanding. If enabled, the large language model (LLM) must support multimodal data.
         self.enable_video_understanding = enable_video_understanding
+        # The greeting message.
         self.greeting = greeting
+        # The interrupt settings.
         self.interrupt_config = interrupt_config
+        # The interrupt mode. Valid values:
+        # - 1: voice interruption supported. This is the default value.
+        # - 2: voice interruption disabled.
         self.interrupt_mode = interrupt_mode
+        # The large language model (LLM) configuration.
         self.llmconfig = llmconfig
+        # The text-to-speech (TTS) configuration.
         self.ttsconfig = ttsconfig
+        # After visual understanding is enabled, you can specify the video stream that the agent prioritizes for understanding. The agent can understand only one video stream when both the camera stream and the screen sharing stream are pushed simultaneously.
+        # 
+        # 1. The agent prioritizes the camera stream.
+        # 2. The agent prioritizes the screen sharing stream.
+        # 
+        # By default, the camera stream is prioritized.
         self.prefer_video = prefer_video
 
     def validate(self):
@@ -231,13 +263,29 @@ class StartAgentRequestVoiceChatConfigTTSConfig(DaraModel):
         voice: str = None,
         volume: int = None,
     ):
+        # The API key of the service provider.
         self.api_key = api_key
+        # The configuration to filter out characters within specified brackets from text-to-speech conversion.
         self.filter_brackets = filter_brackets
+        # The model name. Example: cosyvoice-v1.
         self.model = model
+        # The pitch.
+        # Valid values: 0.5 to 2.0.
+        # Default value: 1.0.
         self.pitch = pitch
+        # The speech rate.
+        # Valid values: 0.5 to 2.0.
+        # Default value: 1.0.
         self.rate = rate
+        # The service provider. Example: aliyun for Model Studio.
         self.vendor = vendor
+        # The voice. If you select the Alibaba Cloud cosyvoice-v1 model, the default voice is longxiaoxia.
+        # Available voices:
+        # longwan, longcheng, longhua, longxiaochun, longxiaoxia, longxiaocheng, longxiaobai, longlaotie, longshu, longshuo, longjing, longmiao, longyue, longyuan, longfei, longjielidou, longtong, longxiang, loongstella, and loongbella.
         self.voice = voice
+        # The volume.
+        # Valid values: 0 to 100.
+        # Default value: 50.
         self.volume = volume
 
     def validate(self):
@@ -320,19 +368,41 @@ class StartAgentRequestVoiceChatConfigLLMConfig(DaraModel):
         url: str = None,
         vendor: str = None,
     ):
+        # The API key of the service provider.
         self.api_key = api_key
+        # The agent application ID. You must specify either Model or AppId. If both are specified, AppId takes precedence.
         self.app_id = app_id
+        # The custom parameters.
         self.biz_params = biz_params
+        # The number of historical conversation turns provided to the LLM.
+        # Default value: 3.
         self.history_depth = history_depth
+        # The maximum number of tokens for the output text.
+        # Default value: 8192.
+        # The maximum value for DeepSeek and Qwen models is 8192.
         self.max_token = max_token
+        # The model name.
+        # Supported models under the aliyun provider:
+        # ["qwen-plus", "deepseek-r1", "qwen-omni-turbo"]
         self.model = model
+        # The custom user parameters in key-value pairs. This parameter is deprecated. Use the BizParams parameter instead.
         self.params = params
+        # The prompt used to instruct the model on the role or behavior to adopt.
         self.prompt = prompt
+        # The sampling temperature used to control the randomness and creativity of the generated text. A higher value indicates higher randomness.
+        # Default value: 0.7.
+        # Valid values: 0 to 2, excluding 2.
+        # Note: This parameter does not take effect for deepseek-r1.
         self.temperature = temperature
         self.tool_execution_config = tool_execution_config
         self.tools = tools
+        # The sampling range used to control the diversity of output tokens. The model samples from tokens whose cumulative probability exceeds this value to ensure the sampling range is not too broad. A higher value indicates a richer variety of output tokens.
+        # Valid values: 0 to 1, excluding 0.
+        # Default value: 0.8.
         self.top_p = top_p
+        # The endpoint URL for integrating a third-party LLM.
         self.url = url
+        # The name of the service provider when a cloud service provider is integrated. Examples: aliyun for Model Studio, thirdparty.
         self.vendor = vendor
 
     def validate(self):
@@ -438,6 +508,7 @@ class StartAgentRequestVoiceChatConfigInterruptConfig(DaraModel):
         self,
         semantics_interrupt: bool = None,
     ):
+        # Specifies whether to enable semantic interruption. Default value: true.
         self.semantics_interrupt = semantics_interrupt
 
     def validate(self):
@@ -466,6 +537,7 @@ class StartAgentRequestVoiceChatConfigBackChannelConfig(DaraModel):
         user_turn_end: bool = None,
         version: int = None,
     ):
+        # Specifies whether to enable backchannel responses after the user finishes speaking. Default value: false.
         self.user_turn_end = user_turn_end
         self.version = version
 
@@ -501,7 +573,14 @@ class StartAgentRequestVoiceChatConfigAmbientSoundConfig(DaraModel):
         sound_id: str = None,
         volume: int = None,
     ):
+        # The ambient sound ID. Built-in and download modes are planned. Currently, only the built-in mode is supported.
+        # - If this parameter is not specified or is left empty, ambient sound is disabled.
+        # - Built-in mode: The agent provides the following default ambient sounds: white_noise (white noise) and office (office environment).
+        # - Download mode: You can specify a custom soundId in the console (which must be different from built-in IDs) and provide a URL. The agent will download and bind the sound internally.
         self.sound_id = sound_id
+        # The volume of the ambient sound.
+        # Default value: 50 (original volume).
+        # Valid values: 0 to 100.
         self.volume = volume
 
     def validate(self):
@@ -539,10 +618,24 @@ class StartAgentRequestVoiceChatConfigAgentSilenceConfig(DaraModel):
         strategy: int = None,
         webhook_trigger_timeout: int = None,
     ):
+        # The timeout period for silence reminders, in seconds.
+        # This reminder can be triggered multiple times. If the agent remains silent after a silence reminder timeout, the reminder is triggered again upon the next timeout.
+        # Valid values: 5 to 600.
+        # Default value: 0. A value of 0 indicates that no reminder is sent.
         self.alert_timeout = alert_timeout
+        # The content of the silence prompt message.
         self.content = content
+        # The switch.
         self.enable = enable
+        # The script strategy for silence reminders. Valid values:
+        # - 1: Broadcast the prompt message specified by Content to the user by voice.
+        # - 2: Send the prompt message specified by Content and the conversation history to the LLM, and broadcast the generated reply by voice.
+        # Default value: 1.
         self.strategy = strategy
+        # The silence timeout period for triggering the agent silence timeout webhook, in seconds.
+        # This webhook can be triggered multiple times. If the agent remains silent after a webhook silence timeout, the webhook is triggered again upon the next timeout.
+        # Valid values: 10 to 600.
+        # Default value: 0. A value of 0 indicates that the webhook is not triggered.
         self.webhook_trigger_timeout = webhook_trigger_timeout
 
     def validate(self):
@@ -599,11 +692,23 @@ class StartAgentRequestVoiceChatConfigASRConfig(DaraModel):
         vad_config: main_models.StartAgentRequestVoiceChatConfigASRConfigVadConfig = None,
         vocabulary_id: str = None,
     ):
+        # If this parameter is not specified, the model automatically identifies the language.
+        # Currently supported language codes:
+        # - zh: Chinese, including Mandarin and dialects such as Shanghainese, Wu, Minnan, Northeastern, Gansu, Guizhou, Henan, Hubei, Hunan, Jiangxi, Ningxia, Shanxi, Shaanxi, Shandong, Sichuan, Tianjin, Yunnan, and Cantonese.
+        # - en: English.
+        # - ja: Japanese.
+        # - yue: Cantonese.
+        # - ko: Korean.
         self.language_hints = language_hints
+        # The voice segmentation detection threshold. Default value: 800. Unit: milliseconds. Recommended range: 200 to 6000.
         self.max_sentence_silence = max_sentence_silence
+        # Specifies whether semantic or voice segmentation is enabled.
         self.semantic_punctuation_enabled = semantic_punctuation_enabled
+        # No configuration is required.
         self.source_language = source_language
+        # The Voice Activity Detection (VAD) configuration.
         self.vad_config = vad_config
+        # The ID of the supported hot word.
         self.vocabulary_id = vocabulary_id
 
     def validate(self):
@@ -663,6 +768,9 @@ class StartAgentRequestVoiceChatConfigASRConfigVadConfig(DaraModel):
         self,
         interrupt_speech_duration: int = None,
     ):
+        # The minimum duration of continuous human voice signals required to avoid false interruptions, in milliseconds.
+        # Valid values: 0 to 3000.
+        # Default value: 300.
         self.interrupt_speech_duration = interrupt_speech_duration
 
     def validate(self):
@@ -692,9 +800,19 @@ class StartAgentRequestRtcConfig(DaraModel):
         user_id: str = None,
         user_inactivity_timeout: int = None,
     ):
+        # The list of user IDs subscribed by the agent. Currently, only one user ID is supported.
         self.target_user_ids = target_user_ids
+        # The user ID of the agent in the RTC channel.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The maximum duration threshold for user inactivity, in seconds.
+        # When the duration of any of the following states reaches this threshold, the agent automatically stops and exits the channel:
+        # 1. All users in the targetUserIds list have left the channel.
+        # 2. The users in the targetUserIds list have not joined the channel.
+        # 
+        # Default value: 30.
+        # Valid values: 5 to 180.
         self.user_inactivity_timeout = user_inactivity_timeout
 
     def validate(self):

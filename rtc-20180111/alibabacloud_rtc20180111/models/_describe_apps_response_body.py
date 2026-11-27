@@ -16,8 +16,11 @@ class DescribeAppsResponseBody(DaraModel):
         total_page: int = None,
     ):
         self.app_list = app_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of results returned.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):

@@ -15,9 +15,13 @@ class DescribeRecordTemplatesResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The recording configuration templates.
         self.templates = templates
+        # The total number of entries returned.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -88,23 +92,41 @@ class DescribeRecordTemplatesResponseBodyTemplates(DaraModel):
         template_id: str = None,
         watermarks: List[main_models.DescribeRecordTemplatesResponseBodyTemplatesWatermarks] = None,
     ):
+        # The RGB value of the background color. Default value: **0** (black). The calculation formula is R + G × 256 + B × 65536. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.background_color = background_color
+        # The list of background image information.
         self.backgrounds = backgrounds
+        # The list of clock widgets.
         self.clock_widgets = clock_widgets
+        # The creation time. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC time).
         self.create_time = create_time
+        # The delay before stopping the recording. Unit: seconds.
         self.delay_stop_time = delay_stop_time
+        # Specifies whether to add the timestamp of the TS file to the recorded M3U8 file.
         self.enable_m3u_8date_time = enable_m3u_8date_time
+        # The file splitting duration.
         self.file_split_interval = file_split_interval
+        # The list of recording file formats. Valid formats include M3U8, FLV, and MP4.
         self.formats = formats
+        # The HTTP callback URL for recording events.
         self.http_callback_url = http_callback_url
+        # The list of mixed-stream layout IDs used by the recording template.
         self.layout_ids = layout_ids
+        # The encoding options.
         self.media_encode = media_encode
+        # The name of the Message Service (MNS) queue for recording event callbacks.
         self.mns_queue = mns_queue
+        # The name of the recording configuration template.
         self.name = name
+        # The name of the Object Storage Service (OSS) bucket where recording files are stored.
         self.oss_bucket = oss_bucket
+        # The naming rule for recording files.
         self.oss_file_prefix = oss_file_prefix
+        # The task specifications.
         self.task_profile = task_profile
+        # The ID of the recording configuration template.
         self.template_id = template_id
+        # The list of watermark information.
         self.watermarks = watermarks
 
     def validate(self):
@@ -267,13 +289,24 @@ class DescribeRecordTemplatesResponseBodyTemplatesWatermarks(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency of the watermark. The value is a normalized percentage. A value of 0 indicates transparent, and a value of 1 indicates completely opaque.
         self.alpha = alpha
+        # Specifies whether to display the watermark. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the watermark pane. The value is a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the watermark.
         self.url = url
+        # The width of the watermark pane. The value is a normalized percentage.
         self.width = width
+        # The X-coordinate of the watermark. The value is a normalized percentage.
         self.x = x
+        # The Y-coordinate of the watermark. The value is a normalized percentage.
         self.y = y
+        # The stacking order of the watermark. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -348,11 +381,26 @@ class DescribeRecordTemplatesResponseBodyTemplatesClockWidgets(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The text color of the clock (RGB).
+        # 
+        # The calculation formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.font_color = font_color
+        # The font size of the clock. Valid values: **(0, 72]**.
         self.font_size = font_size
+        # The font type of the clock. Valid values:
+        # 
+        # - **0** (default): NOTO_SERIF_CJKSC_REGULAR
+        # - **1**: ALIBABA_PUHUITI_REGULAR
+        # - **2**: ALIBABA_PUHUITI_BOLD
+        # - **3**: ALIBABA_PUHUITI_Heavy
+        # - **4**: ALIBABA_PUHUITI_LIGHT
+        # - **5**: ALIBABA_PUHUITI_MEDIUM
         self.font_type = font_type
+        # The X-coordinate of the clock. The value is a normalized percentage.
         self.x = x
+        # The Y-coordinate of the clock. The value is a normalized percentage.
         self.y = y
+        # The stacking order of the clock. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -416,12 +464,22 @@ class DescribeRecordTemplatesResponseBodyTemplatesBackgrounds(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Specifies whether to display the background image. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the background image pane. The value is a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the background image.
         self.url = url
+        # The width of the background image pane. The value is a normalized percentage.
         self.width = width
+        # The X-coordinate of the background image. The value is a normalized percentage.
         self.x = x
+        # The Y-coordinate of the background image. The value is a normalized percentage.
         self.y = y
+        # The stacking order of the background image. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
         self.zorder = zorder
 
     def validate(self):

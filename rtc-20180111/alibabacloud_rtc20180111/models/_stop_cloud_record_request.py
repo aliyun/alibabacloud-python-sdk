@@ -11,10 +11,16 @@ class StopCloudRecordRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # The application ID, created and queried via the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The existing channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The existing cloud recording job ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

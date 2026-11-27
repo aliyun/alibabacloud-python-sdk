@@ -21,19 +21,44 @@ class UpdateCloudRecordRequest(DaraModel):
         template_id: str = None,
         texts: List[main_models.UpdateCloudRecordRequestTexts] = None,
     ):
+        # The application ID. You can create and query it in the console. Only one ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Background images.
         self.backgrounds = backgrounds
+        # The existing channel ID. Only one ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # Global clock watermarks.
         self.clock_widgets = clock_widgets
+        # Global image watermarks.
         self.images = images
+        # A list that specifies users for layout generation. It supports both blacklists and whitelists.
+        # 
+        # Whitelist: Specifies the users whose video streams are subscribed to in the channel.
+        # 
+        # - The auto-fill feature uses this list for sequential filling.
+        # 
+        # - During multi-layout switching, only users in the whitelist are included.
+        # 
+        # Blacklist: Specifies the users whose video streams are not subscribed to in the channel.
+        # 
+        # - During multi-layout switching, only users not in the blacklist are included.
         self.layout_specified_users = layout_specified_users
+        # Cell settings.
         self.panes = panes
+        # The task ID for this cloud recording. Only one ID is supported. It can contain letters, digits, underscores (_), and hyphens (-), with a maximum length of 55 bytes.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The template ID.
+        # >Notice: To update the layout, change the template ID. Resolution updates are not supported.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Global text watermarks.
         self.texts = texts
 
     def validate(self):
@@ -173,19 +198,54 @@ class UpdateCloudRecordRequestTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Watermark transparency.
         self.alpha = alpha
+        # Rectangle box transparency.
         self.box_alpha = box_alpha
+        # Rectangle box border width.
         self.box_borderw = box_borderw
+        # Rectangle box color.
         self.box_color = box_color
+        # Font.
+        # 
+        # - **0**: Alibaba PuHuiTi Regular
+        # 
+        # - **1**: Alibaba PuHuiTi Light
+        # 
+        # - **2**: Alibaba PuHuiTi Medium
+        # 
+        # - **3**: Alibaba PuHuiTi Bold
+        # 
+        # - **4**: Alibaba PuHuiTi Heavy
+        # 
+        # - **5**: Ali Mama ShuHeiTi
+        # 
+        # - **6**: DingTalk JinBuTi
+        # 
+        # - **7**: Ali Mama DaoLiTi
+        # 
+        # - **8**: Ali Mama DongFang DaKai
+        # 
+        # - **9**: Ali Mama FangYuanTi
         self.font = font
+        # Font color.
         self.font_color = font_color
+        # Font size.
         self.font_size = font_size
+        # Whether to draw a rectangle box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The watermark content.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -287,8 +347,11 @@ class UpdateCloudRecordRequestTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -330,8 +393,11 @@ class UpdateCloudRecordRequestTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -380,16 +446,49 @@ class UpdateCloudRecordRequestPanes(DaraModel):
         video_order: str = None,
         whiteboard: main_models.UpdateCloudRecordRequestPanesWhiteboard = None,
     ):
+        # Background images.
         self.backgrounds = backgrounds
+        # Local image watermarks for the pane.
         self.images = images
+        # The cropping mode. Valid values:
+        # 
+        # - **1**: Crop while maintaining aspect ratio.
+        # 
+        # - **2**: Maintain aspect ratio with padding.
+        # 
+        # - **3**: Stretch to fill.
         self.pane_crop_mode = pane_crop_mode
+        # The pane ID, starting from 0.
+        # 
         # This parameter is required.
         self.pane_id = pane_id
+        # Reserves a pane for a user who goes offline. The default value is true. If true, the pane for a specified user or wildcard user remains as a placeholder. If false, the pane is filled with a video stream based on the Auto Fill order.
         self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
+        # The media source for the cell. You can specify a userId to target a specific user. Wildcard characters are also supported:
+        # 
+        # - **$ActiveSpeaker**: The current active speaker in the channel.
+        # 
+        # - **$ScreenShare**: A screen-sharing user. If multiple users share their screens, they are filled in sequence.
         self.source = source
+        # The media type of the cell. Valid values:
+        # 
+        # - **video**: Camera or screen sharing stream (default).
+        # 
+        # - **camera**: Camera stream.
+        # 
+        # - **screen**: Screen sharing stream.
+        # 
+        # - **whiteboard**: Whiteboard.
         self.source_type = source_type
+        # Local text watermarks for the pane.
         self.texts = texts
+        # The fill order when SourceType is video.
+        # 
+        # - screenFirst: Prioritize screen sharing (default).
+        # 
+        # - cameraFirst: Prioritize camera.
         self.video_order = video_order
+        # Whiteboard configuration.
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -500,6 +599,7 @@ class UpdateCloudRecordRequestPanesWhiteboard(DaraModel):
         self,
         whiteboard_id: str = None,
     ):
+        # The whiteboard ID. Default value: default.
         self.whiteboard_id = whiteboard_id
 
     def validate(self):
@@ -539,20 +639,62 @@ class UpdateCloudRecordRequestPanesTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Watermark transparency.
         self.alpha = alpha
+        # Rectangle box transparency.
         self.box_alpha = box_alpha
+        # Rectangle box border width.
         self.box_borderw = box_borderw
+        # Rectangle box color.
         self.box_color = box_color
+        # When to display the watermark.
+        # 
+        # - streamOnly: Display only when the user has a video stream (default).
+        # 
+        # - backup: Display only when the user has no video stream.
+        # 
+        # - always: Always display.
         self.display = display
+        # Font.
+        # 
+        # - **0**: Alibaba PuHuiTi Regular
+        # 
+        # - **1**: Alibaba PuHuiTi Light
+        # 
+        # - **2**: Alibaba PuHuiTi Medium
+        # 
+        # - **3**: Alibaba PuHuiTi Bold
+        # 
+        # - **4**: Alibaba PuHuiTi Heavy
+        # 
+        # - **5**: Ali Mama ShuHeiTi
+        # 
+        # - **6**: DingTalk JinBuTi
+        # 
+        # - **7**: Ali Mama DaoLiTi
+        # 
+        # - **8**: Ali Mama DongFang DaKai
+        # 
+        # - **9**: Ali Mama FangYuanTi
         self.font = font
+        # Font color.
         self.font_color = font_color
+        # Font size.
         self.font_size = font_size
+        # Whether to draw a rectangle box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The watermark content.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -660,8 +802,11 @@ class UpdateCloudRecordRequestPanesTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -703,8 +848,11 @@ class UpdateCloudRecordRequestPanesTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -752,18 +900,44 @@ class UpdateCloudRecordRequestPanesImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Transparency.
         self.alpha = alpha
+        # When to display the watermark.
+        # 
+        # - streamOnly: Display only when the user has a video stream (default).
+        # 
+        # - backup: Display only when the user has no video stream.
+        # 
+        # - always: Always display.
         self.display = display
+        # Height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The cropping mode. Valid values:
+        # 
+        # - **1**: Crop while maintaining aspect ratio.
+        # 
+        # - **2**: Maintain aspect ratio with padding.
+        # 
+        # - **3**: Stretch to fill.
         self.pane_image_crop_mode = pane_image_crop_mode
+        # The image URL. The image content cannot be updated during stream ingest.
+        # 
         # This parameter is required.
         self.url = url
+        # Width.
+        # 
         # This parameter is required.
         self.width = width
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -848,18 +1022,44 @@ class UpdateCloudRecordRequestPanesBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Transparency.
         self.alpha = alpha
+        # When to display.
+        # 
+        # - streamOnly: Display only when the user has a video stream (default).
+        # 
+        # - backup: Display only when the user has no video stream.
+        # 
+        # - always: Always display.
         self.display = display
+        # Height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The cropping mode. Valid values:
+        # 
+        # - **1**: Crop while maintaining aspect ratio.
+        # 
+        # - **2**: Maintain aspect ratio with padding.
+        # 
+        # - **3**: Stretch to fill.
         self.pane_background_crop_mode = pane_background_crop_mode
+        # The background image URL.
+        # 
         # This parameter is required.
         self.url = url
+        # Width.
+        # 
         # This parameter is required.
         self.width = width
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -937,8 +1137,12 @@ class UpdateCloudRecordRequestLayoutSpecifiedUsers(DaraModel):
         ids: List[str] = None,
         type: str = None,
     ):
+        # The list of specified user IDs.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The type of the user list. Valid values: \`black\` for a blacklist and \`white\` for a whitelist.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -980,17 +1184,36 @@ class UpdateCloudRecordRequestImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Transparency.
         self.alpha = alpha
+        # Height.
+        # 
         # This parameter is required.
         self.height = height
+        # The cropping mode. Valid values:
+        # 
+        # - **1**: Crop while maintaining aspect ratio.
+        # 
+        # - **2**: Maintain aspect ratio with padding.
+        # 
+        # - **3**: Stretch to fill.
         self.image_crop_mode = image_crop_mode
+        # The z-axis layer.
         self.layer = layer
+        # The image URL. The image content cannot be updated during stream ingest.
+        # 
         # This parameter is required.
         self.url = url
+        # Width.
+        # 
         # This parameter is required.
         self.width = width
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1072,19 +1295,53 @@ class UpdateCloudRecordRequestClockWidgets(DaraModel):
         y: float = None,
         zone: int = None,
     ):
+        # Transparency.
         self.alpha = alpha
+        # Rectangle box transparency.
         self.box_alpha = box_alpha
+        # Rectangle box border width.
         self.box_borderw = box_borderw
+        # Rectangle box color.
         self.box_color = box_color
+        # Font.
+        # 
+        # - **0**: Alibaba PuHuiTi Regular
+        # 
+        # - **1**: Alibaba PuHuiTi Light
+        # 
+        # - **2**: Alibaba PuHuiTi Medium
+        # 
+        # - **3**: Alibaba PuHuiTi Bold
+        # 
+        # - **4**: Alibaba PuHuiTi Heavy
+        # 
+        # - **5**: Ali Mama ShuHeiTi
+        # 
+        # - **6**: DingTalk JinBuTi
+        # 
+        # - **7**: Ali Mama DaoLiTi
+        # 
+        # - **8**: Ali Mama DongFang DaKai
+        # 
+        # - **9**: Ali Mama FangYuanTi
         self.font = font
+        # Font color.
         self.font_color = font_color
+        # Clock font size.
         self.font_size = font_size
+        # Whether to draw a rectangle box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
+        # Time zone.
         self.zone = zone
 
     def validate(self):
@@ -1185,8 +1442,11 @@ class UpdateCloudRecordRequestClockWidgetsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -1228,8 +1488,11 @@ class UpdateCloudRecordRequestClockWidgetsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # B.
         self.b = b
+        # G.
         self.g = g
+        # R.
         self.r = r
 
     def validate(self):
@@ -1276,17 +1539,36 @@ class UpdateCloudRecordRequestBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Transparency.
         self.alpha = alpha
+        # The cropping mode. Valid values:
+        # 
+        # - **1**: Crop while maintaining aspect ratio.
+        # 
+        # - **2**: Maintain aspect ratio with padding.
+        # 
+        # - **3**: Stretch to fill.
         self.background_crop_mode = background_crop_mode
+        # Height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The image URL.
+        # 
         # This parameter is required.
         self.url = url
+        # Width.
+        # 
         # This parameter is required.
         self.width = width
+        # The horizontal coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The vertical coordinate.
+        # 
         # This parameter is required.
         self.y = y
 

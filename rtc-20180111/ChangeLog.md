@@ -1,3 +1,6 @@
+2026-11-27 Version: 5.4.1
+- Generated python 2018-01-11 for rtc.
+
 2026-04-13 Version: 5.3.5
 - Update API StartAgent: add request parameters VoiceChatConfig.BackChannelConfig.Version.
 

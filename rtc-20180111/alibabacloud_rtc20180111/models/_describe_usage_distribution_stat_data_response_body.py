@@ -13,7 +13,9 @@ class DescribeUsageDistributionStatDataResponseBody(DaraModel):
         request_id: str = None,
         usage_stat_list: List[main_models.DescribeUsageDistributionStatDataResponseBodyUsageStatList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of usage statistics.
         self.usage_stat_list = usage_stat_list
 
     def validate(self):
@@ -59,10 +61,18 @@ class DescribeUsageDistributionStatDataResponseBodyUsageStatList(DaraModel):
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
+        # The duration of audio calls, in minutes.
         self.audio_call_duration = audio_call_duration
+        # The ratio of the call duration, represented by four decimal places, such as 0.9782.
         self.call_duration_ratio = call_duration_ratio
+        # The statistical dimension. Valid values:
+        # - When StatDim is set to CHANNEL_ONLINE, valid values are **ONE_TO_FIVE** (1 to 5 users), **SIX_TO_TEN** (6 to 10 users), **ELEVEN_TO_TWENTY** (11 to 20 users), **TWENTY_ONE_TO_FIFTY** (21 to 50 users), and **ABOVE_FIFTY** (more than 50 users).  
+        # - When StatDim is set to NETWORK, valid values are **WiFi**, **4G**, and others.  
+        # - When StatDim is set to OS, valid values are **iOS**, **Android**, and others.
         self.name = name
+        # The total duration of calls, in minutes.
         self.total_call_duration = total_call_duration
+        # The duration of video calls, in minutes.
         self.video_call_duration = video_call_duration
 
     def validate(self):

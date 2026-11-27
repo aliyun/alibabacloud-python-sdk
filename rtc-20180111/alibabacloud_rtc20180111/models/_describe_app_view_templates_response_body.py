@@ -15,10 +15,13 @@ class DescribeAppViewTemplatesResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Template list
         self.templates = templates
+        # Total number of records
         self.total_num = total_num
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -76,10 +79,15 @@ class DescribeAppViewTemplatesResponseBodyTemplates(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # Creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.create_time = create_time
+        # List of layout IDs
         self.layout_ids = layout_ids
+        # Encoding option
         self.media_encode = media_encode
+        # Template name
         self.name = name
+        # Template ID
         self.template_id = template_id
 
     def validate(self):

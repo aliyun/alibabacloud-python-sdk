@@ -14,8 +14,11 @@ class DescribeChannelUserMetricsResponseBody(DaraModel):
         overall_data: main_models.DescribeChannelUserMetricsResponseBodyOverallData = None,
         request_id: str = None,
     ):
+        # The metric data list.
         self.metric_datas = metric_datas
+        # The overview data.
         self.overall_data = overall_data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,10 +73,15 @@ class DescribeChannelUserMetricsResponseBodyOverallData(DaraModel):
         total_sub_user_num: int = None,
         total_user_num: int = None,
     ):
+        # The total number of users with abnormal communication experience.
         self.total_bad_exp_num = total_bad_exp_num
+        # The total number of users who failed to join the channel.
         self.total_join_fail_num = total_join_fail_num
+        # The total number of publishing users.
         self.total_pub_user_num = total_pub_user_num
+        # The total number of subscribing users.
         self.total_sub_user_num = total_sub_user_num
+        # The total number of users.
         self.total_user_num = total_user_num
 
     def validate(self):
@@ -126,7 +134,14 @@ class DescribeChannelUserMetricsResponseBodyMetricDatas(DaraModel):
         nodes: List[main_models.DescribeChannelUserMetricsResponseBodyMetricDatasNodes] = None,
         type: str = None,
     ):
+        # The list of coordinate points in the metric trends chart.
         self.nodes = nodes
+        # The metric type. Valid values:
+        # - **ALL_NUM**: the number of users per unit of time.
+        # - **PUB_NUM**: the number of publishing users per unit of time.
+        # - **SUB_NUM**: the number of subscribing users per unit of time.
+        # - **JOIN_FAIL_NUM**: the number of users who failed to join the channel per unit of time.
+        # - **BAD_EXP_NUM**: the number of users with abnormal communication experience per unit of time.
         self.type = type
 
     def validate(self):
@@ -170,8 +185,11 @@ class DescribeChannelUserMetricsResponseBodyMetricDatasNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The extended properties.
         self.ext = ext
+        # The x-axis coordinate in the metric trends chart.
         self.x = x
+        # The y-axis coordinate in the metric trends chart.
         self.y = y
 
     def validate(self):

@@ -15,9 +15,13 @@ class DescribeRecordFilesResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
+        # The file list.
         self.record_files = record_files
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_page = total_page
 
     def validate(self):
@@ -78,13 +82,21 @@ class DescribeRecordFilesResponseBodyRecordFiles(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The channel ID.
         self.channel_id = channel_id
+        # The creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         self.create_time = create_time
+        # The duration of the recording file.
         self.duration = duration
+        # The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         self.start_time = start_time
+        # The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         self.stop_time = stop_time
+        # The task ID.
         self.task_id = task_id
+        # The OSS URL of the recording file.
         self.url = url
 
     def validate(self):

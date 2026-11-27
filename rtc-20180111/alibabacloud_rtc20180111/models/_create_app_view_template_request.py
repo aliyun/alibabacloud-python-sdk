@@ -13,8 +13,12 @@ class CreateAppViewTemplateRequest(DaraModel):
         app_id: str = None,
         template: main_models.CreateAppViewTemplateRequestTemplate = None,
     ):
+        # The application ID. You can create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template.
+        # 
         # This parameter is required.
         self.template = template
 
@@ -53,10 +57,16 @@ class CreateAppViewTemplateRequestTemplate(DaraModel):
         media_encode: int = None,
         name: str = None,
     ):
+        # The list of layout IDs. A maximum of 16 layout IDs are supported.
+        # 
         # This parameter is required.
         self.layout_ids = layout_ids
+        # The encoding options.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # The template name.
+        # 
         # This parameter is required.
         self.name = name
 

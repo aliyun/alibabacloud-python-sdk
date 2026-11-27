@@ -13,7 +13,9 @@ class DescribeAutoLiveStreamRuleResponseBody(DaraModel):
         request_id: str = None,
         rules: List[main_models.DescribeAutoLiveStreamRuleResponseBodyRules] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The rule details.
         self.rules = rules
 
     def validate(self):
@@ -63,14 +65,26 @@ class DescribeAutoLiveStreamRuleResponseBodyRules(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
+        # The callback URL.
         self.call_back = call_back
+        # The prefix list of channel IDs for fuzzy match.
         self.channel_id_prefixes = channel_id_prefixes
+        # The list of channel IDs for exact match.
         self.channel_ids = channel_ids
+        # The time when the rule was created.
         self.create_time = create_time
+        # The encoding options.
         self.media_encode = media_encode
+        # The playback domain name for automatic bypass.
         self.play_domain = play_domain
+        # The rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The rule status. Valid values:
+        # 
+        # - enable: Enabled.
+        # - disable: Disabled.
         self.status = status
 
     def validate(self):

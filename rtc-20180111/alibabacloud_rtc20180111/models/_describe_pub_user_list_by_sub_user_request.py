@@ -17,11 +17,19 @@ class DescribePubUserListBySubUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The channel creation time. You can query data from the last 30 days. The value is represented as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # The channel release time, represented as a UNIX timestamp in seconds. If this parameter is empty, the current time is used.  
+        # > If the provided channel release time exceeds the actual release time, data from the creation time to the actual release time will be returned.
         self.destroyed_ts = destroyed_ts
+        # Subscriber User ID.
+        # 
         # This parameter is required.
         self.sub_user_id = sub_user_id
 

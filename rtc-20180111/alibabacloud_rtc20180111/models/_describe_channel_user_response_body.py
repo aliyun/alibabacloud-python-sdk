@@ -15,9 +15,17 @@ class DescribeChannelUserResponseBody(DaraModel):
         request_id: str = None,
         sessions: List[main_models.DescribeChannelUserResponseBodySessions] = None,
     ):
+        # Indicates whether the channel exists. Valid values:
+        # - **true**: The channel exists.
+        # - **false**: The channel does not exist.
         self.channel_exist = channel_exist
+        # Indicates whether the user is currently in the channel. Valid values:
+        # - **true**: The user is in the channel.
+        # - **false**: The user is not in the channel.
         self.in_channel = in_channel
+        # The request ID.
         self.request_id = request_id
+        # The list of session information.
         self.sessions = sessions
 
     def validate(self):
@@ -73,8 +81,11 @@ class DescribeChannelUserResponseBodySessions(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
+        # The UNIX timestamp in seconds when the user joined the channel. The time is in UTC.
         self.joined = joined
+        # The session ID.
         self.session_id = session_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

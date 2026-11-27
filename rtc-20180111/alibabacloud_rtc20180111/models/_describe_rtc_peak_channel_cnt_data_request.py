@@ -14,11 +14,22 @@ class DescribeRtcPeakChannelCntDataRequest(DaraModel):
         service_area: str = None,
         start_time: str = None,
     ):
+        # The application ID. Only a single ID can be specified.
+        # 
+        # By default, all application IDs are queried.
         self.app_id = app_id
+        # The end time for the data query. Specify the time in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # The end time must be later than the start time.
         self.end_time = end_time
+        # The time granularity for the data query, in seconds.
+        # 
+        # Valid values: **3600** (1 hour) or **86400** (1 day). Default value: **3600**.
         self.interval = interval
         self.owner_id = owner_id
+        # The service area. CN: China (default value).
         self.service_area = service_area
+        # The start time for the data query. Specify the time in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

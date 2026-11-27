@@ -12,11 +12,19 @@ class DescribeRtcChannelMetricRequest(DaraModel):
         owner_id: int = None,
         time_point: str = None,
     ):
+        # The application ID. You can create and query the application ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # The time when the record is queried, in UTC. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+        # 
+        # The time granularity is day.
+        # 
         # This parameter is required.
         self.time_point = time_point
 

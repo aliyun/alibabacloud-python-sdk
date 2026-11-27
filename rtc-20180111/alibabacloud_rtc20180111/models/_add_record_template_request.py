@@ -30,33 +30,70 @@ class AddRecordTemplateRequest(DaraModel):
         task_profile: str = None,
         watermarks: List[main_models.AddRecordTemplateRequestWatermarks] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The background color in RGB format. Default value: 0 (black). The calculation formula is R + G × 256 + B × 65536. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.background_color = background_color
+        # The list of background images.
         self.backgrounds = backgrounds
+        # The list of clocks.
         self.clock_widgets = clock_widgets
+        # The delay time before stopping the recording. Unit: seconds. Default value: **180**.
         self.delay_stop_time = delay_stop_time
+        # Specifies whether to add the timestamp of the TS file to the recorded M3U8 file.
         self.enable_m3u_8date_time = enable_m3u_8date_time
+        # The splitting duration of the recording file. The value must be greater than or equal to 1800. Unit: seconds.
+        # 
         # This parameter is required.
         self.file_split_interval = file_split_interval
+        # The list of recording file formats.
+        # 
         # This parameter is required.
         self.formats = formats
+        # The HTTP callback URL for recording events.
+        # > You must specify either this parameter or MnsQueue. You cannot specify both or neither.
         self.http_callback_url = http_callback_url
+        # The list of layout IDs.
+        # 
         # This parameter is required.
         self.layout_ids = layout_ids
+        # The encoding option. For more information, see the MediaEncode enum values below.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # The MSMQ for recording event callbacks.
+        # 
+        # > You must specify either this parameter or HttpCallbackUrl. You cannot specify both or neither.
         self.mns_queue = mns_queue
+        # The name of the recording configuration template.
+        # 
         # This parameter is required.
         self.name = name
+        # The OSS bucket where the recording files are stored.
+        # 
+        # > Only OSS buckets in the China (Shanghai) region are supported.
+        # 
         # This parameter is required.
         self.oss_bucket = oss_bucket
+        # The OSS endpoint of the region where the recording files are stored.
         self.oss_endpoint = oss_endpoint
+        # The naming rule for recording files.
+        # 
+        # > To ensure the uniqueness of recording file names, the naming rule is record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}.
+        # 
         # This parameter is required.
         self.oss_file_prefix = oss_file_prefix
         self.owner_id = owner_id
+        # The billing configuration of the task. You are charged based on your settings. For more information, see the TaskProfile enum values below.
+        # 
+        # > - The resolution of the MediaEncode encoding option must be less than or equal to the resolution of TaskProfile.
+        # - The maximum number of layout panes must be less than or equal to the number of input channels of TaskProfile.
+        # 
         # This parameter is required.
         self.task_profile = task_profile
+        # The list of watermarks.
         self.watermarks = watermarks
 
     def validate(self):
@@ -225,13 +262,24 @@ class AddRecordTemplateRequestWatermarks(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency of the watermark. A value of 0.0 indicates fully transparent, and a value of 1.0 indicates fully opaque.
         self.alpha = alpha
+        # Specifies whether to display the watermark. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the watermark pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the watermark.
         self.url = url
+        # The width of the watermark pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate of the watermark, as a normalized percentage.
         self.x = x
+        # The Y-coordinate of the watermark, as a normalized percentage.
         self.y = y
+        # The Z-order of the watermark. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -306,11 +354,26 @@ class AddRecordTemplateRequestClockWidgets(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The text color of the clock in RGB format.
+        # 
+        # The calculation formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.font_color = font_color
+        # The font size of the clock. Valid values: **(0, 72]**.
         self.font_size = font_size
+        # The font type of the clock. Valid values:
+        # 
+        # - **0** (default): NOTO_SERIF_CJKSC_REGULAR.
+        # - **1**: ALIBABA_PUHUITI_REGULAR.
+        # - **2**: ALIBABA_PUHUITI_BOLD.
+        # - **3**: ALIBABA_PUHUITI_Heavy.
+        # - **4**: ALIBABA_PUHUITI_LIGHT.
+        # - **5**: ALIBABA_PUHUITI_MEDIUM.
         self.font_type = font_type
+        # The X-coordinate of the clock, as a normalized percentage.
         self.x = x
+        # The Y-coordinate of the clock, as a normalized percentage.
         self.y = y
+        # The Z-order of the clock. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -376,12 +439,22 @@ class AddRecordTemplateRequestBackgrounds(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Specifies whether to display the background image. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the background image pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the background image.
         self.url = url
+        # The width of the background image pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate of the background image, as a normalized percentage.
         self.x = x
+        # The Y-coordinate of the background image, as a normalized percentage.
         self.y = y
+        # The Z-order of the background image. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

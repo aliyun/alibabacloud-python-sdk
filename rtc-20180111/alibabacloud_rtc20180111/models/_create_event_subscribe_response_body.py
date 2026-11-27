@@ -10,7 +10,9 @@ class CreateEventSubscribeResponseBody(DaraModel):
         request_id: str = None,
         subscribe_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the created subscription.
         self.subscribe_id = subscribe_id
 
     def validate(self):

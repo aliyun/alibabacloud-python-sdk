@@ -15,14 +15,21 @@ class ModifyStreamingPropertyRequest(DaraModel):
         view_content: str = None,
         view_subscribers: List[str] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of an existing channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The ID of the stream mixing task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The stream mixing content.
         self.view_content = view_content
-        # ViewSubscribers。
+        # The view subscribers.
         self.view_subscribers = view_subscribers
 
     def validate(self):

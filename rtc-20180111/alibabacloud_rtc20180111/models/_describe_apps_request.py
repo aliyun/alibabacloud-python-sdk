@@ -15,12 +15,27 @@ class DescribeAppsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The application ID. You can create and query application IDs in the console. Only a single ID is supported. If this parameter is left empty, all application IDs are queried.
         self.app_id = app_id
+        # The application version.
         self.app_version = app_version
+        # The sort order. Valid values:
+        # 
+        # - **asc**: Ascending.
+        #  
+        # - **desc**: Descending. Default value.
         self.order = order
         self.owner_id = owner_id
+        # The page number. Default value: **1**.
         self.page_num = page_num
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
+        # The application status. If this parameter is left empty, all statuses are queried. Valid values:
+        # - **1**: Available.
+        # 
+        # - **2**: Disabled.
+        # 
+        # - **3**: Disabled due to overdue payments.
         self.status = status
 
     def validate(self):

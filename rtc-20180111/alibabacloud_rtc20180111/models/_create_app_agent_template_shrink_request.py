@@ -23,22 +23,47 @@ class CreateAppAgentTemplateShrinkRequest(DaraModel):
         tts_config_shrink: str = None,
         type: int = None,
     ):
+        # The agent silence configuration.
         self.agent_silence_config_shrink = agent_silence_config_shrink
+        # The ambient environment configuration for the agent. If this parameter is not specified, the ambient environment configuration is not used.
         self.ambient_sound_config_shrink = ambient_sound_config_shrink
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The speech-to-text settings.
         self.asr_config_shrink = asr_config_shrink
+        # The agent backchannel configuration.
         self.back_channel_config_shrink = back_channel_config_shrink
+        # The conversation mode. Valid values:
+        # - 1: Natural conversation mode (default).
+        # - 2: Walkie-talkie mode.
         self.chat_mode = chat_mode
+        # Specifies whether to enable video understanding. If enabled, the LLM must support multimodal data.
         self.enable_video_understanding = enable_video_understanding
+        # The greeting message. The maximum length is 500 characters.
         self.greeting = greeting
+        # The agent interruption configuration.
         self.interrupt_config_shrink = interrupt_config_shrink
+        # The interruption mode. Valid values:
+        # - 1: Interruption allowed (default).
+        # - 2: Interruption disabled.
         self.interrupt_mode = interrupt_mode
+        # The large language model settings.
         self.llm_config_shrink = llm_config_shrink
+        # The template name.
+        # 
         # This parameter is required.
         self.name = name
+        # The preferred video stream for the agent to process when visual understanding is enabled. The agent can process only one video stream at a time. When both the camera stream and the screen sharing stream are pushed simultaneously, this parameter specifies the preferred stream. Valid values:
+        # - 1: The agent preferentially processes the camera stream.
+        # - 2: The agent preferentially processes the screen sharing stream.
+        # Default value: 1.
         self.prefer_video = prefer_video
+        # The text-to-speech settings.
         self.tts_config_shrink = tts_config_shrink
+        # The agent type. Valid values:
+        # - 1: Voice call (default).
         self.type = type
 
     def validate(self):

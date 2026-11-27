@@ -10,6 +10,8 @@ class DescribeAutoLiveStreamRuleRequest(DaraModel):
         app_id: str = None,
         owner_id: int = None,
     ):
+        # The application ID. You can create and query the ID in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id

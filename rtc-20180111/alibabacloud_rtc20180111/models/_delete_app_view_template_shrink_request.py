@@ -10,8 +10,12 @@ class DeleteAppViewTemplateShrinkRequest(DaraModel):
         app_id: str = None,
         template_shrink: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID can be specified.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template information.
+        # 
         # This parameter is required.
         self.template_shrink = template_shrink
 

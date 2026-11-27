@@ -10,8 +10,12 @@ class StartCategoryCallbackShrinkRequest(DaraModel):
         app_id: str = None,
         callback_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback.
+        # 
         # This parameter is required.
         self.callback_shrink = callback_shrink
 

@@ -10,7 +10,9 @@ class AddRecordTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the recording configuration template.
         self.template_id = template_id
 
     def validate(self):

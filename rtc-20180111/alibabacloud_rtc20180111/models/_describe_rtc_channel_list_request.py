@@ -17,17 +17,32 @@ class DescribeRtcChannelListRequest(DaraModel):
         time_point: str = None,
         user_id: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
         self.app_id = app_id
+        # The channel ID. Only a single ID is supported.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # The page number. Valid values: greater than **0**. Default value: 1.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page. Valid values: greater than **0**. Default value: 10.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The service area. By default, all areas are queried. Valid values:
+        # 
+        # - **cn**: China.
+        # 
+        # - **us**: United States.
         self.service_area = service_area
+        # The sort order. By default, the records are sorted in descending order of StartTime.
         self.sort_type = sort_type
+        # The query time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. The time granularity is one day.
+        # 
         # This parameter is required.
         self.time_point = time_point
+        # The user ID. Only a single ID is supported.
         self.user_id = user_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class DescribeChannelRequest(DaraModel):
         app_id: str = None,
         channel_id: str = None,
     ):
+        # The application ID. You can create and query this ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID to query. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
 

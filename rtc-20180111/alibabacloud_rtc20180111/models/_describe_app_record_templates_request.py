@@ -14,11 +14,17 @@ class DescribeAppRecordTemplatesRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The idempotency parameter.
         self.client_token = client_token
+        # The query conditions.
         self.condition = condition
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -73,7 +79,9 @@ class DescribeAppRecordTemplatesRequestCondition(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # The template name.
         self.name = name
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

@@ -14,9 +14,14 @@ class ModifyAppLayoutRequest(DaraModel):
         client_token: str = None,
         layout: main_models.ModifyAppLayoutRequestLayout = None,
     ):
+        # Application ID. Create and query through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Idempotent parameter.
         self.client_token = client_token
+        # Layout.
+        # 
         # This parameter is required.
         self.layout = layout
 
@@ -61,10 +66,15 @@ class ModifyAppLayoutRequestLayout(DaraModel):
         name: str = None,
         panes: List[main_models.ModifyAppLayoutRequestLayoutPanes] = None,
     ):
+        # Layout ID.
+        # 
         # This parameter is required.
         self.layout_id = layout_id
+        # Layout name.
+        # 
         # This parameter is required.
         self.name = name
+        # List of panes.
         self.panes = panes
 
     def validate(self):
@@ -117,11 +127,17 @@ class ModifyAppLayoutRequestLayoutPanes(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Pane height, normalized percentage. Height ranges from 0.0\<Height≤1.0.
         self.height = height
+        # Pane ID, starting from 0.
         self.pane_id = pane_id
+        # Pane width, normalized percentage. Width ranges from 0.0\<Width≤1.0.
         self.width = width
+        # X coordinate, normalized percentage. The X coordinate ranges from 0.0 to 1.0.
         self.x = x
+        # Y coordinate, normalized percentage. The Y coordinate ranges from 0.0 to 1.0.
         self.y = y
+        # Stacking order. 0 is the bottom layer, 1 is above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

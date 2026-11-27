@@ -17,8 +17,11 @@ class DescribeAppStreamingOutTemplatesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # List of templates.
         self.templates = templates
+        # Number of records.
         self.total_num = total_num
+        # Number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -76,10 +79,15 @@ class DescribeAppStreamingOutTemplatesResponseBodyTemplates(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # Creation Time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.create_time = create_time
+        # List of layout IDs.
         self.layout_ids = layout_ids
+        # Encoding options.
         self.media_encode = media_encode
+        # Template Name.
         self.name = name
+        # Template ID.
         self.template_id = template_id
 
     def validate(self):

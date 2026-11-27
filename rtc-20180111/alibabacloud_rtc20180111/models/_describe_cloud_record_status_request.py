@@ -11,10 +11,16 @@ class DescribeCloudRecordStatusRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel name.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

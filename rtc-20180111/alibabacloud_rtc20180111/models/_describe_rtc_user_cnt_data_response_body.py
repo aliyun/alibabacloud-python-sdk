@@ -13,6 +13,7 @@ class DescribeRtcUserCntDataResponseBody(DaraModel):
         request_id: str = None,
         user_cnt_data_per_interval: main_models.DescribeRtcUserCntDataResponseBodyUserCntDataPerInterval = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.user_cnt_data_per_interval = user_cnt_data_per_interval
 

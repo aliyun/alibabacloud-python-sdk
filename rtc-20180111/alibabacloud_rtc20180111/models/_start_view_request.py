@@ -22,20 +22,42 @@ class StartViewRequest(DaraModel):
         view_content: str = None,
         view_subscribers: List[str] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The global background color.
         self.bg_color = bg_color
+        # The ID of an existing channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The crop mode. Valid values:
+        # - **1**: proportional cropping
+        # - **2**: proportional padding (default)
+        # - **3**: stretch to fill
         self.crop_mode = crop_mode
+        # The global pane background color.
         self.region_color = region_color
+        # Specifies whether to allow starting the task when the channel does not exist. Valid values:
+        # - true: Yes.
+        # - false: No (default).
         self.start_without_channel = start_without_channel
+        # The wait time for the task when the channel is not started, in seconds. This parameter is valid only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
         self.start_without_channel_wait_time = start_without_channel_wait_time
+        # The task ID for the current request. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The stream property. Valid values:
+        # - main: main stream
+        # - screen-cast: shared stream
         self.view_content = view_content
+        # The list of user IDs of Session Initiation Protocol (SIP) devices that are allowed to view the main stream or shared stream.
         self.view_subscribers = view_subscribers
 
     def validate(self):
@@ -130,11 +152,11 @@ class StartViewRequestRegionColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The B value.
         self.b = b
-        # G。
+        # The G value.
         self.g = g
-        # R。
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -176,11 +198,11 @@ class StartViewRequestBgColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The B value.
         self.b = b
-        # G。
+        # The G value.
         self.g = g
-        # R。
+        # The R value.
         self.r = r
 
     def validate(self):

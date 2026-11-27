@@ -11,7 +11,9 @@ class DescribeRtcChannelMetricResponseBody(DaraModel):
         channel_metric_info: main_models.DescribeRtcChannelMetricResponseBodyChannelMetricInfo = None,
         request_id: str = None,
     ):
+        # The detailed information.
         self.channel_metric_info = channel_metric_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,9 @@ class DescribeRtcChannelMetricResponseBodyChannelMetricInfo(DaraModel):
         channel_metric: main_models.DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric = None,
         duration: main_models.DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration = None,
     ):
+        # The user information of the channel.
         self.channel_metric = channel_metric
+        # The duration information.
         self.duration = duration
 
     def validate(self):
@@ -88,7 +92,9 @@ class DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration(DaraModel):
         pub_duration: main_models.DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration = None,
         sub_duration: main_models.DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration = None,
     ):
+        # The duration information about publishing streams.
         self.pub_duration = pub_duration
+        # The duration information about subscribing to streams.
         self.sub_duration = sub_duration
 
     def validate(self):
@@ -131,10 +137,15 @@ class DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration(D
         video_360: int = None,
         video_720: int = None,
     ):
+        # The duration of audio. Unit: minutes.
         self.audio = audio
+        # The duration of screen sharing. Unit: minutes.
         self.content = content
+        # The duration of full high-definition (FHD) videos. Unit: minutes.
         self.video_1080 = video_1080
+        # The duration of standard-definition (SD) videos. Unit: minutes.
         self.video_360 = video_360
+        # The duration of high-definition (HD) videos. Unit: minutes.
         self.video_720 = video_720
 
     def validate(self):
@@ -190,10 +201,15 @@ class DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration(D
         video_360: int = None,
         video_720: int = None,
     ):
+        # The duration of audio. Unit: minutes.
         self.audio = audio
+        # The duration of screen sharing. Unit: minutes.
         self.content = content
+        # The duration of full high-definition (FHD) videos. Unit: minutes.
         self.video_1080 = video_1080
+        # The duration of standard-definition (SD) videos. Unit: minutes.
         self.video_360 = video_360
+        # The duration of high-definition (HD) videos. Unit: minutes.
         self.video_720 = video_720
 
     def validate(self):
@@ -250,11 +266,17 @@ class DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric(DaraMod
         sub_user_count: int = None,
         user_count: int = None,
     ):
+        # The channel ID.
         self.channel_id = channel_id
+        # The time when the user left the channel, in UTC. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
         self.end_time = end_time
+        # The number of users that entered the channel and successfully published streams.
         self.pub_user_count = pub_user_count
+        # The time when the user joined the channel, in UTC. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
         self.start_time = start_time
+        # The number of users that entered the channel and successfully subscribed to streams.
         self.sub_user_count = sub_user_count
+        # The number of users that entered the channel.
         self.user_count = user_count
 
     def validate(self):

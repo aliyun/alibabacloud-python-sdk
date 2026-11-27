@@ -32,29 +32,71 @@ class StartStreamingOutRequest(DaraModel):
         texts: List[main_models.StartStreamingOutRequestTexts] = None,
         url: str = None,
     ):
+        # The annotation switch.
         self.annotation = annotation
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The background image.
         self.backgrounds = backgrounds
+        # The global background color.
         self.bg_color = bg_color
+        # The ID of an existing channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The global clock watermark.
         self.clock_widgets = clock_widgets
+        # The crop mode. Valid values:
+        # - **1**: Crop the image while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders (default).
+        # - **3**: Stretch the image to fill the pane.
         self.crop_mode = crop_mode
+        # The global image watermark.
         self.images = images
+        # The specified user list for layout generation, including Blacklist/Whitelist.
+        # 
+        # Whitelist: specifies the users whose video streams are subscribed to in the channel.
+        # * After the settings are applied, automatic padding is performed in sequence based on this list.
+        # * When switching between multiple layouts in a template, only users in the whitelist are considered.
+        # 
+        # Blacklist: specifies the users whose video streams are not subscribed to in the channel.
+        # * When switching between multiple layouts in a template, only users not in the blacklist are considered.
         self.layout_specified_users = layout_specified_users
+        # The pane settings.
         self.panes = panes
+        # The global pane background color.
         self.region_color = region_color
+        # Specifies whether to reserve a pane placeholder for users who do not push camera streams. Default value: true. A value of true indicates that a pane is reserved when a user does not push a camera stream. A value of false indicates that no pane is reserved.
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        # Specifies whether to display the default background image of a pane when the user is muted. Valid values:
+        # - true: Displays the default background image (default).
+        # - false: Does not display the default background image, but the configured local pane background image is still displayed.
         self.show_default_background_on_mute = show_default_background_on_mute
+        # The list of specified users for audio mixing.
         self.spec_mixed_user_list = spec_mixed_user_list
+        # Specifies whether to allow starting the task when the channel does not exist. Valid values:
+        # 
+        # - true: Yes.
+        # - false: No (default).
         self.start_without_channel = start_without_channel
+        # The wait time for the task when the channel is not started, in seconds. This parameter is valid only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
         self.start_without_channel_wait_time = start_without_channel_wait_time
+        # Specifies whether to subscribe to high resolution streams. Valid values:
+        # - false: Subscribes to streams of different resolutions based on the pane area (default).
+        # - true: Uses the highest resolution stream pushed by the client for padding by default.
         self.sub_high_resolution_stream = sub_high_resolution_stream
+        # The task ID of the bypass streaming task. Only a single ID is supported. The ID can contain uppercase and lowercase letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length. If you do not specify this parameter, the system automatically generates a task ID.
         self.task_id = task_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The global text watermark.
         self.texts = texts
+        # The live stream ingest URL. Only a single URL is supported. This URL cannot be used by multiple tasks at the same time.
+        # 
         # This parameter is required.
         self.url = url
 
@@ -267,19 +309,44 @@ class StartStreamingOutRequestTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The watermark transparency.
         self.alpha = alpha
+        # The transparency of the rectangle box.
         self.box_alpha = box_alpha
+        # The border width of the rectangle box.
         self.box_borderw = box_borderw
+        # The color of the rectangle box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether a rectangle box is required.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The watermark content.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -381,8 +448,11 @@ class StartStreamingOutRequestTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -424,8 +494,11 @@ class StartStreamingOutRequestTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -467,8 +540,11 @@ class StartStreamingOutRequestRegionColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -517,16 +593,40 @@ class StartStreamingOutRequestPanes(DaraModel):
         video_order: str = None,
         whiteboard: main_models.StartStreamingOutRequestPanesWhiteboard = None,
     ):
+        # The local background images.
         self.backgrounds = backgrounds
+        # The local image watermarks for the pane.
         self.images = images
+        # The crop mode. Valid values:
+        # - **1**: Crop while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders.
+        # - **3**: Stretch to fill.
         self.pane_crop_mode = pane_crop_mode
+        # The pane ID. The value starts from 0.
+        # 
         # This parameter is required.
         self.pane_id = pane_id
+        # Specifies whether to reserve the pane for users who have not joined the meeting.
+        # Default value: true. This value indicates that when the specific user or wildcard user specified for the grid is offline, the pane is forcibly reserved.
+        # A value of false indicates that when the specific user or wildcard user specified for the grid is offline, video streams are displayed based on the automatic fill order.
         self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
+        # The media source of the pane. You can specify a userId. To specify a specific user type, you can use wildcard configurations. The following types are supported:
+        # - **$ActiveSpeaker**: The current speaker in the channel.
+        # - **$ScreenShare**: The user who is sharing their screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
         self.source = source
+        # The media type of the pane. Valid values:
+        # - **video**: The user camera or screen sharing stream. This is the default value.
+        # - **camera**: The camera stream.
+        # - **screen**: The screen sharing stream.
+        # - **whiteboard**: The whiteboard.
         self.source_type = source_type
+        # The local text watermarks for the pane.
         self.texts = texts
+        # The fill order when SourceType is set to video. Valid values:
+        # - screenFirst: Screen sharing takes precedence. This is the default value.
+        # - cameraFirst: The camera takes precedence.
         self.video_order = video_order
+        # The whiteboard configurations.
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -637,6 +737,7 @@ class StartStreamingOutRequestPanesWhiteboard(DaraModel):
         self,
         whiteboard_id: str = None,
     ):
+        # The whiteboard ID. Default value: default.
         self.whiteboard_id = whiteboard_id
 
     def validate(self):
@@ -676,20 +777,49 @@ class StartStreamingOutRequestPanesTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The watermark transparency.
         self.alpha = alpha
+        # The transparency of the rectangle box.
         self.box_alpha = box_alpha
+        # The border width of the rectangle box.
         self.box_borderw = box_borderw
+        # The color of the rectangle box.
         self.box_color = box_color
+        # The condition for displaying the watermark. Valid values:
+        # - streamOnly: Displayed when the current user has a video stream. This is the default value.
+        # - backup: Displayed when the current user does not have a video stream.
+        # - always: Always displayed.
         self.display = display
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether a rectangle box is required.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The watermark content.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -797,8 +927,11 @@ class StartStreamingOutRequestPanesTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -840,8 +973,11 @@ class StartStreamingOutRequestPanesTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -889,18 +1025,38 @@ class StartStreamingOutRequestPanesImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency.
         self.alpha = alpha
+        # The condition for displaying the watermark. Valid values:
+        # - streamOnly: Displayed when the current user has a video stream. This is the default value.
+        # - backup: Displayed when the current user does not have a video stream.
+        # - always: Always displayed.
         self.display = display
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The crop mode. Valid values:
+        # - **1**: Crop while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders.
+        # - **3**: Stretch to fill.
         self.pane_image_crop_mode = pane_image_crop_mode
+        # The corresponding image content cannot be updated while streaming.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -985,18 +1141,38 @@ class StartStreamingOutRequestPanesBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency.
         self.alpha = alpha
+        # The display condition. Valid values:
+        # - streamOnly: Displayed when the current user has a video stream. This is the default value.
+        # - backup: Displayed when the current user does not have a video stream.
+        # - always: Always displayed.
         self.display = display
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The crop mode. Valid values:
+        # - **1**: Crop while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders.
+        # - **3**: Stretch to fill.
         self.pane_background_crop_mode = pane_background_crop_mode
+        # The image URL.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1074,8 +1250,14 @@ class StartStreamingOutRequestLayoutSpecifiedUsers(DaraModel):
         ids: List[str] = None,
         type: str = None,
     ):
+        # The list of specified user IDs.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The type of the user list. Valid values:
+        # - black: Blacklist.
+        # - white: Whitelist.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1117,17 +1299,33 @@ class StartStreamingOutRequestImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency.
         self.alpha = alpha
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The crop mode. Valid values:
+        # - **1**: Crop while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders.
+        # - **3**: Stretch to fill.
         self.image_crop_mode = image_crop_mode
+        # The z-axis layer.
         self.layer = layer
+        # The image URL. The image content cannot be updated during stream ingest.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1209,19 +1407,43 @@ class StartStreamingOutRequestClockWidgets(DaraModel):
         y: float = None,
         zone: int = None,
     ):
+        # The transparency.
         self.alpha = alpha
+        # The transparency of the rectangle box.
         self.box_alpha = box_alpha
+        # The border width of the rectangle box.
         self.box_borderw = box_borderw
+        # The color of the rectangle box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size of the clock.
         self.font_size = font_size
+        # Specifies whether a rectangle box is required.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
+        # The time zone.
         self.zone = zone
 
     def validate(self):
@@ -1322,8 +1544,11 @@ class StartStreamingOutRequestClockWidgetsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -1365,8 +1590,11 @@ class StartStreamingOutRequestClockWidgetsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -1408,8 +1636,11 @@ class StartStreamingOutRequestBgColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The B value.
         self.b = b
+        # The G value.
         self.g = g
+        # The R value.
         self.r = r
 
     def validate(self):
@@ -1456,17 +1687,33 @@ class StartStreamingOutRequestBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency.
         self.alpha = alpha
+        # The crop mode. Valid values:
+        # - **1**: Crop while maintaining the aspect ratio.
+        # - **2**: Maintain the aspect ratio and add borders.
+        # - **3**: Stretch to fill.
         self.background_crop_mode = background_crop_mode
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The image URL.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 

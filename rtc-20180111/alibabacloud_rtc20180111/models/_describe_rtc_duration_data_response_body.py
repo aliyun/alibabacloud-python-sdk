@@ -14,6 +14,7 @@ class DescribeRtcDurationDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.duration_data_per_interval = duration_data_per_interval
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

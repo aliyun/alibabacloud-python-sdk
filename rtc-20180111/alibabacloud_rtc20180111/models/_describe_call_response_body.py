@@ -14,8 +14,11 @@ class DescribeCallResponseBody(DaraModel):
         request_id: str = None,
         user_detail_list: List[main_models.DescribeCallResponseBodyUserDetailList] = None,
     ):
+        # The basic communication information.
         self.call_info = call_info
+        # The request ID.
         self.request_id = request_id
+        # The list of user details.
         self.user_detail_list = user_detail_list
 
     def validate(self):
@@ -81,21 +84,39 @@ class DescribeCallResponseBodyUserDetailList(DaraModel):
         sdk_version_list: List[str] = None,
         user_id: str = None,
     ):
+        # The call experience. Valid values:
+        # - **GOOD**: Good.
+        # - **BAD**: Poor.
         self.call_exp = call_exp
+        # The time when the user first joined the channel. The value is a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the user last left the channel. The value is a UNIX timestamp in seconds. If the communication has not ended, the value is empty.
         self.destroyed_ts = destroyed_ts
+        # The duration statistics.
         self.dur_metric_stat_data = dur_metric_stat_data
+        # The communication duration from the first join to the last leave. Unit: seconds.
         self.duration = duration
+        # The geographic location, such as Beijing-Beijing.
         self.location = location
+        # The network type, such as Wi-Fi or 4G.
         self.network = network
+        # The network type, such as Wi-Fi or 4G.
         self.network_list = network_list
+        # The online duration. Unit: seconds.
         self.online_duration = online_duration
+        # The online periods.
         self.online_periods = online_periods
+        # The platform type. If the user client is WEB, this indicates the type of the browser. If the client is NATIVE, this indicates the operating system type.
         self.os = os
+        # The platform type. If the user client is WEB, this indicates the type of the browser. If the client is NATIVE, this indicates the operating system type.
         self.os_list = os_list
+        # The user roles.
         self.roles = roles
+        # The SDK version, such as 1.0.0 or 1.1.1.
         self.sdk_version = sdk_version
+        # The list of SDK versions, such as 1.0.0 or 1.1.1.
         self.sdk_version_list = sdk_version_list
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -225,7 +246,9 @@ class DescribeCallResponseBodyUserDetailListOnlinePeriods(DaraModel):
         join_ts: int = None,
         leave_ts: int = None,
     ):
+        # The time when the user joined the channel. The value is a UNIX timestamp in seconds.
         self.join_ts = join_ts
+        # The time when the user left the channel. The value is a UNIX timestamp in seconds.
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -268,15 +291,25 @@ class DescribeCallResponseBodyUserDetailListDurMetricStatData(DaraModel):
         sub_video_720: int = None,
         sub_video_screen_share: int = None,
     ):
+        # The duration of published audio. Unit: seconds.
         self.pub_audio = pub_audio
+        # The duration of published 1080P video. Unit: seconds.
         self.pub_video_1080 = pub_video_1080
+        # The duration of published 360P video. Unit: seconds.
         self.pub_video_360 = pub_video_360
+        # The duration of published 720P video. Unit: seconds.
         self.pub_video_720 = pub_video_720
+        # The duration of published screen sharing. Unit: seconds.
         self.pub_video_screen_share = pub_video_screen_share
+        # The duration of subscribed audio. Unit: seconds.
         self.sub_audio = sub_audio
+        # The duration of subscribed 1080P video. Unit: seconds.
         self.sub_video_1080 = sub_video_1080
+        # The duration of subscribed 360P video. Unit: seconds.
         self.sub_video_360 = sub_video_360
+        # The duration of subscribed 720P video. Unit: seconds.
         self.sub_video_720 = sub_video_720
+        # The duration of subscribed screen sharing. Unit: seconds.
         self.sub_video_screen_share = sub_video_screen_share
 
     def validate(self):
@@ -363,12 +396,19 @@ class DescribeCallResponseBodyCallInfo(DaraModel):
         destroyed_ts: int = None,
         duration: int = None,
     ):
-        # App ID。
+        # The app ID.
         self.app_id = app_id
+        # The communication status. Valid values:
+        # - **IN**: In progress.
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # The channel ID.
         self.channel_id = channel_id
+        # The time when the channel was created. The value is a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the channel was released. The value is a UNIX timestamp in seconds.
         self.destroyed_ts = destroyed_ts
+        # The duration of the channel. Unit: seconds.
         self.duration = duration
 
     def validate(self):

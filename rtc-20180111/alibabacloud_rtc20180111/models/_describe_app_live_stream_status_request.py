@@ -10,8 +10,11 @@ class DescribeAppLiveStreamStatusRequest(DaraModel):
         app_id: str = None,
         client_token: str = None,
     ):
+        # The ID of the application. You can create and query the application ID in the console. You can specify only one application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # A parameter that ensures the idempotence of the request.
         self.client_token = client_token
 
     def validate(self):

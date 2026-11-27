@@ -16,10 +16,15 @@ class DescribeCallListResponseBody(DaraModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
+        # List of communications.
         self.call_list = call_list
+        # Page number.
         self.page_no = page_no
+        # Quantity per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total Quantity.
         self.total_cnt = total_cnt
 
     def validate(self):
@@ -88,12 +93,21 @@ class DescribeCallListResponseBodyCallList(DaraModel):
     ):
         # App ID。
         self.app_id = app_id
+        # Number of users with poor communication experience.
         self.bad_exp_user_cnt = bad_exp_user_cnt
+        # Communication status. Valid values:  
+        # - **IN**: In progress.  
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # Channel ID.
         self.channel_id = channel_id
+        # The UNIX timestamp indicating when the communication was created, in seconds.
         self.created_ts = created_ts
+        # The UNIX timestamp indicating when the communication was released, in seconds.
         self.destroyed_ts = destroyed_ts
+        # Duration of the communication, in seconds.
         self.duration = duration
+        # User Count.
         self.user_cnt = user_cnt
 
     def validate(self):

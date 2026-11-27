@@ -14,11 +14,19 @@ class RemoveTerminalsRequest(DaraModel):
         owner_id: int = None,
         terminal_ids: List[str] = None,
     ):
+        # The application ID. Only one ID is supported.
+        # 
+        # You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel that the user has joined. Only one ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # A list of user IDs.
+        # 
         # This parameter is required.
         self.terminal_ids = terminal_ids
 

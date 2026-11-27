@@ -11,12 +11,16 @@ class DescribeQualityOsSdkVersionDistributionStatDataRequest(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # APP ID
+        # The APP ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The end time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The start time of the query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

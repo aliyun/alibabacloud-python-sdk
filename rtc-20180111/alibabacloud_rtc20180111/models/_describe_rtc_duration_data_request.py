@@ -14,11 +14,22 @@ class DescribeRtcDurationDataRequest(DaraModel):
         service_area: str = None,
         start_time: str = None,
     ):
+        # The ID of the application. You can specify only one ID.
+        # 
+        # If you leave this parameter empty, data for all your applications is returned.
         self.app_id = app_id
+        # The end of the time range to query. Specify the time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
+        # 
+        # The end time must be later than the start time.
         self.end_time = end_time
+        # The time granularity of the query, in seconds.
+        # 
+        # Valid values are **3600** (1 hour) and **86400** (1 day). The default value is **3600**.
         self.interval = interval
         self.owner_id = owner_id
+        # The area where the service is deployed. The default value is CN, which indicates China.
         self.service_area = service_area
+        # The start of the time range to query. Specify the time in UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

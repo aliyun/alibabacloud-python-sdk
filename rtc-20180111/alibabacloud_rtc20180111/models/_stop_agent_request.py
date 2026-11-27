@@ -11,10 +11,16 @@ class StopAgentRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The joined channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The task ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

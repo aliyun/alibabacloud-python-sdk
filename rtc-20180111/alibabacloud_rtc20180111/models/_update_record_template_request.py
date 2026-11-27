@@ -31,35 +31,64 @@ class UpdateRecordTemplateRequest(DaraModel):
         template_id: str = None,
         watermarks: List[main_models.UpdateRecordTemplateRequestWatermarks] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The background color in RGB format. Default value: **0** (black). The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.background_color = background_color
+        # The background image information.
         self.backgrounds = backgrounds
+        # The clock information.
         self.clock_widgets = clock_widgets
+        # The delay before stopping the recording. Unit: seconds. Default value: **180**.
         self.delay_stop_time = delay_stop_time
+        # Specifies whether to add the timestamp of TS files to the recorded M3U8 file.
         self.enable_m3u_8date_time = enable_m3u_8date_time
+        # The interval at which recording files are split. The value must be greater than or equal to 1800. Unit: seconds.
+        # 
         # This parameter is required.
         self.file_split_interval = file_split_interval
+        # The recording file formats.
+        # 
         # This parameter is required.
         self.formats = formats
+        # The HTTP callback URL for recording events.
         self.http_callback_url = http_callback_url
+        # The layout IDs.
+        # 
         # This parameter is required.
         self.layout_ids = layout_ids
+        # The encoding options.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # The MSMQ for recording event callbacks.
         self.mns_queue = mns_queue
+        # The name of the recording configuration template.
+        # 
         # This parameter is required.
         self.name = name
+        # The OSS bucket where the recording files are stored.
+        # 
         # This parameter is required.
         self.oss_bucket = oss_bucket
+        # The OSS endpoint of the region where the recording files are stored.
         self.oss_endpoint = oss_endpoint
+        # The naming rule for recording files.
+        # 
         # This parameter is required.
         self.oss_file_prefix = oss_file_prefix
         self.owner_id = owner_id
+        # The billing configuration of the task.
+        # 
         # This parameter is required.
         self.task_profile = task_profile
+        # The configuration template ID. To obtain the template ID, call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The watermark information.
         self.watermarks = watermarks
 
     def validate(self):
@@ -234,13 +263,24 @@ class UpdateRecordTemplateRequestWatermarks(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency. A value of 0.0 indicates fully transparent, and a value of 1.0 indicates fully opaque.
         self.alpha = alpha
+        # Specifies whether to display the watermark. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the watermark.
         self.url = url
+        # The width of the pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The Z-order. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -315,11 +355,26 @@ class UpdateRecordTemplateRequestClockWidgets(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The text color of the clock in RGB format.
+        # 
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.font_color = font_color
+        # The font size of the clock. Valid values: **(0, 72]**.
         self.font_size = font_size
+        # The font type of the clock. Valid values:
+        # 
+        # - **0** (default): NOTO_SERIF_CJKSC_REGULAR
+        # - **1**: ALIBABA_PUHUITI_REGULAR
+        # - **2**: ALIBABA_PUHUITI_BOLD
+        # - **3**: ALIBABA_PUHUITI_Heavy
+        # - **4**: ALIBABA_PUHUITI_LIGHT
+        # - **5**: ALIBABA_PUHUITI_MEDIUM
         self.font_type = font_type
+        # The X-coordinate of the clock, as a normalized percentage.
         self.x = x
+        # The Y-coordinate of the clock, as a normalized percentage.
         self.y = y
+        # The Z-order of the clock. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -383,12 +438,22 @@ class UpdateRecordTemplateRequestBackgrounds(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Specifies whether to display the image. Valid values:
+        # 
+        # - **0** (None): Not displayed.
+        # - **1** (Always): Always displayed.
         self.display = display
+        # The height of the pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the image.
         self.url = url
+        # The width of the pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The Z-order. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

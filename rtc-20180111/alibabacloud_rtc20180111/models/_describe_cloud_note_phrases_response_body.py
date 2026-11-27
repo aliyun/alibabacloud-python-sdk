@@ -15,10 +15,13 @@ class DescribeCloudNotePhrasesResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
+        # The hotword lists.
         self.phrases = phrases
-        # Id of the request。
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of records.
         self.total_num = total_num
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -76,10 +79,16 @@ class DescribeCloudNotePhrasesResponseBodyPhrases(DaraModel):
         name: str = None,
         word_weights: List[main_models.DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights] = None,
     ):
+        # The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The hotword list ID.
         self.id = id
+        # The hotword list name.
         self.name = name
+        # The hotword weights.
+        # 
         # This parameter is required.
         self.word_weights = word_weights
 
@@ -141,7 +150,9 @@ class DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights(DaraModel):
         weight: int = None,
         word: str = None,
     ):
+        # The weight value.
         self.weight = weight
+        # The hotword.
         self.word = word
 
     def validate(self):

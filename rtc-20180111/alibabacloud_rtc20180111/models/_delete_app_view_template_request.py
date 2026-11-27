@@ -11,8 +11,12 @@ class DeleteAppViewTemplateRequest(DaraModel):
         app_id: str = None,
         template: main_models.DeleteAppViewTemplateRequestTemplate = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID can be specified.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template information.
+        # 
         # This parameter is required.
         self.template = template
 
@@ -49,6 +53,8 @@ class DeleteAppViewTemplateRequestTemplate(DaraModel):
         self,
         template_id: str = None,
     ):
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

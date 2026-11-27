@@ -11,9 +11,13 @@ class DeleteAutoLiveStreamRuleRequest(DaraModel):
         owner_id: int = None,
         rule_id: int = None,
     ):
+        # The application ID. You can create and query it in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The ID of the bypass rule. You can query the ID in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

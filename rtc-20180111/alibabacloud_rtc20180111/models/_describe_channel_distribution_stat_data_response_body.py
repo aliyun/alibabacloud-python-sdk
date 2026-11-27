@@ -13,7 +13,9 @@ class DescribeChannelDistributionStatDataResponseBody(DaraModel):
         request_id: str = None,
         stat_list: List[main_models.DescribeChannelDistributionStatDataResponseBodyStatList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The channel distribution statistics list.
         self.stat_list = stat_list
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeChannelDistributionStatDataResponseBodyStatList(DaraModel):
         call_user_ratio: str = None,
         name: str = None,
     ):
+        # The number of communicating users.
         self.call_user_count = call_user_count
+        # The proportion of communicating users, represented as a decimal. For example, 1.0000 indicates that the proportion is 100%.
         self.call_user_ratio = call_user_ratio
+        # The statistical dimension.
         self.name = name
 
     def validate(self):

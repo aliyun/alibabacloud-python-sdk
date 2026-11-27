@@ -12,11 +12,18 @@ class StopCloudNoteRequest(DaraModel):
         client_token: str = None,
         task_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel name.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The idempotency parameter.
         self.client_token = client_token
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

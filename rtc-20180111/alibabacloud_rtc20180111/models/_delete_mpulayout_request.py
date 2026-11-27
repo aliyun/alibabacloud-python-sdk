@@ -11,8 +11,12 @@ class DeleteMPULayoutRequest(DaraModel):
         layout_id: int = None,
         owner_id: int = None,
     ):
+        # The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The layout ID. Only a single ID is supported. To obtain a layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
+        # 
         # This parameter is required.
         self.layout_id = layout_id
         self.owner_id = owner_id

@@ -11,9 +11,13 @@ class EnableAutoLiveStreamRuleRequest(DaraModel):
         owner_id: int = None,
         rule_id: int = None,
     ):
+        # The application ID. You can create and query the ID in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The bypass rule ID. You can query the ID in the console or call the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation to obtain the bypass rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

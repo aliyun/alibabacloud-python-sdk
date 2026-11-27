@@ -14,8 +14,11 @@ class DescribeEndPointMetricDataResponseBody(DaraModel):
         request_id: str = None,
         sub_metrics: List[main_models.DescribeEndPointMetricDataResponseBodySubMetrics] = None,
     ):
+        # The metric data of the publisher.
         self.pub_metrics = pub_metrics
+        # The request ID.
         self.request_id = request_id
+        # The metric data of the subscriber.
         self.sub_metrics = sub_metrics
 
     def validate(self):
@@ -74,8 +77,11 @@ class DescribeEndPointMetricDataResponseBodySubMetrics(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # The list of coordinate points for the subscriber metric trends chart.
         self.nodes = nodes
+        # The metric type corresponding to the Metrics request parameter.
         self.type = type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -125,8 +131,11 @@ class DescribeEndPointMetricDataResponseBodySubMetricsNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The extended properties.
         self.ext = ext
+        # The x-axis coordinate in the subscriber metric trends chart.
         self.x = x
+        # The y-axis coordinate in the subscriber metric trends chart.
         self.y = y
 
     def validate(self):
@@ -168,8 +177,11 @@ class DescribeEndPointMetricDataResponseBodyPubMetrics(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # The list of coordinate points.
         self.nodes = nodes
+        # The metric type corresponding to the Metrics request parameter.
         self.type = type
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -219,8 +231,11 @@ class DescribeEndPointMetricDataResponseBodyPubMetricsNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The extended properties.
         self.ext = ext
+        # The x-axis coordinate in the publisher metric trends chart.
         self.x = x
+        # The y-axis coordinate in the publisher metric trends chart.
         self.y = y
 
     def validate(self):

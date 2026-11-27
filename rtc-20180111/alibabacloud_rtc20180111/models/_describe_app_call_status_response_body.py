@@ -12,6 +12,7 @@ class DescribeAppCallStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The callback status. Valid values: enable (enabled) and disable (disabled).
         self.result = result
 
     def validate(self):

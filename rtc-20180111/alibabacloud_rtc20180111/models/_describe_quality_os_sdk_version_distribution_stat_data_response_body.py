@@ -13,7 +13,9 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponseBody(DaraModel):
         quality_os_sdk_version_stat_data_list: List[main_models.DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList] = None,
         request_id: str = None,
     ):
+        # The list of data for operating systems and SDK versions in quality statistics.
         self.quality_os_sdk_version_stat_data_list = quality_os_sdk_version_stat_data_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,17 +68,29 @@ class DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVer
         video_high_quality_transmission_rate: str = None,
         video_stuck_rate: str = None,
     ):
+        # The audio delay, in milliseconds.
         self.audio_delay = audio_delay
+        # The audio high-quality transmission rate, represented by four decimal places.
         self.audio_high_quality_transmission_rate = audio_high_quality_transmission_rate
+        # The audio stuttering rate, represented by four decimal places.
         self.audio_stuck_rate = audio_stuck_rate
+        # The call duration ratio, represented by four decimal places. For example, 1.0000 indicates that the call duration ratio is 100%.
         self.call_duration_ratio = call_duration_ratio
+        # The 5-second channel join success rate, represented by four decimal places.
         self.join_channel_suc_five_sec_rate = join_channel_suc_five_sec_rate
+        # The channel join success rate, represented by four decimal places.
         self.join_channel_suc_rate = join_channel_suc_rate
+        # The SDK version name, such as 1.0.0 or 1.1.1.
         self.name = name
+        # The operating system name, such as iOS or Android.
         self.os = os
+        # The video delay, in milliseconds.
         self.video_delay = video_delay
+        # The first video frame rendering time, in milliseconds.
         self.video_first_pic_duration = video_first_pic_duration
+        # The video high-quality transmission rate, represented by four decimal places.
         self.video_high_quality_transmission_rate = video_high_quality_transmission_rate
+        # The video stuttering rate, represented by four decimal places.
         self.video_stuck_rate = video_stuck_rate
 
     def validate(self):

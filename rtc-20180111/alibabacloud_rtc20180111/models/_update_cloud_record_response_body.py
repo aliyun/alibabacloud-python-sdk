@@ -10,7 +10,9 @@ class UpdateCloudRecordResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The task ID for this cloud recording.
         self.task_id = task_id
 
     def validate(self):

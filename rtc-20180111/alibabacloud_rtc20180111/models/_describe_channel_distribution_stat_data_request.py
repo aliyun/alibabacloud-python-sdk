@@ -13,15 +13,25 @@ class DescribeChannelDistributionStatDataRequest(DaraModel):
         destroyed_ts: int = None,
         stat_dim: str = None,
     ):
-        # APP ID。
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The timestamp when the channel was created. You can query data from the last 30 days. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # The timestamp when the channel was released. The value is a UNIX timestamp in seconds. If this parameter is empty, the current time is used.
+        # > If the specified channel release time is later than the actual release time, the data from the creation time to the actual release time is returned.
         self.destroyed_ts = destroyed_ts
+        # The statistical dimension. Valid values:
+        # - **OS**: Statistics by operating system.
+        # - **SDK_VERSION**: Statistics by SDK version.
+        # 
         # This parameter is required.
         self.stat_dim = stat_dim
 

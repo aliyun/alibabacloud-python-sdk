@@ -11,10 +11,16 @@ class StopStreamingOutRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # The application ID, which is created and queried via the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # An existing channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The ID of an existing bypass stream ingest job. Only a single ID is supported. It can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum length of 55 bytes. If not specified, the system will automatically generate one.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

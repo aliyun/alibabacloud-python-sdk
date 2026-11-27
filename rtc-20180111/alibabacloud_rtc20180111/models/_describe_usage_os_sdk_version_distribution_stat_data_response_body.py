@@ -13,7 +13,9 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponseBody(DaraModel):
         request_id: str = None,
         usage_os_sdk_version_stat_list: List[main_models.DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # List of SDK version data in usage statistics.
         self.usage_os_sdk_version_stat_list = usage_os_sdk_version_stat_list
 
     def validate(self):
@@ -60,11 +62,17 @@ class DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersion
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
+        # Audio call duration, in minutes.
         self.audio_call_duration = audio_call_duration
+        # Call duration ratio, represented as a four-decimal number, such as 0.0984.
         self.call_duration_ratio = call_duration_ratio
+        # SDK version name, such as 1.0.0 or 1.1.1.
         self.name = name
+        # Operating system, such as iOS or Android.
         self.os = os
+        # Total call duration, in minutes.
         self.total_call_duration = total_call_duration
+        # Video call duration, in minutes.
         self.video_call_duration = video_call_duration
 
     def validate(self):

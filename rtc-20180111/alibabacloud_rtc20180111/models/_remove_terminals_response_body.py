@@ -13,6 +13,7 @@ class RemoveTerminalsResponseBody(DaraModel):
         request_id: str = None,
         terminals: main_models.RemoveTerminalsResponseBodyTerminals = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.terminals = terminals
 

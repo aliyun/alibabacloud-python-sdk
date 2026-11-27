@@ -11,9 +11,14 @@ class DeleteAppRecordTemplateShrinkRequest(DaraModel):
         client_token: str = None,
         template_shrink: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The idempotency parameter.
         self.client_token = client_token
+        # The template information.
+        # 
         # This parameter is required.
         self.template_shrink = template_shrink
 

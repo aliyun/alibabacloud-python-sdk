@@ -12,10 +12,15 @@ class DescribeAppStreamingOutTemplatesShrinkRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Application ID, created and queried through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Search condition.
         self.condition_shrink = condition_shrink
+        # Page number. By default, page 1 is queried.
         self.page_num = page_num
+        # Number of entries per page. The default value is 10.
         self.page_size = page_size
 
     def validate(self):

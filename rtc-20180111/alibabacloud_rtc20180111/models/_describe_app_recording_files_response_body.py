@@ -16,11 +16,15 @@ class DescribeAppRecordingFilesResponseBody(DaraModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
+        # List of recording files.
         self.items = items
+        # Page number.
         self.page_no = page_no
+        # Number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # Total count.
         self.total_cnt = total_cnt
 
     def validate(self):
@@ -89,15 +93,25 @@ class DescribeAppRecordingFilesResponseBodyItems(DaraModel):
         task_id: str = None,
         vendor: int = None,
     ):
+        # User-defined bucket.
         self.bucket = bucket
+        # Channel ID.
         self.channel_id = channel_id
+        # Recording file creation timestamp, in milliseconds.
         self.file_create_ts = file_create_ts
+        # Recording file duration, in milliseconds.
         self.file_duration = file_duration
+        # Path where the recording file is stored. Use the SDK of your cloud provider\"s Object Storage Service to access the file. For Alibaba Cloud OSS, see [here](https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects).
         self.file_path = file_path
+        # Recording file size, in bytes.
         self.file_size = file_size
+        # See region used in the recording task.
         self.region = region
+        # Recording task start timestamp, in milliseconds.
         self.start_ts = start_ts
+        # Recording task ID.
         self.task_id = task_id
+        # See vendor used when starting the recording task.
         self.vendor = vendor
 
     def validate(self):

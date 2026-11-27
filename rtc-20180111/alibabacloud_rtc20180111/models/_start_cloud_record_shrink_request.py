@@ -33,41 +33,75 @@ class StartCloudRecordShrinkRequest(DaraModel):
         template_id: str = None,
         texts: List[main_models.StartCloudRecordShrinkRequestTexts] = None,
     ):
+        # Specifies whether to enable the annotation feature.
         self.annotation = annotation
-        # appId
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The local background images for the pane.
         self.backgrounds = backgrounds
+        # The global background color.
         self.bg_color = bg_color
-        # channelName
+        # The ID of an existing channel. Only a single ID is supported.
         # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The global clock watermark.
         self.clock_widgets = clock_widgets
+        # The crop mode. Valid values:
+        # - **1**: Crops the video while keeping the aspect ratio.
+        # - **2**: Keeps the aspect ratio and adds padding (default).
+        # - **3**: Stretches the video to fill the pane.
         self.crop_mode = crop_mode
+        # The global image watermarks.
         self.images = images
+        # The specified user list for layout generation, which includes Blacklist/Whitelist.
+        # 
+        # Whitelist: specifies the users whose video streams are subscribed to in the room.
+        # * After the settings are applied, padding is automatically performed in sequence based on this list.
+        # * When switching between multiple layouts in a template, only users in the whitelist are calculated.
+        # 
+        # Blacklist: specifies the users whose video streams are not subscribed to in the room.
+        # * When switching between multiple layouts in a template, only users not in the blacklist are calculated.
         self.layout_specified_users_shrink = layout_specified_users_shrink
-        # panes
+        # The pane settings. You can configure up to 16 panes.
         self.panes = panes
+        # The recording mode. Valid values:
+        # - 0: Mixed-stream recording. This is the default value.
+        # - 1: Single-stream recording. Single-stream recording does not support updates.
         self.record_mode = record_mode
+        # The global frame background color.
         self.region_color = region_color
+        # Specifies whether to reserve a pane for a user who does not publish a camera stream. Default value: true. A value of true indicates that a pane is reserved. A value of false indicates that no pane is reserved.
         self.reserve_pane_for_no_camera_user = reserve_pane_for_no_camera_user
+        # Specifies whether to display the default background image of the pane when the user is muted. Valid values:
+        # - true: Displays the default background image (default).
+        # - false: Does not display the default background image. The custom background image of the pane is still displayed.
         self.show_default_background_on_mute = show_default_background_on_mute
+        # The parameters for single-stream recording.
         self.single_streaming_record_shrink = single_streaming_record_shrink
+        # Specifies whether to allow starting the task when the channel does not exist. Valid values:
+        # - true: Yes.
+        # - false: No (default).
         self.start_without_channel = start_without_channel
+        # The wait time for the task when the channel is not started, in seconds. This parameter takes effect only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
         self.start_without_channel_wait_time = start_without_channel_wait_time
-        # storageConfig
+        # The storage configuration.
         # 
         # This parameter is required.
         self.storage_config = storage_config
+        # Specifies whether to subscribe to high-resolution streams. Valid values:
+        # - false: Subscribes to streams of different resolutions based on the pane area (default).
+        # - true: Uses the highest resolution stream published by the client as padding.
         self.sub_high_resolution_stream = sub_high_resolution_stream
-        # taskId
+        # The task ID of the cloud recording task. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
         self.task_id = task_id
-        # templateId
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
+        # The global text watermarks.
         self.texts = texts
 
     def validate(self):
@@ -285,19 +319,44 @@ class StartCloudRecordShrinkRequestTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the watermark.
         self.alpha = alpha
+        # The transparency of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The color of the text box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The content of the watermark.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -399,8 +458,11 @@ class StartCloudRecordShrinkRequestTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -442,8 +504,11 @@ class StartCloudRecordShrinkRequestTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -488,16 +553,61 @@ class StartCloudRecordShrinkRequestStorageConfig(DaraModel):
         secret_key: str = None,
         vendor: int = None,
     ):
-        # accessKey
+        # The AccessKey. Make sure that the RAM user associated with the AccessKey pair is granted the **write** permissions on the object storage service of the corresponding cloud provider. Otherwise, the result files fail to be written.
         # 
         # This parameter is required.
         self.access_key = access_key
-        # bucket
+        # The name of the bucket.
         # 
         # This parameter is required.
         self.bucket = bucket
+        # The private endpoint for Apsara Stack.
         self.endpoint = endpoint
-        # region
+        # The storage region.
+        # 
+        # | Region | Alibaba Cloud OSS |
+        # |--------|------------|
+        # | 0 | CN_Hangzhou |
+        # | 1 | CN_Shanghai |
+        # | 2 | CN_Qingdao |
+        # | 3 | CN_Beijing |
+        # | 4 | CN_Zhangjiakou |
+        # | 5 | CN_Huhehaote |
+        # | 6 | CN_Shenzhen |
+        # | 7 | CN_Hongkong |
+        # | 8 | US_West_1 |
+        # | 9 | US_East_1 |
+        # | 10 | AP_Southeast_1 |
+        # | 11 | AP_Southeast_2 (Deprecated. Do not use.) |
+        # | 12 | AP_Southeast_3 |
+        # | 13 | AP_Southeast_5 |
+        # | 14 | AP_Northeast_1 |
+        # | 15 | AP_South_1 (Deprecated. Do not use.) |
+        # | 16 | EU_Central_1 |
+        # | 17 | EU_West_1 |
+        # | 18 | EU_East_1(ME_East_1) |
+        # | 19 | AP_Southeast_6 |
+        # | 20 | CN_Heyuan |
+        # | 21 | CN_Guangzhou |
+        # | 22 | CN_Chengdu |
+        # | 23 | CN_Nanjing |
+        # | 24 | CN_Fuzhou |
+        # | 25 | CN_Wulanchabu |
+        # | 26 | CN_Northeast_2 |
+        # | 27 | CN_Southeast_7 |
+        # | 28 | CN_Wuhan_LR |
+        # | 100 | oss-cn-hzjbp |
+        # | 101 | oss-cn-shanghai-finance-1 |
+        # | 102 | oss-cn-shenzhen-finance-1 |
+        # | 103 | oss-cn-beijing-finance-1 |
+        # | 104 | oss-cn-hzfinance |
+        # | 105 | oss-cn-shanghai-finance-1-pub |
+        # | 106 | oss-cn-szfinance |
+        # | 107 | oss-cn-beijing-finance-1-pub |
+        # 
+        # | Region | Apsara Stack OSS |
+        # |--------|------------|
+        # | 0 | default |
         # 
         # This parameter is required.
         self.region = region
@@ -505,7 +615,12 @@ class StartCloudRecordShrinkRequestStorageConfig(DaraModel):
         # 
         # This parameter is required.
         self.secret_key = secret_key
-        # vendor
+        # The storage platform. Valid values:
+        # 
+        # | vendor | Object storage service | Remarks |
+        # |--------|---------|---------|
+        # | 1 | AliYun OSS | Alibaba Cloud |
+        # | 2 | Apsara Stack OSS | Alibaba Cloud Apsara Stack |
         # 
         # This parameter is required.
         self.vendor = vendor
@@ -567,8 +682,11 @@ class StartCloudRecordShrinkRequestRegionColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -617,20 +735,39 @@ class StartCloudRecordShrinkRequestPanes(DaraModel):
         video_order: str = None,
         whiteboard: main_models.StartCloudRecordShrinkRequestPanesWhiteboard = None,
     ):
+        # The local background images for the pane.
         self.backgrounds = backgrounds
+        # The local image watermarks for the pane.
         self.images = images
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds borders.
+        # - **3**: Stretches the image to fill the pane.
         self.pane_crop_mode = pane_crop_mode
-        # paneId
+        # The ID of the pane. The value starts from 0.
         # 
         # This parameter is required.
         self.pane_id = pane_id
+        # Specifies whether to reserve the pane as a placeholder for users who have not joined the meeting.
+        # Default value: true. A value of true indicates that if the specific user or wildcard user specified for the pane is offline, the pane is forcibly reserved as a placeholder. A value of false indicates that if the specific user or wildcard user specified for the pane is offline, video streams are displayed based on the automatic fill order.
         self.reserve_pane_for_offline_user = reserve_pane_for_offline_user
-        # source
+        # The media source of the pane. You can specify a user ID. To specify a specific user type, you can use wildcard configurations. The following wildcard types are supported:
+        # - **$ActiveSpeaker**: the current speaker in the channel.
+        # - **$ScreenShare**: the user who is sharing the screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
         self.source = source
-        # sourceType
+        # The media type of the pane. Valid values:
+        # - **video**: The user camera or screen sharing stream. This is the default value.
+        # - **camera**: The camera stream.
+        # - **screen**: The screen sharing stream.
+        # - **whiteboard**: The whiteboard.
         self.source_type = source_type
+        # The local text watermarks for the pane.
         self.texts = texts
+        # The fill order when SourceType is set to video. Valid values:
+        # - screenFirst: Screen sharing takes precedence. This is the default value.
+        # - cameraFirst: The camera takes precedence.
         self.video_order = video_order
+        # The whiteboard configurations.
         self.whiteboard = whiteboard
 
     def validate(self):
@@ -741,6 +878,7 @@ class StartCloudRecordShrinkRequestPanesWhiteboard(DaraModel):
         self,
         whiteboard_id: str = None,
     ):
+        # The ID of the whiteboard. Default value: default.
         self.whiteboard_id = whiteboard_id
 
     def validate(self):
@@ -780,20 +918,49 @@ class StartCloudRecordShrinkRequestPanesTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the watermark.
         self.alpha = alpha
+        # The transparency of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The color of the text box.
         self.box_color = box_color
+        # The condition for displaying the watermark. Valid values:
+        # - streamOnly: The watermark is displayed when the current user has a video stream. This is the default value.
+        # - backup: The watermark is displayed when the current user does not have a video stream.
+        # - always: The watermark is always displayed.
         self.display = display
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The content of the watermark.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -901,8 +1068,11 @@ class StartCloudRecordShrinkRequestPanesTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -944,8 +1114,11 @@ class StartCloudRecordShrinkRequestPanesTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -993,18 +1166,38 @@ class StartCloudRecordShrinkRequestPanesImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the image.
         self.alpha = alpha
+        # The condition for displaying the watermark. Valid values:
+        # - streamOnly: The watermark is displayed when the current user has a video stream. This is the default value.
+        # - backup: The watermark is displayed when the current user does not have a video stream.
+        # - always: The watermark is always displayed.
         self.display = display
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds borders.
+        # - **3**: Stretches the image to fill the pane.
         self.pane_image_crop_mode = pane_image_crop_mode
+        # The URL of the image. The image content cannot be updated during stream ingest.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1089,18 +1282,38 @@ class StartCloudRecordShrinkRequestPanesBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the image.
         self.alpha = alpha
+        # The condition for displaying the background image. Valid values:
+        # - streamOnly: The background image is displayed when the current user has a video stream. This is the default value.
+        # - backup: The background image is displayed when the current user does not have a video stream.
+        # - always: The background image is always displayed.
         self.display = display
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds borders.
+        # - **3**: Stretches the image to fill the pane.
         self.pane_background_crop_mode = pane_background_crop_mode
+        # The URL of the image.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1184,17 +1397,33 @@ class StartCloudRecordShrinkRequestImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the image.
         self.alpha = alpha
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds borders.
+        # - **3**: Stretches the image to fill the pane.
         self.image_crop_mode = image_crop_mode
+        # The z-axis layer.
         self.layer = layer
+        # The image URL. The image content cannot be updated during stream ingest.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -1276,19 +1505,43 @@ class StartCloudRecordShrinkRequestClockWidgets(DaraModel):
         y: float = None,
         zone: int = None,
     ):
+        # The transparency of the image.
         self.alpha = alpha
+        # The transparency of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The color of the text box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size of the clock.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
+        # The time zone.
         self.zone = zone
 
     def validate(self):
@@ -1389,8 +1642,11 @@ class StartCloudRecordShrinkRequestClockWidgetsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -1432,8 +1688,11 @@ class StartCloudRecordShrinkRequestClockWidgetsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -1475,8 +1734,11 @@ class StartCloudRecordShrinkRequestBgColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
+        # The blue component.
         self.b = b
+        # The green component.
         self.g = g
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -1523,17 +1785,33 @@ class StartCloudRecordShrinkRequestBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The transparency of the image.
         self.alpha = alpha
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds borders.
+        # - **3**: Stretches the image to fill the pane.
         self.background_crop_mode = background_crop_mode
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The URL of the image.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 

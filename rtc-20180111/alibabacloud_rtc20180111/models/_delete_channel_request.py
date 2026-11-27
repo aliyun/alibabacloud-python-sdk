@@ -11,8 +11,12 @@ class DeleteChannelRequest(DaraModel):
         channel_id: str = None,
         owner_id: int = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the joined channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id

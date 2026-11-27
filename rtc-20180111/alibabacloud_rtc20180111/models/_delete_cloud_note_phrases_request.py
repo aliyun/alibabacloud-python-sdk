@@ -11,8 +11,12 @@ class DeleteCloudNotePhrasesRequest(DaraModel):
         app_id: str = None,
         phrase: main_models.DeleteCloudNotePhrasesRequestPhrase = None,
     ):
+        # The ID of the application. You can create and query application IDs in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The hot word table parameters.
+        # 
         # This parameter is required.
         self.phrase = phrase
 
@@ -49,6 +53,8 @@ class DeleteCloudNotePhrasesRequestPhrase(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the hot word table.
+        # 
         # This parameter is required.
         self.id = id
 

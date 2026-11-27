@@ -14,16 +14,27 @@ class StartAgentShrinkRequest(DaraModel):
         template_id: str = None,
         voice_chat_config_shrink: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the channel to join. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The configuration for the agent to join a Real-Time Communication (RTC) channel.
+        # 
         # This parameter is required.
         self.rtc_config_shrink = rtc_config_shrink
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The configuration for AI voice chat.
         self.voice_chat_config_shrink = voice_chat_config_shrink
 
     def validate(self):

@@ -11,8 +11,12 @@ class ModifyAppRequest(DaraModel):
         app_name: str = None,
         owner_id: int = None,
     ):
+        # The ID of the application. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The name of the application. Only a single name is supported.
+        # 
         # This parameter is required.
         self.app_name = app_name
         self.owner_id = owner_id

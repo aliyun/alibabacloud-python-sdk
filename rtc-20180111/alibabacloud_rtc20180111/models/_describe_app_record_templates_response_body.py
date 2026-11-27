@@ -17,8 +17,11 @@ class DescribeAppRecordTemplatesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The list of templates.
         self.templates = templates
+        # The total number of records.
         self.total_num = total_num
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -80,14 +83,25 @@ class DescribeAppRecordTemplatesResponseBodyTemplates(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # The creation time. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.create_time = create_time
+        # The delay time before stopping the recording. Unit: seconds.
         self.delay_stop_time = delay_stop_time
+        # The naming rule for recording files.
+        # > To ensure the uniqueness of recording file names, the current naming rule is record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}.
         self.file_prefix = file_prefix
+        # The splitting duration of the recording file. The value must be greater than or equal to 1800. Unit: seconds.
         self.file_split_interval = file_split_interval
+        # The formats of the recording file. Valid values: .m3u8, .mp4, and .flv.
+        # > Only lowercase letters are supported for file formats.
         self.formats = formats
+        # The list of layout IDs.
         self.layout_ids = layout_ids
+        # The encoding options.
         self.media_encode = media_encode
+        # The template name.
         self.name = name
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

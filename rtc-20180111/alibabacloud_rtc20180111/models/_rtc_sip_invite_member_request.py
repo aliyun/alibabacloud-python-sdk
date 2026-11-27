@@ -23,27 +23,67 @@ class RtcSipInviteMemberRequest(DaraModel):
         task_id: str = None,
         uid: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The meeting token. For code generation, refer to https://help.aliyun.com/document_detail/2689025.html.
         self.app_token = app_token
+        # The custom line number in PSTN scenarios.
         self.call_number = call_number
+        # The channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The type of the device used to call the third-party SIP endpoint. Valid values:
+        # - sip_device
+        # - mcu
+        # - phone
+        # 
+        # Note: Currently, only the phone type is supported.
+        # 
         # This parameter is required.
         self.device_type = device_type
+        # Specifies whether the third-party meeting system requires registration for inbound calls.
+        # 
         # This parameter is required.
         self.registered = registered
+        # 1. The IP address of the nearest RTC SIP server.
+        # 2. You can resolve the domain name rtcsip.dingtalk.com locally to obtain the nearest access address.
+        # For example, run dig rtcsip.dingtalk.com to obtain the address.
         self.server_address = server_address
+        # The username displayed on the third-party system.
+        # 
         # This parameter is required.
         self.sip_display_name = sip_display_name
+        # 1. When the device is mcu, it indicates the channel number of the third-party meeting system to be called.
+        # 2. When the device is sip_device, it indicates the registration number of the registered device to be invited.
+        # 3. When the device is phone, it indicates the called phone number.
+        # 
         # This parameter is required.
         self.sip_room_id = sip_room_id
+        # 1. When the device is mcu, it indicates the address information of the third-party meeting system in the format of ip:port;transport=tcp/udp/tls.
+        # Example: "30.240.160.66:5060;transport=tcp"
+        # 2. When the device is sip_device, it indicates the registration address of the registered device to be invited.
+        # Example: 39.101.232.13
+        # 3. When the device is phone, it indicates the address information of the telephone gateway.
+        # Example: "30.240.160.66:5060;transport=tcp"
         self.sip_uri = sip_uri
+        # The brand and model of the third-party SIP endpoint being called, such as polycom, cisco, tencent, zoom, or pstn.
         self.sip_user_agent = sip_user_agent
+        # 1. When DeviceType is mcu, it represents the third-party meeting system.
+        # 2. When DeviceType is sip_device, it represents the registered device.
+        # 3. If the third-party meeting system requires registration for inbound calls, it is the account provided by the third-party system to create an account.
+        # 4. If registration is not required, it is the SIP username or RTC user ID for calling the third-party system.
+        # 
         # This parameter is required.
         self.sip_user_id = sip_user_id
+        # The registration password that matches the SipUserId if the third-party system requires registration for inbound calls.
         self.sip_user_password = sip_user_password
+        # The task ID.
         self.task_id = task_id
+        # The user ID.
+        # 
         # This parameter is required.
         self.uid = uid
 

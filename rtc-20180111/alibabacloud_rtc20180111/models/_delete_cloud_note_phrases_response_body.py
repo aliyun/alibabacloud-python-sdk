@@ -10,6 +10,7 @@ class DeleteCloudNotePhrasesResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The ID of the hot word table.
         self.id = id
         # Id of the request
         self.request_id = request_id

@@ -31,29 +31,72 @@ class StartRecordTaskRequest(DaraModel):
         unsub_spec_share_screen_users: List[str] = None,
         user_panes: List[main_models.StartRecordTaskRequestUserPanes] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The cropping mode of the video. Valid values:
+        # 
+        # - **1**: crops the video while maintaining the aspect ratio.
+        # - **2** (default): adds padding to the video while maintaining the aspect ratio.
         self.crop_mode = crop_mode
+        # The list of layout IDs.
         self.layout_ids = layout_ids
+        # The encoding option. For more information, see the MediaEncode enum values below.
         self.media_encode = media_encode
+        # The recording mode. Valid values:
+        # 
+        # - **0**: single-stream recording. Task parameters cannot be modified during the recording process. You cannot call the UpdateRecordTask operation to modify task parameters.
+        # - **1** (default): mixed-stream recording. Multiple video streams are mixed and output.
+        # 
+        # > - Valid parameters in single-stream recording mode: StreamType and SourceType.
+        # - Valid parameters in mixed-stream recording mode: TaskProfile, MediaEncode, LayoutIds, BackgroundColor, SubSpecUsers, CropMode, UserPanes, Backgrounds, Watermarks, and ClockWidgets.
         self.mix_mode = mix_mode
         self.owner_id = owner_id
+        # The video source in single-stream recording mode. Valid values:
+        # 
+        # - **camera**: the camera.
+        # - **shareScreen**: screen sharing.
+        # 
+        # > If the video source is shareScreen and only the camera stream is ingested, the camera stream is recorded. If both the camera stream and the screen sharing stream are ingested, the screen sharing stream is recorded.
         self.source_type = source_type
+        # The single-stream recording mode. Valid values:
+        # 
+        # - **0** (default): records the original stream.
+        # - **1**: records only the audio stream.
         self.stream_type = stream_type
+        # Specifies the users whose audio streams are subscribed to in the channel.
         self.sub_spec_audio_users = sub_spec_audio_users
+        # Specifies the users whose camera streams are subscribed to in the channel.
         self.sub_spec_camera_users = sub_spec_camera_users
+        # Specifies the users whose screen sharing streams are subscribed to in the channel.
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
+        # Specifies the list of users to which the task subscribes.
         self.sub_spec_users = sub_spec_users
+        # The task ID. Only a single ID is supported and the ID must be unique. The ID must be 1 to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The billing configuration of the task. You are charged based on your settings. For more information, see the TaskProfile enum values below.
+        # 
+        # > - The resolution of the MediaEncode encoding option must be less than or equal to the resolution of TaskProfile.
+        # - The maximum number of panes in the layout must be less than or equal to the number of input streams specified by TaskProfile.
         self.task_profile = task_profile
+        # The configuration template ID. For more information about how to obtain the template ID, see [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Specifies the users whose audio streams are not subscribed to in the channel.
         self.unsub_spec_audio_users = unsub_spec_audio_users
+        # Specifies the users whose camera streams are not subscribed to in the channel.
         self.unsub_spec_camera_users = unsub_spec_camera_users
+        # Specifies the users whose screen sharing streams are not subscribed to in the channel.
         self.unsub_spec_share_screen_users = unsub_spec_share_screen_users
+        # The list of layout parameters.
         self.user_panes = user_panes
 
     def validate(self):
@@ -207,10 +250,21 @@ class StartRecordTaskRequestUserPanes(DaraModel):
         texts: List[main_models.StartRecordTaskRequestUserPanesTexts] = None,
         user_id: str = None,
     ):
+        # The list of image panes in the current layout.
         self.images = images
+        # The pane ID. Valid values: **0** to **15**.
+        # 
+        # > - If the user specified by PaneId is not found, other streams are displayed by default. The streams are determined based on the order in which users join the channel.
+        # - If a parameter related to UserPanes is required, all other related parameters are also required. Otherwise, none of them are required.
         self.pane_id = pane_id
+        # The user video input that corresponds to the layout. Valid values:
+        # 
+        # - **camera** (default): the video stream.
+        # - **shareScreen**: the screen sharing stream.
         self.source_type = source_type
+        # The list of text panes in the current layout.
         self.texts = texts
+        # The ID of the user that corresponds to the layout pane. Valid values of N: **1 to 16**.
         self.user_id = user_id
 
     def validate(self):
@@ -285,12 +339,26 @@ class StartRecordTaskRequestUserPanesTexts(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The text color in RGB format. The calculation formula is R + G × 256 + B × 65536. Valid values of R (red), G (green), and B (blue): **0 to 255**.
         self.font_color = font_color
+        # The font size. Valid values: **(0, 72]**.
         self.font_size = font_size
+        # The font type. Valid values:
+        # 
+        # - **0** (default): NOTO_SERIF_CJKSC_REGULAR.
+        # - **1**: ALIBABA_PUHUITI_REGULAR.
+        # - **2**: ALIBABA_PUHUITI_BOLD.
+        # - **3**: ALIBABA_PUHUITI_Heavy.
+        # - **4**: ALIBABA_PUHUITI_LIGHT.
+        # - **5**: ALIBABA_PUHUITI_MEDIUM.
         self.font_type = font_type
+        # The text content.
         self.text = text
+        # The X coordinate, represented as a normalized percentage.
         self.x = x
+        # The Y coordinate, represented as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -360,12 +428,23 @@ class StartRecordTaskRequestUserPanesImages(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The display mode of the image. Valid values:
+        # 
+        # - **0** (None): The image is not displayed.
+        # - **1** (Always): The image is always displayed.
+        # - **2** (Backup): The image is displayed when the current user has no video stream.
         self.display = display
+        # The height of the pane, represented as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the image.
         self.url = url
+        # The width of the pane, represented as a normalized percentage.
         self.width = width
+        # The X coordinate, represented as a normalized percentage.
         self.x = x
+        # The Y coordinate, represented as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

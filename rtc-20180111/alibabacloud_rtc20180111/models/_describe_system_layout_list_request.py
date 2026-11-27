@@ -12,7 +12,9 @@ class DescribeSystemLayoutListRequest(DaraModel):
         page_size: int = None,
     ):
         self.owner_id = owner_id
+        # Page number.
         self.page_num = page_num
+        # Number of entries per page.
         self.page_size = page_size
 
     def validate(self):

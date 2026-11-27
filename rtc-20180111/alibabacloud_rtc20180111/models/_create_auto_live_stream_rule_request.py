@@ -18,15 +18,28 @@ class CreateAutoLiveStreamRuleRequest(DaraModel):
         play_domain: str = None,
         rule_name: str = None,
     ):
+        # The application ID, which can be created and queried in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback URL used to notify the start and end of the relay. For details about the callback content, see the CallBack callback example below.
         self.call_back = call_back
+        # The list of channel ID prefixes that are fuzzy matched.
         self.channel_id_prefixes = channel_id_prefixes
+        # The list of channel IDs that are exactly matched.
         self.channel_ids = channel_ids
+        # The encoding option. For more information, see the MediaEncode enumeration values below.
         self.media_encode = media_encode
         self.owner_id = owner_id
+        # The streaming domain name for automatic relay. The streaming URL of an automatic relay task is in the format rtmp://${domain}/${app}/${stream}.
+        # 
+        # - domain: your live streaming domain name.
+        # - app: live.
+        # - stream: urlencode(${AppId}_${ChannelId}_${UserId}_${SourceType}), where SourceType indicates the type of the input source.
+        # 
         # This parameter is required.
         self.play_domain = play_domain
+        # The name of the relay rule.
         self.rule_name = rule_name
 
     def validate(self):

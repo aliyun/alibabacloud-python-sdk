@@ -11,9 +11,13 @@ class DeleteRecordTemplateRequest(DaraModel):
         owner_id: int = None,
         template_id: str = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The configuration template ID. For more information about how to obtain the template ID, see [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
+        # 
         # This parameter is required.
         self.template_id = template_id
 

@@ -11,8 +11,12 @@ class StopCategoryCallbackRequest(DaraModel):
         app_id: str = None,
         callback: main_models.StopCategoryCallbackRequestCallback = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback.
+        # 
         # This parameter is required.
         self.callback = callback
 
@@ -49,6 +53,8 @@ class StopCategoryCallbackRequestCallback(DaraModel):
         self,
         category: str = None,
     ):
+        # The callback code.
+        # 
         # This parameter is required.
         self.category = category
 

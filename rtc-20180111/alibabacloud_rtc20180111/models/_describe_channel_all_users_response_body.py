@@ -14,8 +14,13 @@ class DescribeChannelAllUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.DescribeChannelAllUsersResponseBodyUsers] = None,
     ):
+        # Indicates whether the channel exists. Valid values:  
+        # - **true**: The channel exists.  
+        # - **false**: The channel does not exist.
         self.channel_exist = channel_exist
+        # Request ID.
         self.request_id = request_id
+        # List of online users in the channel.
         self.users = users
 
     def validate(self):
@@ -63,6 +68,7 @@ class DescribeChannelAllUsersResponseBodyUsers(DaraModel):
         self,
         user_id: str = None,
     ):
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

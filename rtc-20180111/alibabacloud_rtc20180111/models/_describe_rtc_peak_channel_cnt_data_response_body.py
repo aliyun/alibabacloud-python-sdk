@@ -14,6 +14,7 @@ class DescribeRtcPeakChannelCntDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.peak_channel_cnt_data_per_interval = peak_channel_cnt_data_per_interval
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

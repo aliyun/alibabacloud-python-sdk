@@ -14,10 +14,16 @@ class RtcSipMuteRequest(DaraModel):
         channel_id: str = None,
         operations: List[main_models.RtcSipMuteRequestOperations] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of an existing channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The operations.
+        # 
         # This parameter is required.
         self.operations = operations
 
@@ -70,14 +76,26 @@ class RtcSipMuteRequestOperations(DaraModel):
         path: str = None,
         value: main_models.RtcSipMuteRequestOperationsValue = None,
     ):
+        # The list of user IDs.
+        # 
         # This parameter is required.
         self.ids = ids
+        # The operation type.
+        # - replace
+        # 
         # This parameter is required.
         self.op = op
+        # The operation ID. If some operations fail, you can use this ID for troubleshooting.
+        # 
         # This parameter is required.
         self.operation_id = operation_id
+        # The operation scope.
+        # - /media/audio/status: Modifies the audio stream status of the user.
+        # 
         # This parameter is required.
         self.path = path
+        # The operation value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -132,6 +150,10 @@ class RtcSipMuteRequestOperationsValue(DaraModel):
         self,
         status: str = None,
     ):
+        # The actual value.
+        # - active: Unmutes the microphone.
+        # - inactive: Mutes the microphone.
+        # 
         # This parameter is required.
         self.status = status
 

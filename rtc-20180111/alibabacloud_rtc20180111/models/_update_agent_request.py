@@ -13,12 +13,19 @@ class UpdateAgentRequest(DaraModel):
         task_id: str = None,
         voice_chat_config: main_models.UpdateAgentRequestVoiceChatConfig = None,
     ):
+        # The application ID. Specify only one ID. You can create and query applications in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The existing channel ID. Specify only one ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The task ID. Specify only one ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Configuration for AI voice conversation.
         self.voice_chat_config = voice_chat_config
 
     def validate(self):
@@ -67,7 +74,9 @@ class UpdateAgentRequestVoiceChatConfig(DaraModel):
         chat_mode: int = None,
         interrupt_mode: int = None,
     ):
+        # 1 – Natural conversation mode. 2 – Walkie-talkie mode.If this field is not included, no update occurs.
         self.chat_mode = chat_mode
+        # 1 – Enable voice interruption. 2 – Disable voice interruption.If this field is not included, no update occurs.
         self.interrupt_mode = interrupt_mode
 
     def validate(self):

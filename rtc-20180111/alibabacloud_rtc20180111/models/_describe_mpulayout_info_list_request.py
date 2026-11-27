@@ -14,12 +14,18 @@ class DescribeMPULayoutInfoListRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Application ID. You can specify only one ID. Create or view IDs in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Layout ID. To get a layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
         self.layout_id = layout_id
+        # Layout name.
         self.name = name
         self.owner_id = owner_id
+        # Page number. Default value: **1**.
         self.page_num = page_num
+        # Number of entries per page. Default value: **10**.
         self.page_size = page_size
 
     def validate(self):

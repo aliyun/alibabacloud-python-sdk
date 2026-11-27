@@ -11,9 +11,14 @@ class ModifyAppRecordTemplateShrinkRequest(DaraModel):
         client_token: str = None,
         record_template_shrink: str = None,
     ):
+        # Application ID. Create and query through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Idempotency parameter.
         self.client_token = client_token
+        # Recording template.
+        # 
         # This parameter is required.
         self.record_template_shrink = record_template_shrink
 

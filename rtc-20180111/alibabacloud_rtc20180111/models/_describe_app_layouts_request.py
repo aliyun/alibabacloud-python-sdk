@@ -13,10 +13,15 @@ class DescribeAppLayoutsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # The application ID. Create and query it using the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The query conditions.
         self.condition = condition
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -65,7 +70,9 @@ class DescribeAppLayoutsRequestCondition(DaraModel):
         layout_id: str = None,
         name: str = None,
     ):
+        # The layout ID.
         self.layout_id = layout_id
+        # The layout name.
         self.name = name
 
     def validate(self):

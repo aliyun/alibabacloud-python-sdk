@@ -344,6 +344,9 @@ from ._remove_users_response import RemoveUsersResponse
 from ._rtc_cancel_sip_invite_request import RtcCancelSipInviteRequest
 from ._rtc_cancel_sip_invite_response_body import RtcCancelSipInviteResponseBody
 from ._rtc_cancel_sip_invite_response import RtcCancelSipInviteResponse
+from ._rtc_send_sip_dtmf_request import RtcSendSipDtmfRequest
+from ._rtc_send_sip_dtmf_response_body import RtcSendSipDtmfResponseBody
+from ._rtc_send_sip_dtmf_response import RtcSendSipDtmfResponse
 from ._rtc_sip_invite_member_request import RtcSipInviteMemberRequest
 from ._rtc_sip_invite_member_response_body import RtcSipInviteMemberResponseBody
 from ._rtc_sip_invite_member_response import RtcSipInviteMemberResponse
@@ -1169,6 +1172,9 @@ __all__ = [
     RtcCancelSipInviteRequest,
     RtcCancelSipInviteResponseBody,
     RtcCancelSipInviteResponse,
+    RtcSendSipDtmfRequest,
+    RtcSendSipDtmfResponseBody,
+    RtcSendSipDtmfResponse,
     RtcSipInviteMemberRequest,
     RtcSipInviteMemberResponseBody,
     RtcSipInviteMemberResponse,

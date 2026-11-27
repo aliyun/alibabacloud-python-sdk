@@ -14,9 +14,14 @@ class ModifyAppRecordTemplateRequest(DaraModel):
         client_token: str = None,
         record_template: main_models.ModifyAppRecordTemplateRequestRecordTemplate = None,
     ):
+        # Application ID. Create and query through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Idempotency parameter.
         self.client_token = client_token
+        # Recording template.
+        # 
         # This parameter is required.
         self.record_template = record_template
 
@@ -66,19 +71,38 @@ class ModifyAppRecordTemplateRequestRecordTemplate(DaraModel):
         name: str = None,
         template_id: str = None,
     ):
+        # Delayed stop recording time. Unit: seconds.
         self.delay_stop_time = delay_stop_time
+        # The naming convention for recording files.
+        # 
+        # > To ensure unique recording file names, use the following naming convention: `record/{AppId}/{ChannelId}/{TaskId}/{EscapedStartTime}/{EscapedEndTime}`.
+        # 
         # This parameter is required.
         self.file_prefix = file_prefix
+        # Recording file split duration (greater than or equal to 1800). Unit: seconds.
+        # 
         # This parameter is required.
         self.file_split_interval = file_split_interval
+        # Recording file format. Currently, only .m3u8, .mp4, and .flv are supported.
+        # 
         # This parameter is required.
         self.formats = formats
+        # Layout ID list, up to 16.
+        # 
+        # Note: The layouts in the list must not have the same number of data sources.
+        # 
         # This parameter is required.
         self.layout_ids = layout_ids
+        # Encoding options.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # Template name.
+        # 
         # This parameter is required.
         self.name = name
+        # Template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

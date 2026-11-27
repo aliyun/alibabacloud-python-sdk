@@ -21,11 +21,17 @@ class DescribeCloudNotesRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Channel ID.
         self.channel_id = channel_id
+        # Query range, closed interval of job start time, in milliseconds.
         self.end_ts = end_ts
+        # Page number.
         self.page_no = page_no
+        # Number of items per page.
         self.page_size = page_size
+        # Query range, open interval of job start time, in milliseconds. If not specified, defaults to querying recordings from the last 3 days, with a maximum range of one year in the past.
         self.start_ts = start_ts
+        # List of job TaskIds.
         self.task_ids = task_ids
 
     def validate(self):

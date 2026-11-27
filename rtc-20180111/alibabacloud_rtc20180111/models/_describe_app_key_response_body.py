@@ -12,6 +12,7 @@ class DescribeAppKeyResponseBody(DaraModel):
     ):
         # AppKey。
         self.app_key = app_key
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -18,14 +18,22 @@ class DescribeRecordFilesRequest(DaraModel):
         start_time: str = None,
         task_ids: List[str] = None,
     ):
+        # The application ID. Only a single ID can be passed. You can create and query it in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID. Only a single ID can be passed.
         self.channel_id = channel_id
+        # The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         self.end_time = end_time
         self.owner_id = owner_id
+        # The page number. By default, the first page is queried.
         self.page_num = page_num
+        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
+        # The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
         self.start_time = start_time
+        # Recording task ID.
         self.task_ids = task_ids
 
     def validate(self):

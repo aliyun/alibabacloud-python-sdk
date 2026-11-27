@@ -11,8 +11,12 @@ class ModifyCallbackMetaShrinkRequest(DaraModel):
         callback_shrink: str = None,
         owner_id: int = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The callback configuration.
+        # 
         # This parameter is required.
         self.callback_shrink = callback_shrink
         self.owner_id = owner_id

@@ -11,9 +11,13 @@ class GetMPUTaskStatusRequest(DaraModel):
         owner_id: int = None,
         task_id: str = None,
     ):
+        # The application ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The task ID. Only a single ID is supported. The value must be the same as the TaskId parameter in the [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) request.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -12,6 +12,7 @@ class DescribeAppViewStatusResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The status of the switch. Valid values: enable (on) and disable (off).
         self.result = result
 
     def validate(self):

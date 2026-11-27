@@ -15,10 +15,15 @@ class DescribeChannelsResponseBody(DaraModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of items per page.
         self.page_size = page_size
+        # The active channels.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_cnt = total_cnt
 
     def validate(self):

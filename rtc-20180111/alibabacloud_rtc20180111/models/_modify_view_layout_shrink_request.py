@@ -21,19 +21,33 @@ class ModifyViewLayoutShrinkRequest(DaraModel):
         template_id: str = None,
         texts: List[main_models.ModifyViewLayoutShrinkRequestTexts] = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The background images.
         self.backgrounds = backgrounds
+        # The ID of an existing channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The global clock watermark.
         self.clock_widgets = clock_widgets
+        # The global image watermark.
         self.images = images
+        # The blacklists and whitelists settings.
         self.layout_specified_users_shrink = layout_specified_users_shrink
+        # The pane settings. You can configure up to 16 panes.
         self.panes = panes
+        # The task ID. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The global text watermark.
         self.texts = texts
 
     def validate(self):
@@ -170,19 +184,44 @@ class ModifyViewLayoutShrinkRequestTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The opacity of the watermark.
         self.alpha = alpha
+        # The opacity of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The border color of the text box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The content of the watermark.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -284,11 +323,11 @@ class ModifyViewLayoutShrinkRequestTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -330,11 +369,11 @@ class ModifyViewLayoutShrinkRequestTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -379,12 +418,27 @@ class ModifyViewLayoutShrinkRequestPanes(DaraModel):
         source_type: str = None,
         texts: List[main_models.ModifyViewLayoutShrinkRequestPanesTexts] = None,
     ):
+        # The image watermarks for the pane.
         self.images = images
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds padding.
+        # - **3**: Stretches the image to fill the area.
         self.pane_crop_mode = pane_crop_mode
+        # The ID of the pane. The ID starts from 0.
+        # 
         # This parameter is required.
         self.pane_id = pane_id
+        # The media source of the pane. You can specify a userId. To specify a specific user type, you can use wildcard configurations. The following types are supported:
+        # - **$ActiveSpeaker**: The active speaker in the current channel.
+        # - **$ScreenShare**: The user who is sharing the screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
         self.source = source
+        # The media type of the pane. Valid values:
+        # - **video**: The camera or screen sharing stream of the user. This is the default value.
+        # - **camera**: The camera stream.
+        # - **screen**: The screen sharing stream.
         self.source_type = source_type
+        # The text watermarks for the pane.
         self.texts = texts
 
     def validate(self):
@@ -470,19 +524,44 @@ class ModifyViewLayoutShrinkRequestPanesTexts(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The opacity of the watermark.
         self.alpha = alpha
+        # The opacity of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The border color of the text box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The font size.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The content of the watermark.
+        # 
         # This parameter is required.
         self.texture = texture
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -584,11 +663,11 @@ class ModifyViewLayoutShrinkRequestPanesTextsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -630,11 +709,11 @@ class ModifyViewLayoutShrinkRequestPanesTextsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -681,17 +760,33 @@ class ModifyViewLayoutShrinkRequestPanesImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The opacity of the image.
         self.alpha = alpha
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds padding.
+        # - **3**: Stretches the image to fill the area.
         self.pane_image_crop_mode = pane_image_crop_mode
+        # The URL of the image.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -769,17 +864,33 @@ class ModifyViewLayoutShrinkRequestImages(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The opacity of the image.
         self.alpha = alpha
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds padding.
+        # - **3**: Stretches the image to fill the area.
         self.image_crop_mode = image_crop_mode
+        # The z-axis layer.
         self.layer = layer
+        # The URL of the image.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 
@@ -861,19 +972,43 @@ class ModifyViewLayoutShrinkRequestClockWidgets(DaraModel):
         y: float = None,
         zone: int = None,
     ):
+        # The opacity of the image.
         self.alpha = alpha
+        # The opacity of the text box.
         self.box_alpha = box_alpha
+        # The border width of the text box.
         self.box_borderw = box_borderw
+        # The border color of the text box.
         self.box_color = box_color
+        # The font. Valid values:
+        # - **0**: Alibaba PuHuiTi Regular
+        # - **1**: Alibaba PuHuiTi Light
+        # - **2**: Alibaba PuHuiTi Medium
+        # - **3**: Alibaba PuHuiTi Bold
+        # - **4**: Alibaba PuHuiTi Heavy
+        # - **5**: Alimama ShuHeiTi
+        # - **6**: DingTalk JinBuTi
+        # - **7**: Alimama DaoLiTi
+        # - **8**: Alimama DongFangDaKai
+        # - **9**: Alimama FangYuanTi
         self.font = font
+        # The font color.
         self.font_color = font_color
+        # The clock font size.
         self.font_size = font_size
+        # Specifies whether to display a text box.
         self.has_box = has_box
+        # The z-axis layer.
         self.layer = layer
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
+        # The time zone.
         self.zone = zone
 
     def validate(self):
@@ -974,11 +1109,11 @@ class ModifyViewLayoutShrinkRequestClockWidgetsFontColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -1020,11 +1155,11 @@ class ModifyViewLayoutShrinkRequestClockWidgetsBoxColor(DaraModel):
         g: int = None,
         r: int = None,
     ):
-        # B。
+        # The blue component.
         self.b = b
-        # G。
+        # The green component.
         self.g = g
-        # R。
+        # The red component.
         self.r = r
 
     def validate(self):
@@ -1071,17 +1206,33 @@ class ModifyViewLayoutShrinkRequestBackgrounds(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # The opacity of the image.
         self.alpha = alpha
+        # The crop mode of the image. Valid values:
+        # - **1**: Crops the image while maintaining the aspect ratio.
+        # - **2**: Maintains the aspect ratio and adds padding.
+        # - **3**: Stretches the image to fill the area.
         self.background_crop_mode = background_crop_mode
+        # The height.
+        # 
         # This parameter is required.
         self.height = height
+        # The z-axis layer.
         self.layer = layer
+        # The URL of the image.
+        # 
         # This parameter is required.
         self.url = url
+        # The width.
+        # 
         # This parameter is required.
         self.width = width
+        # The x-coordinate.
+        # 
         # This parameter is required.
         self.x = x
+        # The y-coordinate.
+        # 
         # This parameter is required.
         self.y = y
 

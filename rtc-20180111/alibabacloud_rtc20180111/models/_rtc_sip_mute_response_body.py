@@ -13,7 +13,9 @@ class RtcSipMuteResponseBody(DaraModel):
         err_tracks: List[main_models.RtcSipMuteResponseBodyErrTracks] = None,
         request_id: str = None,
     ):
+        # The error tracks.
         self.err_tracks = err_tracks
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,10 +59,11 @@ class RtcSipMuteResponseBodyErrTracks(DaraModel):
         id: str = None,
         operation_id: str = None,
     ):
-        # ErrMsg。
+        # The error message.
         self.err_msg = err_msg
+        # The user ID.
         self.id = id
-        # OperationId。
+        # The operation ID.
         self.operation_id = operation_id
 
     def validate(self):

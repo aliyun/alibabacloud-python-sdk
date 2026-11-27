@@ -10,6 +10,7 @@ class CreateAppLayoutResponseBody(DaraModel):
         layout_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the layout.
         self.layout_id = layout_id
         # Id of the request
         self.request_id = request_id

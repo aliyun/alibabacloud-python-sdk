@@ -13,7 +13,9 @@ class DescribeUsageAreaDistributionStatDataResponseBody(DaraModel):
         request_id: str = None,
         usage_area_stat_list: List[main_models.DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The regional distribution data of usage statistics.
         self.usage_area_stat_list = usage_area_stat_list
 
     def validate(self):
@@ -58,9 +60,13 @@ class DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList(DaraMod
         total_call_duration: int = None,
         video_call_duration: int = None,
     ):
+        # Audio call duration, in minutes.
         self.audio_call_duration = audio_call_duration
+        # Region name, such as China.
         self.name = name
+        # Total call duration, in minutes.
         self.total_call_duration = total_call_duration
+        # Video call duration, in minutes.
         self.video_call_duration = video_call_duration
 
     def validate(self):

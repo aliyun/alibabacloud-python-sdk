@@ -12,10 +12,15 @@ class DescribeAppViewTemplatesShrinkRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Application ID. Create and view it in the console. You can specify only one ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Search condition.
         self.condition_shrink = condition_shrink
+        # Page number. Default value: 1.
         self.page_num = page_num
+        # Number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

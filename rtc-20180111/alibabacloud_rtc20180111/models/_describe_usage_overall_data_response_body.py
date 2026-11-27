@@ -13,7 +13,9 @@ class DescribeUsageOverallDataResponseBody(DaraModel):
         request_id: str = None,
         usage_overall_data: List[main_models.DescribeUsageOverallDataResponseBodyUsageOverallData] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The usage overview data list.
         self.usage_overall_data = usage_overall_data
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeUsageOverallDataResponseBodyUsageOverallData(DaraModel):
         nodes: List[main_models.DescribeUsageOverallDataResponseBodyUsageOverallDataNodes] = None,
         type: str = None,
     ):
+        # The list of coordinate points for the metric trends chart.
         self.nodes = nodes
+        # The queried metric type.
         self.type = type
 
     def validate(self):
@@ -99,7 +103,9 @@ class DescribeUsageOverallDataResponseBodyUsageOverallDataNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The x-axis coordinate in the metric trends chart.
         self.x = x
+        # The y-axis coordinate in the metric trends chart.
         self.y = y
 
     def validate(self):

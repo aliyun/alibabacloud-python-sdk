@@ -13,6 +13,7 @@ class DescribeCallbacksResponseBody(DaraModel):
         callbacks: List[main_models.DescribeCallbacksResponseBodyCallbacks] = None,
         request_id: str = None,
     ):
+        # A list of subscribed events for the application.
         self.callbacks = callbacks
         # Id of the request
         self.request_id = request_id
@@ -62,12 +63,26 @@ class DescribeCallbacksResponseBodyCallbacks(DaraModel):
         status: int = None,
         sub_event: List[int] = None,
     ):
+        # The callback code.
         self.category = category
+        # The callback validation status. 0 indicates validating. 1 indicates validation successful. 2 indicates validation failed.
         self.check_status = check_status
+        # The callback validation code.
         self.code = code
+        # The webhook address.
         self.conf = conf
+        # The callback validation message.
         self.msg = msg
+        # The callback status. 0 indicates enabled. 1 indicates disabled.
         self.status = status
+        # The sub-events. For more information, see Callback overview.
+        # Recording events:
+        # 
+        # - **2010**: The service status of the recording changes.
+        # 
+        # - **2011**: The status of the recording audio stream changes.
+        # 
+        # - **2012**: The status of the recording video stream changes.
         self.sub_event = sub_event
 
     def validate(self):

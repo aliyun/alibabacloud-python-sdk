@@ -11,9 +11,15 @@ class StopMPUTaskRequest(DaraModel):
         owner_id: int = None,
         task_id: str = None,
     ):
+        # The application ID. Only a single ID can be passed.
+        # 
+        # > You can create and query the application ID in the [console](https://rtc.console.aliyun.com/manage/list#/manage/list).
+        # 
         # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # The task ID. Only a single ID can be passed. The value must be the same as the TaskId parameter of [StartMpuTask](https://help.aliyun.com/document_detail/93183.html).
+        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -13,7 +13,9 @@ class DescribeChannelAreaDistributionStatDataResponseBody(DaraModel):
         area_stat_list: List[main_models.DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList] = None,
         request_id: str = None,
     ):
+        # The regional statistics list.
         self.area_stat_list = area_stat_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,10 +61,15 @@ class DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList(DaraModel)
         pub_user_count: int = None,
         sub_user_count: int = None,
     ):
+        # The region name, such as China_Zhejiang Province_Hangzhou.
         self.area_name = area_name
+        # The number of communicating users.
         self.call_user_count = call_user_count
+        # The high-quality transmission rate, represented as a decimal. For example, 0.9999 indicates a high-quality transmission rate of 99.99%.
         self.high_quality_transmission_rate = high_quality_transmission_rate
+        # The number of publishers.
         self.pub_user_count = pub_user_count
+        # The number of subscribers.
         self.sub_user_count = sub_user_count
 
     def validate(self):

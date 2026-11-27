@@ -18,13 +18,28 @@ class DescribeFaultDiagnosisUserDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # 频道ID
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # 频道创建时间，使用UNIX时间戳表示，单位：秒。
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # 异常类型。取值：
+        # - **JOIN_SLOW**：进频道慢 。
+        # - **AUDIO_STUCK**：音频卡顿。
+        # - **VIDEO_STUCK**：视频卡顿。
+        # - **VIDEO_VAGUE**：视频模糊。
+        # - **HIGH_DELAY**：通话延迟高 。
+        # - **FIRST_FRAME_SLOW**：接收首屏慢。
+        # 
         # This parameter is required.
         self.fault_type = fault_type
+        # 是否查询通话用户信息，为空默认是false。
         self.query_call_user_info = query_call_user_info
+        # 用户ID
+        # 
         # This parameter is required.
         self.user_id = user_id
 

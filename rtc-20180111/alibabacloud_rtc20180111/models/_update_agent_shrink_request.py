@@ -12,12 +12,19 @@ class UpdateAgentShrinkRequest(DaraModel):
         task_id: str = None,
         voice_chat_config_shrink: str = None,
     ):
+        # The application ID. Specify only one ID. You can create and query applications in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The existing channel ID. Specify only one ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The task ID. Specify only one ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Configuration for AI voice conversation.
         self.voice_chat_config_shrink = voice_chat_config_shrink
 
     def validate(self):

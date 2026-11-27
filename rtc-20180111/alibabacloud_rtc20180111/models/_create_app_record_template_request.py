@@ -14,9 +14,14 @@ class CreateAppRecordTemplateRequest(DaraModel):
         client_token: str = None,
         record_template: main_models.CreateAppRecordTemplateRequestRecordTemplate = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The client token.
         self.client_token = client_token
+        # The recording template.
+        # 
         # This parameter is required.
         self.record_template = record_template
 
@@ -65,16 +70,31 @@ class CreateAppRecordTemplateRequestRecordTemplate(DaraModel):
         media_encode: int = None,
         name: str = None,
     ):
+        # The delay time before stopping the recording. Unit: seconds.
         self.delay_stop_time = delay_stop_time
+        # The naming rule for recorded files.
+        # > To ensure the uniqueness of recorded file names, the current naming rule for recorded files is record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}.
+        # 
         # This parameter is required.
         self.file_prefix = file_prefix
+        # The splitting duration of the recorded file. The value must be greater than or equal to 1800. Unit: seconds.
+        # 
         # This parameter is required.
         self.file_split_interval = file_split_interval
+        # The format of the recorded file. Only .m3u8, .mp4, and .flv are supported.
+        # 
         # This parameter is required.
         self.formats = formats
+        # The list of layout IDs. A maximum of 16 layout IDs can be specified.
+        # 
+        # Note: The layouts in the list must correspond to different numbers of data sources.
         self.layout_ids = layout_ids
+        # The encoding options.
+        # 
         # This parameter is required.
         self.media_encode = media_encode
+        # The name of the template.
+        # 
         # This parameter is required.
         self.name = name
 

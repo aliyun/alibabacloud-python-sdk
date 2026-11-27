@@ -9,6 +9,8 @@ class DescribeAppCallbackSecretKeyRequest(DaraModel):
         self,
         app_id: str = None,
     ):
+        # Application ID. You can create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
 

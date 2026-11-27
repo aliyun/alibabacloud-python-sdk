@@ -16,9 +16,13 @@ class DescribeChannelParticipantsResponseBody(DaraModel):
         total_page: int = None,
         user_list: main_models.DescribeChannelParticipantsResponseBodyUserList = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The time when the result is returned. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp
+        # The total number of results returned.
         self.total_num = total_num
+        # The total number of pages returned.
         self.total_page = total_page
         self.user_list = user_list
 

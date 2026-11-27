@@ -25,23 +25,70 @@ class StartCloudNoteShrinkRequest(DaraModel):
         text_polish_shrink: str = None,
         transcription_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The auto chapters feature. When enabled, chapter titles and summaries are generated.
         self.auto_chapters_shrink = auto_chapters_shrink
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The custom prompt control parameter object.
         self.custom_prompt_shrink = custom_prompt_shrink
+        # **[Deprecated]** This parameter is deprecated. You do not need to specify it.
         self.language_hints = language_hints
+        # The intelligent meeting minutes feature. When enabled, keywords, key content, and to-do items are generated.
         self.meeting_assistance_shrink = meeting_assistance_shrink
+        # The real-time subtitles.
         self.realtime_subtitle_shrink = realtime_subtitle_shrink
+        # The service inspection feature.
         self.service_inspection_shrink = service_inspection_shrink
+        # The source language model used by the channel. Valid values:
+        # - cn: Chinese
+        # - yue: Cantonese
+        # - en: English
+        # - multilingual: Multilingual
+        # - ja: Japanese
+        # - ko: Korean
+        # - de: German
+        # - fr: French
+        # - ru: Russian
+        # - es: Spanish
+        # - vi: Vietnamese
+        # - it: Italian
+        # - sv: Swedish
+        # - cs: Czech
+        # - pl: Polish
+        # - th: Thai
+        # - fi: Finnish
+        # - hi: Hindi
+        # - id: Indonesian
+        # - pt: Portuguese
+        # - ar: Arabic
+        # - fil: Filipino
+        # - ms: Malay
+        # - tr: Turkish
+        # - hu: Hungarian
+        # - lo: Lao
+        # - pt-br: Portuguese (Brazil)
+        # - es-ar: Spanish (Argentina)
+        # - es-mx: Spanish (Mexico)
         self.source_language = source_language
+        # The storage configuration.
+        # 
         # This parameter is required.
         self.storage_config = storage_config
+        # The summarization feature. When enabled, full-text summaries and speaker summaries are generated.
         self.summarization_shrink = summarization_shrink
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The text polishing feature.
         self.text_polish_shrink = text_polish_shrink
+        # The transcription feature. Enabled by default.
         self.transcription_shrink = transcription_shrink
 
     def validate(self):
@@ -153,18 +200,59 @@ class StartCloudNoteShrinkRequestStorageConfig(DaraModel):
         secret_key: str = None,
         vendor: int = None,
     ):
-        # accessKey。
+        # The AccessKey.
         # 
         # This parameter is required.
         self.access_key = access_key
+        # The bucket name.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The storage region.
+        # 
+        # | Region | AliYun OSS |
+        # |--------|------------|
+        # | 0 | CN_Hangzhou |
+        # | 1 | CN_Shanghai |
+        # | 2 | CN_Qingdao |
+        # | 3 | CN_Beijing |
+        # | 4 | CN_Zhangjiakou |
+        # | 5 | CN_Huhehaote |
+        # | 6 | CN_Shenzhen |
+        # | 7 | CN_Hongkong |
+        # | 8 | US_West_1 |
+        # | 9 | US_East_1 |
+        # | 10 | AP_Southeast_1 |
+        # | 11 | AP_Southeast_2 |
+        # | 12 | AP_Southeast_3 |
+        # | 13 | AP_Southeast_5 |
+        # | 14 | AP_Northeast_1 |
+        # | 15 | AP_South_1 (Offline. Do not use.) |
+        # | 16 | EU_Central_1 |
+        # | 17 | EU_West_1 |
+        # | 18 | EU_East_1(ME_East_1) |
+        # | 19 | AP_Southeast_6 |
+        # | 20 | CN_Heyuan |
+        # | 21 | CN_Guangzhou |
+        # | 22 | CN_Chengdu |
+        # | 23 | CN_Nanjing |
+        # | 24 | CN_Fuzhou |
+        # | 25 | CN_Wulanchabu |
+        # | 26 | AP_Northeast_2 |
+        # | 27 | AP_Southeast_7 |
+        # 
         # This parameter is required.
         self.region = region
-        # secretKey。
+        # The AccessKey secret.
         # 
         # This parameter is required.
         self.secret_key = secret_key
+        # The storage platform. Valid values:
+        # 
+        # | vendor | Object storage service | Remarks |
+        # |--------|---------|---------|
+        # | 1 | AliYun OSS | Alibaba Cloud |
+        # 
         # This parameter is required.
         self.vendor = vendor
 

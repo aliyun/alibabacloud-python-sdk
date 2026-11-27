@@ -15,9 +15,13 @@ class DescribeChannelOverallDataResponseBody(DaraModel):
         overall_data: main_models.DescribeChannelOverallDataResponseBodyOverallData = None,
         request_id: str = None,
     ):
+        # Basic communication information.
         self.call_info = call_info
+        # List of metric data.
         self.metric_datas = metric_datas
+        # Overview data.
         self.overall_data = overall_data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,10 +85,15 @@ class DescribeChannelOverallDataResponseBodyOverallData(DaraModel):
         total_video_stuck_rate: float = None,
         total_video_vague_rate: float = None,
     ):
+        # Average communication connection time, in seconds.
         self.conn_avg_time = conn_avg_time
+        # Connection success rate within 5 seconds, represented as a decimal. For example, 1.0 indicates a 100% connection success rate.
         self.five_sec_join_rate = five_sec_join_rate
+        # Overall audio stuttering rate, represented as a decimal. For example, 0.02 indicates an audio stuttering rate of 2%.
         self.total_audio_stuck_rate = total_audio_stuck_rate
+        # Overall video stuttering rate, represented as a decimal. For example, 0.02 indicates a video stuttering rate of 2%.
         self.total_video_stuck_rate = total_video_stuck_rate
+        # Overall video blur rate, represented as a decimal. For example, 0.02 indicates a video blur rate of 2%.
         self.total_video_vague_rate = total_video_vague_rate
 
     def validate(self):
@@ -137,7 +146,11 @@ class DescribeChannelOverallDataResponseBodyMetricDatas(DaraModel):
         nodes: List[main_models.DescribeChannelOverallDataResponseBodyMetricDatasNodes] = None,
         type: str = None,
     ):
+        # List of coordinate points for the Trend Indicator.
         self.nodes = nodes
+        # Metric Type. Valid values:
+        # - **CALL_QUALITY**: Call quality.
+        # - **CONN_NUM**: Distribution of time intervals for successful channel joins.
         self.type = type
 
     def validate(self):
@@ -181,8 +194,11 @@ class DescribeChannelOverallDataResponseBodyMetricDatasNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # Extension data.
         self.ext = ext
+        # X-axis coordinate in the Trend Indicator.
         self.x = x
+        # Y-axis coordinate in the Trend Indicator.
         self.y = y
 
     def validate(self):
@@ -227,11 +243,21 @@ class DescribeChannelOverallDataResponseBodyCallInfo(DaraModel):
         destroyed_ts: int = None,
         duration: int = None,
     ):
+        # Application ID.
         self.app_id = app_id
+        # Communication status. Valid values:  
+        # 
+        # - **IN**: In progress.  
+        # 
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # Channel ID.
         self.channel_id = channel_id
+        # The UNIX timestamp when the channel was created, in seconds.
         self.created_ts = created_ts
+        # The UNIX timestamp when the channel was released, in seconds.
         self.destroyed_ts = destroyed_ts
+        # Channel duration, in seconds.
         self.duration = duration
 
     def validate(self):

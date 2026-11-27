@@ -14,7 +14,11 @@ class DescribeChannelResponseBody(DaraModel):
     ):
         # channel
         self.channel = channel
+        # Indicates whether the channel exists. Valid values:  
+        # - **true**: The channel exists.  
+        # - **false**: The channel does not exist.
         self.channel_exist = channel_exist
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,7 +61,9 @@ class DescribeChannelResponseBodyChannel(DaraModel):
         channel_id: str = None,
         start_time: int = None,
     ):
+        # channel ID.
         self.channel_id = channel_id
+        # The UNIX timestamp (in seconds) indicating when the channel started (UTC).
         self.start_time = start_time
 
     def validate(self):

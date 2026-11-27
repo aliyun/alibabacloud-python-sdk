@@ -12,11 +12,17 @@ class DescribeUserInfoInChannelRequest(DaraModel):
         owner_id: int = None,
         user_id: str = None,
     ):
+        # The application ID, which is created and queried through the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # The user ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

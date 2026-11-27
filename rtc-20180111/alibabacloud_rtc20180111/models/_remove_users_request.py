@@ -14,10 +14,16 @@ class RemoveUsersRequest(DaraModel):
         channel_id: str = None,
         users: List[main_models.RemoveUsersRequestUsers] = None,
     ):
+        # Application ID. You can create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The ID of the joined channel. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # User List. Valid values of N: 1 to 30.
+        # 
         # This parameter is required.
         self.users = users
 
@@ -66,6 +72,8 @@ class RemoveUsersRequestUsers(DaraModel):
         self,
         user_id: str = None,
     ):
+        # User ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

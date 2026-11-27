@@ -16,10 +16,16 @@ class DescribeChannelOverallDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # UNIX timestamp indicating the channel creation time. Supports querying data from the last 30 days. Expressed as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # Channel release time, represented as a UNIX timestamp in seconds. If this parameter is empty, the current time is used.
+        # > If the provided channel release time exceeds the actual release time, data from the Creation Time to the actual release time is returned.
         self.destroyed_ts = destroyed_ts
 
     def validate(self):

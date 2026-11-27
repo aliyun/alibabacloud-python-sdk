@@ -22,18 +22,37 @@ class DescribeCallListRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Call status. Valid values:
+        # - **IN**: In progress.
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # Channel ID.
         self.channel_id = channel_id
+        # The end time of the query, expressed as a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_ts = end_ts
+        # Sorting field. Valid values:
+        # - **BAD_EXP_USER_COUNT_DESC**: Sort by the number of users with poor experience in descending order.
+        # - **BAD_EXP_USER_COUNT_ASC**: Sort by the number of users with poor experience in ascending order.
         self.order_by = order_by
+        # Page number. Minimum value: 1. Maximum value: 200.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # Quantity per page, minimum value is 1, maximum value is 200.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Query mode. Valid values:
+        # - **ALL**: All calls.
+        # - **FOLLOW**: Followed calls.
         self.query_mode = query_mode
+        # Start Time of the query, represented as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_ts = start_ts
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

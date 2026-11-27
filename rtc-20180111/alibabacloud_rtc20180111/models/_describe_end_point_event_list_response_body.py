@@ -13,7 +13,9 @@ class DescribeEndPointEventListResponseBody(DaraModel):
         nodes: List[main_models.DescribeEndPointEventListResponseBodyNodes] = None,
         request_id: str = None,
     ):
+        # The list of basic user information.
         self.nodes = nodes
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeEndPointEventListResponseBodyNodes(DaraModel):
         event_data_items: List[main_models.DescribeEndPointEventListResponseBodyNodesEventDataItems] = None,
         user_id: str = None,
     ):
+        # The list of event data.
         self.event_data_items = event_data_items
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -99,7 +103,9 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItems(DaraModel):
         event_list: List[main_models.DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList] = None,
         ts: int = None,
     ):
+        # The list of events.
         self.event_list = event_list
+        # The time when the first event occurred. The time is a UNIX timestamp in seconds.
         self.ts = ts
 
     def validate(self):
@@ -144,9 +150,15 @@ class DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList(DaraMode
         ts: int = None,
         ts_in_ms: str = None,
     ):
+        # The event name.
         self.event_name = event_name
+        # The event type. Valid values:
+        # - **USER**: user event
+        # - **SYSTEM**: system event
         self.event_type = event_type
+        # The time when the event occurred. The time is a UNIX timestamp in seconds.
         self.ts = ts
+        # The time when the event occurred. The time is a UNIX timestamp in milliseconds.
         self.ts_in_ms = ts_in_ms
 
     def validate(self):

@@ -10,8 +10,11 @@ class DescribeAppRecordStatusRequest(DaraModel):
         app_id: str = None,
         client_token: str = None,
     ):
+        # Application ID. You can create and view this ID in the console. Only one ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # Idempotency token
         self.client_token = client_token
 
     def validate(self):

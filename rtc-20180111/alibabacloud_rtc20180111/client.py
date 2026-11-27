@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_rtc20180111 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'rtc'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('rtc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -8882,6 +8886,92 @@ class Client(OpenApiClient):
     ) -> main_models.RtcCancelSipInviteResponse:
         runtime = RuntimeOptions()
         return await self.rtc_cancel_sip_invite_with_options_async(request, runtime)
+
+    def rtc_send_sip_dtmf_with_options(
+        self,
+        request: main_models.RtcSendSipDtmfRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RtcSendSipDtmfResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.channel_user_id):
+            query['ChannelUserId'] = request.channel_user_id
+        if not DaraCore.is_null(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not DaraCore.is_null(request.digits):
+            query['Digits'] = request.digits
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RtcSendSipDtmf',
+            version = '2018-01-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RtcSendSipDtmfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rtc_send_sip_dtmf_with_options_async(
+        self,
+        request: main_models.RtcSendSipDtmfRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RtcSendSipDtmfResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.channel_user_id):
+            query['ChannelUserId'] = request.channel_user_id
+        if not DaraCore.is_null(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not DaraCore.is_null(request.digits):
+            query['Digits'] = request.digits
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RtcSendSipDtmf',
+            version = '2018-01-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RtcSendSipDtmfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rtc_send_sip_dtmf(
+        self,
+        request: main_models.RtcSendSipDtmfRequest,
+    ) -> main_models.RtcSendSipDtmfResponse:
+        runtime = RuntimeOptions()
+        return self.rtc_send_sip_dtmf_with_options(request, runtime)
+
+    async def rtc_send_sip_dtmf_async(
+        self,
+        request: main_models.RtcSendSipDtmfRequest,
+    ) -> main_models.RtcSendSipDtmfResponse:
+        runtime = RuntimeOptions()
+        return await self.rtc_send_sip_dtmf_with_options_async(request, runtime)
 
     def rtc_sip_invite_member_with_options(
         self,

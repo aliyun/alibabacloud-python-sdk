@@ -13,7 +13,9 @@ class DescribeChannelTopPubUserListResponseBody(DaraModel):
         request_id: str = None,
         top_pub_user_detail_list: List[main_models.DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of details about top publishing users.
         self.top_pub_user_detail_list = top_pub_user_detail_list
 
     def validate(self):
@@ -61,12 +63,19 @@ class DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList(DaraModel):
         online_periods: List[main_models.DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods] = None,
         user_id: str = None,
     ):
+        # The time when the user first joined the channel. The value is a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the user last left the channel. The value is a UNIX timestamp in seconds. The value is 0 if the call has not ended.
         self.destroyed_ts = destroyed_ts
+        # The total duration in seconds.
         self.duration = duration
+        # The geographic location, such as Beijing-Beijing.
         self.location = location
+        # The communication duration in seconds.
         self.online_duration = online_duration
+        # The list of online periods for the user.
         self.online_periods = online_periods
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -139,7 +148,9 @@ class DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods
         join_ts: int = None,
         leave_ts: int = None,
     ):
+        # The time when the user joined the channel. The value is a UNIX timestamp in seconds.
         self.join_ts = join_ts
+        # The time when the user left the channel. The value is a UNIX timestamp in seconds.
         self.leave_ts = leave_ts
 
     def validate(self):

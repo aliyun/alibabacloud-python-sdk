@@ -13,11 +13,15 @@ class GetAgentResponseBody(DaraModel):
         status: str = None,
         stop_time: str = None,
     ):
+        # Status message.
         self.message = message
-        # Id of the request
+        # Request ID.
         self.request_id = request_id
+        # Start timestamp, in Unix time, measured in milliseconds.
         self.start_time = start_time
+        # Agent status. Valid values: 0 (not started), 1 (starting), 2 (running), 3 (stopping), 4 (stopped), or 5 (failed).
         self.status = status
+        # End timestamp, in Unix time, measured in milliseconds.
         self.stop_time = stop_time
 
     def validate(self):

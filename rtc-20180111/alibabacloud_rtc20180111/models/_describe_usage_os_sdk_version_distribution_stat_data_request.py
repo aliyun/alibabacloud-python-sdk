@@ -15,8 +15,12 @@ class DescribeUsageOsSdkVersionDistributionStatDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # End Time of the query, represented as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # Start Time of the query, represented as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

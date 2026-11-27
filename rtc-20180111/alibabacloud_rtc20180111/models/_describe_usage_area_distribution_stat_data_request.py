@@ -16,9 +16,14 @@ class DescribeUsageAreaDistributionStatDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The end time of the query, expressed as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The parent region name. For example, the parent of Hangzhou City is Zhejiang Province, and the parameter should be set to China_Zhejiang Province. An empty parameter indicates statistics at the global scope (country dimension), such as China or the United Kingdom.
         self.parent_area = parent_area
+        # The start time of the query, expressed as a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

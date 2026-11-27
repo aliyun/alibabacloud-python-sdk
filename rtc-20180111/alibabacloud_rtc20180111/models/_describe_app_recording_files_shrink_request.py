@@ -15,15 +15,21 @@ class DescribeAppRecordingFilesShrinkRequest(DaraModel):
         start_ts: int = None,
         task_ids_shrink: str = None,
     ):
-        # APP ID。
+        # App ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Channel ID.
         self.channel_id = channel_id
+        # The query range specifies the start time of the recording task. It is defined as a closed interval and measured in milliseconds (ms).
         self.end_ts = end_ts
+        # Page number.
         self.page_no = page_no
+        # Number of entries per page.
         self.page_size = page_size
+        # Query range start time (open interval) for recording tasks, in milliseconds. If not specified, defaults to the past 3 days. You can query recordings up to one year old.
         self.start_ts = start_ts
+        # List of recording task IDs.
         self.task_ids_shrink = task_ids_shrink
 
     def validate(self):

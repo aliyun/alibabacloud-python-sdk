@@ -41,38 +41,108 @@ class StartMPUTaskRequest(DaraModel):
         vad_interval: int = None,
         watermarks: List[main_models.StartMPUTaskRequestWatermarks] = None,
     ):
+        # The application ID. Only a single ID is supported.
+        # 
+        # You can create and query it in the console.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The RGB value of the background color. Default value: **0** (black).
+        # 
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): 0 to 255.
         self.background_color = background_color
+        # The canvas background image panes.
         self.backgrounds = backgrounds
+        # The channel ID. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The clock widgets.
         self.clock_widgets = clock_widgets
+        # The video cropping mode. Valid values:
+        # 
+        # - **1**: crop while keeping the aspect ratio.
+        # 
+        # - **2**: keep the aspect ratio and add padding (default).
         self.crop_mode = crop_mode
+        # The enhanced parameters.
         self.enhanced_param = enhanced_param
+        # The layout IDs.
         self.layout_ids = layout_ids
+        # The encoding options. For more information, see the MediaEncode enum values below.
         self.media_encode = media_encode
+        # The mixed streaming mode. Valid values:
+        # 
+        # - **0**: single-stream relay. The original single stream is relayed without mixed-stream transcoding. You do not need to configure mixed-stream transcoding parameters.
+        # - **1**: mixed-stream transcoding (default). Mixed-stream transcoding output is supported.
+        # 
+        # > - Valid parameters in single-stream relay mode: **StreamType**, **SourceType**, and **SubSpecUsers**.
+        # - Valid parameters in mixed-stream transcoding mode: **MediaEncode**, **LayoutIds**, **BackgroundColor**, **SubSpecUsers**, **CropMode**, **UserPanes**, **Backgrounds**, and **Watermarks**.
         self.mix_mode = mix_mode
         self.owner_id = owner_id
+        # The payload type. Valid values:
+        # - **0**: do not use a payload.
+        # - **1**: use VideoSEI.
         self.payload_type = payload_type
+        # The voice activity detection (VAD) flag. Valid values:
+        # - **0**: do not pass VAD information.
+        # - **1**: pass VAD information.
         self.report_vad = report_vad
+        # The RTP extension header information. Valid values:
+        # - **0**: do not pass.
+        # - **1**: pass.
         self.rtp_ext_info = rtp_ext_info
+        # The user video input stream in single-stream relay mode. Valid values:
+        # 
+        # - **camera**: camera.
+        # - **shareScreen**: screen sharing.
         self.source_type = source_type
+        # The stream type to relay in single-stream relay mode. Valid values:
+        # 
+        # - **0**: relay the original stream.
+        # - **1**: relay only the audio stream.
+        # - **2**: relay only the video stream.
+        # 
+        # By default, the original stream is relayed.
         self.stream_type = stream_type
+        # The live streaming ingest URL. Only a single URL is supported. For more information about the generation rules, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
+        # 
+        # >- For domain names with hotlink protection authentication enabled, the ingest URL must include an authentication string.
+        # - The same StreamURL cannot be used simultaneously in different tasks.
+        # - The same StreamURL cannot be used within 10 seconds after a task is stopped.
         self.stream_url = stream_url
+        # Specifies the users whose audio streams are subscribed to in the channel.
         self.sub_spec_audio_users = sub_spec_audio_users
+        # Specifies the users whose camera video streams are subscribed to in the channel.
         self.sub_spec_camera_users = sub_spec_camera_users
+        # Specifies the users whose screen sharing video streams are subscribed to in the channel.
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
+        # Specifies the list of users to which the task subscribes.
         self.sub_spec_users = sub_spec_users
+        # The task ID. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
+        # 
+        # > This ID identifies the bypass live streaming task and must be unique.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The media processing type. Valid values:
+        # 
+        # - **0**: bypass live streaming task.
+        # - **1**: MCU mixed-stream low-latency distribution task.
         self.task_type = task_type
+        # The timestamp.
         self.time_stamp_ref = time_stamp_ref
+        # Specifies the users whose audio streams are not subscribed to in the channel.
         self.unsub_spec_audio_users = unsub_spec_audio_users
+        # Specifies the users whose camera video streams are not subscribed to in the channel.
         self.unsub_spec_camera_users = unsub_spec_camera_users
+        # Specifies the users whose screen sharing video streams are not subscribed to in the channel.
         self.unsub_spec_share_screen_users = unsub_spec_share_screen_users
+        # The layout parameters.
         self.user_panes = user_panes
+        # The callback interval for voice activity detection.
         self.vad_interval = vad_interval
+        # The watermark image panes.
         self.watermarks = watermarks
 
     def validate(self):
@@ -319,13 +389,24 @@ class StartMPUTaskRequestWatermarks(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency. A value of 0.0 indicates fully transparent, and 1.0 indicates fully opaque.
         self.alpha = alpha
+        # Specifies whether to display the image. Valid values:
+        # 
+        # - **0 (None)**: not displayed.
+        # - **1 (Always)**: always displayed.
         self.display = display
+        # The height of the pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the image.
         self.url = url
+        # The width of the pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -400,11 +481,25 @@ class StartMPUTaskRequestUserPanes(DaraModel):
         texts: List[main_models.StartMPUTaskRequestUserPanesTexts] = None,
         user_id: str = None,
     ):
+        # The image panes in the current layout.
         self.images = images
+        # The pane ID. Valid values: **0** to **15**.
+        # >If the user specified by PaneId is not found, the system displays other streams by default. The streams are determined based on the order in which users join the channel.
         self.pane_id = pane_id
+        # The portrait segmentation type. Valid values:
+        # 
+        # - **0**: no portrait segmentation (default).
+        # 
+        # - **1**: portrait segmentation. This value takes effect only after the portrait segmentation feature is enabled.
         self.segment_type = segment_type
+        # The user video input corresponding to the layout. Valid values:
+        # 
+        # - **camera**: video stream (default).
+        # - **shareScreen**: screen sharing stream.
         self.source_type = source_type
+        # The text panes in the current layout.
         self.texts = texts
+        # The ID of the user corresponding to the layout pane. Valid values: **1** to **16**.
         self.user_id = user_id
 
     def validate(self):
@@ -491,18 +586,45 @@ class StartMPUTaskRequestUserPanesTexts(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency of the text box and text. A value of 0.0 indicates fully transparent, and 1.0 indicates fully opaque.
         self.alpha = alpha
+        # The text stroke color in RGB format.
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.border_color = border_color
+        # The text stroke width, in pixels. Default value: 0.
         self.border_width = border_width
+        # Specifies whether to display the text box. Valid values:
+        # 
+        # - false (default): not displayed.
+        # - true: displayed.
         self.box = box
+        # The text box border width, in pixels. Default value: 0.
         self.box_border_width = box_border_width
+        # The text box color in RGB format.
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.box_color = box_color
+        # The text color in RGB format.
+        # 
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.font_color = font_color
+        # The font size. Valid values: **0** to **72**.
         self.font_size = font_size
+        # The font type. Valid values:
+        # 
+        # - **0**: NOTO_SERIF_CJKSC_REGULAR (default).
+        # - **1**: ALIBABA_PUHUITI_REGULAR.
+        # - **2**: ALIBABA_PUHUITI_BOLD.
+        # - **3**: ALIBABA_PUHUITI_Heavy.
+        # - **4**: ALIBABA_PUHUITI_LIGHT.
+        # - **5**: ALIBABA_PUHUITI_MEDIUM.
         self.font_type = font_type
+        # The text content.
         self.text = text
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -608,12 +730,23 @@ class StartMPUTaskRequestUserPanesImages(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Specifies whether to display the image. Valid values:
+        # 
+        # - **0 (None)**: not displayed.
+        # - **1 (Always)**: always displayed.
+        # - **2 (Backup)**: displayed when the current user has no video stream.
         self.display = display
+        # The height of the pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the image.
         self.url = url
+        # The width of the pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -677,6 +810,10 @@ class StartMPUTaskRequestEnhancedParam(DaraModel):
         self,
         enable_portrait_segmentation: bool = None,
     ):
+        # Specifies whether to enable the portrait segmentation feature (in closed beta). Valid values:
+        # 
+        # - **true**: enabled.
+        # - **false** (default): disabled.
         self.enable_portrait_segmentation = enable_portrait_segmentation
 
     def validate(self):
@@ -715,17 +852,43 @@ class StartMPUTaskRequestClockWidgets(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # The transparency of the text box and text. A value of 0.0 indicates fully transparent, and 1.0 indicates fully opaque.
         self.alpha = alpha
+        # The text stroke color in RGB format.
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.border_color = border_color
+        # The text stroke width, in pixels. Default value: 0.
         self.border_width = border_width
+        # Specifies whether to display the text box. Valid values:
+        # 
+        # - false (default): not displayed.
+        # - true: displayed.
         self.box = box
+        # The text box border width, in pixels. Default value: 0.
         self.box_border_width = box_border_width
+        # The text box color in RGB format.
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.box_color = box_color
+        # The text color in RGB format.
+        # 
+        # The formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0** to **255**.
         self.font_color = font_color
+        # The font size. Valid values: **0** to **72**.
         self.font_size = font_size
+        # The font type. Valid values:
+        # 
+        # - **0**: NOTO_SERIF_CJKSC_REGULAR (default).
+        # - **1**: ALIBABA_PUHUITI_REGULAR.
+        # - **2**: ALIBABA_PUHUITI_BOLD.
+        # - **3**: ALIBABA_PUHUITI_Heavy.
+        # - **4**: ALIBABA_PUHUITI_LIGHT.
+        # - **5**: ALIBABA_PUHUITI_MEDIUM.
         self.font_type = font_type
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):
@@ -825,12 +988,22 @@ class StartMPUTaskRequestBackgrounds(DaraModel):
         y: float = None,
         zorder: int = None,
     ):
+        # Specifies whether to display the image. Valid values:
+        # 
+        # - **0 (None)**: not displayed.
+        # - **1 (Always)**: always displayed.
         self.display = display
+        # The height of the pane, as a normalized percentage.
         self.height = height
+        # The HTTP or HTTPS URL of the image.
         self.url = url
+        # The width of the pane, as a normalized percentage.
         self.width = width
+        # The X-coordinate, as a normalized percentage.
         self.x = x
+        # The Y-coordinate, as a normalized percentage.
         self.y = y
+        # The stacking order. 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
         self.zorder = zorder
 
     def validate(self):

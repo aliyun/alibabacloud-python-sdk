@@ -16,19 +16,33 @@ class DescribeEndPointMetricDataRequest(DaraModel):
         pub_user_id: str = None,
         sub_user_id: str = None,
     ):
-        # APP ID。
+        # The app ID.
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The start time of the query time range. This time cannot be earlier than the actual creation time of the channel or more than 30 days ago. The time is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.created_ts = created_ts
+        # The end time of the query time range. This time cannot be later than the release time of the channel. The time is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
+        # 
+        # > If the specified end time is later than the release time of the channel, the data from the start time to the release time of the channel is returned, and a maximum of data from the last 3 hours is returned.
         self.destroyed_ts = destroyed_ts
+        # The list of metric enumerations. Separate multiple metrics with commas (,).
+        # 
         # This parameter is required.
         self.metrics = metrics
+        # The call IDs of the communication streams for the publisher. Separate multiple IDs with commas (,).
+        # > You can specify either PubUserId or PubCallIdList.
         self.pub_call_id_list = pub_call_id_list
+        # The user ID of the publisher.
+        # > You can specify either PubUserId or PubCallIdList.
         self.pub_user_id = pub_user_id
+        # The user ID of the subscriber.
         self.sub_user_id = sub_user_id
 
     def validate(self):

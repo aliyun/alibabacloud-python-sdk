@@ -10,6 +10,7 @@ class DescribeAppCallbackSecretKeyResponseBody(DaraModel):
         callback_secret_key: str = None,
         request_id: str = None,
     ):
+        # Callback key.
         self.callback_secret_key = callback_secret_key
         # Id of the request
         self.request_id = request_id

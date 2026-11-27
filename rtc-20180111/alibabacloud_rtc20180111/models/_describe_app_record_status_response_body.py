@@ -10,8 +10,9 @@ class DescribeAppRecordStatusResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Recording status. Valid values: enable or disable.
         self.result = result
 
     def validate(self):

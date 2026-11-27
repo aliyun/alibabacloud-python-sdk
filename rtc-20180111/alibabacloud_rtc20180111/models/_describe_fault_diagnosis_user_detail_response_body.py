@@ -17,11 +17,17 @@ class DescribeFaultDiagnosisUserDetailResponseBody(DaraModel):
         request_id: str = None,
         user_detail: main_models.DescribeFaultDiagnosisUserDetailResponseBodyUserDetail = None,
     ):
+        # Basic call information, returned when QueryCallUserInfo=false.
         self.call_info = call_info
+        # List of impact factors. An empty list indicates that the impact factors are unknown.
         self.factor_list = factor_list
+        # Abnormal metrics.
         self.fault_metric_data = fault_metric_data
+        # List of Network carriers
         self.network_operators = network_operators
+        # The Request ID.
         self.request_id = request_id
+        # [responses_200_schema_properties_UserDetail_properties_CreatedTs_type]integer
         self.user_detail = user_detail
 
     def validate(self):
@@ -105,15 +111,25 @@ class DescribeFaultDiagnosisUserDetailResponseBodyUserDetail(DaraModel):
         sdk_version: str = None,
         user_id: str = None,
     ):
+        # Call creation time, represented as a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # [responses_200_schema_properties_UserDetail_properties_OnlineDuration_type]integer
         self.destroyed_ts = destroyed_ts
+        # [responses_200_schema_properties_FactorList_title]List of impact factors. An empty value indicates that the impact factors are unknown.
         self.duration = duration
+        # Geographic location information, such as: Beijing City - Beijing Municipality.
         self.location = location
+        # [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_items_properties_JoinTs_title]Time of joining the call, represented as a UNIX timestamp in seconds.
         self.network = network
+        # Online duration, in seconds.
         self.online_duration = online_duration
+        # Online period information.
         self.online_periods = online_periods
+        # [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_type]array
         self.os = os
+        # [responses_200_schema_properties_UserDetail_properties_Location_title]Geographic location information, such as: Beijing City - Beijing Municipality
         self.sdk_version = sdk_version
+        # [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_items_properties_LeaveTs_title]Time of leaving the call, represented as a UNIX timestamp in seconds.
         self.user_id = user_id
 
     def validate(self):
@@ -204,7 +220,9 @@ class DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods(DaraMo
         join_ts: int = None,
         leave_ts: int = None,
     ):
+        # Time of joining the call, represented as a UNIX timestamp in seconds.
         self.join_ts = join_ts
+        # Time of leaving the call, represented as a UNIX timestamp in seconds.
         self.leave_ts = leave_ts
 
     def validate(self):
@@ -238,6 +256,7 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData(DaraModel):
         self,
         nodes: List[main_models.DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes] = None,
     ):
+        # List of metric coordinate points.
         self.nodes = nodes
 
     def validate(self):
@@ -274,7 +293,9 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes(DaraModel
         x: str = None,
         y: str = None,
     ):
+        # 指标趋势图中x轴横坐标，单位时间为1分钟。
         self.x = x
+        # 指标趋势图中y轴纵坐标。
         self.y = y
 
     def validate(self):
@@ -311,9 +332,13 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorList(DaraModel):
         related_event_datas: List[main_models.DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas] = None,
         related_metric_datas: List[main_models.DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas] = None,
     ):
+        # The factor ID. For details, see the factor ID values below.
         self.factor_id = factor_id
+        # Abnormal source: LOCAL indicates the local end; REMOTE indicates the remote end.
         self.fault_source = fault_source
+        # Associated management events, grouped by time. Coordinate data is returned when FaultType is AUDIO_STUCK, VIDEO_STUCK, VIDEO_VAGUE, or HIGH_DELAY.
         self.related_event_datas = related_event_datas
+        # Associated metrics and coordinate data, returned when FaultType is AUDIO_STUCK, VIDEO_STUCK, VIDEO_VAGUE, or HIGH_DELAY.
         self.related_metric_datas = related_metric_datas
 
     def validate(self):
@@ -379,9 +404,15 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas(D
         type: str = None,
         user_id: str = None,
     ):
+        # [responses_200_schema_properties_FactorList_items_properties_RelatedEventDatas_items_properties_EventDataItems_items_properties_EventList_items_properties_EventName_type]string
         self.nodes = nodes
+        # Source role. Valid values:
+        # - **SENDER**: Publisher.
+        # - **RECEIVER**: Subscriber.
         self.role = role
+        # Metric type, consistent with the metric types defined in the end-to-end metrics API.
         self.type = type
+        # User ID of the publisher from which the data originates.
         self.user_id = user_id
 
     def validate(self):
@@ -437,8 +468,11 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNo
         x: str = None,
         y: str = None,
     ):
+        # [responses_200_schema_properties_FactorList_items_properties_RelatedEventDatas_items_properties_EventDataItems_items_properties_EventList_items_properties_Ts_title]The time of the first management event occurrence, represented as a UNIX timestamp in seconds.
         self.ext = ext
+        # [responses_200_schema_properties_FactorList_items_properties_FactorId_title]Factor ID: 1: Poor publisher-side Network; 2: Poor subscriber-side Network; 3: Poor publisher-side device Performance; 4: Publisher-side camera shutdown; 5: Publisher-side app moved to background Run
         self.x = x
+        # [responses_200_schema_properties_RequestId_title]The Request ID.
         self.y = y
 
     def validate(self):
@@ -480,8 +514,13 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas(Da
         role: str = None,
         user_id: str = None,
     ):
+        # List of event data.
         self.event_data_items = event_data_items
+        # Source role. Valid values:
+        # - **SENDER**: Publisher (upstream).
+        # - **RECEIVER**: Subscriber (downstream).
         self.role = role
+        # User ID
         self.user_id = user_id
 
     def validate(self):
@@ -530,7 +569,9 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEve
         event_list: List[main_models.DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList] = None,
         ts: int = None,
     ):
+        # Event List.
         self.event_list = event_list
+        # [responses_200_schema_properties_FaultMetricData_properties_Nodes_description]List of metric coordinate points.
         self.ts = ts
 
     def validate(self):
@@ -574,8 +615,13 @@ class DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEve
         event_type: str = None,
         ts: int = None,
     ):
+        # Event Name.
         self.event_name = event_name
+        # Event Type. Valid values:
+        # - **USER**: User event.
+        # - **SYSTEM**: System event.
         self.event_type = event_type
+        # The time of the first management event occurrence, represented as a UNIX timestamp in seconds.
         self.ts = ts
 
     def validate(self):
@@ -622,10 +668,17 @@ class DescribeFaultDiagnosisUserDetailResponseBodyCallInfo(DaraModel):
     ):
         # App ID。
         self.app_id = app_id
+        # Call status. Valid values:
+        # - **IN**: In progress.
+        # - **OUT**: Ended.
         self.call_status = call_status
+        # Channel ID.
         self.channel_id = channel_id
+        # The time when the call was created, represented as a UNIX timestamp in seconds.
         self.created_ts = created_ts
+        # The time when the call was released, represented as a UNIX timestamp in seconds.
         self.destroyed_ts = destroyed_ts
+        # Call duration in seconds.
         self.duration = duration
 
     def validate(self):

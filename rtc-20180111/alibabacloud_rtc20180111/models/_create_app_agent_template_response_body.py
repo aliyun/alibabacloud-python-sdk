@@ -10,6 +10,7 @@ class CreateAppAgentTemplateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # The template ID.
         self.id = id
         # Id of the request
         self.request_id = request_id

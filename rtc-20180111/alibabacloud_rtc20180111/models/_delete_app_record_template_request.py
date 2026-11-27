@@ -12,9 +12,14 @@ class DeleteAppRecordTemplateRequest(DaraModel):
         client_token: str = None,
         template: main_models.DeleteAppRecordTemplateRequestTemplate = None,
     ):
+        # The application ID. You can create and query the ID in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The idempotency parameter.
         self.client_token = client_token
+        # The template information.
+        # 
         # This parameter is required.
         self.template = template
 
@@ -57,6 +62,8 @@ class DeleteAppRecordTemplateRequestTemplate(DaraModel):
         self,
         template_id: str = None,
     ):
+        # The template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

@@ -11,10 +11,16 @@ class StopViewRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # The application ID. Create and query it in the console. Only one ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # An existing channel ID. Only one ID is supported.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # An existing task ID. Only one ID is supported.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

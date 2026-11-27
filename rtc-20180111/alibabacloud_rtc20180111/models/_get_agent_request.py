@@ -11,8 +11,11 @@ class GetAgentRequest(DaraModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # Application ID. You can create and view this ID in the console. Only one ID is supported.
         self.app_id = app_id
+        # Channel ID.
         self.channel_id = channel_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeQoeMetricDataResponseBody(DaraModel):
         request_id: str = None,
         video_data: List[main_models.DescribeQoeMetricDataResponseBodyVideoData] = None,
     ):
+        # Audio data.
         self.audio_data = audio_data
+        # Request ID.
         self.request_id = request_id
+        # Video data.
         self.video_data = video_data
 
     def validate(self):
@@ -74,8 +77,17 @@ class DescribeQoeMetricDataResponseBodyVideoData(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # List of coordinate points for the video metric trend graph.
         self.nodes = nodes
+        # The type of metric that impacts communication experience. Valid values:
+        # - **VIDEO_CAMERA**: Camera bitrate.
+        # - **VIDEO_SCREEN_SHARE**: Screen sharing stream bitrate.
+        # - **VIDEO_STUCK_CAMERA**: Camera stuttering.
+        # - **VIDEO_STUCK_SCREEN_SHARE**: Screen sharing stuttering.
+        # - **VIDEO_VAGUE_CAMERA**: Camera blur.
+        # - **VIDEO_VAGUE_SCREEN_SHARE**: Screen sharing blur.
         self.type = type
+        # User ID
         self.user_id = user_id
 
     def validate(self):
@@ -124,7 +136,9 @@ class DescribeQoeMetricDataResponseBodyVideoDataNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # The x-axis coordinate in the video metric trend graph.
         self.x = x
+        # The y-axis coordinate in the Video Trend Indicator.
         self.y = y
 
     def validate(self):
@@ -160,8 +174,13 @@ class DescribeQoeMetricDataResponseBodyAudioData(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # List of coordinate points for the audio trend indicator.
         self.nodes = nodes
+        # Communication experience. Valid values:  
+        # - **AUDIO**: Audio bitrate.  
+        # - **AUDIO_STUCK**: Audio downlink stuttering.
         self.type = type
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -210,7 +229,9 @@ class DescribeQoeMetricDataResponseBodyAudioDataNodes(DaraModel):
         x: str = None,
         y: str = None,
     ):
+        # X-axis coordinate in the audio trend indicator.
         self.x = x
+        # Y-axis coordinate in the audio trend indicator.
         self.y = y
 
     def validate(self):

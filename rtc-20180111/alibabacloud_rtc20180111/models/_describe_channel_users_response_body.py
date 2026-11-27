@@ -20,15 +20,32 @@ class DescribeChannelUsersResponseBody(DaraModel):
         timestamp: int = None,
         user_list: List[str] = None,
     ):
+        # The channel mode. Valid values:
+        # 
+        # - **1**: Communication (communication mode).
+        # 
+        # - **2**: Interactive_live (live streaming mode).
         self.channel_profile = channel_profile
+        # The total number of users in the channel in communication mode. If the channel is not in communication mode, this parameter is 0.
         self.comm_total_num = comm_total_num
+        # The list of interactive user IDs in the channel in live streaming mode. This parameter is empty if the channel is not in live streaming mode.
         self.interactive_user_list = interactive_user_list
+        # The total number of interactive users in the channel in live streaming mode. If the channel is not in live streaming mode, this parameter is 0.
         self.interactive_user_num = interactive_user_num
+        # Indicates whether the channel exists. Valid values:
+        # - **true**: The channel exists.
+        # 
+        # - **false**: The channel does not exist.
         self.is_channel_exist = is_channel_exist
+        # The list of viewer IDs in the channel in live streaming mode. A maximum of 1,000 viewers are returned. This parameter is empty if the channel is not in live streaming mode.
         self.live_user_list = live_user_list
+        # The total number of viewers in the channel in live streaming mode. If the channel is not in live streaming mode, this parameter is 0.
         self.live_user_num = live_user_num
+        # The request ID.
         self.request_id = request_id
+        # The timestamp of the current time in UTC.
         self.timestamp = timestamp
+        # The list of user IDs in the channel in communication mode. This parameter is empty if the channel is not in communication mode.
         self.user_list = user_list
 
     def validate(self):

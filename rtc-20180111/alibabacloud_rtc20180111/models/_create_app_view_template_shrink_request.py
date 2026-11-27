@@ -10,8 +10,12 @@ class CreateAppViewTemplateShrinkRequest(DaraModel):
         app_id: str = None,
         template_shrink: str = None,
     ):
+        # The application ID. You can create and query it in the console. Only a single ID is supported.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The template.
+        # 
         # This parameter is required.
         self.template_shrink = template_shrink
 
